@@ -5,31 +5,26 @@ The Protist Ribosomal Reference database (PR2) provides a unique access to eukar
 The original web site (http://ssu-rrna.org/pr2) is currently out and we are proposing updated version of PR2 as flat files to use for annotating metabarcodes.
 
 ## Current version
-
 * Current version : 4.7.0
 * Last update : 27 September 2017
 * DOI : https://doi.org/10.6084/m9.figshare.3803709
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 
-## Files
-
-* pr2_mothur.zip contains two files for use with Qiime or Mothur.
+## Files PR2 database
+* **pr2_mothur.zip** contains two files for use with Qiime or Mothur.
   + pr2_mothur.fasta contains all sequences in fasta format with the accession in the description line
   + pr2_mothur.tax contains the taxonomy of each sequence separated from the accession number by a tabulation
-* pr2_UTAX.zip contains one fasta file with the accession number of the sequence and its full taxonomy on the description line in the UTAX format. It is suitable to use with USEARCH and VSEARCH.
+  Note :Qiime only use 7 taxonomical levels by default.
+* **pr2_UTAX.zip** contains one fasta file with the accession number of the sequence and its full taxonomy on the description line in the UTAX format. It is suitable to use with USEARCH and VSEARCH.
+* **pr2_taxo_long.zip** contains one fasta file with the accession number of the sequence, the name of the sequence and its full taxonomy on the description line. It is suitable to build a local database for BLAST search
+* **pr2_metadata.zip** contains a tabulation separated file with all the metadata from genbank as well as annotation made to the PR2 database.
+* **pr2_merged.zip** contains a tabulation separated file the full PR2 database including sequences, taxonomy and metadata.
 
-* pr2_taxo_long.zip contains one fasta file with the accession number of the sequence, the name of the sequence and its full taxonomy on the description line. It is suitable to build a local database for BLAST search
-* pr2_metadata.zip contains a tabulation separated file with all the metadata from genbank as well as annotation made to the PR2 database.
-* pr2_merged.zip contains a tabulation separated file the full PR2 database including sequences, taxonomy and metadata.
-* PR2 version notes.docx contains the revision history
-* PR2 versions.xls is a condensed list of the different versions
-
-
-## Notes
-* Qiime only use 7 taxonomical levels by default.
+## Files PR2 history
+* **pr2_version_history.md** contains the revision history
+* **PR2 versions.xls** is a condensed list of the different versions
 
 ## Contact
-
 Daniel VAULOT, Laure GUILLOU and Fabrice NOT
 DIPO team, Plankton Group, UMR 7144 CNRS-UPMC
 Station Biologique,
@@ -38,7 +33,6 @@ Place G. Tessier
 email: vaulot@sb-roscoff.fr
 
 ## Contributors
-
 - Tristan Biard
 - Margot Tragin
 - Bente Edvardsen
@@ -48,7 +42,6 @@ email: vaulot@sb-roscoff.fr
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR2): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.
 * Edvardsen, B., Egge, E.S. & Vaulot, D. 2016. Diversity and distribution of haptophytes revealed by environmental sequencing and metabarcoding – a review. Perspect. Phycol. in press
 * Tragin, M., Lopes dos Santos, A., Christen, R. & Vaulot, D. 2016. Diversity and ecology of green microalgae in marine systems: an overview based on 18S rRNA gene sequences. Perspect. Phycol. in press.
-
 
 ## PhytoRef (16S plastid database)
 https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA
