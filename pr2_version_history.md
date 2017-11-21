@@ -1,3 +1,17 @@
+## Version 4.7.2
+**Annotators** : Wei-Ting Chen 
+**Date** : 27-09-2017
+
+#### Ciliates
+* Taxonomy updated for 31 sequences
+
+## Version 4.7.1
+**Annotators** : Daniel Vaulot (Roscoff)  
+**Date** : 07-10-2017
+
+#### Bug fix
+* Remove space at the end of some taxonomy fields that caused errors in Mothur
+
 ## Version 4.7.0
 **Annotators** : Charles Bachy and Wei-Ting Chen, Daniel Vaulot (Roscoff)  
 **Date** : 27-09-2017
