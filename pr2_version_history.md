@@ -1,5 +1,5 @@
 ## Version 4.7.2
-**Annotators** : Wei-Ting Chen 
+**Annotators** : Wei-Ting Chen  
 **Date** : 27-09-2017
 
 #### Ciliates
