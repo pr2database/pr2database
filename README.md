@@ -5,8 +5,8 @@ The Protist Ribosomal Reference database (PR2) provides a unique access to eukar
 The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are proposing updated version of PR2 as flat files to use for annotating metabarcodes. In 2018, a new web site will be constructed.
 
 ## Current version
-* Current version : 4.7.0
-* Last update : 27 September 2017
+* Current version : 4.7.1
+* Last update : 7 October 2017
 * DOI : https://doi.org/10.6084/m9.figshare.3803709
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 
@@ -38,8 +38,10 @@ email: vaulot@sb-roscoff.fr
 - Bente Edvardsen
 - Charles Bachy and Wei Ting Chen
 
-## References
+## Please cite
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR2): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.
+
+## References
 * Edvardsen, B., Egge, E.S. & Vaulot, D. 2016. Diversity and distribution of haptophytes revealed by environmental sequencing and metabarcoding – a review. Perspect. Phycol. in press
 * Tragin, M., Lopes dos Santos, A., Christen, R. & Vaulot, D. 2016. Diversity and ecology of green microalgae in marine systems: an overview based on 18S rRNA gene sequences. Perspect. Phycol. in press.
 
