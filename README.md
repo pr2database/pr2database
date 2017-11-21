@@ -5,8 +5,8 @@ The Protist Ribosomal Reference database (PR2) provides a unique access to eukar
 The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are proposing updated version of PR2 as flat files to use for annotating metabarcodes. In 2018, a new web site will be constructed.
 
 ## Current version
-* Current version : 4.7.1
-* Last update : 7 October 2017
+* Current version : 4.7.2
+* Last update : 21 November 2017
 * DOI : https://doi.org/10.6084/m9.figshare.3803709
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 
