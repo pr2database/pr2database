@@ -1,18 +1,18 @@
-# Version 4.7.2
+## Version 4.7.2
 **Annotators** : Wei-Ting Chen  
 **Date** : 27-09-2017
 
 ### Ciliates
 * Taxonomy updated for 31 sequences
 
-# Version 4.7.1
+## Version 4.7.1
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** : 07-10-2017
 
 ### Bug fix
 * Remove space at the end of some taxonomy fields that caused errors in Mothur
 
-# Version 4.7.0
+## Version 4.7.0
 **Annotators** : Charles Bachy and Wei-Ting Chen, Daniel Vaulot (Roscoff)  
 **Date** : 27-09-2017
 
@@ -57,7 +57,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 * Santoferrara, L.F., Alder, V.V., and McManus, G.B. (2017) Phylogeny, classification and diversity of Choreotrichia and Oligotrichia (Ciliophora, Spirotrichea). Mol. Phylogenet. Evol. 112: 12–22.
 * Zhang, Q., Agatha, S., Zhang, W., Dong, J., Yu, Y., Jiao, N., and Gong, J. (2017) Three rDNA Loci-Based Phylogenies of Tintinnid Ciliates (Ciliophora, Spirotrichea, Choreotrichida). J. Eukaryot. Microbiol. 64: 226–241.
 
-# Version 4.6.2
+## Version 4.6.2
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** : 11-09-2017
 
@@ -65,7 +65,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 * Remove 59 sequences which were duplicated
 * All files now are DOS compatible (lines terminated by /r /n)
 
-# Version 4.6.1
+## Version 4.6.1
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** : 06-09-2017
 
@@ -74,7 +74,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 * **Haptophyta** : 32 chimeras detected by B. Edvardsen added (these are not exported but latter we will provide a list of chimeras on the web site)
 * Mothur taxonomy file fixed (taxonomy was separated by tab and not ;)
 
-# Version 4.6.0 
+## Version 4.6.0 
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** : 25-08-2017
 ### Bolidophyceae
@@ -97,7 +97,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 * Species containing "strain" have been cleaned by removing the string "strain"
 * Metadata from GenBank added as an additional file available for download
 
-# Version 4.5.0
+## Version 4.5.0
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** :17-01-2017
 
@@ -117,7 +117,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 ### Dinophyta
 * Correct minor dinoflagellates taxonomy (*Karlodinium*)
 
-# Version 4.4.0
+## Version 4.4.0
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** : 10-11-2016
 ### Bolidophyceae
@@ -127,7 +127,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 *	Sequences not in GenBank removed
 *	Sequences with a large number of N removed
 
-# Version 4.3.0
+## Version 4.3.0
 **Annotators** : Daniel Vaulot (Roscoff)  
 **Date** : 04-09-2016
 ### Chlorophyta
@@ -139,19 +139,19 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 ### Haptophyta  
 * Chimeras checked.
 
-# Version 4.1.0
+## Version 4.1.0
 **Annotators** : Margot Tragin (Roscoff)  
 **Date** : 23-10-2015
 ### Chlorophyta
 *	223 Chlorophyta sequences from the RCC (accession number ZZ*) were deleted and replaced by 199 RCC Chlorophyta sequences submitted to Genbank (accession number KT*)
 
-# Version 4.0.0 
+## Version 4.0.0 
 **Annotators** : Bente Edvardsen (Oslo)  
 **Date** : 21-10-2015
 ### Haptophyta 
 * Taxonomy updated according to Edvardsen, B., Egge, E. S., and Vaulot, D. (2016). Diversity and distribution of haptophytes revealed by environmental sequencing and metabarcoding – a review. Perspect. Phycol. 3, 77–91. doi:10.1127/pip/2016/0052.
 
-# Version 3.0.0
+## Version 3.0.0
 **Annotators** : Margot Tragin (Roscoff)  
 **Date** : 14-09-2015
 ### Chlorophyta
@@ -169,7 +169,7 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 ### New sequences added
 * 223 addition of new sequences from the RCC (accession number ZZ*). These sequences are not submitted to GenBank yet
 
-# Version 2.0.0
+## Version 2.0.0
 **Annotators** : Tristan Biard (Roscoff)  
 **Date** : 02-07-2015
 ### Rhizaria : Nasselaria, Collodaria, Phaeodaria
@@ -194,15 +194,15 @@ contains the whole PR2 database as flat file (sequence, assignation, metadata)
 		* Change "Filosa-Phaeodarea" to "Phaeodarea"
 		* Correction of family names
 ### Insertion of new Sequences:
-#### Collodaria  
+#### Collodaria
 * 62 new 18S sequences extracted from Biard et al. (2015 - Protist)
-#### Phaeodaria  
+#### Phaeodaria
 * 39 new 18S sequences extracted from Nakamura et al. (2015 - Protist)	
-#### Symbiotic Dinoflagellates  	
+#### Symbiotic Dinoflagellates
 * 2 new sequences from Probert et al. 2014 (J. Phycol)
 * 1 new sequence from Biard et al. (Unpublished)
 
-# Version 1.1.0
+## Version 1.1.0
 **Annotators** : Daniel Vaulot
 ### Data base created 
 * from version downloaded from PR2 web site based on Genbank release 203
