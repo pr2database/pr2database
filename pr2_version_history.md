@@ -1,3 +1,5 @@
+* [PR2 versions.xls](https://github.com/vaulot/pr2_database/blob/master/PR2%20versions.xlsx) is a condensed list of the different versions
+
 ## Version 4.7.2
 **Annotators** : Wei-Ting Chen  
 **Date** : 27-09-2017
