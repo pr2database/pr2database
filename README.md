@@ -12,6 +12,9 @@ The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 * Manual : https://github.com/vaulot/pr2_database/wiki
 
+## Report issues
+* Please report any issue on [GitHub](https://github.com/vaulot/pr2_database/issues)
+
 ## Contact
 Daniel VAULOT, Laure GUILLOU and Fabrice NOT
 DIPO team, Plankton Group, UMR 7144 CNRS-UPMC
