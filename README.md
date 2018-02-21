@@ -8,6 +8,7 @@ The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are
 ## Current version
 * Current version : 4.9.0
 * Last update : 20 February 2018
+* DOI : https://doi.org/10.6084/m9.figshare.5913181
 * [![DOI](https://zenodo.org/badge/105268099.svg)](https://zenodo.org/badge/latestdoi/105268099)
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 * Manual : https://github.com/vaulot/pr2_database/wiki
