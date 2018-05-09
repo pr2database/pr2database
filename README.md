@@ -12,6 +12,9 @@ The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 * Manual : https://github.com/vaulot/pr2_database/wiki
 
+## Basic statistics
+* [PR2 statistics](https://vaulot.github.io/pr2/PR2_analysis.html)
+
 ## Report issues
 * Please report any issue on [GitHub](https://github.com/vaulot/pr2_database/issues)
 
