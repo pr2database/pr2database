@@ -1,10 +1,10 @@
-[
-![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
-](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
+
 
 # Protist Ribosomal Reference database (PR2)
 
-[![Release](https://img.shields.io/badge/release-4.10.0-blue.svg) ![Date](https://img.shields.io/badge/date-7%20March%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)
+[![Release](https://img.shields.io/badge/release-4.10.0-blue.svg) ![Date](https://img.shields.io/badge/date-7%20March%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)  [
+![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
+](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
 ## SSU rRNA gene database
 
