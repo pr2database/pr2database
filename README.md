@@ -1,4 +1,9 @@
 # Protist Ribosomal Reference database (PR2)
+
+
+![Release](https://img.shields.io/badge/release-4.10.0-blue.svg) ![Date](https://img.shields.io/badge/date-7%20March%202018-lightgrey.svg)
+
+
 ## SSU rRNA gene database
 
 The Protist Ribosomal Reference database (PR2) provides a unique access to eukaryotic small sub-unit (SSU) ribosomal RNA and DNA sequences, with curated taxonomy. The database mainly consists of nuclear-encoded protistan sequences. However, metazoans, land plants, macrosporic fungi and eukaryotic organelles (mitochondrion, plastid and others) are also included because they are useful for the analysis of high-troughput sequencing data sets. Introns and putative chimeric sequences have been also carefully checked. Taxonomic assignation of sequences consists of eight unique taxonomic fields.
