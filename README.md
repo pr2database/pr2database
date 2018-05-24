@@ -12,8 +12,7 @@ The Protist Ribosomal Reference database (PR2) provides a unique access to eukar
 
 The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are proposing updated version of PR2  and provide the data in a variety of file formats to use for annotating metabarcodes. 
 
-![](http://eukref.org/wp-content/uploads/2015/07/EurRef2trans-e1435950037322.png)
-
+![](http://eukref.org/wp-content/uploads/2015/07/EurRef2trans-e1435950037322.png)   
 PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation)
 
 ## Current version
