@@ -1,0 +1,12 @@
+Package: pr2database
+Type: Package
+Title: PR2 database
+Version: 4.11.0
+Author: Daniel Vaulot
+Maintainer: Daniel Vaulot <vaulot@sb-roscoff.fr>
+Description: PR2 database
+    See the wiki.
+License: ?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
