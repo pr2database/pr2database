@@ -12,8 +12,6 @@ The Protist Ribosomal Reference database (PR2) provides a unique access to eukar
 
 The original web site (http://ssu-rrna.org/pr2) does not exist any more.  We are proposing updated version of PR2  and provide the data in a variety of file formats to use for annotating metabarcodes.
 
-![](http://eukref.org/wp-content/uploads/2015/07/EurRef2trans-e1435950037322.png)   
-PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation)
 
 ## Current version
 * Current version : 4.10.0
@@ -46,5 +44,10 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 ## Please cite
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR2): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.
 
-## Plastid 16S rRNA (PhytoRef database)
-At present, plastid 16S rRNA sequences are not included into PR2.  These sequences are available from the the PhytoRef da tabase avaialable from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA)
+# Related Databases
+
+## ![](http://eukref.org/wp-content/uploads/2015/07/EurRef2trans-e1435950037322.png)   
+PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
+
+## ![](http://phytoref.sb-roscoff.fr/images/Bandeau_up_980.png)
+Plastid 16S rRNA sequences are yet not included into PR2.  These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).
