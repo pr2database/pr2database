@@ -84,7 +84,7 @@ NULL
 #'   \item{eukref_authors}{Eukref: Authors updated}
 #'   \item{eukref_journal}{Eukref: Journal updated}
 #'   \item{eukref_name}{Eukref: Name use in EukRef, usually either the species name or the clone name}
-#'   \item{eukref_env_material}{Eukref:  uses ENVO keywords}
+#'   \item{eukref_env_material}{Eukref: uses ENVO keywords}
 #'   \item{eukref_env_biome}{Eukref: uses ENVO keywords}
 #'   \item{eukref_biotic_relationship}{Eukref: eg parasite}
 #'   \item{eukref_specific_host}{Eukref: Specific Host annotated}
