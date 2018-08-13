@@ -40,6 +40,7 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 - Bente Edvardsen
 - Charles Bachy and Wei Ting Chen
 - Solenn Mordret
+- Adriana Lopes dos Santos
 
 ## Please cite
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR2): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.
