@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r echo=FALSE, fig.align="center", fig.cap="", out.width='50%'}
-knitr::include_graphics('img/pr2_logo')
+knitr::include_graphics('/img/pr2_logo')
 ```
 
 # Protist Ribosomal Reference database (PR2)
@@ -61,12 +61,12 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 
 ## Eukref
 ```{r echo=FALSE, fig.align="center", fig.cap="", out.width='30%'}
-knitr::include_graphics('img/eukref_logo')
+knitr::include_graphics('/img/eukref_logo')
 ```  
 PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
 
 ## PhytoRef (16S plastid)
 ```{r echo=FALSE, fig.align="center", fig.cap="", out.width='30%'}
-knitr::include_graphics('img/eukref_logo')
+knitr::include_graphics('/img/eukref_logo')
 ``` 
 Plastid 16S rRNA sequences are yet not included into PR2.  These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).

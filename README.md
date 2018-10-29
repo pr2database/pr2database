@@ -1,4 +1,4 @@
-<img src="img/pr2_logo" width="50%" style="display: block; margin: auto;" />
+<img src="/img/pr2_logo" width="50%" style="display: block; margin: auto;" />
 
 Protist Ribosomal Reference database (PR2)
 ==========================================
@@ -58,9 +58,9 @@ Related Databases
 Eukref
 ------
 
-<img src="img/eukref_logo" width="30%" style="display: block; margin: auto;" /> PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
+<img src="/img/eukref_logo" width="30%" style="display: block; margin: auto;" /> PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
 
 PhytoRef (16S plastid)
 ----------------------
 
-<img src="img/eukref_logo" width="30%" style="display: block; margin: auto;" /> Plastid 16S rRNA sequences are yet not included into PR2. These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).
+<img src="/img/eukref_logo" width="30%" style="display: block; margin: auto;" /> Plastid 16S rRNA sequences are yet not included into PR2. These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).
