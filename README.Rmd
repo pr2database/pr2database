@@ -17,7 +17,7 @@ is_online = curl::has_internet()
 ```
 
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='30%'}
+```{r echo=FALSE, fig.align="center", fig.cap="", out.width='20%'}
 knitr::include_graphics('img/pr2_logo.png')
 ```
 
@@ -49,7 +49,7 @@ Since the original web site (http://ssu-rrna.org/pr2) does not exist any more, w
 
 ## Contact
 Daniel VAULOT, Laure GUILLOU and Fabrice NOT
-DIPO team, Plankton Group, UMR 7144 CNRS-UPMC
+ECOMAP team, Plankton Group, UMR 7144 CNRS-UPMC
 Station Biologique,
 Place G. Tessier
 29680 Roscoff FRANCE
@@ -69,9 +69,9 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 
 # Related Databases
 
-## Eukref
+## Eukref (18S annotation)
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='30%'}
+```{r echo=FALSE, fig.align="center", fig.cap="", out.width='25%'}
 knitr::include_graphics('img/eukref_logo.png')
 ```  
 
@@ -79,7 +79,7 @@ PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) p
 
 ## PhytoRef (16S plastid)
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='30%'}
+```{r echo=FALSE, fig.align="center", fig.cap="", out.width='40%'}
 knitr::include_graphics('img/phytoref_logo.png')
 ``` 
 

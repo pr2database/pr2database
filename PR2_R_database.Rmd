@@ -1,0 +1,34 @@
+---
+title: "PR2 - Use of the pr2database data package"
+author: "Daniel Vaulot"
+date: '`r format(Sys.time(), "%d %m %Y")`'
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r readme-setup, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "img/"
+)
+is_online = curl::has_internet()
+```
+
+# Aim
+
+The PR2 database is now provided as a R package
+
+# Installation
+
+Install from the GitHub web site using the devtools package
+
+```{r, eval=FALSE, message=FALSE}
+install.packages(devtools)
+devtools::install_github("vaulot/pr2database")
+```
+
+# Loading the database
+
+

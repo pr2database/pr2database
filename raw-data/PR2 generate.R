@@ -9,9 +9,9 @@
 
   readr::write_tsv(data.frame(pr2_fields$help), "raw-data/pr2_fields.txt")
 
-  dvutils::pr2_export_sqlite("inst/extdata/pr2.sqlite")
+#  dvutils::pr2_export_sqlite("inst/extdata/pr2.sqlite")
 
   devtools::use_data(pr2, overwrite = TRUE)
 
 # Generate the documentation file
-  var$string
+#  var$string

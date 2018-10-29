@@ -37,6 +37,7 @@ pr2_fields.help
 #'   \item{gb_locus}{}
 #'   \item{gb_definition}{}
 #'   \item{gb_organism}{}
+#'   \item{gb_taxonomy}{}
 #'   \item{gb_strain}{}
 #'   \item{gb_culture_collection}{}
 #'   \item{gb_clone}{}
@@ -58,11 +59,13 @@ pr2_fields.help
 #'   \item{eukref_authors}{}
 #'   \item{eukref_journal}{}
 #'   \item{eukref_name}{}
+#'   \item{eukref_source}{}
 #'   \item{eukref_env_material}{}
 #'   \item{eukref_env_biome}{}
 #'   \item{eukref_biotic_relationship}{}
 #'   \item{eukref_specific_host}{}
 #'   \item{eukref_geo_loc_name}{}
+#'   \item{eukref_notes}{}
 #'   \item{pr2_sample_type}{}
 #'   \item{pr2_sample_method}{}
 #'   \item{pr2_ocean}{}
@@ -73,4 +76,3 @@ pr2_fields.help
 #'   \item{pr2_size_fraction_min}{}
 #'   \item{pr2_size_fraction_max}{}
 #'   \item{metadata_remark}{}
-#'   \item{eukref_remark}{}
