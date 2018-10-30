@@ -18,7 +18,7 @@ is_online = curl::has_internet()
 
 
 ```{r echo=FALSE, fig.align="center", fig.cap="", out.width='20%'}
-knitr::include_graphics('img/pr2_logo_16_9.png.png')
+knitr::include_graphics('img/pr2_logo_16_9.png')
 ```
 
 # Protist Ribosomal Reference database (PR2)
