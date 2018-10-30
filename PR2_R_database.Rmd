@@ -14,12 +14,10 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   comment = "#>",
-  fig.path = "img/"
+  fig.path = "img/"   # Directories where image are saved
 )
 is_online = curl::has_internet()
 ```
-
-# Aim
 
 The PR2 database is now provided as a R package
 

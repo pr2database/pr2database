@@ -1,9 +1,9 @@
-<img src="img/pr2_logo.png" width="30%" style="display: block; margin: auto;" />
+<img src="img/pr2_logo_16_9.png.png" width="20%" style="display: block; margin: auto;" />
 
 Protist Ribosomal Reference database (PR2)
 ==========================================
 
-[![Release](https://img.shields.io/badge/release-4.10.0-blue.svg) ![Date](https://img.shields.io/badge/date-7%20March%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
+[![Release](https://img.shields.io/badge/release-4.11.0-blue.svg) ![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
 SSU rRNA gene database
 ----------------------
@@ -15,8 +15,8 @@ Since the original web site (<http://ssu-rrna.org/pr2>) does not exist any more,
 Current version
 ---------------
 
--   Current version : 4.10.0
--   Last update : 7 March 2018
+-   Current version : 4.11.0
+-   Last update : 30 October 2018
 -   DOI : <https://doi.org/10.6084/m9.figshare.5913181>
 -   [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 -   Manual : <https://github.com/vaulot/pr2_database/wiki>
@@ -34,7 +34,7 @@ Report issues
 Contact
 -------
 
-Daniel VAULOT, Laure GUILLOU and Fabrice NOT DIPO team, Plankton Group, UMR 7144 CNRS-UPMC Station Biologique, Place G. Tessier 29680 Roscoff FRANCE email: <vaulot@sb-roscoff.fr> / <vaulot@gmail.com>
+Daniel VAULOT, Laure GUILLOU and Fabrice NOT ECOMAP team, Plankton Group, UMR 7144 CNRS-UPMC Station Biologique, Place G. Tessier 29680 Roscoff FRANCE email: <vaulot@sb-roscoff.fr> / <vaulot@gmail.com>
 
 Contributors
 ------------
@@ -55,16 +55,16 @@ Please cite
 Related Databases
 =================
 
-Eukref
-------
+Eukref (18S annotation)
+-----------------------
 
-<img src="img/eukref_logo.png" width="30%" style="display: block; margin: auto;" />
+<img src="img/eukref_logo.png" width="25%" style="display: block; margin: auto;" />
 
 PR2 will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
 
 PhytoRef (16S plastid)
 ----------------------
 
-<img src="img/phytoref_logo.png" width="30%" style="display: block; margin: auto;" />
+<img src="img/phytoref_logo.png" width="40%" style="display: block; margin: auto;" />
 
 Plastid 16S rRNA sequences are yet not included into PR2. These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).

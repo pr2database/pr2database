@@ -18,12 +18,12 @@ is_online = curl::has_internet()
 
 
 ```{r echo=FALSE, fig.align="center", fig.cap="", out.width='20%'}
-knitr::include_graphics('img/pr2_logo.png')
+knitr::include_graphics('img/pr2_logo_16_9.png.png')
 ```
 
 # Protist Ribosomal Reference database (PR2)
 
-[![Release](https://img.shields.io/badge/release-4.10.0-blue.svg) ![Date](https://img.shields.io/badge/date-7%20March%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)  [
+[![Release](https://img.shields.io/badge/release-4.11.0-blue.svg) ![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)  [
 ![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
 ](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
@@ -35,8 +35,8 @@ Since the original web site (http://ssu-rrna.org/pr2) does not exist any more, w
 
 
 ## Current version
-* Current version : 4.10.0
-* Last update : 7 March 2018
+* Current version : 4.11.0
+* Last update : 30 October 2018
 * DOI : https://doi.org/10.6084/m9.figshare.5913181
 * [Link to latest release](https://github.com/vaulot/pr2_database/releases)
 * Manual : https://github.com/vaulot/pr2_database/wiki
