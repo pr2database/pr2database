@@ -1,4 +1,4 @@
-<img src="img/pr2_logo_16_9.png" width="20%" style="display: block; margin: auto;" />
+<img src="img/pr2_logo_16_9.png" width="40%" style="display: block; margin: auto;" />
 
 Protist Ribosomal Reference database (PR2)
 ==========================================
@@ -45,7 +45,7 @@ Contributors
 -   Charles Bachy and Wei Ting Chen (Roscoff)
 -   Solenn Mordret (Naples)
 -   Adriana Lopes dos Santos (Nanyang University, Singapore)
--   Vittorio Boscaro (UBC, Vancouver)
+-   Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
 
 Please cite
 -----------

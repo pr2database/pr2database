@@ -17,7 +17,7 @@ is_online = curl::has_internet()
 ```
 
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='20%'}
+```{r echo=FALSE, fig.align="center", fig.cap="", out.width='40%'}
 knitr::include_graphics('img/pr2_logo_16_9.png')
 ```
 
@@ -62,7 +62,7 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 - Charles Bachy and Wei Ting Chen (Roscoff)
 - Solenn Mordret (Naples)
 - Adriana Lopes dos Santos (Nanyang University, Singapore)
-- Vittorio Boscaro (UBC, Vancouver)
+- Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
 
 ## Please cite
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR2): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.
