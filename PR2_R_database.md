@@ -95,27 +95,28 @@ The following examples makes use of the specifc R libraries
 Install the libraries
 
 ``` r
-install.packages("dplyr")
-install.package("ggplot2")
+install.packages("dplyr")      # For filtering the data
+install.package("ggplot2")     # To plot data
+install.package("maps")        # To plot maps
 
-source("https://bioconductor.org/biocLite.R")
-biocLite("Biostrings")
+source("https://bioconductor.org/biocLite.R")  # This package is on Bioconductor
+biocLite("Biostrings")         # To save fasta files
 ```
 
 Load the libraries
 
 ``` r
   library(dplyr)
-  library(Biostrings)
+  library(ggplot2)    # For plots
+  library(Biostrings) # To save fasta files
 ```
 
 Selecting sequences from a specific taxon
 -----------------------------------------
 
-We want to have all the available sequences for the Mamiellophyceae *Ostreococcus*
+Let us select all the available sequences for the Mamiellophyceae *Ostreococcus*
 
 ``` r
-
 
   # Filter only the sequences for which the column genus contains Ostreococcus
   pr2_ostreo <- pr2 %>% dplyr::filter(genus == "Ostreococcus")
@@ -147,7 +148,7 @@ We want to have all the available sequences for the Mamiellophyceae *Ostreococcu
 Exporting the sequences to fasta
 --------------------------------
 
-This is easy done with the bioconductor package BioStrings
+We will save the *Ostreococcus* sequences to a FASTA file. This is easy done with the bioconductor package BioStrings.
 
 ``` r
 
@@ -183,7 +184,7 @@ This is easy done with the bioconductor package BioStrings
   Biostrings::writeXStringSet(seq_ostreo, "examples/pr2_ostreo.fasta", width = 80)
 ```
 
-The fasta file will looks as follows
+The fasta file will look as follows
 
     >AF525872|Ostreococcus_lucimarinus|strain|NA|clone|UEPACIp5
     ACCTGGTTGATCCTGCCAGTAGTCATATGCTTGTCTCAAAGATTAAGCCATGCATGTCTAAGTATAAGCGTTATACTGTG
@@ -197,3 +198,31 @@ The fasta file will looks as follows
     >AY425309|Ostreococcus_lucimarinus|strain|NA|clone|RA010412.39
     GCCAGTAGTCATATGCTTGTCTCAAAGATTAAGCCATGCATGTCTAAGTATAAGCGTTATACTGTGAAACTGCGAATGGC
     TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
+
+Doing an histogram of the sequence length
+-----------------------------------------
+
+``` r
+  ggplot(pr2_ostreo) + 
+    geom_histogram(aes(sequence_length), binwidth = 50, fill="blue") + 
+    xlim(0,2000) + xlab("Sequence length") + ylab("Number of sequences") + 
+    ggtitle("Ostreococcus lucimarinus")
+```
+
+![](img/sequence_histogram-1.png)
+
+Drawing a map of sequence locations
+-----------------------------------
+
+``` r
+  library(maps)
+  world <- map_data("world")
+
+  ggplot() + 
+    geom_polygon(data = world, aes(x=long, y = lat, group = group), fill="grey") + 
+    coord_fixed(1.3) +
+    geom_point(data=pr2_ostreo, aes(x=pr2_longitude, y=pr2_latitude), fill="blue", size=2, shape=21) + 
+    ggtitle("Ostreococcus lucimarinus")
+```
+
+![](img/sequence_map-1.png)
