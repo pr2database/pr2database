@@ -67,7 +67,7 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 ## Please cite
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR<sup>2</sup>): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.
 
-# Related Databases
+# Related Sites and databases
 
 ## Eukref (18S annotation)
 
@@ -84,3 +84,9 @@ knitr::include_graphics('img/phytoref_logo.png')
 ``` 
 
 Plastid 16S rRNA sequences are yet not included into PR<sup>2</sup>.  These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).
+
+## PFR2 - Foraminifera 18S ribosomal DNA databae
+
+The database offers access to planktonic Foraminifera 18S ribosomal DNA sequence library with a curated taxonomy at the morphological and molecular level. The compilation was facilitated through the efforts of the SCOR/IGBP Working Group 138 “Modern planktonic foraminifera and ocean changes”. 
+
+[PFR2](http://pfr2.sb-roscoff.fr/)
