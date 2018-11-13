@@ -77,13 +77,11 @@ NULL
 #'   \item{gb_lat_lon}{Genbank: lat Lon}
 #'   \item{gb_collected_by}{Genbank: Collected by}
 #'   \item{gb_note}{Genbank: Note}
-#'   \item{pubmed_id}{Genbank: Pubmed ID}
+#'   \item{gb_references}{Genbank: Full references not parsed}
 #'   \item{gb_publication}{Genbank: Publication}
 #'   \item{gb_authors}{Genbank: Authors}
 #'   \item{gb_journal}{Genbank: Journal}
-#'   \item{eukref_publication}{Eukref: Publication updated}
-#'   \item{eukref_authors}{Eukref: Authors updated}
-#'   \item{eukref_journal}{Eukref: Journal updated}
+#'   \item{pubmed_id}{Genbank: Pubmed ID}
 #'   \item{eukref_name}{Eukref: Name use in EukRef, usually either the species name or the clone name}
 #'   \item{eukref_source}{Eukref: Source of the sequence : Isolate or Environmental}
 #'   \item{eukref_env_material}{Eukref: uses ENVO keywords}
