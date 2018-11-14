@@ -4,10 +4,12 @@ Protist Ribosomal Reference database (PR<sup>2</sup>)
 =====================================================
 
 [![Release](https://img.shields.io/badge/release-4.11.0-blue.svg)
-![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)
-[![Github Downloads (total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)](https://github.com/vaulot/pr2_database/releases)
-[![Twitter
-URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
+![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)  
+[![Github Downloads
+(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)](https://github.com/vaulot/pr2_database/releases)
+![Twitter
+URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
+\](<a href="https://twitter.com/intent/tweet?text=PR2%20database&amp;url=https://github.com/vaulot/pr2_database&amp;hashtags=PR2database" class="uri">https://twitter.com/intent/tweet?text=PR2%20database&amp;url=https://github.com/vaulot/pr2_database&amp;hashtags=PR2database</a>)
 
 SSU rRNA gene database
 ----------------------
@@ -39,6 +41,18 @@ Current version
 -   Manual :
     <a href="https://github.com/vaulot/pr2_database/wiki" class="uri">https://github.com/vaulot/pr2_database/wiki</a>
 
+Downloading the database
+------------------------
+
+-   [Flat files](https://github.com/pr2database/pr2database/releases)
+
+-   R package using Devtools
+
+``` r
+install.packages(devtools)
+devtools::install_github("vaulot/pr2database")
+```
+
 Basic statistics
 ----------------
 
@@ -68,7 +82,8 @@ Contributors
 -   Bente Edvardsen (U of Oslo)
 -   Charles Bachy and Wei Ting Chen (Roscoff)
 -   Solenn Mordret (Naples)
--   Adriana Lopes dos Santos (Nanyang University, Singapore)
+-   Adriana Lopes dos Santos (Nanyang Technological University,
+    Singapore)
 -   Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
 
 Please cite
