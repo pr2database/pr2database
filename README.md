@@ -87,11 +87,11 @@ Contributors
 Please cite
 -----------
 
--   Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner,
+-   [Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner,
     L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database
     (PR<sup>2</sup>): a catalog of unicellular eukaryote Small Sub-Unit
     rRNA sequences with curated taxonomy. Nucleic Acids Res.
-    41:D597–604.
+    41:D597–604.](https://academic.oup.com/nar/article/41/D1/D597/1064851)
 
 Related Sites and databases
 ===========================
