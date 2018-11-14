@@ -5,6 +5,7 @@ Protist Ribosomal Reference database (PR<sup>2</sup>)
 
 [![Release](https://img.shields.io/badge/release-4.11.0-blue.svg)
 ![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)
+[![Github Downloads (total)](https://img.shields.io/github/downloads/pr2database/pr2dtabase/total.svg)]()
 [![Twitter
 URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
