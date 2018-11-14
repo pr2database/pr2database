@@ -3,13 +3,12 @@
 Protist Ribosomal Reference database (PR<sup>2</sup>)
 =====================================================
 
-[![Release](https://img.shields.io/badge/release-4.11.0-blue.svg)
-![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)  
-[![Github Downloads
-(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)](https://github.com/vaulot/pr2_database/releases)
-![Twitter
-URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
-\](<a href="https://twitter.com/intent/tweet?text=PR2%20database&amp;url=https://github.com/vaulot/pr2_database&amp;hashtags=PR2database" class="uri">https://twitter.com/intent/tweet?text=PR2%20database&amp;url=https://github.com/vaulot/pr2_database&amp;hashtags=PR2database</a>)
+\[![Release](https://img.shields.io/badge/release-4.11.0-blue.svg)
+![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)\]
+![Github Downloads
+(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)\](<a href="https://github.com/vaulot/pr2_database/releases" class="uri">https://github.com/vaulot/pr2_database/releases</a>)
+[![Twitter
+URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
 SSU rRNA gene database
 ----------------------
@@ -36,21 +35,20 @@ Current version
 -   Last update : 30 October 2018
 -   DOI :
     <a href="https://doi.org/10.6084/m9.figshare.5913181" class="uri">https://doi.org/10.6084/m9.figshare.5913181</a>
--   [Link to latest
-    release](https://github.com/vaulot/pr2_database/releases)
 -   Manual :
-    <a href="https://github.com/vaulot/pr2_database/wiki" class="uri">https://github.com/vaulot/pr2_database/wiki</a>
+    <a href="https://github.com/pr2database/pr2database/wiki" class="uri">https://github.com/pr2database/pr2database/wiki</a>
 
 Downloading the database
 ------------------------
 
--   [Flat files](https://github.com/pr2database/pr2database/releases)
+-   [Flat files - latest
+    release](https://github.com/pr2database/pr2database/releases)
 
 -   R package using Devtools
 
 ``` r
 install.packages(devtools)
-devtools::install_github("vaulot/pr2database")
+devtools::install_github("pr2database/pr2database")
 ```
 
 Basic statistics
@@ -63,7 +61,7 @@ Report issues
 -------------
 
 -   Please report any issue on
-    [GitHub](https://github.com/vaulot/pr2_database/issues)
+    [GitHub](https://github.com/pr2database/pr2database/issues)
 
 Contact
 -------
