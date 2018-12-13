@@ -3,8 +3,8 @@
 Protist Ribosomal Reference database (PR<sup>2</sup>)
 =====================================================
 
-[![Release](https://img.shields.io/badge/release-4.11.0-blue.svg)
-![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg)
+[![Release](https://img.shields.io/badge/release-4.11.1-blue.svg)
+![Date](https://img.shields.io/badge/date-13%20December%202018-lightgrey.svg)
 ![Github Downloads
 (total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)](https://github.com/vaulot/pr2_database/releases)
 [![Twitter
@@ -31,8 +31,8 @@ for annotating metabarcodes.
 Current version
 ---------------
 
--   Current version : 4.11.0
--   Last update : 30 October 2018
+-   Current version : 4.11.1
+-   Last update : 13 December 2018
 -   DOI :
     <a href="https://doi.org/10.6084/m9.figshare.5913181" class="uri">https://doi.org/10.6084/m9.figshare.5913181</a>
 -   Manual :
