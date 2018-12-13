@@ -4,7 +4,7 @@
 \name{pr2}
 \alias{pr2}
 \title{PR2 database of 18S rRNA sequences.}
-\format{A data frame : 178,642 x 73:
+\format{A data frame : 176,818 x 77:
 \describe{
   \item{pr2_main_id}{ID of PR2 entry in table pr2_main}
   \item{pr2_accession}{PR2 specific accession number}
@@ -50,6 +50,7 @@
   \item{gb_locus}{Genbank: Locus}
   \item{gb_definition}{Genbank: Definition}
   \item{gb_organism}{Genbank: Organism}
+  \item{gb_taxonomy}{Genbank: Taxonomy}
   \item{gb_strain}{Genbank: Strain}
   \item{gb_culture_collection}{Genbank: Culture Collection}
   \item{gb_clone}{Genbank: Clone}
@@ -63,30 +64,29 @@
   \item{gb_lat_lon}{Genbank: lat Lon}
   \item{gb_collected_by}{Genbank: Collected by}
   \item{gb_note}{Genbank: Note}
-  \item{pubmed_id}{Genbank: Pubmed ID}
+  \item{gb_references}{Genbank: Full references not parsed}
   \item{gb_publication}{Genbank: Publication}
   \item{gb_authors}{Genbank: Authors}
   \item{gb_journal}{Genbank: Journal}
-  \item{eukref_publication}{Eukref: Publication updated}
-  \item{eukref_authors}{Eukref: Authors updated}
-  \item{eukref_journal}{Eukref: Journal updated}
+  \item{pubmed_id}{Genbank: Pubmed ID}
   \item{eukref_name}{Eukref: Name use in EukRef, usually either the species name or the clone name}
-  \item{eukref_env_material}{Eukref:  uses ENVO keywords}
+  \item{eukref_source}{Eukref: Source of the sequence : Isolate or Environmental}
+  \item{eukref_env_material}{Eukref: uses ENVO keywords}
   \item{eukref_env_biome}{Eukref: uses ENVO keywords}
   \item{eukref_biotic_relationship}{Eukref: eg parasite}
   \item{eukref_specific_host}{Eukref: Specific Host annotated}
   \item{eukref_geo_loc_name}{Eukref: Location name annotated}
+  \item{eukref_notes}{Eukref: Notes made during Eukref annotation}
   \item{pr2_sample_type}{PR2: e.g. water, ice}
   \item{pr2_sample_method}{PR2: e.g. filtration, flow cytometry sorting}
-  \item{pr2_ocean}{PR2: Ocean}
+  \item{pr2_ocean}{PR2: e.g. Arctic Ocean, Mediterrean Sea}
   \item{pr2_latitude}{PR2: Parsed from GenBank entry}
   \item{pr2_longitude}{PR2: Parsed from GenBank entry}
   \item{pr2_sequence_origin}{PR2: clone library, metabarcode, PCR}
-  \item{pr2_size_fraction}{PR2: Name of size fraction}
-  \item{pr2_size_fraction_min}{PR2: Minimum size filtered}
-  \item{pr2_size_fraction_max}{PR2: Maximum size filtered}
+  \item{pr2_size_fraction}{PR2: Name of size fraction, e.g. pico, nano}
+  \item{pr2_size_fraction_min}{PR2: Minimum size filtered, e.g. 0.2 µm }
+  \item{pr2_size_fraction_max}{PR2: Maximum size filtered, e.g. 20 µm}
   \item{metadata_remark}{PR2: Any remark on metadata}
-  \item{eukref_remark}{Eukref: Remark}
 }}
 \source{
 PR2 database \url{https://github.com/vaulot/pr2database}
