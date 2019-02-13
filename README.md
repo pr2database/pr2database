@@ -66,7 +66,7 @@ Report issues
 Contact
 -------
 
-Daniel VAULOT, Laure GUILLOU and Fabrice NOT ECOMAP team, Plankton
+Daniel VAULOT, Laure GUILLOU and Fabrice NOT, ECOMAP team, Plankton
 Group, UMR 7144 CNRS-UPMC Station Biologique, Place G. Tessier 29680
 Roscoff FRANCE email:
 <a href="mailto:vaulot@sb-roscoff.fr" class="email">vaulot@sb-roscoff.fr</a>
