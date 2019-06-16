@@ -82,7 +82,7 @@ Contributors
 -   Solenn Mordret (Naples)
 -   Adriana Lopes dos Santos (Nanyang Technological University,
     Singapore)
--   Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
+-   Vittorio Boscaro (UBC, Vancouver) and the EukRef (J. del Campo, U. of Miami) team
 
 Please cite
 -----------
