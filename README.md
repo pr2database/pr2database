@@ -96,13 +96,19 @@ Please cite
 Related Sites and databases
 ===========================
 
+18S rRNA primer database (NEW)
+-----------------------
+The [PR<sup>2</sup> primer database](https://github.com/pr2database/pr2-primers) is a compilation of primers found in the litterature with an _in silico_ analysis against the PR<sup>2</sup> database.
+
+
+
 Eukref (18S annotation)
 -----------------------
 
 <img src="img/eukref_logo.png" width="25%" style="display: block; margin: auto;" />
 
-PR<sup>2</sup> will be incorporating annotations made by the
-[EukRef](http://eukref.org/) project as deposited in their [GitHub
+PR<sup>2</sup> and EukRef have decided to combine their effort. R<sup>2</sup> will be incorporating annotations made by the
+[EukRef](http://eukref.org/) pipelines as deposited in their [GitHub
 repository](https://github.com/eukref/curation).
 
 PhytoRef (16S plastid)
