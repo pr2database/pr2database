@@ -23,10 +23,8 @@ knitr::include_graphics('img/pr2_logo_16_9.png')
 
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
-[![Release](https://img.shields.io/badge/release-4.11.0-blue.svg) 
-![Date](https://img.shields.io/badge/date-30%20October%202018-lightgrey.svg) 
-![Github Downloads (total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)](https://github.com/vaulot/pr2_database/releases)
-[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
+[![Release](https://img.shields.io/badge/release-4.12.0-blue.svg) ![Date](https://img.shields.io/badge/date-08%20August%202019-lightgrey.svg)](https://github.com/vaulot/pr2_database/releases)  [
+![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)
 ](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
 ## SSU rRNA gene database
@@ -37,49 +35,58 @@ Since the original web site (http://ssu-rrna.org/pr2) does not exist any more, w
 
 
 ## Current version
-* Current version : 4.11.0
-* Last update : 30 October 2018
+* Current version : 4.12.0
+* Last update : 8 August 2019
 * DOI : https://doi.org/10.6084/m9.figshare.5913181
+* [Link to latest release](https://github.com/pr2database/pr2database/releases)
 * Manual : https://github.com/pr2database/pr2database/wiki
 
-## Downloading the database
+Downloading the database
+------------------------
 
-* [Flat files - latest release](https://github.com/pr2database/pr2database/releases)
+-   [Flat files - latest release](https://github.com/pr2database/pr2database/releases)
 
-* R package using Devtools
+-   R package using Devtools
 
 ``` r
 install.packages(devtools)
 devtools::install_github("pr2database/pr2database")
 ```
+See example of use [here](https://github.com/pr2database/pr2database/wiki/The-R-pr2database-package) 
+
 
 ## Basic statistics
 * [PR<sup>2</sup> statistics](https://vaulot.github.io/pr2/PR2_analysis.html)
 
 ## Report issues
-* Please report any issue on [GitHub](https://github.com/pr2database/pr2database/issues)
+* Please report any issue on [GitHub](https://github.com/vaulot/pr2_database/issues)
 
-## Contact
-Daniel VAULOT, Laure GUILLOU and Fabrice NOT
-ECOMAP team, Plankton Group, UMR 7144 CNRS-UPMC
-Station Biologique,
-Place G. Tessier
-29680 Roscoff FRANCE
-email: vaulot@sb-roscoff.fr / vaulot@gmail.com
+## Core Team
+* [Daniel VAULOT](mailto:vaulot@gmail.com), [Laure GUILLOU](mailto:lguillou@sb-roscoff.fr), CNRS-Sorbonne Université, Station Biologique, 29680 Roscoff FRANCE
+* [Javier del CAMPO](mailto:jdelcampo@rsmas.miami.edu), University of Miami, USA
+* [Frédéric MAHE](mailto:frederic.mahe@cirad.fr), CIRAD, Montpellier, FRANCE
+
 
 ## Contributors
 - Tristan Biard (Wimereux Station)
 - Margot Tragin (Roscoff)
 - Bente Edvardsen (U of Oslo)
 - Charles Bachy and Wei Ting Chen (Roscoff)
-- Solenn Mordret (Naples)
-- Adriana Lopes dos Santos (Nanyang Technological University, Singapore)
+- Solenn Mordret (SZN, Naples)
+- Adriana Lopes dos Santos (Nanyang University, Singapore)
 - Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
+- Javier del Campo (U of Miami)
+- Chetan Gaonkar (SZN, Naples)
+- Ramon Massana (ICM, Barcelona)
 
 ## Please cite
-* [Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. The Protist Ribosomal Reference database (PR<sup>2</sup>): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy. Nucleic Acids Res. 41:D597–604.](https://academic.oup.com/nar/article/41/D1/D597/1064851)
+* Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. [The Protist Ribosomal Reference database (PR<sup>2</sup>): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy](http://nar.oxfordjournals.org/lookup/doi/10.1093/nar/gks1160). Nucleic Acids Res. 41:D597–604.
 
-# Related Sites and databases
+# Related Databases
+
+## 18S rRNA primer database (NEW)
+
+The [PR<sup>2</sup> primer database](https://github.com/pr2database/pr2-primers) is a compilation of primers found in the litterature with an _in silico_ analysis against the PR<sup>2</sup> database.
 
 ## Eukref (18S annotation)
 
@@ -87,7 +94,7 @@ email: vaulot@sb-roscoff.fr / vaulot@gmail.com
 knitr::include_graphics('img/eukref_logo.png')
 ```  
 
-PR<sup>2</sup> will be incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
+PR<sup>2</sup> is incorporating annotations made by the [EukRef](http://eukref.org/) project as deposited in their [GitHub repository](https://github.com/eukref/curation).
 
 ## PhytoRef (16S plastid)
 
@@ -95,10 +102,10 @@ PR<sup>2</sup> will be incorporating annotations made by the [EukRef](http://euk
 knitr::include_graphics('img/phytoref_logo.png')
 ``` 
 
-Plastid 16S rRNA sequences are yet not included into PR<sup>2</sup>.  These sequences are available from the the PhytoRef database available from [Figshare](https://figshare.com/articles/PhytoREF_a_reference_database_of_the_plastidial_16S_rRNA) or [PhytoRef](http://phytoref.sb-roscoff.fr/).
+Plastid 16S rRNA sequences have been included into PR<sup>2</sup> version 4.12.0.  The original [PhytoRef](http://phytoref.sb-roscoff.fr/) database is still active.
 
 ## PFR2 - Foraminifera 18S ribosomal DNA databae
 
-The database offers access to planktonic Foraminifera 18S ribosomal DNA sequence library with a curated taxonomy at the morphological and molecular level. The compilation was facilitated through the efforts of the SCOR/IGBP Working Group 138 “Modern planktonic foraminifera and ocean changes”. 
+The database offers access to planktonic Foraminifera 18S ribosomal DNA sequence library with a curated taxonomy at the morphological and molecular level. The compilation was facilitated through the efforts of the SCOR/IGBP Working Group 138 “Modern planktonic foraminifera and ocean changes”.
 
 [PFR2](http://pfr2.sb-roscoff.fr/)

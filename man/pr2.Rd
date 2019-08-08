@@ -4,7 +4,7 @@
 \name{pr2}
 \alias{pr2}
 \title{PR2 database of 18S rRNA sequences.}
-\format{A data frame : 176,818 x 77:
+\format{A data frame : 183919 x 93:
 \describe{
   \item{pr2_main_id}{ID of PR2 entry in table pr2_main}
   \item{pr2_accession}{PR2 specific accession number}
@@ -18,6 +18,8 @@
        \item{U: no intron described, but intron(s) may be present}
        \item{UC: introns were detected in silico and removed from the sequence (putative rRNA) }
   }
+  \item{gene}{18S_rRNA or 16S_rRNA}
+  \item{organelle}{nucleus, plastid, mitochondria, nucleomorph, apicoplast (left empty for cyanobacteria)}
   \item{species}{Assigned species - rank 8}
   \item{chimera}{= 1, the sequence is chimeric}
   \item{chimera_remark}{Comment on reason why the sequence was mentionned as chimeric}
@@ -36,6 +38,7 @@
   \item{order}{rank 5}
   \item{family}{rank 6}
   \item{genus}{rank 7}
+  \item{taxon_trophic_mode}{e.g. symbiotic}
   \item{taxo_edited_version}{PR2 version when taxonomy path was edited}
   \item{taxo_edited_by}{Who edited the taxonomy path}
   \item{taxo_removed_version}{PR2 version when species and taxonomy path was removed}
@@ -45,6 +48,7 @@
   \item{sequence}{Sequence}
   \item{sequence_length}{Length of sequence}
   \item{ambiguities}{Number of ambiguities}
+  \item{sequence_hash}{Hash value of sequence}
   \item{pr2_metadata_id}{ID of metadata in table pr2_metadata}
   \item{gb_date}{Genbank: Date}
   \item{gb_locus}{Genbank: Locus}
@@ -79,9 +83,22 @@
   \item{eukref_notes}{Eukref: Notes made during Eukref annotation}
   \item{pr2_sample_type}{PR2: e.g. water, ice}
   \item{pr2_sample_method}{PR2: e.g. filtration, flow cytometry sorting}
-  \item{pr2_ocean}{PR2: e.g. Arctic Ocean, Mediterrean Sea}
   \item{pr2_latitude}{PR2: Parsed from GenBank entry}
   \item{pr2_longitude}{PR2: Parsed from GenBank entry}
+  \item{pr2_ocean}{PR2: e.g. Arctic Ocean}
+  \item{pr2_sea}{PR2: e.g. North Sea}
+  \item{pr2_sea_lat}{PR2: latitude of sea or ocean}
+  \item{pr2_sea_lon}{PR2: longitude of sea or ocean}
+  \item{pr2_continent}{PR2: e.g. Asia}
+  \item{pr2_country}{PR2: e.g. France}
+  \item{pr2_country_geocode}{PR2: 2 letter code from genonames - e.g. FR}
+  \item{pr2_country_lat}{PR2: latitude of country}
+  \item{pr2_country_lon}{PR2: longitude of country}
+  \item{pr2_location}{PR2: from gb_country field - e.g. Paris, France}
+  \item{pr2_location_geoname}{PR2: e.g. Paris}
+  \item{pr2_location_geotype}{PR2: e.g. bay}
+  \item{pr2_location_lat}{PR2: latitude of location}
+  \item{pr2_location_lon}{PR2: longtitude of location}
   \item{pr2_sequence_origin}{PR2: clone library, metabarcode, PCR}
   \item{pr2_size_fraction}{PR2: Name of size fraction, e.g. pico, nano}
   \item{pr2_size_fraction_min}{PR2: Minimum size filtered, e.g. 0.2 µm }

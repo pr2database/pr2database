@@ -1,7 +1,7 @@
 Package: pr2database
 Type: Package
 Title: PR2 database
-Version: 4.11.1
+Version: 4.12.0
 Author: Daniel Vaulot
 Maintainer: Daniel Vaulot <vaulot@sb-roscoff.fr>
 Description: PR2 database

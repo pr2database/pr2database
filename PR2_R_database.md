@@ -1,6 +1,3 @@
-Aim
-===
-
 The PR2 database is now provided as a R package
 
 Installation
@@ -33,7 +30,9 @@ devtools::install_github("vaulot/pr2database")
 Loading the database
 ====================
 
-The PR2 database is provided as a data frame (or a tibble). This is a join between the following tables: \* pr2\_main \* pr2\_taxonomy \* pr2\_sequence \* pr2\_metadata
+The PR2 database is provided as a data frame (or a tibble). This is a
+join between the following tables: \* pr2\_main \* pr2\_taxonomy \*
+pr2\_sequence \* pr2\_metadata
 
 ``` r
 library("pr2database")
@@ -46,42 +45,50 @@ colnames(pr2)
 #>  [1] "pr2_main_id"                "pr2_accession"             
 #>  [3] "genbank_accession"          "start"                     
 #>  [5] "end"                        "label"                     
-#>  [7] "species"                    "chimera"                   
-#>  [9] "chimera_remark"             "reference_sequence"        
-#> [11] "added_version"              "removed_version"           
-#> [13] "edited_version"             "edited_by"                 
-#> [15] "edited_remark"              "remark"                    
-#> [17] "taxo_id"                    "kingdom"                   
-#> [19] "supergroup"                 "division"                  
-#> [21] "class"                      "order"                     
-#> [23] "family"                     "genus"                     
-#> [25] "taxo_edited_version"        "taxo_edited_by"            
-#> [27] "taxo_removed_version"       "taxo_remark"               
-#> [29] "reference"                  "seq_id"                    
-#> [31] "sequence"                   "sequence_length"           
-#> [33] "ambiguities"                "pr2_metadata_id"           
-#> [35] "gb_date"                    "gb_locus"                  
-#> [37] "gb_definition"              "gb_organism"               
-#> [39] "gb_taxonomy"                "gb_strain"                 
-#> [41] "gb_culture_collection"      "gb_clone"                  
-#> [43] "gb_isolate"                 "gb_isolation_source"       
-#> [45] "gb_specimen_voucher"        "gb_host"                   
-#> [47] "gb_collection_date"         "gb_environmental_sample"   
-#> [49] "gb_country"                 "gb_lat_lon"                
-#> [51] "gb_collected_by"            "gb_note"                   
-#> [53] "pubmed_id"                  "gb_publication"            
-#> [55] "gb_authors"                 "gb_journal"                
-#> [57] "eukref_publication"         "eukref_authors"            
-#> [59] "eukref_journal"             "eukref_name"               
-#> [61] "eukref_source"              "eukref_env_material"       
-#> [63] "eukref_env_biome"           "eukref_biotic_relationship"
-#> [65] "eukref_specific_host"       "eukref_geo_loc_name"       
-#> [67] "eukref_notes"               "pr2_sample_type"           
-#> [69] "pr2_sample_method"          "pr2_ocean"                 
-#> [71] "pr2_latitude"               "pr2_longitude"             
-#> [73] "pr2_sequence_origin"        "pr2_size_fraction"         
-#> [75] "pr2_size_fraction_min"      "pr2_size_fraction_max"     
-#> [77] "metadata_remark"
+#>  [7] "gene"                       "organelle"                 
+#>  [9] "species"                    "chimera"                   
+#> [11] "chimera_remark"             "reference_sequence"        
+#> [13] "added_version"              "removed_version"           
+#> [15] "edited_version"             "edited_by"                 
+#> [17] "edited_remark"              "remark"                    
+#> [19] "taxo_id"                    "kingdom"                   
+#> [21] "supergroup"                 "division"                  
+#> [23] "class"                      "order"                     
+#> [25] "family"                     "genus"                     
+#> [27] "taxon_trophic_mode"         "taxo_edited_version"       
+#> [29] "taxo_edited_by"             "taxo_removed_version"      
+#> [31] "taxo_remark"                "reference"                 
+#> [33] "seq_id"                     "sequence"                  
+#> [35] "sequence_length"            "ambiguities"               
+#> [37] "sequence_hash"              "pr2_metadata_id"           
+#> [39] "gb_date"                    "gb_locus"                  
+#> [41] "gb_definition"              "gb_organism"               
+#> [43] "gb_organelle"               "gb_taxonomy"               
+#> [45] "gb_strain"                  "gb_culture_collection"     
+#> [47] "gb_clone"                   "gb_isolate"                
+#> [49] "gb_isolation_source"        "gb_specimen_voucher"       
+#> [51] "gb_host"                    "gb_collection_date"        
+#> [53] "gb_environmental_sample"    "gb_country"                
+#> [55] "gb_lat_lon"                 "gb_collected_by"           
+#> [57] "gb_note"                    "gb_references"             
+#> [59] "gb_publication"             "gb_authors"                
+#> [61] "gb_journal"                 "pubmed_id"                 
+#> [63] "eukref_name"                "eukref_source"             
+#> [65] "eukref_env_material"        "eukref_env_biome"          
+#> [67] "eukref_biotic_relationship" "eukref_specific_host"      
+#> [69] "eukref_geo_loc_name"        "eukref_notes"              
+#> [71] "pr2_sample_type"            "pr2_sample_method"         
+#> [73] "pr2_latitude"               "pr2_longitude"             
+#> [75] "pr2_ocean"                  "pr2_sea"                   
+#> [77] "pr2_sea_lat"                "pr2_sea_lon"               
+#> [79] "pr2_continent"              "pr2_country"               
+#> [81] "pr2_location"               "pr2_location_geoname"      
+#> [83] "pr2_location_geotype"       "pr2_location_lat"          
+#> [85] "pr2_location_lon"           "pr2_country_geocode"       
+#> [87] "pr2_country_lat"            "pr2_country_lon"           
+#> [89] "pr2_sequence_origin"        "pr2_size_fraction"         
+#> [91] "pr2_size_fraction_min"      "pr2_size_fraction_max"     
+#> [93] "metadata_remark"
 ```
 
 Working with the database
@@ -114,7 +121,8 @@ Load the libraries
 Selecting sequences from a specific taxon
 -----------------------------------------
 
-Let us select all the available sequences for the Mamiellophyceae *Ostreococcus*
+Let us select all the available sequences for the Mamiellophyceae
+*Ostreococcus*
 
 ``` r
 
@@ -128,7 +136,7 @@ Let us select all the available sequences for the Mamiellophyceae *Ostreococcus*
                                               sequence_length, sequence  )
   
   pr2_ostreo
-#> # A tibble: 293 x 9
+#> # A tibble: 325 x 9
 #>    genbank_accessi~ species pr2_sample_type gb_strain gb_clone pr2_latitude
 #>    <chr>            <chr>   <chr>           <chr>     <chr>           <dbl>
 #>  1 AF525872         Ostreo~ environmental   <NA>      UEPACIp5         NA  
@@ -141,14 +149,15 @@ Let us select all the available sequences for the Mamiellophyceae *Ostreococcus*
 #>  8 FR874749         Ostreo~ environmental   <NA>      1815F12          60.3
 #>  9 FJ431431         Ostreo~ environmental   <NA>      RA07100~         NA  
 #> 10 EU561670         Ostreo~ environmental   <NA>      IND1.11         -35.0
-#> # ... with 283 more rows, and 3 more variables: pr2_longitude <dbl>,
+#> # ... with 315 more rows, and 3 more variables: pr2_longitude <dbl>,
 #> #   sequence_length <int>, sequence <chr>
 ```
 
 Exporting the sequences to fasta
 --------------------------------
 
-We will save the *Ostreococcus* sequences to a FASTA file. This is easy done with the bioconductor package BioStrings.
+We will save the *Ostreococcus* sequences to a FASTA file. This is easy
+done with the bioconductor package BioStrings.
 
 ``` r
 
@@ -166,7 +175,7 @@ We will save the *Ostreococcus* sequences to a FASTA file. This is easy done wit
 
   # Displaying the Biostring set
   seq_ostreo
-#>   A DNAStringSet instance of length 293
+#>   A DNAStringSet instance of length 325
 #>       width seq                                        names               
 #>   [1]  1766 ACCTGGTTGATCCTGCCAGT...TGAACCTGCAGAAGGATCA AF525872|Ostreoco...
 #>   [2]   836 AAAGCTCGTAGTCGGATTTT...GGGCCGCACGCGCGCTACA EU562149|Ostreoco...
@@ -174,11 +183,11 @@ We will save the *Ostreococcus* sequences to a FASTA file. This is easy done wit
 #>   [4]  1652 AGCCATGCATGTCTAAGTAT...ATTACCGTGGGAAATTCGT GQ426346|Ostreoco...
 #>   [5]  1764 CCTGGTTGATCCTGCCAGTA...GTGAACCTGCAGAAGGATC KC583118|Ostreoco...
 #>   ...   ... ...
-#> [289]   610 CATCGTATATTTAGTTGTTG...CACGGGGAAACTTACCAGG KT878675|Ostreoco...
-#> [290]   671 GCTCGTAGTCGGACTTTGGC...TGGTGGAGTGATTTGTCTG KT860804|Ostreoco...
-#> [291]   550 TATTTAAGTTGTTGCAGTTA...TGACGGAAGGGCACCACCA KT860644|Ostreoco...
-#> [292]  1595 TGGCTCATTAAATCAGCAAT...GTTCGCCATTGGATTACCG KT860912|Ostreoco...
-#> [293]  1766 ACCTGGTTGATCCTGCCAGT...TGAACCTGCGGAAGGATCA CR954212|Ostreoco...
+#> [321]  1570 CAATTTGAATGAGATTCAAA...AAAAAGACCAAGCCGGAAG KF285522|Ostreoco...
+#> [322]  1570 CAATTTGAATGAGATTCAAA...AAAAAGACCAAGCCGGAAG KF285529|Ostreoco...
+#> [323]  1570 CAATTTGAATGAGATTCAAA...AAAAAGACCAAGCCGGAAG KF285531|Ostreoco...
+#> [324]  1570 CAATTTGAATGAGATTCAAA...AAAAAGACCAAGCCGGAAG NC_008289|Ostreoc...
+#> [325]  1570 CAATTTGAATGAGATTCAAA...AAAAAGACCAAGCCGGAAG NC_008289|Ostreoc...
     
   # Saving the sequences as a fasta file
   Biostrings::writeXStringSet(seq_ostreo, "examples/pr2_ostreo.fasta", width = 80)
@@ -226,3 +235,58 @@ Drawing a map of sequence locations
 ```
 
 ![](img/sequence_map-1.png)
+
+Drawing a map of sequence locations obtained by fuzzy matching
+--------------------------------------------------------------
+
+A very good tutorial by [Margaret Mars
+Brisbin](https://twitter.com/MargaretBrisbin) on how to combine PR2
+metadata with Python to locate sequences using all the metadata
+information (lat, long, country and fuzzy localization):
+<a href="https://maggimars.github.io/eukGeoBlast/eGB.html" class="uri">https://maggimars.github.io/eukGeoBlast/eGB.html</a>
+and
+<a href="https://github.com/maggimars/eukGeoBlast" class="uri">https://github.com/maggimars/eukGeoBlast</a>.
+This code has been used to incorporate more geo-localisation information
+into PR2 version 4.12.0
+
+![](https://github.com/vaulot/pr2_database/blob/master/img/pr2_loc_fuzzy.png)
+
+Number of sequences per country
+-------------------------------
+
+Version 4.12.0 incorporate better geo-localisation using the approach
+pioneered by[Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin)
+
+### Number of sequences per country of origin
+
+``` r
+  
+  countries <- pr2 %>% 
+    count(pr2_country) %>% 
+    arrange(-n) %>% 
+    filter(!is.na(pr2_country) & n > 500)
+  
+  ggplot(countries, aes(x = reorder(pr2_country, n), y = n)) + 
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```
+
+![](img/sequence_country-1.png)
+
+### Number of sequences per ocean of origin
+
+``` r
+  
+  oceans <- pr2 %>% 
+    count(pr2_ocean) %>% 
+    arrange(-n) %>% 
+    filter(!is.na(pr2_ocean))
+  
+  ggplot(oceans, aes(x = reorder(pr2_ocean, n), y = n)) + 
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```
+
+![](img/sequence_oceans-1.png)

@@ -167,6 +167,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
 
 ## Drawing a map of sequence locations
 
+
 ```{r sequence_map}
   library(maps)
   world <- map_data("world")
@@ -178,3 +179,43 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
     ggtitle("Ostreococcus lucimarinus")
 ```
 
+## Drawing a map of sequence locations obtained by fuzzy matching
+
+A very good tutorial by [Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin) on how to combine PR2 metadata with Python to locate sequences using all the metadata information (lat, long, country and fuzzy localization): https://maggimars.github.io/eukGeoBlast/eGB.html and https://github.com/maggimars/eukGeoBlast.  This code has been used to incorporate more geo-localisation information into PR2 version 4.12.0
+
+![](https://github.com/vaulot/pr2_database/blob/master/img/pr2_loc_fuzzy.png)
+
+
+## Number of sequences per country
+
+Version 4.12.0 incorporate better geo-localisation using the approach pioneered by[Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin)
+
+### Number of sequences per country of origin
+
+```{r sequence_country}
+  
+  countries <- pr2 %>% 
+    count(pr2_country) %>% 
+    arrange(-n) %>% 
+    filter(!is.na(pr2_country) & n > 500)
+  
+  ggplot(countries, aes(x = reorder(pr2_country, n), y = n)) + 
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```
+
+### Number of sequences per ocean of origin
+
+```{r sequence_oceans}
+  
+  oceans <- pr2 %>% 
+    count(pr2_ocean) %>% 
+    arrange(-n) %>% 
+    filter(!is.na(pr2_ocean))
+  
+  ggplot(oceans, aes(x = reorder(pr2_ocean, n), y = n)) + 
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```
