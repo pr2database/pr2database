@@ -46,15 +46,13 @@ Downloading the database
 -   [Flat files - latest
     release](https://github.com/pr2database/pr2database/releases)
 
--   R package using Devtools
+-   R package using Devtools - See [examples of use
+    here](https://github.com/pr2database/pr2database/blob/master/PR2_R_database.md)
 
 ``` r
 install.packages(devtools)
 devtools::install_github("pr2database/pr2database")
 ```
-
-See example of use
-[here](https://github.com/pr2database/pr2database/wiki/The-R-pr2database-package)
 
 Basic statistics
 ----------------
@@ -117,7 +115,7 @@ the PR<sup>2</sup> database.
 Eukref (18S annotation)
 -----------------------
 
-<img src="img/eukref_logo.png" width="25%" style="display: block; margin: auto;" />
+<img src="img/eukref_logo.png" width="15%" style="display: block; margin: auto;" />
 
 PR<sup>2</sup> is incorporating annotations made by the
 [EukRef](http://eukref.org/) project as deposited in their [GitHub
@@ -126,7 +124,7 @@ repository](https://github.com/eukref/curation).
 PhytoRef (16S plastid)
 ----------------------
 
-<img src="img/phytoref_logo.png" width="40%" style="display: block; margin: auto;" />
+<img src="img/phytoref_logo.png" width="20%" style="display: block; margin: auto;" />
 
 Plastid 16S rRNA sequences have been included into PR<sup>2</sup>
 version 4.12.0. The original [PhytoRef](http://phytoref.sb-roscoff.fr/)

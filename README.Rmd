@@ -48,13 +48,13 @@ Downloading the database
 
 -   [Flat files - latest release](https://github.com/pr2database/pr2database/releases)
 
--   R package using Devtools
+-   R package using Devtools - See [examples of use here](https://github.com/pr2database/pr2database/blob/master/PR2_R_database.md) 
 
 ``` r
 install.packages(devtools)
 devtools::install_github("pr2database/pr2database")
 ```
-See example of use [here](https://github.com/pr2database/pr2database/wiki/The-R-pr2database-package) 
+
 
 
 ## Basic statistics
@@ -92,7 +92,7 @@ The [PR<sup>2</sup> primer database](https://github.com/pr2database/pr2-primers)
 
 ## Eukref (18S annotation)
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='25%'}
+```{r echo=FALSE, fig.align="center", fig.cap="", out.width='15%'}
 knitr::include_graphics('img/eukref_logo.png')
 ```  
 
@@ -100,7 +100,7 @@ PR<sup>2</sup> is incorporating annotations made by the [EukRef](http://eukref.o
 
 ## PhytoRef (16S plastid)
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='40%'}
+```{r echo=FALSE, fig.align="center", fig.cap="", out.width='20%'}
 knitr::include_graphics('img/phytoref_logo.png')
 ``` 
 
