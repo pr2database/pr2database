@@ -7,6 +7,7 @@ Protist Ribosomal Reference database (PR<sup>2</sup>)
 ![Date](https://img.shields.io/badge/date-08%20August%202019-lightgrey.svg)
 ![Github Downloads
 (total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)](https://github.com/vaulot/pr2_database/releases)
+
 [![Twitter
 URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
 
@@ -46,8 +47,8 @@ Downloading the database
 -   [Flat files - latest
     release](https://github.com/pr2database/pr2database/releases)
 
--   R package using Devtools - See [examples of use
-    here](https://github.com/pr2database/pr2database/blob/master/PR2_R_database.md)
+-   R package using Devtools - See [examples of
+    use](https://github.com/pr2database/pr2database/wiki/PR2-R-database-package)
 
 ``` r
 install.packages(devtools)
