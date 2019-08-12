@@ -4,7 +4,7 @@
 \name{pr2}
 \alias{pr2}
 \title{PR2 database of 18S rRNA sequences.}
-\format{A data frame : 183919 x 93:
+\format{A data frame : 183,919 x 93:
 \describe{
   \item{pr2_main_id}{ID of PR2 entry in table pr2_main}
   \item{pr2_accession}{PR2 specific accession number}

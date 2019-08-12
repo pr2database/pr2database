@@ -13,11 +13,13 @@ knitr::opts_chunk$set(
   cache = TRUE,
   warning = FALSE,
   message = FALSE,
-  comment = "#>",
+  comment = "#>", 
   fig.path = "img/"   # Directories where image are saved
 )
 is_online = curl::has_internet()
 ```
+
+
 
 The PR2 database is now provided as a R package
 
@@ -47,7 +49,6 @@ devtools::install_github("vaulot/pr2database")
 * DONE (pr2database)
 In R CMD INSTALL
 ```
-
 
 # Loading the database
 
