@@ -72,16 +72,18 @@ devtools::install_github("pr2database/pr2database")
 
 
 ## Contributors
-- Tristan Biard (Wimereux Station)
-- Margot Tragin (Roscoff)
-- Bente Edvardsen (U of Oslo)
-- Charles Bachy and Wei Ting Chen (Roscoff)
-- Solenn Mordret (SZN, Naples)
-- Adriana Lopes dos Santos (Nanyang University, Singapore)
-- Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
-- Javier del Campo (U of Miami)
-- Chetan Gaonkar (SZN, Naples)
-- Ramon Massana (ICM, Barcelona)
+* [Margot Tragin](mailto:margo.tragin@gmail.com) - Roscoff - Chlorophyta
+* [Adriana Lopes dos Santos](mailto:adriana.lopes@ntu.edu.sg) - Nanyang University, Singapore - Chlorophyta
+* [Chetan Gaonkar](mailto:chetan.gaonkar@gmail.com) - Naples - *Chaetoceros* 
+* [Ramon Massana](mailto:ramonm@icm.csic.es) - ICM, Barcelona - Stramenopiles
+* [Bente Edvardsen](mailto:bente.edvardsen@bio.uio.no) - U of Oslo - Haptophyta
+* [Johan Decelle](mailto:johan.decelle@univ-grenoble-alpes.fr) - CNRS Roscoff - Plastid sequences (PhytoRef database)
+* Solenn Mordret - SZN, Naples - Dinophyta
+* Charles Bachy and Wei Ting Chen - Roscoff - Ciliates
+* Vittorio Boscaro - UBC, Vancouver-  and the EukRef ciliate team - Ciliates
+* [Javier del Campo](mailto:jdelcampo@rsmas.miami.edu) - U of Miami - Apicomplexa
+* Tristan Biard - Wimereux Station - Radiolaria
+
 
 ## Please cite
 * Guillou, L., Bachar, D., Audic, S., Bass, D., Berney, C., Bittner, L., Boutte, C. et al. 2013. [The Protist Ribosomal Reference database (PR<sup>2</sup>): a catalog of unicellular eukaryote Small Sub-Unit rRNA sequences with curated taxonomy](http://nar.oxfordjournals.org/lookup/doi/10.1093/nar/gks1160). Nucleic Acids Res. 41:D597–604.

@@ -16,12 +16,12 @@ knitr::opts_chunk$set(
   comment = "#>", 
   fig.path = "img/"   # Directories where image are saved
 )
-is_online = curl::has_internet()
+# is_online = curl::has_internet()
 ```
 
 
 
-The PR2 database is now provided as a R package
+The PR2 database is now provided as a R package called **pr2database**.  This page provides instruction to install and use the package.  Other examples on how to use the pr2database package are provided [here](https://vaulot.github.io/pr2/PR2_analysis.html). 
 
 # Installation
 
@@ -184,7 +184,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
 
 A very good tutorial by [Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin) on how to combine PR2 metadata with Python to locate sequences using all the metadata information (lat, long, country and fuzzy localization): https://maggimars.github.io/eukGeoBlast/eGB.html and https://github.com/maggimars/eukGeoBlast.  This code has been used to incorporate more geo-localisation information into PR2 version 4.12.0
 
-![](https://github.com/vaulot/pr2_database/blob/master/img/pr2_loc_fuzzy.png)
+![](https://github.com/pr2database/pr2database/blob/master/img/pr2_loc_fuzzy.png)
 
 
 ## Number of sequences per country

@@ -81,16 +81,25 @@ Core Team
 Contributors
 ------------
 
--   Tristan Biard (Wimereux Station)
--   Margot Tragin (Roscoff)
--   Bente Edvardsen (U of Oslo)
--   Charles Bachy and Wei Ting Chen (Roscoff)
--   Solenn Mordret (SZN, Naples)
--   Adriana Lopes dos Santos (Nanyang University, Singapore)
--   Vittorio Boscaro (UBC, Vancouver) and the EukRef ciliate team
--   Javier del Campo (U of Miami)
--   Chetan Gaonkar (SZN, Naples)
--   Ramon Massana (ICM, Barcelona)
+-   [Margot Tragin](mailto:margo.tragin@gmail.com) - Roscoff -
+    Chlorophyta
+-   [Adriana Lopes dos Santos](mailto:adriana.lopes@ntu.edu.sg) -
+    Nanyang University, Singapore - Chlorophyta
+-   [Chetan Gaonkar](mailto:chetan.gaonkar@gmail.com) - Naples -
+    *Chaetoceros*
+-   [Ramon Massana](mailto:ramonm@icm.csic.es) - ICM, Barcelona -
+    Stramenopiles
+-   [Bente Edvardsen](mailto:bente.edvardsen@bio.uio.no) - U of Oslo -
+    Haptophyta
+-   [Johan Decelle](mailto:johan.decelle@univ-grenoble-alpes.fr) - CNRS
+    Roscoff - Plastid sequences (PhytoRef database)
+-   Solenn Mordret - SZN, Naples - Dinophyta
+-   Charles Bachy and Wei Ting Chen - Roscoff - Ciliates
+-   Vittorio Boscaro - UBC, Vancouver- and the EukRef ciliate team -
+    Ciliates
+-   [Javier del Campo](mailto:jdelcampo@rsmas.miami.edu) - U of Miami -
+    Apicomplexa
+-   Tristan Biard - Wimereux Station - Radiolaria
 
 Please cite
 -----------
