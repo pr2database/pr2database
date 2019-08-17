@@ -11,7 +11,7 @@
 
 #  dvutils::pr2_export_sqlite("inst/extdata/pr2.sqlite")
 
-  devtools::use_data(pr2, overwrite = TRUE)
+  usethis::use_data(pr2, overwrite = TRUE)
 
 # Generate the documentation file
 #  var$string
