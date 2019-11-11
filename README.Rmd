@@ -17,7 +17,7 @@ is_online = curl::has_internet()
 ```
 
 
-```{r echo=FALSE, fig.align="center", fig.cap="", out.width='10%'}
+```{r echo=FALSE, fig.align="center", fig.cap=""}
 knitr::include_graphics('img/pr2_logo_16_9.png')
 ```
 
