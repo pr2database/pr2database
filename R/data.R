@@ -3,7 +3,7 @@ NULL
 
 #' PR2 database of 18S rRNA sequences.
 #'
-#' The PR2 database as a data frame.  This is a join between the following tables:
+#' The PR2 database is provided as a data frame.  This is a join between the following tables:
 #' \itemize{
 #'        \item{pr2_main}
 #'        \item{pr2_taxonomy}
