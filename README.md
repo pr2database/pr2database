@@ -40,12 +40,10 @@ devtools::install_github("pr2database/pr2database")
 
 ## Core Team
 
--   [Daniel VAULOT](mailto:vaulot@gmail.com), [Laure GUILLOU](mailto:lguillou@sb-roscoff.fr), CNRS-Sorbonne Université,
-    Station Biologique, 29680 Roscoff FRANCE
--   [Javier del CAMPO](mailto:jdelcampo@rsmas.miami.edu), University of
-    Miami, USA
--   [Frédéric MAHE](mailto:frederic.mahe@cirad.fr), CIRAD, Montpellier,
-    FRANCE
+-   [Daniel VAULOT](mailto:vaulot@gmail.com), Asian School of the Environment, Nanyang Technological University, SINGAPORE
+-   [Javier del CAMPO](mailto:jdelcampo@rsmas.miami.edu), University of Miami, USA
+-   [Laure GUILLOU](mailto:lguillou@sb-roscoff.fr), CNRS-Sorbonne Université, Station Biologique, 29680 Roscoff FRANCE
+-   [Frédéric MAHE](mailto:frederic.mahe@cirad.fr), CIRAD, Montpellier, FRANCE
 
 ## Scientific committee and contributors
 
