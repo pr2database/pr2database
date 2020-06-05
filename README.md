@@ -27,7 +27,7 @@ The [PR<sup>2</sup> database](https://pr2-database.org/) was initiated in 2010 i
 ## Downloading PR2
 
 -   [Flat files - latest release](https://github.com/pr2database/pr2database/releases)
--   [R package](https://pr2-database.org/documentation/pr2-r-package/)
+-   [R package](https://pr2database.github.io/pr2database/index.html)
 
 ``` r
 install.packages(devtools)
@@ -36,7 +36,7 @@ devtools::install_github("pr2database/pr2database")
 
 ## PR2 statistics
 
--   [PR<sup>2</sup> statistics](https://pr2-database.org/documentation/pr2_stats/)
+-   [PR<sup>2</sup> statistics](https://pr2database.github.io/pr2database/articles/pr2_stats.html)
 
 ## Core Team
 
