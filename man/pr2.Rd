@@ -3,110 +3,10 @@
 \docType{data}
 \name{pr2}
 \alias{pr2}
-\title{PR2 database of 18S rRNA sequences.}
-\format{A data frame : 183,919 x 93:
-\describe{
-  \item{pr2_main_id}{ID of PR2 entry in table pr2_main}
-  \item{pr2_accession}{PR2 specific accession number}
-  \item{genbank_accession}{Genbank accession number (without the vresion)}
-  \item{start}{Start of sequence in Genbank entry}
-  \item{end}{End of sequence in Genbank entry}
-  \item{label}{Label explaining origin of sequence}
-  \itemize{
-       \item{G: genomic sequence containing a described intron (rDNA)}
-       \item{R: the previous genomic rRNA sequence, without the intron(s)}
-       \item{U: no intron described, but intron(s) may be present}
-       \item{UC: introns were detected in silico and removed from the sequence (putative rRNA) }
-  }
-  \item{gene}{18S_rRNA or 16S_rRNA}
-  \item{organelle}{nucleus, plastid, mitochondria, nucleomorph, apicoplast (left empty for cyanobacteria)}
-  \item{species}{Assigned species - rank 8}
-  \item{chimera}{= 1, the sequence is chimeric}
-  \item{chimera_remark}{Comment on reason why the sequence was mentionned as chimeric}
-  \item{reference_sequence}{= 1, this is a reference sequence that can be used for example for alignements}
-  \item{added_version}{PR2 version when sequence was added}
-  \item{removed_version}{PR2 version when sequence was removed}
-  \item{edited_version}{PR2 version when sequence assignation was edited}
-  \item{edited_by}{Who edited the assignation}
-  \item{edited_remark}{Remark concerning the assignation}
-  \item{remark}{Remark concerning  the sequence}
-  \item{taxo_id}{ID of the species in table pr2_taxonomy}
-  \item{kingdom}{rank 1}
-  \item{supergroup}{rank 2}
-  \item{division}{rank 3}
-  \item{class}{rank 4}
-  \item{order}{rank 5}
-  \item{family}{rank 6}
-  \item{genus}{rank 7}
-  \item{taxon_trophic_mode}{e.g. symbiotic}
-  \item{taxo_edited_version}{PR2 version when taxonomy path was edited}
-  \item{taxo_edited_by}{Who edited the taxonomy path}
-  \item{taxo_removed_version}{PR2 version when species and taxonomy path was removed}
-  \item{taxo_remark}{Remark concerning  the taxonomy}
-  \item{reference}{Reference in the litterature concerning  the taxonomy}
-  \item{seq_id}{ID of the sequence in table pr2_sequence}
-  \item{sequence}{Sequence}
-  \item{sequence_length}{Length of sequence}
-  \item{ambiguities}{Number of ambiguities}
-  \item{sequence_hash}{Hash value of sequence}
-  \item{pr2_metadata_id}{ID of metadata in table pr2_metadata}
-  \item{gb_date}{Genbank: Date}
-  \item{gb_locus}{Genbank: Locus}
-  \item{gb_definition}{Genbank: Definition}
-  \item{gb_organism}{Genbank: Organism}
-  \item{gb_taxonomy}{Genbank: Taxonomy}
-  \item{gb_strain}{Genbank: Strain}
-  \item{gb_culture_collection}{Genbank: Culture Collection}
-  \item{gb_clone}{Genbank: Clone}
-  \item{gb_isolate}{Genbank: Isolate}
-  \item{gb_isolation_source}{Genbank: Isolation Source}
-  \item{gb_specimen_voucher}{Genbank: Voucher}
-  \item{gb_host}{Genbank: Host}
-  \item{gb_collection_date}{Genbank: Date of Collection}
-  \item{gb_environmental_sample}{Genbank: Environmental Sample}
-  \item{gb_country}{Genbank: Country}
-  \item{gb_lat_lon}{Genbank: lat Lon}
-  \item{gb_collected_by}{Genbank: Collected by}
-  \item{gb_note}{Genbank: Note}
-  \item{gb_references}{Genbank: Full references not parsed}
-  \item{gb_publication}{Genbank: Publication}
-  \item{gb_authors}{Genbank: Authors}
-  \item{gb_journal}{Genbank: Journal}
-  \item{pubmed_id}{Genbank: Pubmed ID}
-  \item{eukref_name}{Eukref: Name use in EukRef, usually either the species name or the clone name}
-  \item{eukref_source}{Eukref: Source of the sequence : Isolate or Environmental}
-  \item{eukref_env_material}{Eukref: uses ENVO keywords}
-  \item{eukref_env_biome}{Eukref: uses ENVO keywords}
-  \item{eukref_biotic_relationship}{Eukref: eg parasite}
-  \item{eukref_specific_host}{Eukref: Specific Host annotated}
-  \item{eukref_geo_loc_name}{Eukref: Location name annotated}
-  \item{eukref_notes}{Eukref: Notes made during Eukref annotation}
-  \item{pr2_sample_type}{PR2: e.g. water, ice}
-  \item{pr2_sample_method}{PR2: e.g. filtration, flow cytometry sorting}
-  \item{pr2_latitude}{PR2: Parsed from GenBank entry}
-  \item{pr2_longitude}{PR2: Parsed from GenBank entry}
-  \item{pr2_ocean}{PR2: e.g. Arctic Ocean}
-  \item{pr2_sea}{PR2: e.g. North Sea}
-  \item{pr2_sea_lat}{PR2: latitude of sea or ocean}
-  \item{pr2_sea_lon}{PR2: longitude of sea or ocean}
-  \item{pr2_continent}{PR2: e.g. Asia}
-  \item{pr2_country}{PR2: e.g. France}
-  \item{pr2_country_geocode}{PR2: 2 letter code from genonames - e.g. FR}
-  \item{pr2_country_lat}{PR2: latitude of country}
-  \item{pr2_country_lon}{PR2: longitude of country}
-  \item{pr2_location}{PR2: from gb_country field - e.g. Paris, France}
-  \item{pr2_location_geoname}{PR2: e.g. Paris}
-  \item{pr2_location_geotype}{PR2: e.g. bay}
-  \item{pr2_location_lat}{PR2: latitude of location}
-  \item{pr2_location_lon}{PR2: longtitude of location}
-  \item{pr2_sequence_origin}{PR2: clone library, metabarcode, PCR}
-  \item{pr2_size_fraction}{PR2: Name of size fraction, e.g. pico, nano}
-  \item{pr2_size_fraction_min}{PR2: Minimum size filtered, e.g. 0.2 µm }
-  \item{pr2_size_fraction_max}{PR2: Maximum size filtered, e.g. 20 µm}
-  \item{metadata_remark}{PR2: Any remark on metadata}
-}}
+\title{PR2 database - Eukaryotic 18S rRNA sequences.}
+\format{A data frame : 183,919 x 93:}
 \source{
-PR2 database \url{https://github.com/vaulot/pr2database}
+PR2 database \url{https://github.com/pr2database/pr2database}
 }
 \usage{
 pr2
@@ -125,5 +25,8 @@ The metadata contains three types of fields
        \item{eukref_ : annotated by the Eukref project}
        \item{pr2_ : annotated by pr2 such latitude and longitude}
   }
+\describe{
+  Description of fields is found here: \url{https://pr2-database.org/documentation/pr2-fields/}
+}
 }
 \keyword{datasets}

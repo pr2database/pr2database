@@ -1,4 +1,4 @@
-<img src="img/pr2_logo_16_9.png" width="300" style="display: block; margin: auto;" />
+<img src="https://pr2-database.org/img/pr2_logo_16_9_big.png" width="300" style="display: block; margin: auto;" />
 
 Protist Ribosomal Reference database (PR<sup>2</sup>)
 =====================================================

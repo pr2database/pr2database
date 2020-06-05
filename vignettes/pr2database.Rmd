@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 # Notes
 # - cannot use rmarkdown::html_vignette for the moment (maybe with R version 4.0)
-# - use build_vignettes() to build the vignettes
+# - use devtools::build_vignettes() to build the vignettes
 # - need to build source package to have the vignettes
 ```
 
