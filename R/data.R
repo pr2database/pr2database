@@ -19,6 +19,6 @@ NULL
 #' \describe{
 #'   Description of fields is found here: \url{https://pr2-database.org/documentation/pr2-fields/}
 #' }
-#' @format A data frame : 183,919 x 93:
+#' @format A data frame : 183,973 x 94
 #' @source PR2 database \url{https://github.com/pr2database/pr2database}
 "pr2"
