@@ -1,0 +1,226 @@
+---
+title: "Get started"
+author: "Daniel Vaulot"
+output: rmarkdown::html_document
+vignette: >
+  %\VignetteIndexEntry{get started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  cache = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>" 
+  # fig.path = "img/"   # Directories where image are saved
+)
+
+# Notes
+# - cannot use rmarkdown::html_vignette for the moment (maybe with R version 4.0)
+# - use build_vignettes() to build the vignettes
+# - need to build source package to have the vignettes
+```
+
+
+The PR2 database is provided as a R package called **pr2database**.  This page provides instruction to install and use the package.  
+
+# Installation
+
+Install from the GitHub web site using the devtools package
+
+```{r, eval=FALSE, message=FALSE}
+install.packages(devtools)
+devtools::install_github("pr2database/pr2database")
+```
+```
+* installing *source* package 'pr2database' ...
+** R
+** data
+*** moving datasets to lazyload DB
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'pr2database'
+    finding HTML links ... fini
+    pr2                                     html  
+** building package indices
+** testing if installed package can be loaded
+*** arch - i386
+*** arch - x64
+* DONE (pr2database)
+In R CMD INSTALL
+```
+
+# Loading the database
+
+The PR2 database is provided as a data frame (or a tibble). This is a join between the following tables:
+* pr2_main
+* pr2_taxonomy
+* pr2_sequence
+* pr2_metadata
+
+```{r}
+library("pr2database")
+
+data("pr2")
+
+# List of the different columns available - see the help of the package for information on each field
+
+colnames(pr2)
+
+```
+
+# Working with the database
+
+
+## Install and load the libraries
+The following examples makes use of the specifc R libraries
+
+Install the libraries
+
+```{r, eval=FALSE}
+install.packages("dplyr")      # For filtering the data
+install.package("ggplot2")     # To plot data
+install.package("maps")        # To plot maps
+
+source("https://bioconductor.org/biocLite.R")  # This package is on Bioconductor
+biocLite("Biostrings")         # To save fasta files
+```
+
+Load the libraries
+
+```{r}
+  library(dplyr)
+  library(ggplot2)    # For plots
+  library(Biostrings) # To save fasta files
+```
+
+
+## Selecting sequences from a specific taxon
+
+Let us select all the available sequences for the Mamiellophyceae _Ostreococcus_
+
+```{r}
+
+  # Filter only the sequences for which the column genus contains Ostreococcus
+  pr2_ostreo <- pr2 %>% dplyr::filter(genus == "Ostreococcus")
+
+  # Select only the columns of interest
+  pr2_ostreo <- pr2_ostreo %>% dplyr::select( genbank_accession, species, 
+                                              pr2_sample_type, gb_strain, gb_clone, 
+                                              pr2_latitude, pr2_longitude, 
+                                              sequence_length, sequence  )
+  
+  pr2_ostreo
+```
+
+## Exporting the sequences to fasta
+
+We will save the _Ostreococcus_ sequences to a FASTA file. This is easy done with the bioconductor package BioStrings.
+
+```{r}
+
+  # Importing the sequence in a Biostring set 
+
+  seq_ostreo <- Biostrings::DNAStringSet(pr2_ostreo$sequence)
+
+  # Constructing the name of each sequecne (the first line of the fasta file)
+  # using the genbank accession, species name, strain name and clone name
+
+  names(seq_ostreo) <- paste(pr2_ostreo$genbank_accession, pr2_ostreo$species,
+                             "strain",pr2_ostreo$gb_strain,
+                             "clone",pr2_ostreo$gb_clone, 
+                              sep="|")
+
+  # Displaying the Biostring set
+  seq_ostreo
+    
+  # Saving the sequences as a fasta file
+  Biostrings::writeXStringSet(seq_ostreo, "examples/pr2_ostreo.fasta", width = 80)
+
+```
+
+The fasta file will look as follows
+
+```
+>AF525872|Ostreococcus_lucimarinus|strain|NA|clone|UEPACIp5
+ACCTGGTTGATCCTGCCAGTAGTCATATGCTTGTCTCAAAGATTAAGCCATGCATGTCTAAGTATAAGCGTTATACTGTG
+AAACTGCGAATGGCTCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGTAGTAATTCTAGAGC
+TAATACGTGCGTAAATCCCGACTTCGGAAGGGACGTATTTATTAGATAAAGACCG...
+>EU562149|Ostreococcus_lucimarinus|strain|NA|clone|IND2.6
+AAAGCTCGTAGTCGGATTTTGGCTGAGAACGGTCGGTCCGCCGTTAGGTGTGCACTGACTGGTCTCAGCTTCCTGGTGAG
+GAGGTGTGCTTCATCGCCACTTAGTCACCGTGGTTACTTTGAAAAAATTAGAGTGTTCAAAGCGGGCTTACGCTTGAATA
+TATTAGCATGGAATAACACCATAGGACTCCTGTCCTATTTCGTTGGTCTCGGGACGGGAGTAATGATTAAGATGAACAGT
+TGGGGGCATTCGTATTTCATTGTCAGAGGTGAAATTCTTGGATTT...
+>AY425309|Ostreococcus_lucimarinus|strain|NA|clone|RA010412.39
+GCCAGTAGTCATATGCTTGTCTCAAAGATTAAGCCATGCATGTCTAAGTATAAGCGTTATACTGTGAAACTGCGAATGGC
+TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
+```
+
+## Doing an histogram of the sequence length
+
+```{r sequence_histogram}
+  ggplot(pr2_ostreo) + 
+    geom_histogram(aes(sequence_length), binwidth = 50, fill="blue") + 
+    xlim(0,2000) + xlab("Sequence length") + ylab("Number of sequences") + 
+    ggtitle("Ostreococcus lucimarinus")
+```
+
+
+## Drawing a map of sequence locations
+
+
+```{r sequence_map}
+  library(maps)
+  world <- map_data("world")
+
+  ggplot() + 
+    geom_polygon(data = world, aes(x=long, y = lat, group = group), fill="grey") + 
+    coord_fixed(1.3) +
+    geom_point(data=pr2_ostreo, aes(x=pr2_longitude, y=pr2_latitude), fill="blue", size=2, shape=21) + 
+    ggtitle("Ostreococcus lucimarinus")
+```
+
+## Drawing a map of sequence locations obtained by fuzzy matching
+
+A very good tutorial by [Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin) on how to combine PR2 metadata with Python to locate sequences using all the metadata information (lat, long, country and fuzzy localization): https://maggimars.github.io/eukGeoBlast/eGB.html and https://github.com/maggimars/eukGeoBlast.  This code has been used to incorporate more geo-localisation information into PR2 version 4.12.0
+
+![](https://github.com/pr2database/pr2database/blob/master/img/pr2_loc_fuzzy.png)
+
+
+## Number of sequences per country
+
+Version 4.12.0 incorporate better geo-localisation using the approach pioneered by[Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin)
+
+### Number of sequences per country of origin
+
+```{r sequence_country}
+  
+  countries <- pr2 %>% 
+    count(pr2_country) %>% 
+    arrange(-n) %>% 
+    filter(!is.na(pr2_country) & n > 500)
+  
+  ggplot(countries, aes(x = reorder(pr2_country, n), y = n)) + 
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```
+
+### Number of sequences per ocean of origin
+
+```{r sequence_oceans}
+  
+  oceans <- pr2 %>% 
+    count(pr2_ocean) %>% 
+    arrange(-n) %>% 
+    filter(!is.na(pr2_ocean))
+  
+  ggplot(oceans, aes(x = reorder(pr2_ocean, n), y = n)) + 
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```

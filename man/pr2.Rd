@@ -112,7 +112,7 @@ PR2 database \url{https://github.com/vaulot/pr2database}
 pr2
 }
 \description{
-The PR2 database as a data frame.  This is a join between the following tables:
+The PR2 database is provided as a data frame.  This is a join between the following tables:
 \itemize{
        \item{pr2_main}
        \item{pr2_taxonomy}

@@ -1,0 +1,91 @@
+---
+title: "Tutorial - Plotting sequence location"
+author: "Daniel Vaulot"
+output: rmarkdown::html_document
+vignette: >
+  %\VignetteIndexEntry{tutorial: plotting sequence location}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  cache = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  prompt=FALSE,
+  tidy=FALSE,
+  comment = "#>" 
+#  fig.path = "img/"   # Directories where image are saved
+)
+
+# Notes
+# - cannot use rmarkdown::html_vignette for the moment (maybe with R version 4.0)
+# - use build_vignettes() to build the vignettes
+# - need to build source package to have the vignettes
+```
+
+# Installation
+
+Install from the GitHub web site using the devtools package
+
+```{r, eval=FALSE, message=FALSE}
+install.packages("devtools")
+devtools::install_github("pr2database/pr2database")
+```
+
+
+# Loading the database
+
+
+```{r}
+library("pr2database")
+
+data("pr2")
+
+
+```
+
+# Load the libraries
+
+
+```{r}
+  library(dplyr)
+  library(ggplot2)    # For plots
+```
+
+
+# Plotting number of sequences per country and ocean
+
+A very good tutorial by [Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin) on how to combine PR2 metadata with Python to locate sequences using all the metadata information (lat, long, country and fuzzy localization): https://maggimars.github.io/eukGeoBlast/eGB.html and https://github.com/maggimars/eukGeoBlast.  This code has been used to incorporate more geo-localisation information into PR2 version 4.12.0
+
+
+
+## Number of sequences per country of origin
+
+```{r sequence_country}
+
+  pr2 %>%
+    count(pr2_country) %>%
+    filter(!is.na(pr2_country) & n > 500) %>%
+  ggplot(aes(x = reorder(pr2_country, n), y = n)) +
+    geom_col() +
+    coord_flip() +
+    xlab("") +
+    ylab("Number of PR2 sequences")
+```
+
+## Number of sequences per ocean of origin
+
+```{r sequence_oceans}
+
+  oceans <- pr2 %>%
+    count(pr2_ocean) %>%
+    filter(!is.na(pr2_ocean))
+
+  ggplot(oceans, aes(x = reorder(pr2_ocean, n), y = n)) +
+    geom_col() +
+    coord_flip() +
+    xlab("")  + ylab("Number of PR2 sequences")
+```
