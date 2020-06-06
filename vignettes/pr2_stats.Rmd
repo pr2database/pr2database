@@ -250,36 +250,3 @@ map_world <- function(color_continents = "grey80", color_borders = "white", reso
                ggtitle("PR2 - photosynthetic protists sequences")  
 ```
 
-# Number of sequences per country and ocean
-
-Version 4.12.0 incorporate better geo-localisation using the approach pioneered by [Margaret Mars Brisbin](https://twitter.com/MargaretBrisbin)
-
-## Number of sequences per country of origin
-
-```{r sequence_country}
-
-  countries <- pr2 %>%
-    count(pr2_country) %>%
-    arrange(-n) %>%
-    filter(!is.na(pr2_country) & n > 500)
-
-  ggplot(countries, aes(x = reorder(pr2_country, n), y = n)) +
-    geom_col() +
-    coord_flip() +
-    xlab("")  + ylab("Number of PR2 sequences")
-```
-
-## Number of sequences per ocean of origin
-
-```{r sequence_oceans}
-
-  oceans <- pr2 %>%
-    count(pr2_ocean) %>%
-    arrange(-n) %>%
-    filter(!is.na(pr2_ocean))
-
-  ggplot(oceans, aes(x = reorder(pr2_ocean, n), y = n)) +
-    geom_col() +
-    coord_flip() +
-    xlab("")  + ylab("Number of PR2 sequences")
-```

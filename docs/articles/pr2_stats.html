@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.0</span>
       </span>
     </div>
 
@@ -399,41 +399,6 @@
 <div class="sourceCode" id="cb18"><html><body><pre class="r"> <span class="fu">map_world</span>() + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">data</span><span class="kw">=</span><span class="no">pr2_photo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">pr2_longitude</span>, <span class="kw">y</span><span class="kw">=</span><span class="no">pr2_latitude</span>), <span class="kw">fill</span><span class="kw">=</span><span class="st">"red"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">shape</span><span class="kw">=</span><span class="fl">21</span>) +
                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"PR2 - photosynthetic protists sequences"</span>)</pre></body></html></div>
 <p><img src="pr2_stats_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
-</div>
-</div>
-<div id="number-of-sequences-per-country-and-ocean" class="section level1">
-<h1 class="hasAnchor">
-<a href="#number-of-sequences-per-country-and-ocean" class="anchor"></a>Number of sequences per country and ocean</h1>
-<p>Version 4.12.0 incorporate better geo-localisation using the approach pioneered by <a href="https://twitter.com/MargaretBrisbin">Margaret Mars Brisbin</a></p>
-<div id="number-of-sequences-per-country-of-origin" class="section level2">
-<h2 class="hasAnchor">
-<a href="#number-of-sequences-per-country-of-origin" class="anchor"></a>Number of sequences per country of origin</h2>
-<div class="sourceCode" id="cb19"><html><body><pre class="r">
-  <span class="no">countries</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">pr2_country</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(-<span class="no">n</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">pr2_country</span>) <span class="kw">&amp;</span> <span class="no">n</span> <span class="kw">&gt;</span> <span class="fl">500</span>)
-
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">countries</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">pr2_country</span>, <span class="no">n</span>), <span class="kw">y</span> <span class="kw">=</span> <span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">""</span>)  + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of PR2 sequences"</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/sequence_country-1.png" width="700"></p>
-</div>
-<div id="number-of-sequences-per-ocean-of-origin" class="section level2">
-<h2 class="hasAnchor">
-<a href="#number-of-sequences-per-ocean-of-origin" class="anchor"></a>Number of sequences per ocean of origin</h2>
-<div class="sourceCode" id="cb20"><html><body><pre class="r">
-  <span class="no">oceans</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">pr2_ocean</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(-<span class="no">n</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">pr2_ocean</span>))
-
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">oceans</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">pr2_ocean</span>, <span class="no">n</span>), <span class="kw">y</span> <span class="kw">=</span> <span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">""</span>)  + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of PR2 sequences"</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/sequence_oceans-1.png" width="700"></p>
 </div>
 </div>
   </div>

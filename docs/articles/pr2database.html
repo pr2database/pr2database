@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.0</span>
       </span>
     </div>
 
@@ -292,47 +292,6 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">data</span><span class="kw">=</span><span class="no">pr2_ostreo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">pr2_longitude</span>, <span class="kw">y</span><span class="kw">=</span><span class="no">pr2_latitude</span>), <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">shape</span><span class="kw">=</span><span class="fl">21</span>) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Ostreococcus lucimarinus"</span>)</pre></body></html></div>
 <p><img src="pr2database_files/figure-html/sequence_map-1.png" width="700"></p>
-</div>
-<div id="drawing-a-map-of-sequence-locations-obtained-by-fuzzy-matching" class="section level2">
-<h2 class="hasAnchor">
-<a href="#drawing-a-map-of-sequence-locations-obtained-by-fuzzy-matching" class="anchor"></a>Drawing a map of sequence locations obtained by fuzzy matching</h2>
-<p>A very good tutorial by <a href="https://twitter.com/MargaretBrisbin">Margaret Mars Brisbin</a> on how to combine PR2 metadata with Python to locate sequences using all the metadata information (lat, long, country and fuzzy localization): <a href="https://maggimars.github.io/eukGeoBlast/eGB.html" class="uri">https://maggimars.github.io/eukGeoBlast/eGB.html</a> and <a href="https://github.com/maggimars/eukGeoBlast" class="uri">https://github.com/maggimars/eukGeoBlast</a>. This code has been used to incorporate more geo-localisation information into PR2 version 4.12.0</p>
-<p><img src="https://github.com/pr2database/pr2database/blob/master/img/pr2_loc_fuzzy.png"></p>
-</div>
-<div id="number-of-sequences-per-country" class="section level2">
-<h2 class="hasAnchor">
-<a href="#number-of-sequences-per-country" class="anchor"></a>Number of sequences per country</h2>
-<p>Version 4.12.0 incorporate better geo-localisation using the approach pioneered by<a href="https://twitter.com/MargaretBrisbin">Margaret Mars Brisbin</a></p>
-<div id="number-of-sequences-per-country-of-origin" class="section level3">
-<h3 class="hasAnchor">
-<a href="#number-of-sequences-per-country-of-origin" class="anchor"></a>Number of sequences per country of origin</h3>
-<div class="sourceCode" id="cb11"><html><body><pre class="r">
-  <span class="no">countries</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">pr2_country</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(-<span class="no">n</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">pr2_country</span>) <span class="kw">&amp;</span> <span class="no">n</span> <span class="kw">&gt;</span> <span class="fl">500</span>)
-
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">countries</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">pr2_country</span>, <span class="no">n</span>), <span class="kw">y</span> <span class="kw">=</span> <span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">""</span>)  + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of PR2 sequences"</span>)</pre></body></html></div>
-<p><img src="pr2database_files/figure-html/sequence_country-1.png" width="700"></p>
-</div>
-<div id="number-of-sequences-per-ocean-of-origin" class="section level3">
-<h3 class="hasAnchor">
-<a href="#number-of-sequences-per-ocean-of-origin" class="anchor"></a>Number of sequences per ocean of origin</h3>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">
-  <span class="no">oceans</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">pr2_ocean</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(-<span class="no">n</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">pr2_ocean</span>))
-
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">oceans</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">pr2_ocean</span>, <span class="no">n</span>), <span class="kw">y</span> <span class="kw">=</span> <span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">""</span>)  + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of PR2 sequences"</span>)</pre></body></html></div>
-<p><img src="pr2database_files/figure-html/sequence_oceans-1.png" width="700"></p>
-</div>
 </div>
 </div>
   </div>

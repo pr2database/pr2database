@@ -4,9 +4,9 @@
 \name{pr2}
 \alias{pr2}
 \title{PR2 database - Eukaryotic 18S rRNA sequences.}
-\format{A data frame : 183,919 x 93:}
+\format{A data frame : 183,973 x 94}
 \source{
-PR2 database \url{https://github.com/pr2database/pr2database}
+PR2 database - \url{https://pr2-database.org/}
 }
 \usage{
 pr2
@@ -25,8 +25,6 @@ The metadata contains three types of fields
        \item{eukref_ : annotated by the Eukref project}
        \item{pr2_ : annotated by pr2 such latitude and longitude}
   }
-\describe{
-  Description of fields is found here: \url{https://pr2-database.org/documentation/pr2-fields/}
-}
+Description of fields: \url{https://pr2-database.org/documentation/pr2-fields}
 }
 \keyword{datasets}
