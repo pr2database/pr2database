@@ -95,7 +95,7 @@ biocLite("Biostrings")         # To save fasta files
 
 Load the libraries
 
-```{r}
+```{r, warning = FALSE}
   library(dplyr)
   library(ggplot2)    # For plots
   library(Biostrings) # To save fasta files
@@ -115,7 +115,7 @@ Let us select all the available sequences for the Mamiellophyceae _Ostreococcus_
   pr2_ostreo <- pr2_ostreo %>% dplyr::select( genbank_accession, species, 
                                               pr2_sample_type, gb_strain, gb_clone, 
                                               pr2_latitude, pr2_longitude, 
-                                              sequence_length, sequence  )
+                                              sequence_length, sequence, reference_sequence  )
   
   pr2_ostreo
 ```
@@ -169,7 +169,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
   ggplot(pr2_ostreo) + 
     geom_histogram(aes(sequence_length), binwidth = 50, fill="blue") + 
     xlim(0,2000) + xlab("Sequence length") + ylab("Number of sequences") + 
-    ggtitle("Ostreococcus lucimarinus")
+    ggtitle("Ostreococcus sequences")
 ```
 
 
@@ -184,6 +184,23 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...
     geom_polygon(data = world, aes(x=long, y = lat, group = group), fill="grey") + 
     coord_fixed(1.3) +
     geom_point(data=pr2_ostreo, aes(x=pr2_longitude, y=pr2_latitude), fill="blue", size=2, shape=21) + 
-    ggtitle("Ostreococcus lucimarinus")
+    ggtitle("Ostreococcus")
+```
+
+## Selecting reference sequences
+
+Reference sequences are a subset of sequences that are representative of the major taxa in a group.  Usually they are long sequences and can be used to build a reference alignment (compare the histogram of reference to that all PR2 sequences).
+
+```{r reference_sequences}
+ pr2_ostreo_reference <- pr2_ostreo %>% 
+  filter(reference_sequence == 1)
+
+  pr2_ostreo_reference 
+  
+  ggplot(pr2_ostreo_reference) + 
+  geom_histogram(aes(sequence_length), binwidth = 50, fill="blue") + 
+  xlim(0,2000) + xlab("Sequence length") + ylab("Number of sequences") + 
+  ggtitle("Ostreococcus reference sequences")
+
 ```
 
