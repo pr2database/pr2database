@@ -19,7 +19,7 @@ The [PR<sup>2</sup> database](https://pr2-database.org/) was initiated in 2010 i
 
 -   Current version : 4.12.0
 -   Last update : 8 August 2019
--   DOI : <a href="https://doi.org/10.6084/m9.figshare.5913181" class="uri">https://doi.org/10.6084/m9.figshare.5913181</a>
+-   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3362765.svg)](https://doi.org/10.5281/zenodo.3362765)
 -   [Link to latest release](https://github.com/pr2database/pr2database/releases)
 -   [Documentation](https://pr2-database.org/#documentation)
 
