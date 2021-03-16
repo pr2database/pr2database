@@ -1,4 +1,4 @@
-<img src="https://pr2-database.org/img/pr2_logo_16_9_big.png" width="300" style="display: block; margin: auto;" />
+# pr2database <img src="https://pr2-database.org/img/pr2_logo_16_9_big.png" width="300" align="right" />
 
 Protist Ribosomal Reference database (PR<sup>2</sup>)
 =====================================================
@@ -60,7 +60,7 @@ devtools::install_github("pr2database/pr2database")
 
 ## Related Projects
 
-### 18S rRNA primer database
+#### 18S rRNA primer database
 
 The [PR<sup>2</sup> primer
 database](https://github.com/pr2database/pr2-primers) is a compilation

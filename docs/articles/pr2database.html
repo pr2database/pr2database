@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.13.0</span>
       </span>
     </div>
 
@@ -57,12 +57,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/pr2_geo_origin.html">Tutorial - Plotting sequence location</a>
+      <a href="../articles/pr2_geo_origin.html">Plotting sequence location</a>
     </li>
     <li>
       <a href="../articles/pr2_stats.html">PR2 statistics</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -75,7 +78,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="pr2database_files/header-attrs-2.5/header-attrs.js"></script><link href="pr2database_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="pr2database_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Get started</h1>
@@ -94,8 +98,9 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>Install from the GitHub web site using the devtools package</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="no">devtools</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"pr2database/pr2database"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">devtools</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"pr2database/pr2database"</span><span class="op">)</span></code></pre></div>
 <pre><code>* installing *source* package 'pr2database' ...
 ** R
 ** data
@@ -117,60 +122,53 @@ In R CMD INSTALL</code></pre>
 <h1 class="hasAnchor">
 <a href="#loading-the-database" class="anchor"></a>Loading the database</h1>
 <p>The PR2 database is provided as a data frame (or a tibble). This is a join between the following tables: * pr2_main * pr2_taxonomy * pr2_sequence * pr2_metadata</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"pr2database"</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"pr2"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"pr2"</span><span class="op">)</span>
 
 <span class="co"># List of the different columns available - see the help of the package for information on each field</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">pr2</span>)
-<span class="co">#&gt;  [1] "pr2_main_id"                "pr2_accession"             </span>
-<span class="co">#&gt;  [3] "genbank_accession"          "start"                     </span>
-<span class="co">#&gt;  [5] "end"                        "label"                     </span>
-<span class="co">#&gt;  [7] "gene"                       "organelle"                 </span>
-<span class="co">#&gt;  [9] "species"                    "chimera"                   </span>
-<span class="co">#&gt; [11] "chimera_remark"             "reference_sequence"        </span>
-<span class="co">#&gt; [13] "added_version"              "removed_version"           </span>
-<span class="co">#&gt; [15] "edited_version"             "edited_by"                 </span>
-<span class="co">#&gt; [17] "edited_remark"              "remark"                    </span>
-<span class="co">#&gt; [19] "taxo_id"                    "kingdom"                   </span>
-<span class="co">#&gt; [21] "supergroup"                 "division"                  </span>
-<span class="co">#&gt; [23] "class"                      "order"                     </span>
-<span class="co">#&gt; [25] "family"                     "genus"                     </span>
-<span class="co">#&gt; [27] "taxon_trophic_mode"         "taxo_edited_version"       </span>
-<span class="co">#&gt; [29] "taxo_edited_by"             "taxo_removed_version"      </span>
-<span class="co">#&gt; [31] "taxo_remark"                "reference"                 </span>
-<span class="co">#&gt; [33] "seq_id"                     "sequence"                  </span>
-<span class="co">#&gt; [35] "sequence_length"            "ambiguities"               </span>
-<span class="co">#&gt; [37] "sequence_hash"              "gb_sequence"               </span>
-<span class="co">#&gt; [39] "pr2_metadata_id"            "gb_date"                   </span>
-<span class="co">#&gt; [41] "gb_locus"                   "gb_definition"             </span>
-<span class="co">#&gt; [43] "gb_organism"                "gb_organelle"              </span>
-<span class="co">#&gt; [45] "gb_taxonomy"                "gb_strain"                 </span>
-<span class="co">#&gt; [47] "gb_culture_collection"      "gb_clone"                  </span>
-<span class="co">#&gt; [49] "gb_isolate"                 "gb_isolation_source"       </span>
-<span class="co">#&gt; [51] "gb_specimen_voucher"        "gb_host"                   </span>
-<span class="co">#&gt; [53] "gb_collection_date"         "gb_environmental_sample"   </span>
-<span class="co">#&gt; [55] "gb_country"                 "gb_lat_lon"                </span>
-<span class="co">#&gt; [57] "gb_collected_by"            "gb_note"                   </span>
-<span class="co">#&gt; [59] "gb_references"              "gb_publication"            </span>
-<span class="co">#&gt; [61] "gb_authors"                 "gb_journal"                </span>
-<span class="co">#&gt; [63] "pubmed_id"                  "eukref_name"               </span>
-<span class="co">#&gt; [65] "eukref_source"              "eukref_env_material"       </span>
-<span class="co">#&gt; [67] "eukref_env_biome"           "eukref_biotic_relationship"</span>
-<span class="co">#&gt; [69] "eukref_specific_host"       "eukref_geo_loc_name"       </span>
-<span class="co">#&gt; [71] "eukref_notes"               "pr2_sample_type"           </span>
-<span class="co">#&gt; [73] "pr2_sample_method"          "pr2_latitude"              </span>
-<span class="co">#&gt; [75] "pr2_longitude"              "pr2_ocean"                 </span>
-<span class="co">#&gt; [77] "pr2_sea"                    "pr2_sea_lat"               </span>
-<span class="co">#&gt; [79] "pr2_sea_lon"                "pr2_continent"             </span>
-<span class="co">#&gt; [81] "pr2_country"                "pr2_location"              </span>
-<span class="co">#&gt; [83] "pr2_location_geoname"       "pr2_location_geotype"      </span>
-<span class="co">#&gt; [85] "pr2_location_lat"           "pr2_location_lon"          </span>
-<span class="co">#&gt; [87] "pr2_country_geocode"        "pr2_country_lat"           </span>
-<span class="co">#&gt; [89] "pr2_country_lon"            "pr2_sequence_origin"       </span>
-<span class="co">#&gt; [91] "pr2_size_fraction"          "pr2_size_fraction_min"     </span>
-<span class="co">#&gt; [93] "pr2_size_fraction_max"      "metadata_remark"</span></pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "pr2_accession"              "kingdom"                   </span>
+<span class="co">#&gt;  [3] "supergroup"                 "division"                  </span>
+<span class="co">#&gt;  [5] "class"                      "order"                     </span>
+<span class="co">#&gt;  [7] "family"                     "genus"                     </span>
+<span class="co">#&gt;  [9] "species"                    "genbank_accession"         </span>
+<span class="co">#&gt; [11] "start"                      "end"                       </span>
+<span class="co">#&gt; [13] "label"                      "gene"                      </span>
+<span class="co">#&gt; [15] "organelle"                  "chimera"                   </span>
+<span class="co">#&gt; [17] "chimera_remark"             "reference_sequence"        </span>
+<span class="co">#&gt; [19] "added_version"              "removed_version"           </span>
+<span class="co">#&gt; [21] "remark"                     "seq_id"                    </span>
+<span class="co">#&gt; [23] "sequence"                   "sequence_length"           </span>
+<span class="co">#&gt; [25] "ambiguities"                "sequence_hash"             </span>
+<span class="co">#&gt; [27] "gb_date"                    "gb_definition"             </span>
+<span class="co">#&gt; [29] "gb_organism"                "gb_organelle"              </span>
+<span class="co">#&gt; [31] "gb_taxonomy"                "gb_strain"                 </span>
+<span class="co">#&gt; [33] "gb_culture_collection"      "gb_clone"                  </span>
+<span class="co">#&gt; [35] "gb_isolate"                 "gb_isolation_source"       </span>
+<span class="co">#&gt; [37] "gb_specimen_voucher"        "gb_host"                   </span>
+<span class="co">#&gt; [39] "gb_collection_date"         "gb_environmental_sample"   </span>
+<span class="co">#&gt; [41] "gb_country"                 "gb_lat_lon"                </span>
+<span class="co">#&gt; [43] "gb_collected_by"            "gb_note"                   </span>
+<span class="co">#&gt; [45] "gb_sequence"                "gb_publication"            </span>
+<span class="co">#&gt; [47] "gb_authors"                 "gb_journal"                </span>
+<span class="co">#&gt; [49] "eukref_name"                "eukref_source"             </span>
+<span class="co">#&gt; [51] "eukref_env_material"        "eukref_env_biome"          </span>
+<span class="co">#&gt; [53] "eukref_biotic_relationship" "eukref_specific_host"      </span>
+<span class="co">#&gt; [55] "eukref_geo_loc_name"        "eukref_notes"              </span>
+<span class="co">#&gt; [57] "pr2_sample_type"            "pr2_sample_method"         </span>
+<span class="co">#&gt; [59] "pr2_latitude"               "pr2_longitude"             </span>
+<span class="co">#&gt; [61] "pr2_depth"                  "pr2_ocean"                 </span>
+<span class="co">#&gt; [63] "pr2_sea"                    "pr2_sea_lat"               </span>
+<span class="co">#&gt; [65] "pr2_sea_lon"                "pr2_country"               </span>
+<span class="co">#&gt; [67] "pr2_location"               "pr2_location_geoname"      </span>
+<span class="co">#&gt; [69] "pr2_location_geotype"       "pr2_location_lat"          </span>
+<span class="co">#&gt; [71] "pr2_location_lon"           "pr2_sequence_origin"       </span>
+<span class="co">#&gt; [73] "metadata_remark"            "pr2_continent"             </span>
+<span class="co">#&gt; [75] "pr2_country_geocode"        "pr2_country_lat"           </span>
+<span class="co">#&gt; [77] "pr2_country_lon"            "silva_taxonomy"</span></code></pre></div>
 </div>
 <div id="working-with-the-database" class="section level1">
 <h1 class="hasAnchor">
@@ -180,33 +178,36 @@ In R CMD INSTALL</code></pre>
 <a href="#install-and-load-the-libraries" class="anchor"></a>Install and load the libraries</h2>
 <p>The following examples makes use of the specifc R libraries</p>
 <p>Install the libraries</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"dplyr"</span>)      <span class="co"># For filtering the data</span>
-<span class="fu">install.package</span>(<span class="st">"ggplot2"</span>)     <span class="co"># To plot data</span>
-<span class="fu">install.package</span>(<span class="st">"maps"</span>)        <span class="co"># To plot maps</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span>      <span class="co"># For filtering the data</span>
+<span class="fu">install.package</span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>     <span class="co"># To plot data</span>
+<span class="fu">install.package</span><span class="op">(</span><span class="st">"maps"</span><span class="op">)</span>        <span class="co"># To plot maps</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/source.html">source</a></span>(<span class="st">"https://bioconductor.org/biocLite.R"</span>)  <span class="co"># This package is on Bioconductor</span>
-<span class="fu">biocLite</span>(<span class="st">"Biostrings"</span>)         <span class="co"># To save fasta files</span></pre></body></html></div>
+<span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"https://bioconductor.org/biocLite.R"</span><span class="op">)</span>  <span class="co"># This package is on Bioconductor</span>
+<span class="fu">biocLite</span><span class="op">(</span><span class="st">"Biostrings"</span><span class="op">)</span>         <span class="co"># To save fasta files</span></code></pre></div>
 <p>Load the libraries</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r">  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)    <span class="co"># For plots</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Biostrings</span>) <span class="co"># To save fasta files</span></pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>    <span class="co"># For plots</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/Biostrings">Biostrings</a></span><span class="op">)</span> <span class="co"># To save fasta files</span></code></pre></div>
 </div>
 <div id="selecting-sequences-from-a-specific-taxon" class="section level2">
 <h2 class="hasAnchor">
 <a href="#selecting-sequences-from-a-specific-taxon" class="anchor"></a>Selecting sequences from a specific taxon</h2>
 <p>Let us select all the available sequences for the Mamiellophyceae <em>Ostreococcus</em></p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
   <span class="co"># Filter only the sequences for which the column genus contains Ostreococcus</span>
-  <span class="no">pr2_ostreo</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">genus</span> <span class="kw">==</span> <span class="st">"Ostreococcus"</span>)
+  <span class="va">pr2_ostreo</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">genus</span> <span class="op">==</span> <span class="st">"Ostreococcus"</span><span class="op">)</span>
 
   <span class="co"># Select only the columns of interest</span>
-  <span class="no">pr2_ostreo</span> <span class="kw">&lt;-</span> <span class="no">pr2_ostreo</span> <span class="kw">%&gt;%</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>( <span class="no">genbank_accession</span>, <span class="no">species</span>,
-                                              <span class="no">pr2_sample_type</span>, <span class="no">gb_strain</span>, <span class="no">gb_clone</span>,
-                                              <span class="no">pr2_latitude</span>, <span class="no">pr2_longitude</span>,
-                                              <span class="no">sequence_length</span>, <span class="no">sequence</span>, <span class="no">reference_sequence</span>  )
-
-  <span class="no">pr2_ostreo</span>
-<span class="co">#&gt; # A tibble: 325 x 10</span>
+  <span class="va">pr2_ostreo</span> <span class="op">&lt;-</span> <span class="va">pr2_ostreo</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span> <span class="va">genbank_accession</span>, <span class="va">species</span>, 
+                                              <span class="va">pr2_sample_type</span>, <span class="va">gb_strain</span>, <span class="va">gb_clone</span>, 
+                                              <span class="va">pr2_latitude</span>, <span class="va">pr2_longitude</span>, 
+                                              <span class="va">sequence_length</span>, <span class="va">sequence</span>, <span class="va">reference_sequence</span>  <span class="op">)</span>
+  
+  <span class="va">pr2_ostreo</span>
+<span class="co">#&gt; # A tibble: 327 x 10</span>
 <span class="co">#&gt;    genbank_accessi~ species pr2_sample_type gb_strain gb_clone pr2_latitude</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 AF525872         Ostreo~ environmental   &lt;NA&gt;      UEPACIp5         NA  </span>
@@ -219,29 +220,30 @@ In R CMD INSTALL</code></pre>
 <span class="co">#&gt;  8 FR874749         Ostreo~ environmental   &lt;NA&gt;      1815F12          60.3</span>
 <span class="co">#&gt;  9 FJ431431         Ostreo~ environmental   &lt;NA&gt;      RA07100~         NA  </span>
 <span class="co">#&gt; 10 EU561670         Ostreo~ environmental   &lt;NA&gt;      IND1.11         -35.0</span>
-<span class="co">#&gt; # ... with 315 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   sequence_length &lt;int&gt;, sequence &lt;chr&gt;, reference_sequence &lt;int&gt;</span></pre></body></html></div>
+<span class="co">#&gt; # ... with 317 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   sequence_length &lt;int&gt;, sequence &lt;chr&gt;, reference_sequence &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="exporting-the-sequences-to-fasta" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exporting-the-sequences-to-fasta" class="anchor"></a>Exporting the sequences to fasta</h2>
 <p>We will save the <em>Ostreococcus</em> sequences to a FASTA file. This is easy done with the bioconductor package BioStrings.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
   <span class="co"># Importing the sequence in a Biostring set </span>
 
-  <span class="no">seq_ostreo</span> <span class="kw">&lt;-</span> <span class="kw pkg">Biostrings</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-class.html">DNAStringSet</a></span>(<span class="no">pr2_ostreo</span>$<span class="no">sequence</span>)
+  <span class="va">seq_ostreo</span> <span class="op">&lt;-</span> <span class="fu">Biostrings</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-class.html">DNAStringSet</a></span><span class="op">(</span><span class="va">pr2_ostreo</span><span class="op">$</span><span class="va">sequence</span><span class="op">)</span>
 
   <span class="co"># Constructing the name of each sequecne (the first line of the fasta file)</span>
   <span class="co"># using the genbank accession, species name, strain name and clone name</span>
 
-  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">seq_ostreo</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="no">pr2_ostreo</span>$<span class="no">genbank_accession</span>, <span class="no">pr2_ostreo</span>$<span class="no">species</span>,
-                             <span class="st">"strain"</span>,<span class="no">pr2_ostreo</span>$<span class="no">gb_strain</span>,
-                             <span class="st">"clone"</span>,<span class="no">pr2_ostreo</span>$<span class="no">gb_clone</span>,
-                              <span class="kw">sep</span><span class="kw">=</span><span class="st">"|"</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">seq_ostreo</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">pr2_ostreo</span><span class="op">$</span><span class="va">genbank_accession</span>, <span class="va">pr2_ostreo</span><span class="op">$</span><span class="va">species</span>,
+                             <span class="st">"strain"</span>,<span class="va">pr2_ostreo</span><span class="op">$</span><span class="va">gb_strain</span>,
+                             <span class="st">"clone"</span>,<span class="va">pr2_ostreo</span><span class="op">$</span><span class="va">gb_clone</span>, 
+                              sep<span class="op">=</span><span class="st">"|"</span><span class="op">)</span>
 
   <span class="co"># Displaying the Biostring set</span>
-  <span class="no">seq_ostreo</span>
-<span class="co">#&gt;   A DNAStringSet instance of length 325</span>
+  <span class="va">seq_ostreo</span>
+<span class="co">#&gt; DNAStringSet object of length 327:</span>
 <span class="co">#&gt;       width seq                                             names               </span>
 <span class="co">#&gt;   [1]  1766 ACCTGGTTGATCCTGCCAGTAG...AGGTGAACCTGCAGAAGGATCA AF525872|Ostreoco...</span>
 <span class="co">#&gt;   [2]   836 AAAGCTCGTAGTCGGATTTTGG...TCTGGGCCGCACGCGCGCTACA EU562149|Ostreoco...</span>
@@ -249,14 +251,14 @@ In R CMD INSTALL</code></pre>
 <span class="co">#&gt;   [4]  1652 AGCCATGCATGTCTAAGTATAA...TGGATTACCGTGGGAAATTCGT GQ426346|Ostreoco...</span>
 <span class="co">#&gt;   [5]  1764 CCTGGTTGATCCTGCCAGTAGT...TAGGTGAACCTGCAGAAGGATC KC583118|Ostreoco...</span>
 <span class="co">#&gt;   ...   ... ...</span>
-<span class="co">#&gt; [321]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG KF285522|Ostreoco...</span>
-<span class="co">#&gt; [322]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG KF285529|Ostreoco...</span>
-<span class="co">#&gt; [323]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG KF285531|Ostreoco...</span>
-<span class="co">#&gt; [324]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG NC_008289|Ostreoc...</span>
-<span class="co">#&gt; [325]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG NC_008289|Ostreoc...</span>
-
+<span class="co">#&gt; [323]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG NC_008289|Ostreoc...</span>
+<span class="co">#&gt; [324]  1609 TGCGAATGGCTCATTAAATCAG...CCATTGGATTACCGTGGGAAAT KT860897|Ostreoco...</span>
+<span class="co">#&gt; [325]   656 TTTAGTCGGATTTTGGCTGAGA...ATGGCCGTTCTTAATTGGGGGA KT860646|Ostreoco...</span>
+<span class="co">#&gt; [326]   672 GCTCGTAGTCGGACTTTGGCTG...GTTGGTGGAGTGATTTGTCTGG KT860808|Ostreoco...</span>
+<span class="co">#&gt; [327]   672 GCTCGTAGTCGGACTTTGGCTG...TAGTTGGTGGAGTGATTTGTCT KT860809|Ostreoco...</span>
+    
   <span class="co"># Saving the sequences as a fasta file</span>
-  <span class="kw pkg">Biostrings</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html">writeXStringSet</a></span>(<span class="no">seq_ostreo</span>, <span class="st">"examples/pr2_ostreo.fasta"</span>, <span class="kw">width</span> <span class="kw">=</span> <span class="fl">80</span>)</pre></body></html></div>
+  <span class="fu">Biostrings</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html">writeXStringSet</a></span><span class="op">(</span><span class="va">seq_ostreo</span>, <span class="st">"examples/pr2_ostreo.fasta"</span>, width <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></code></pre></div>
 <p>The fasta file will look as follows</p>
 <pre><code>&gt;AF525872|Ostreococcus_lucimarinus|strain|NA|clone|UEPACIp5
 ACCTGGTTGATCCTGCCAGTAGTCATATGCTTGTCTCAAAGATTAAGCCATGCATGTCTAAGTATAAGCGTTATACTGTG
@@ -274,34 +276,37 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 <div id="doing-an-histogram-of-the-sequence-length" class="section level2">
 <h2 class="hasAnchor">
 <a href="#doing-an-histogram-of-the-sequence-length" class="anchor"></a>Doing an histogram of the sequence length</h2>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2_ostreo</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">sequence_length</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">50</span>, <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span>(<span class="fl">0</span>,<span class="fl">2000</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Sequence length"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Ostreococcus sequences"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_ostreo</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">2000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Ostreococcus sequences"</span><span class="op">)</span></code></pre></div>
 <p><img src="pr2database_files/figure-html/sequence_histogram-1.png" width="700"></p>
 </div>
 <div id="drawing-a-map-of-sequence-locations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#drawing-a-map-of-sequence-locations" class="anchor"></a>Drawing a map of sequence locations</h2>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">maps</span>)
-  <span class="no">world</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span>(<span class="st">"world"</span>)
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">maps</span><span class="op">)</span>
+  <span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="st">"world"</span><span class="op">)</span>
 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">world</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">long</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">lat</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="no">group</span>), <span class="kw">fill</span><span class="kw">=</span><span class="st">"grey"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span>(<span class="fl">1.3</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">data</span><span class="kw">=</span><span class="no">pr2_ostreo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">pr2_longitude</span>, <span class="kw">y</span><span class="kw">=</span><span class="no">pr2_latitude</span>), <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">shape</span><span class="kw">=</span><span class="fl">21</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Ostreococcus"</span>)</pre></body></html></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">world</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="fl">1.3</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pr2_ostreo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">pr2_longitude</span>, y<span class="op">=</span><span class="va">pr2_latitude</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"blue"</span>, size<span class="op">=</span><span class="fl">2</span>, shape<span class="op">=</span><span class="fl">21</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Ostreococcus"</span><span class="op">)</span></code></pre></div>
 <p><img src="pr2database_files/figure-html/sequence_map-1.png" width="700"></p>
 </div>
 <div id="selecting-reference-sequences" class="section level2">
 <h2 class="hasAnchor">
 <a href="#selecting-reference-sequences" class="anchor"></a>Selecting reference sequences</h2>
 <p>Reference sequences are a subset of sequences that are representative of the major taxa in a group. Usually they are long sequences and can be used to build a reference alignment (compare the histogram of reference to that all PR2 sequences).</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"> <span class="no">pr2_ostreo_reference</span> <span class="kw">&lt;-</span> <span class="no">pr2_ostreo</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">reference_sequence</span> <span class="kw">==</span> <span class="fl">1</span>)
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="va">pr2_ostreo_reference</span> <span class="op">&lt;-</span> <span class="va">pr2_ostreo</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">reference_sequence</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
 
-  <span class="no">pr2_ostreo_reference</span>
-<span class="co">#&gt; # A tibble: 33 x 10</span>
+  <span class="va">pr2_ostreo_reference</span> 
+<span class="co">#&gt; # A tibble: 32 x 10</span>
 <span class="co">#&gt;    genbank_accessi~ species pr2_sample_type gb_strain gb_clone pr2_latitude</span>
 <span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 AF525872         Ostreo~ environmental   &lt;NA&gt;      UEPACIp5           NA</span>
@@ -314,13 +319,13 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 <span class="co">#&gt;  8 AF525848         Ostreo~ environmental   &lt;NA&gt;      UEPACAp1           NA</span>
 <span class="co">#&gt;  9 AF525859         Ostreo~ environmental   &lt;NA&gt;      UEPAC30~           NA</span>
 <span class="co">#&gt; 10 AF525855         Ostreo~ environmental   &lt;NA&gt;      UEPACXp1           NA</span>
-<span class="co">#&gt; # ... with 23 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
+<span class="co">#&gt; # ... with 22 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   sequence_length &lt;int&gt;, sequence &lt;chr&gt;, reference_sequence &lt;int&gt;</span>
-
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2_ostreo_reference</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">sequence_length</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">50</span>, <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span>(<span class="fl">0</span>,<span class="fl">2000</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Sequence length"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Ostreococcus reference sequences"</span>)</pre></body></html></div>
+  
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_ostreo_reference</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">2000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Ostreococcus reference sequences"</span><span class="op">)</span></code></pre></div>
 <p><img src="pr2database_files/figure-html/reference_sequences-1.png" width="700"></p>
 </div>
 </div>
@@ -341,7 +346,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

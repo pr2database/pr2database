@@ -11,20 +11,12 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  cache = TRUE,
+  cache = FALSE,
   warning = FALSE,
   message = FALSE,
   comment = "#>" 
   # fig.path = "img/"   # Directories where image are saved
 )
-
-# Notes
-# - cannot use rmarkdown::html_vignette for the moment (maybe with R version 4.0)
-# - use devtools::build_vignettes() to build the vignettes
-# - use pkgdown::build_articles() for  the vignettes of the pr2database package web site
-# - use  pkgdown::build_home() when the README.md is modified.
-# - use  pkgdown::build_reference() when the functions are modified (need to Build documentation before...)
-# - need to build source package to have the vignettes visible locally
 ```
 
 

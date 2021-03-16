@@ -1,5 +1,5 @@
 ---
-title: "Tutorial - Plotting sequence location"
+title: "Plotting sequence location"
 author: "Daniel Vaulot"
 output: rmarkdown::html_document
 vignette: >
@@ -11,7 +11,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  cache = TRUE,
+  cache = FALSE,
   warning = FALSE,
   message = FALSE,
   prompt=FALSE,

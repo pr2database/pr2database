@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.13.0</span>
       </span>
     </div>
 
@@ -57,12 +57,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/pr2_geo_origin.html">Tutorial - Plotting sequence location</a>
+      <a href="../articles/pr2_geo_origin.html">Plotting sequence location</a>
     </li>
     <li>
       <a href="../articles/pr2_stats.html">PR2 statistics</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -75,11 +78,12 @@
 
       
 
-      </header><div class="row">
+      </header><script src="pr2_stats_files/header-attrs-2.5/header-attrs.js"></script><link href="pr2_stats_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="pr2_stats_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>PR2 statistics</h1>
-                        <h4 class="author">Daniel Vaulot</h4>
+                        <h4 class="author">vaulot</h4>
             
             <h4 class="date">2018-08-10</h4>
       
@@ -90,70 +94,71 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r">  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"ggplot2"</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://ggplot2.tidyverse.org">"ggplot2"</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"treemap"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/">"knitr"</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://forcats.tidyverse.org">"forcats"</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://stringr.tidyverse.org">"stringr"</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/AndySouth/rworldmap/">"rworldmap"</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://wilkox.org/treemapify">"treemapify"</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 
-  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"pr2database"</span>)
-  <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">pr2</span>)
-  <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span>(<span class="st">"pr2database"</span>)
-<span class="co">#&gt; [1] '4.12.1'</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span>
+<span class="co">#&gt; [1] '4.13.0'</span>
 
-  <span class="no">pr2_photo</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>((<span class="no">division</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Chlorophyta"</span>, <span class="st">"Dinophyta"</span>, <span class="st">"Cryptophyta"</span>,
-                                                 <span class="st">"Haptophyta"</span>, <span class="st">"Ochrophyta"</span>, <span class="st">"Cercozoa"</span>)) <span class="kw">&amp;</span>
-                                              !(<span class="no">class</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Syndiniales"</span>, <span class="st">"Sarcomonadea"</span>)))
-  <span class="no">pr2_ref</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">reference_sequence</span>))</pre></body></html></div>
+  <span class="va">pr2_photo</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">(</span><span class="va">division</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Chlorophyta"</span>, <span class="st">"Dinophyta"</span>, <span class="st">"Cryptophyta"</span>,
+                                                 <span class="st">"Haptophyta"</span>, <span class="st">"Ochrophyta"</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span>
+                                              <span class="op">!</span><span class="op">(</span><span class="va">class</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Syndiniales"</span>, <span class="st">"Sarcomonadea"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">pr2_ref</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">reference_sequence</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div id="pr2-fields" class="section level1">
 <h1 class="hasAnchor">
 <a href="#pr2-fields" class="anchor"></a>PR2 fields</h1>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">pr2</span>)
-<span class="co">#&gt;  [1] "pr2_main_id"                "pr2_accession"             </span>
-<span class="co">#&gt;  [3] "genbank_accession"          "start"                     </span>
-<span class="co">#&gt;  [5] "end"                        "label"                     </span>
-<span class="co">#&gt;  [7] "gene"                       "organelle"                 </span>
-<span class="co">#&gt;  [9] "species"                    "chimera"                   </span>
-<span class="co">#&gt; [11] "chimera_remark"             "reference_sequence"        </span>
-<span class="co">#&gt; [13] "added_version"              "removed_version"           </span>
-<span class="co">#&gt; [15] "edited_version"             "edited_by"                 </span>
-<span class="co">#&gt; [17] "edited_remark"              "remark"                    </span>
-<span class="co">#&gt; [19] "taxo_id"                    "kingdom"                   </span>
-<span class="co">#&gt; [21] "supergroup"                 "division"                  </span>
-<span class="co">#&gt; [23] "class"                      "order"                     </span>
-<span class="co">#&gt; [25] "family"                     "genus"                     </span>
-<span class="co">#&gt; [27] "taxon_trophic_mode"         "taxo_edited_version"       </span>
-<span class="co">#&gt; [29] "taxo_edited_by"             "taxo_removed_version"      </span>
-<span class="co">#&gt; [31] "taxo_remark"                "reference"                 </span>
-<span class="co">#&gt; [33] "seq_id"                     "sequence"                  </span>
-<span class="co">#&gt; [35] "sequence_length"            "ambiguities"               </span>
-<span class="co">#&gt; [37] "sequence_hash"              "gb_sequence"               </span>
-<span class="co">#&gt; [39] "pr2_metadata_id"            "gb_date"                   </span>
-<span class="co">#&gt; [41] "gb_locus"                   "gb_definition"             </span>
-<span class="co">#&gt; [43] "gb_organism"                "gb_organelle"              </span>
-<span class="co">#&gt; [45] "gb_taxonomy"                "gb_strain"                 </span>
-<span class="co">#&gt; [47] "gb_culture_collection"      "gb_clone"                  </span>
-<span class="co">#&gt; [49] "gb_isolate"                 "gb_isolation_source"       </span>
-<span class="co">#&gt; [51] "gb_specimen_voucher"        "gb_host"                   </span>
-<span class="co">#&gt; [53] "gb_collection_date"         "gb_environmental_sample"   </span>
-<span class="co">#&gt; [55] "gb_country"                 "gb_lat_lon"                </span>
-<span class="co">#&gt; [57] "gb_collected_by"            "gb_note"                   </span>
-<span class="co">#&gt; [59] "gb_references"              "gb_publication"            </span>
-<span class="co">#&gt; [61] "gb_authors"                 "gb_journal"                </span>
-<span class="co">#&gt; [63] "pubmed_id"                  "eukref_name"               </span>
-<span class="co">#&gt; [65] "eukref_source"              "eukref_env_material"       </span>
-<span class="co">#&gt; [67] "eukref_env_biome"           "eukref_biotic_relationship"</span>
-<span class="co">#&gt; [69] "eukref_specific_host"       "eukref_geo_loc_name"       </span>
-<span class="co">#&gt; [71] "eukref_notes"               "pr2_sample_type"           </span>
-<span class="co">#&gt; [73] "pr2_sample_method"          "pr2_latitude"              </span>
-<span class="co">#&gt; [75] "pr2_longitude"              "pr2_ocean"                 </span>
-<span class="co">#&gt; [77] "pr2_sea"                    "pr2_sea_lat"               </span>
-<span class="co">#&gt; [79] "pr2_sea_lon"                "pr2_continent"             </span>
-<span class="co">#&gt; [81] "pr2_country"                "pr2_location"              </span>
-<span class="co">#&gt; [83] "pr2_location_geoname"       "pr2_location_geotype"      </span>
-<span class="co">#&gt; [85] "pr2_location_lat"           "pr2_location_lon"          </span>
-<span class="co">#&gt; [87] "pr2_country_geocode"        "pr2_country_lat"           </span>
-<span class="co">#&gt; [89] "pr2_country_lon"            "pr2_sequence_origin"       </span>
-<span class="co">#&gt; [91] "pr2_size_fraction"          "pr2_size_fraction_min"     </span>
-<span class="co">#&gt; [93] "pr2_size_fraction_max"      "metadata_remark"</span></pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span>
+<span class="co">#&gt;  [1] "pr2_accession"              "kingdom"                   </span>
+<span class="co">#&gt;  [3] "supergroup"                 "division"                  </span>
+<span class="co">#&gt;  [5] "class"                      "order"                     </span>
+<span class="co">#&gt;  [7] "family"                     "genus"                     </span>
+<span class="co">#&gt;  [9] "species"                    "genbank_accession"         </span>
+<span class="co">#&gt; [11] "start"                      "end"                       </span>
+<span class="co">#&gt; [13] "label"                      "gene"                      </span>
+<span class="co">#&gt; [15] "organelle"                  "chimera"                   </span>
+<span class="co">#&gt; [17] "chimera_remark"             "reference_sequence"        </span>
+<span class="co">#&gt; [19] "added_version"              "removed_version"           </span>
+<span class="co">#&gt; [21] "remark"                     "seq_id"                    </span>
+<span class="co">#&gt; [23] "sequence"                   "sequence_length"           </span>
+<span class="co">#&gt; [25] "ambiguities"                "sequence_hash"             </span>
+<span class="co">#&gt; [27] "gb_date"                    "gb_definition"             </span>
+<span class="co">#&gt; [29] "gb_organism"                "gb_organelle"              </span>
+<span class="co">#&gt; [31] "gb_taxonomy"                "gb_strain"                 </span>
+<span class="co">#&gt; [33] "gb_culture_collection"      "gb_clone"                  </span>
+<span class="co">#&gt; [35] "gb_isolate"                 "gb_isolation_source"       </span>
+<span class="co">#&gt; [37] "gb_specimen_voucher"        "gb_host"                   </span>
+<span class="co">#&gt; [39] "gb_collection_date"         "gb_environmental_sample"   </span>
+<span class="co">#&gt; [41] "gb_country"                 "gb_lat_lon"                </span>
+<span class="co">#&gt; [43] "gb_collected_by"            "gb_note"                   </span>
+<span class="co">#&gt; [45] "gb_sequence"                "gb_publication"            </span>
+<span class="co">#&gt; [47] "gb_authors"                 "gb_journal"                </span>
+<span class="co">#&gt; [49] "eukref_name"                "eukref_source"             </span>
+<span class="co">#&gt; [51] "eukref_env_material"        "eukref_env_biome"          </span>
+<span class="co">#&gt; [53] "eukref_biotic_relationship" "eukref_specific_host"      </span>
+<span class="co">#&gt; [55] "eukref_geo_loc_name"        "eukref_notes"              </span>
+<span class="co">#&gt; [57] "pr2_sample_type"            "pr2_sample_method"         </span>
+<span class="co">#&gt; [59] "pr2_latitude"               "pr2_longitude"             </span>
+<span class="co">#&gt; [61] "pr2_depth"                  "pr2_ocean"                 </span>
+<span class="co">#&gt; [63] "pr2_sea"                    "pr2_sea_lat"               </span>
+<span class="co">#&gt; [65] "pr2_sea_lon"                "pr2_country"               </span>
+<span class="co">#&gt; [67] "pr2_location"               "pr2_location_geoname"      </span>
+<span class="co">#&gt; [69] "pr2_location_geotype"       "pr2_location_lat"          </span>
+<span class="co">#&gt; [71] "pr2_location_lon"           "pr2_sequence_origin"       </span>
+<span class="co">#&gt; [73] "metadata_remark"            "pr2_continent"             </span>
+<span class="co">#&gt; [75] "pr2_country_geocode"        "pr2_country_lat"           </span>
+<span class="co">#&gt; [77] "pr2_country_lon"            "silva_taxonomy"</span></code></pre></div>
 </div>
 <div id="basic-statistics" class="section level1">
 <h1 class="hasAnchor">
@@ -161,11 +166,11 @@
 <div id="all-taxa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#all-taxa" class="anchor"></a>All taxa</h2>
-<p>Total number of PR2 sequences : 183973</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co">#  stringr::str_c("Number of sequences : ", nrow(pr2))</span>
-
-  <span class="no">pr2_taxa</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">kingdom</span>:<span class="no">genus</span>, <span class="no">species</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(<span class="no">.</span>)))
-  <span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">pr2_taxa</span>, <span class="kw">caption</span><span class="kw">=</span><span class="st">"Number of taxa - all sequences"</span>)</pre></body></html></div>
+<p>Total number of PR2 sequences : 184785</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+  <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">pr2_taxa</span>, caption<span class="op">=</span><span class="st">"Number of taxa - all sequences"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Number of taxa - all sequences</caption>
 <thead><tr class="header">
@@ -179,25 +184,26 @@
 <th align="right">species</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="right">2</td>
-<td align="right">12</td>
-<td align="right">43</td>
-<td align="right">253</td>
+<td align="right">3</td>
+<td align="right">13</td>
+<td align="right">45</td>
+<td align="right">254</td>
 <td align="right">569</td>
-<td align="right">1341</td>
-<td align="right">22771</td>
-<td align="right">46076</td>
+<td align="right">1346</td>
+<td align="right">22539</td>
+<td align="right">45474</td>
 </tr></tbody>
 </table>
 </div>
 <div id="photosynthetic-protists" class="section level2">
 <h2 class="hasAnchor">
 <a href="#photosynthetic-protists" class="anchor"></a>Photosynthetic protists</h2>
-<p>Number of photosynthetic protist sequences : 23145</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co">#  stringr::str_c("Number of sequences (active only) : ", nrow(pr2_photo))</span>
+<p>Number of photosynthetic protist sequences : 21180</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#  stringr::str_c("Number of sequences (active only) : ", nrow(pr2_photo))</span>
 
-  <span class="no">pr2_taxa</span> <span class="kw">&lt;-</span> <span class="no">pr2_photo</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">kingdom</span>:<span class="no">genus</span>, <span class="no">species</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(<span class="no">.</span>)))
-  <span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">pr2_taxa</span>, <span class="kw">caption</span><span class="kw">=</span><span class="st">"Number of taxa - photosynthetic protist sequences"</span>)</pre></body></html></div>
+  <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_photo</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">pr2_taxa</span>, caption<span class="op">=</span><span class="st">"Number of taxa - photosynthetic protist sequences"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Number of taxa - photosynthetic protist sequences</caption>
 <thead><tr class="header">
@@ -212,13 +218,13 @@
 </tr></thead>
 <tbody><tr class="odd">
 <td align="right">1</td>
+<td align="right">3</td>
 <td align="right">4</td>
-<td align="right">5</td>
-<td align="right">61</td>
-<td align="right">132</td>
-<td align="right">254</td>
-<td align="right">1184</td>
-<td align="right">3319</td>
+<td align="right">46</td>
+<td align="right">84</td>
+<td align="right">144</td>
+<td align="right">990</td>
+<td align="right">2952</td>
 </tr></tbody>
 </table>
 </div>
@@ -226,11 +232,12 @@
 <h2 class="hasAnchor">
 <a href="#reference-sequences" class="anchor"></a>Reference sequences</h2>
 <p><em>Reference sequences are a subset of PR2 representative of taxonomic groups.</em></p>
-<p>Number of reference sequences : 24097</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co">#  stringr::str_c("Number of reference sequences : ", nrow(pr2_ref))</span>
+<p>Number of reference sequences : 23628</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#  stringr::str_c("Number of reference sequences : ", nrow(pr2_ref))</span>
 
-  <span class="no">pr2_taxa</span> <span class="kw">&lt;-</span> <span class="no">pr2_ref</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">kingdom</span>:<span class="no">genus</span>, <span class="no">species</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(<span class="no">.</span>)))
-  <span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">pr2_taxa</span>, <span class="kw">caption</span><span class="kw">=</span><span class="st">"Number of taxa - Reference sequences"</span>)</pre></body></html></div>
+  <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_ref</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">pr2_taxa</span>, caption<span class="op">=</span><span class="st">"Number of taxa - Reference sequences"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Number of taxa - Reference sequences</caption>
 <thead><tr class="header">
@@ -244,14 +251,14 @@
 <th align="right">species</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="right">1</td>
-<td align="right">10</td>
-<td align="right">37</td>
-<td align="right">204</td>
+<td align="right">2</td>
+<td align="right">11</td>
+<td align="right">39</td>
+<td align="right">205</td>
 <td align="right">453</td>
-<td align="right">1105</td>
-<td align="right">8795</td>
-<td align="right">13639</td>
+<td align="right">1109</td>
+<td align="right">8682</td>
+<td align="right">13379</td>
 </tr></tbody>
 </table>
 </div>
@@ -259,58 +266,69 @@
 <div id="sequence-length" class="section level1">
 <h1 class="hasAnchor">
 <a href="#sequence-length" class="anchor"></a>Sequence length</h1>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">sequence_length</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">100</span>, <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>) +
-                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span>(<span class="fl">0</span>,<span class="fl">3000</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"PR2 sequence length"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"All sequences"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">100</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span>
+                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"PR2 sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"All sequences"</span><span class="op">)</span></code></pre></div>
 <p><img src="pr2_stats_files/figure-html/sequence%20length-1.png" width="700"></p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2_ref</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">sequence_length</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">100</span>, <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>) +
-                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span>(<span class="fl">0</span>,<span class="fl">3000</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"PR2 sequence length"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Reference sequences"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_ref</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">100</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span>
+                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"PR2 sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Reference sequences"</span><span class="op">)</span></code></pre></div>
 <p><img src="pr2_stats_files/figure-html/sequence%20length-2.png" width="700"></p>
 </div>
 <div id="taxonomic-composition" class="section level1">
 <h1 class="hasAnchor">
 <a href="#taxonomic-composition" class="anchor"></a>Taxonomic composition</h1>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">  <span class="no">pr2.env</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span>()
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">pr2_treemap</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">pr2</span>, <span class="va">level1</span>, <span class="va">level2</span><span class="op">)</span> <span class="op">{</span>
 
-  <span class="no">pr2.env</span>$<span class="no">taxo_levels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"kingdom"</span>, <span class="st">"supergroup"</span>, <span class="st">"division"</span>, <span class="st">"class"</span>, <span class="st">"order"</span>, <span class="st">"family"</span>, <span class="st">"genus"</span>, <span class="st">"species"</span>)
-  <span class="no">pr2.env</span>$<span class="no">taxo_levels_number</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">pr2.env</span>$<span class="no">taxo_levels</span>)
 
-<span class="no">pr2_treemap</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">pr2</span>, <span class="no">taxo_rank</span>) {
-
-  <span class="co"># Define the levels</span>
-  <span class="no">level1</span> <span class="kw">=</span> <span class="no">pr2.env</span>$<span class="no">taxo_levels</span>[<span class="no">taxo_rank</span>]
-  <span class="no">level2</span> <span class="kw">=</span> <span class="no">pr2.env</span>$<span class="no">taxo_levels</span>[<span class="no">taxo_rank</span>+<span class="fl">1</span>]
   <span class="co"># Group</span>
-  <span class="no">pr2_class</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span>
-                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/se-deprecated.html">group_by_</a></span>(<span class="no">level1</span>,<span class="no">level2</span>) <span class="kw">%&gt;%</span>
-                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="kw">sequence_number</span><span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>())
+  <span class="va">pr2_class</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span><span class="va">level1</span><span class="op">}</span><span class="op">}</span>,<span class="op">{</span><span class="op">{</span><span class="va">level2</span><span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">division</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
 
-  <span class="co"># Do a simple treemap</span>
-  <span class="kw pkg">treemap</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/treemap/man/treemap.html">treemap</a></span>(<span class="no">pr2_class</span>, <span class="kw">index</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">level1</span>,<span class="no">level2</span>),
-        <span class="kw">vSize</span><span class="kw">=</span><span class="st">"sequence_number"</span>,
-        <span class="kw">title</span><span class="kw">=</span><span class="st">""</span>,<span class="kw">asp</span><span class="kw">=</span><span class="fl">1</span>, <span class="kw">lowerbound.cex.labels</span><span class="kw">=</span> <span class="fl">0.2</span>, <span class="kw">fontsize.labels</span> <span class="kw">=</span> <span class="fl">12</span>,
-        <span class="kw">palette</span><span class="kw">=</span><span class="st">"Blues"</span>,
-        <span class="kw">format.legend</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">scientific</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">big.mark</span> <span class="kw">=</span> <span class="st">" "</span>))
-}</pre></body></html></div>
+  <span class="co"># Do a treemap</span>
+  
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_class</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>area <span class="op">=</span> <span class="va">n</span>, fill <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">level2</span><span class="op">}</span><span class="op">}</span>, subgroup <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">level1</span><span class="op">}</span><span class="op">}</span>, label <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">level2</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+           <span class="fu">treemapify</span><span class="fu">::</span><span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap.html">geom_treemap</a></span><span class="op">(</span><span class="op">)</span>
+  
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_class</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>area <span class="op">=</span> <span class="va">n</span>, fill<span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">level1</span><span class="op">}</span><span class="op">}</span>, subgroup <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">level1</span><span class="op">}</span><span class="op">}</span>, label <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">level2</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">treemapify</span><span class="fu">::</span><span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap.html">geom_treemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">treemapify</span><span class="fu">::</span><span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap_text.html">geom_treemap_text</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"white"</span>, place <span class="op">=</span> <span class="st">"centre"</span>, grow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">treemapify</span><span class="fu">::</span><span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap_subgroup_border.html">geom_treemap_subgroup_border</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">treemapify</span><span class="fu">::</span><span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap_subgroup_text.html">geom_treemap_subgroup_text</a></span><span class="op">(</span>place <span class="op">=</span> <span class="st">"centre"</span>, grow <span class="op">=</span> <span class="cn">T</span>, 
+                                           alpha <span class="op">=</span> <span class="fl">0.5</span>, colour <span class="op">=</span> <span class="st">"black"</span>, 
+                                           min.size <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+           
+<span class="op">}</span></code></pre></div>
 <div id="division-level" class="section level2">
 <h2 class="hasAnchor">
 <a href="#division-level" class="anchor"></a>Division level</h2>
 <div id="all-groups" class="section level3">
 <h3 class="hasAnchor">
 <a href="#all-groups" class="anchor"></a>All groups</h3>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">  <span class="fu">pr2_treemap</span>(<span class="no">pr2</span>,<span class="fl">3</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/treemaps-1.png" width="700"></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="fu">pr2_treemap</span><span class="op">(</span><span class="va">pr2</span>, <span class="va">division</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
+<p><img src="pr2_stats_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 <div id="reference-sequences-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reference-sequences-1" class="anchor"></a>Reference sequences</h3>
-<div class="sourceCode" id="cb11"><html><body><pre class="r">  <span class="fu">pr2_treemap</span>(<span class="no">pr2_ref</span>,<span class="fl">3</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="fu">pr2_treemap</span><span class="op">(</span><span class="va">pr2_ref</span>, <span class="va">division</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
+<p><img src="pr2_stats_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 </div>
 <div id="photosynthetic-protists-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#photosynthetic-protists-1" class="anchor"></a>Photosynthetic protists</h3>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">  <span class="fu">pr2_treemap</span>(<span class="no">pr2_photo</span>,<span class="fl">3</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="fu">pr2_treemap</span><span class="op">(</span><span class="va">pr2_photo</span>,<span class="va">division</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
+<p><img src="pr2_stats_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 </div>
 </div>
 <div id="genera-most-represented" class="section level2">
@@ -319,86 +337,92 @@
 <div id="all-taxa-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#all-taxa-1" class="anchor"></a>All taxa</h3>
-<div class="sourceCode" id="cb13"><html><body><pre class="r">  <span class="no">pr2_genus</span> <span class="kw">&lt;-</span> <span class="no">pr2</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">class</span>, <span class="no">genus</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">30</span>)
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="va">pr2_genus</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">genus</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>
 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2_genus</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="kw pkg">forcats</span><span class="kw ns">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span>(<span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(<span class="no">class</span>,<span class="st">"-"</span>,<span class="no">genus</span>), <span class="no">n</span>), <span class="kw">y</span><span class="kw">=</span><span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Most represented genera - all"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Genera"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>)</pre></body></html></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_genus</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">class</span>,<span class="st">"-"</span>,<span class="va">genus</span><span class="op">)</span>, <span class="va">n</span><span class="op">)</span>, y<span class="op">=</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Most represented genera - all"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Genera"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span></code></pre></div>
 <p><img src="pr2_stats_files/figure-html/genera%20histo-1.png" width="700"></p>
 </div>
 <div id="reference-sequences-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reference-sequences-2" class="anchor"></a>Reference sequences</h3>
-<div class="sourceCode" id="cb14"><html><body><pre class="r">  <span class="no">pr2_genus</span> <span class="kw">&lt;-</span> <span class="no">pr2_ref</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">class</span>, <span class="no">genus</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">30</span>)
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R">  <span class="va">pr2_genus</span> <span class="op">&lt;-</span> <span class="va">pr2_ref</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">genus</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>
 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2_genus</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="kw pkg">forcats</span><span class="kw ns">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span>(<span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(<span class="no">class</span>,<span class="st">"-"</span>,<span class="no">genus</span>), <span class="no">n</span>), <span class="kw">y</span><span class="kw">=</span><span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Reference sequences"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Genera"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_genus</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">class</span>,<span class="st">"-"</span>,<span class="va">genus</span><span class="op">)</span>, <span class="va">n</span><span class="op">)</span>, y<span class="op">=</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Reference sequences"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Genera"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span></code></pre></div>
+<p><img src="pr2_stats_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 </div>
 <div id="only-photosynthetic-protists" class="section level3">
 <h3 class="hasAnchor">
 <a href="#only-photosynthetic-protists" class="anchor"></a>Only photosynthetic protists</h3>
-<div class="sourceCode" id="cb15"><html><body><pre class="r">
-  <span class="no">pr2_genus</span> <span class="kw">&lt;-</span> <span class="no">pr2_photo</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">class</span>, <span class="no">genus</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">30</span>)
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+  <span class="va">pr2_genus</span> <span class="op">&lt;-</span> <span class="va">pr2_photo</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">genus</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>
 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">pr2_genus</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="kw pkg">forcats</span><span class="kw ns">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span>(<span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(<span class="no">class</span>,<span class="st">"-"</span>,<span class="no">genus</span>), <span class="no">n</span>), <span class="kw">y</span><span class="kw">=</span><span class="no">n</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Most represented genera - only photosynthetic protists"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Genera"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of sequences"</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_genus</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">class</span>,<span class="st">"-"</span>,<span class="va">genus</span><span class="op">)</span>, <span class="va">n</span><span class="op">)</span>, y<span class="op">=</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Most represented genera - only photosynthetic protists"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Genera"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span></code></pre></div>
+<p><img src="pr2_stats_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 </div>
 </div>
 </div>
 <div id="world-sequence-distribution" class="section level1">
 <h1 class="hasAnchor">
 <a href="#world-sequence-distribution" class="anchor"></a>World sequence distribution</h1>
-<div class="sourceCode" id="cb16"><html><body><pre class="r">
-<span class="no">map_get_world</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">resolution</span><span class="kw">=</span><span class="st">"coarse"</span>){
-  <span class="no">worldMap</span> <span class="kw">&lt;-</span> <span class="kw pkg">rworldmap</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/rworldmap/man/getMap.html">getMap</a></span>(<span class="kw">resolution</span> <span class="kw">=</span> <span class="no">resolution</span>) <span class="co"># Change to "coarse" for global maps / "low" for regional maps</span>
-  <span class="no">world.points</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span>(<span class="no">worldMap</span>)
-  <span class="no">world.points</span>$<span class="no">region</span> <span class="kw">&lt;-</span> <span class="no">world.points</span>$<span class="no">id</span>
-  <span class="no">world.df</span> <span class="kw">&lt;-</span> <span class="no">world.points</span>[,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"long"</span>,<span class="st">"lat"</span>,<span class="st">"group"</span>, <span class="st">"region"</span>)]
-  }
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">map_get_world</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">resolution</span><span class="op">=</span><span class="st">"coarse"</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">worldMap</span> <span class="op">&lt;-</span> <span class="fu">rworldmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rworldmap/man/getMap.html">getMap</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="va">resolution</span><span class="op">)</span> <span class="co"># Change to "coarse" for global maps / "low" for regional maps</span>
+  <span class="va">world.points</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">worldMap</span><span class="op">)</span>
+  <span class="va">world.points</span><span class="op">$</span><span class="va">region</span> <span class="op">&lt;-</span> <span class="va">world.points</span><span class="op">$</span><span class="va">id</span>
+  <span class="va">world.df</span> <span class="op">&lt;-</span> <span class="va">world.points</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"long"</span>,<span class="st">"lat"</span>,<span class="st">"group"</span>, <span class="st">"region"</span><span class="op">)</span><span class="op">]</span>
+  <span class="op">}</span>
 
 
-<span class="no">map_world</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">color_continents</span> <span class="kw">=</span> <span class="st">"grey80"</span>, <span class="no">color_borders</span> <span class="kw">=</span> <span class="st">"white"</span>, <span class="no">resolution</span> <span class="kw">=</span> <span class="st">"coarse"</span>) {
+<span class="va">map_world</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">color_continents</span> <span class="op">=</span> <span class="st">"grey80"</span>, <span class="va">color_borders</span> <span class="op">=</span> <span class="st">"white"</span>, <span class="va">resolution</span> <span class="op">=</span> <span class="st">"coarse"</span><span class="op">)</span> <span class="op">{</span>
 
   <span class="co"># Background map using the maps package</span>
   <span class="co"># world.df &lt;- map_data("world")</span>
 
-  <span class="no">world.df</span> <span class="kw">&lt;-</span> <span class="fu">map_get_world</span>(<span class="no">resolution</span>)
+  <span class="va">world.df</span> <span class="op">&lt;-</span> <span class="fu">map_get_world</span><span class="op">(</span><span class="va">resolution</span><span class="op">)</span>
 
-  <span class="no">map</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">world.df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">long</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">lat</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="no">group</span>), <span class="kw">fill</span><span class="kw">=</span><span class="no">color_continents</span>, <span class="kw">color</span><span class="kw">=</span><span class="no">color_borders</span>) +
+  <span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">world.df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>, fill<span class="op">=</span><span class="va">color_continents</span>, color<span class="op">=</span><span class="va">color_borders</span><span class="op">)</span> <span class="op">+</span>
     <span class="co"># scale_fill_manual(values= color_continents , guide = FALSE) +</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> (-<span class="fl">4</span>:<span class="fl">4</span>) * <span class="fl">45</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> (-<span class="fl">2</span>:<span class="fl">2</span>) * <span class="fl">30</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Longitude"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Latitude"</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span>(<span class="fl">1.3</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="fl">4</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fl">45</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fl">30</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Longitude"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Latitude"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="fl">1.3</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
     <span class="co"># species_map &lt;- species_map + coord_map ()  # Mercator projection</span>
     <span class="co"># species_map &lt;- species_map + coord_map("gilbert") # Nice for the poles</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>(<span class="no">map</span>)
-  }</pre></body></html></div>
+  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">map</span><span class="op">)</span>
+  <span class="op">}</span></code></pre></div>
 <div id="all-taxa-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#all-taxa-2" class="anchor"></a>All taxa</h2>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"> <span class="fu">map_world</span>() + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">data</span><span class="kw">=</span><span class="no">pr2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">pr2_longitude</span>, <span class="kw">y</span><span class="kw">=</span><span class="no">pr2_latitude</span>), <span class="kw">fill</span><span class="kw">=</span><span class="st">"blue"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">shape</span><span class="kw">=</span><span class="fl">21</span>) +
-               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"PR2 - all sequences"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="fu">map_world</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pr2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">pr2_longitude</span>, y<span class="op">=</span><span class="va">pr2_latitude</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"blue"</span>, size<span class="op">=</span><span class="fl">2</span>, shape<span class="op">=</span><span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
+               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"PR2 - all sequences"</span><span class="op">)</span>  </code></pre></div>
 <p><img src="pr2_stats_files/figure-html/map-1.png" width="700"></p>
 </div>
 <div id="photosynthetic-protists-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#photosynthetic-protists-2" class="anchor"></a>Photosynthetic protists</h2>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"> <span class="fu">map_world</span>() + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">data</span><span class="kw">=</span><span class="no">pr2_photo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span><span class="kw">=</span><span class="no">pr2_longitude</span>, <span class="kw">y</span><span class="kw">=</span><span class="no">pr2_latitude</span>), <span class="kw">fill</span><span class="kw">=</span><span class="st">"red"</span>, <span class="kw">size</span><span class="kw">=</span><span class="fl">2</span>, <span class="kw">shape</span><span class="kw">=</span><span class="fl">21</span>) +
-               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"PR2 - photosynthetic protists sequences"</span>)</pre></body></html></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="fu">map_world</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pr2_photo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">pr2_longitude</span>, y<span class="op">=</span><span class="va">pr2_latitude</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"red"</span>, size<span class="op">=</span><span class="fl">2</span>, shape<span class="op">=</span><span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
+               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"PR2 - photosynthetic protists sequences"</span><span class="op">)</span>  </code></pre></div>
+<p><img src="pr2_stats_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
 </div>
 </div>
   </div>
@@ -418,7 +442,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

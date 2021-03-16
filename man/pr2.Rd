@@ -4,7 +4,9 @@
 \name{pr2}
 \alias{pr2}
 \title{PR2 database - Eukaryotic 18S rRNA sequences.}
-\format{A data frame : 183,973 x 94}
+\format{
+A data frame
+}
 \source{
 PR2 database - \url{https://pr2-database.org/}
 }
@@ -12,12 +14,16 @@ PR2 database - \url{https://pr2-database.org/}
 pr2
 }
 \description{
-The PR2 database is provided as a data frame.  This is a join between the following tables:
+The PR2 database is provided as a data frame.
+}
+\details{
+This is a join between the following tables:
 \itemize{
        \item{pr2_main}
        \item{pr2_taxonomy}
        \item{pr2_sequence}
        \item{pr2_metadata}
+       \item{pr2_silva}
   }
 The metadata contains three types of fields
 \itemize{

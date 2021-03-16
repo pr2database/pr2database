@@ -40,16 +40,7 @@
 
 
 <meta property="og:title" content="PR2 database - Eukaryotic 18S rRNA sequences. — pr2" />
-<meta property="og:description" content="The PR2 database is provided as a data frame.  This is a join between the following tables:
-pr2_main
-pr2_taxonomy
-pr2_sequence
-pr2_metadata
-The metadata contains three types of fields
-gb_ : originating from the GenBank entry
-eukref_ : annotated by the Eukref project
-pr2_ : annotated by pr2 such latitude and longitude
-Description of fields: https://pr2-database.org/documentation/pr2-fields" />
+<meta property="og:description" content="The PR2 database is provided as a data frame." />
 
 
 
@@ -81,7 +72,7 @@ Description of fields: https://pr2-database.org/documentation/pr2-fields" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.12.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.13.0</span>
       </span>
     </div>
 
@@ -107,12 +98,15 @@ Description of fields: https://pr2-database.org/documentation/pr2-fields" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/pr2_geo_origin.html">Tutorial - Plotting sequence location</a>
+      <a href="../articles/pr2_geo_origin.html">Plotting sequence location</a>
     </li>
     <li>
       <a href="../articles/pr2_stats.html">PR2 statistics</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -136,27 +130,31 @@ Description of fields: https://pr2-database.org/documentation/pr2-fields" />
     </div>
 
     <div class="ref-description">
-    <p>The PR2 database is provided as a data frame.  This is a join between the following tables:</p><ul>
+    <p>The PR2 database is provided as a data frame.</p>
+    </div>
+
+    <pre class="usage"><span class='va'>pr2</span></pre>
+
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame</p>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>PR2 database - <a href='https://pr2-database.org/'>https://pr2-database.org/</a></p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a join between the following tables:</p><ul>
 <li><p>pr2_main</p></li>
 <li><p>pr2_taxonomy</p></li>
 <li><p>pr2_sequence</p></li>
 <li><p>pr2_metadata</p></li>
+<li><p>pr2_silva</p></li>
 </ul><p>The metadata contains three types of fields</p><ul>
 <li><p>gb_ : originating from the GenBank entry</p></li>
 <li><p>eukref_ : annotated by the Eukref project</p></li>
 <li><p>pr2_ : annotated by pr2 such latitude and longitude</p></li>
 </ul><p>Description of fields: <a href='https://pr2-database.org/documentation/pr2-fields'>https://pr2-database.org/documentation/pr2-fields</a></p>
-    </div>
-
-    <pre class="usage"><span class='no'>pr2</span></pre>
-
-
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>A data frame : 183,973 x 94</p>
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>PR2 database - <a href='https://pr2-database.org/'>https://pr2-database.org/</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -173,7 +171,7 @@ Description of fields: https://pr2-database.org/documentation/pr2-fields" />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
