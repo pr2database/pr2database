@@ -26,16 +26,6 @@ knitr::opts_chunk$set(
 # - need to build source package to have the vignettes
 ```
 
----
-title: "PR2 statistics"
-author: vaulot
-date: '2018-08-10'
-lastmod: "2019-11-21"
-categories: ["documentation"]
-tags: ["Database", "Statistics", "R-package"]
-summary: "Quick facts about PR2."
----
-
 
 ```{r message=FALSE, warning=FALSE}
   library("ggplot2")
@@ -74,7 +64,7 @@ colnames(pr2)
 
 ## All taxa
 
-Total number of PR2 sequences : `r nrow(pr2)`
+Total number of PR2 sequences : **`r nrow(pr2)`**
 
 ```{r}
 
@@ -84,11 +74,9 @@ Total number of PR2 sequences : `r nrow(pr2)`
 
 ## Photosynthetic protists
 
-Number of photosynthetic protist sequences : `r nrow(pr2_photo)`
+Number of photosynthetic protist sequences : **`r nrow(pr2_photo)`**
 
 ```{r}
-#  stringr::str_c("Number of sequences (active only) : ", nrow(pr2_photo))
-
   pr2_taxa <- pr2_photo %>% select(kingdom:genus, species) %>% summarise_all(funs(n_distinct(.)))
   knitr::kable(pr2_taxa, caption="Number of taxa - photosynthetic protist sequences")
 ```
@@ -97,10 +85,9 @@ Number of photosynthetic protist sequences : `r nrow(pr2_photo)`
 
 _Reference sequences are a subset of PR2 representative of taxonomic groups._
 
-Number of reference sequences : `r nrow(pr2_ref)`
+Number of reference sequences : **`r nrow(pr2_ref)`**
 
 ```{r}
-#  stringr::str_c("Number of reference sequences : ", nrow(pr2_ref))
 
   pr2_taxa <- pr2_ref %>% select(kingdom:genus, species) %>% summarise_all(funs(n_distinct(.)))
   knitr::kable(pr2_taxa, caption="Number of taxa - Reference sequences")

@@ -83,9 +83,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>PR2 statistics</h1>
-                        <h4 class="author">vaulot</h4>
+                        <h4 class="author">Daniel Vaulot</h4>
             
-            <h4 class="date">2018-08-10</h4>
       
       
       <div class="hidden name"><code>pr2_stats.Rmd</code></div>
@@ -127,9 +126,9 @@
 <span class="co">#&gt;  [9] "species"                    "genbank_accession"         </span>
 <span class="co">#&gt; [11] "start"                      "end"                       </span>
 <span class="co">#&gt; [13] "label"                      "gene"                      </span>
-<span class="co">#&gt; [15] "organelle"                  "chimera"                   </span>
-<span class="co">#&gt; [17] "chimera_remark"             "reference_sequence"        </span>
-<span class="co">#&gt; [19] "added_version"              "removed_version"           </span>
+<span class="co">#&gt; [15] "organelle"                  "reference_sequence"        </span>
+<span class="co">#&gt; [17] "added_version"              "edited_version"            </span>
+<span class="co">#&gt; [19] "edited_by"                  "edited_remark"             </span>
 <span class="co">#&gt; [21] "remark"                     "seq_id"                    </span>
 <span class="co">#&gt; [23] "sequence"                   "sequence_length"           </span>
 <span class="co">#&gt; [25] "ambiguities"                "sequence_hash"             </span>
@@ -166,7 +165,7 @@
 <div id="all-taxa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#all-taxa" class="anchor"></a>All taxa</h2>
-<p>Total number of PR2 sequences : 184785</p>
+<p>Total number of PR2 sequences : <strong>184785</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
   <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
@@ -184,25 +183,23 @@
 <th align="right">species</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="right">3</td>
-<td align="right">13</td>
-<td align="right">45</td>
-<td align="right">254</td>
-<td align="right">569</td>
-<td align="right">1346</td>
-<td align="right">22539</td>
-<td align="right">45474</td>
+<td align="right">2</td>
+<td align="right">12</td>
+<td align="right">44</td>
+<td align="right">253</td>
+<td align="right">568</td>
+<td align="right">1345</td>
+<td align="right">22538</td>
+<td align="right">45472</td>
 </tr></tbody>
 </table>
 </div>
 <div id="photosynthetic-protists" class="section level2">
 <h2 class="hasAnchor">
 <a href="#photosynthetic-protists" class="anchor"></a>Photosynthetic protists</h2>
-<p>Number of photosynthetic protist sequences : 21180</p>
+<p>Number of photosynthetic protist sequences : <strong>21184</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#  stringr::str_c("Number of sequences (active only) : ", nrow(pr2_photo))</span>
-
-  <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_photo</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R">  <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_photo</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">pr2_taxa</span>, caption<span class="op">=</span><span class="st">"Number of taxa - photosynthetic protist sequences"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Number of taxa - photosynthetic protist sequences</caption>
@@ -232,10 +229,9 @@
 <h2 class="hasAnchor">
 <a href="#reference-sequences" class="anchor"></a>Reference sequences</h2>
 <p><em>Reference sequences are a subset of PR2 representative of taxonomic groups.</em></p>
-<p>Number of reference sequences : 23628</p>
+<p>Number of reference sequences : <strong>23628</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#  stringr::str_c("Number of reference sequences : ", nrow(pr2_ref))</span>
-
+<code class="sourceCode R">
   <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_ref</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">pr2_taxa</span>, caption<span class="op">=</span><span class="st">"Number of taxa - Reference sequences"</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -251,14 +247,14 @@
 <th align="right">species</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="right">2</td>
-<td align="right">11</td>
-<td align="right">39</td>
-<td align="right">205</td>
-<td align="right">453</td>
-<td align="right">1109</td>
-<td align="right">8682</td>
-<td align="right">13379</td>
+<td align="right">1</td>
+<td align="right">10</td>
+<td align="right">38</td>
+<td align="right">204</td>
+<td align="right">452</td>
+<td align="right">1108</td>
+<td align="right">8681</td>
+<td align="right">13378</td>
 </tr></tbody>
 </table>
 </div>
