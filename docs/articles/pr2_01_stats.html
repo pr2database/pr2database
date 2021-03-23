@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -57,10 +57,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/pr2_geo_origin.html">Plotting sequence location</a>
+      <a href="../articles/pr2_01_stats.html">PR2 statistics</a>
     </li>
     <li>
-      <a href="../articles/pr2_stats.html">PR2 statistics</a>
+      <a href="../articles/pr2_02_silva.html">Comparing PR2 vs. Silva annotations</a>
+    </li>
+    <li>
+      <a href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a>
     </li>
   </ul>
 </li>
@@ -78,8 +81,7 @@
 
       
 
-      </header><script src="pr2_stats_files/header-attrs-2.5/header-attrs.js"></script><link href="pr2_stats_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="pr2_stats_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="pr2_01_stats_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>PR2 statistics</h1>
@@ -87,7 +89,7 @@
             
       
       
-      <div class="hidden name"><code>pr2_stats.Rmd</code></div>
+      <div class="hidden name"><code>pr2_01_stats.Rmd</code></div>
 
     </div>
 
@@ -96,7 +98,6 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://ggplot2.tidyverse.org">"ggplot2"</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"treemap"</span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/">"knitr"</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://forcats.tidyverse.org">"forcats"</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://stringr.tidyverse.org">"stringr"</a></span><span class="op">)</span>
@@ -165,7 +166,7 @@
 <div id="all-taxa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#all-taxa" class="anchor"></a>All taxa</h2>
-<p>Total number of PR2 sequences : <strong>184785</strong></p>
+<p>Total number of PR2 sequences : <strong>184786</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
   <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
@@ -197,7 +198,7 @@
 <div id="photosynthetic-protists" class="section level2">
 <h2 class="hasAnchor">
 <a href="#photosynthetic-protists" class="anchor"></a>Photosynthetic protists</h2>
-<p>Number of photosynthetic protist sequences : <strong>21184</strong></p>
+<p>Number of photosynthetic protist sequences : <strong>21185</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_photo</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">pr2_taxa</span>, caption<span class="op">=</span><span class="st">"Number of taxa - photosynthetic protist sequences"</span><span class="op">)</span></code></pre></div>
@@ -265,11 +266,11 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">100</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span>
                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"PR2 sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"All sequences"</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/sequence%20length-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/sequence%20length-1.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pr2_ref</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">100</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span>
                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"PR2 sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Reference sequences"</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/sequence%20length-2.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/sequence%20length-2.png" width="700"></p>
 </div>
 <div id="taxonomic-composition" class="section level1">
 <h1 class="hasAnchor">
@@ -310,21 +311,21 @@
 <a href="#all-groups" class="anchor"></a>All groups</h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="fu">pr2_treemap</span><span class="op">(</span><span class="va">pr2</span>, <span class="va">division</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 <div id="reference-sequences-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reference-sequences-1" class="anchor"></a>Reference sequences</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="fu">pr2_treemap</span><span class="op">(</span><span class="va">pr2_ref</span>, <span class="va">division</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 </div>
 <div id="photosynthetic-protists-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#photosynthetic-protists-1" class="anchor"></a>Photosynthetic protists</h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="fu">pr2_treemap</span><span class="op">(</span><span class="va">pr2_photo</span>,<span class="va">division</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 </div>
 </div>
 <div id="genera-most-represented" class="section level2">
@@ -341,7 +342,7 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Most represented genera - all"</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Genera"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/genera%20histo-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/genera%20histo-1.png" width="700"></p>
 </div>
 <div id="reference-sequences-2" class="section level3">
 <h3 class="hasAnchor">
@@ -354,7 +355,7 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Reference sequences"</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Genera"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 </div>
 <div id="only-photosynthetic-protists" class="section level3">
 <h3 class="hasAnchor">
@@ -368,7 +369,7 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Most represented genera - only photosynthetic protists"</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Genera"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span></code></pre></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 </div>
 </div>
 </div>
@@ -410,7 +411,7 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="fu">map_world</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pr2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">pr2_longitude</span>, y<span class="op">=</span><span class="va">pr2_latitude</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"blue"</span>, size<span class="op">=</span><span class="fl">2</span>, shape<span class="op">=</span><span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"PR2 - all sequences"</span><span class="op">)</span>  </code></pre></div>
-<p><img src="pr2_stats_files/figure-html/map-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/map-1.png" width="700"></p>
 </div>
 <div id="photosynthetic-protists-2" class="section level2">
 <h2 class="hasAnchor">
@@ -418,7 +419,7 @@
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="fu">map_world</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">pr2_photo</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">pr2_longitude</span>, y<span class="op">=</span><span class="va">pr2_latitude</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"red"</span>, size<span class="op">=</span><span class="fl">2</span>, shape<span class="op">=</span><span class="fl">21</span><span class="op">)</span> <span class="op">+</span>
                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"PR2 - photosynthetic protists sequences"</span><span class="op">)</span>  </code></pre></div>
-<p><img src="pr2_stats_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p><img src="pr2_01_stats_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
 </div>
 </div>
   </div>
