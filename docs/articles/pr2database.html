@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.14.0</span>
       </span>
     </div>
 
@@ -65,6 +65,9 @@
     <li>
       <a href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a>
     </li>
+    <li>
+      <a href="../articles/pr2_04_decipher.html">Train DECIPHER with PR2</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -81,7 +84,7 @@
 
       
 
-      </header><script src="pr2database_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="pr2database_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Get started</h1>
@@ -145,16 +148,16 @@ In R CMD INSTALL</code></pre>
 <span class="co">#&gt; [21] "remark"                     "seq_id"                    </span>
 <span class="co">#&gt; [23] "sequence"                   "sequence_length"           </span>
 <span class="co">#&gt; [25] "ambiguities"                "sequence_hash"             </span>
-<span class="co">#&gt; [27] "gb_date"                    "gb_definition"             </span>
-<span class="co">#&gt; [29] "gb_organism"                "gb_organelle"              </span>
-<span class="co">#&gt; [31] "gb_taxonomy"                "gb_strain"                 </span>
-<span class="co">#&gt; [33] "gb_culture_collection"      "gb_clone"                  </span>
-<span class="co">#&gt; [35] "gb_isolate"                 "gb_isolation_source"       </span>
-<span class="co">#&gt; [37] "gb_specimen_voucher"        "gb_host"                   </span>
-<span class="co">#&gt; [39] "gb_collection_date"         "gb_environmental_sample"   </span>
-<span class="co">#&gt; [41] "gb_country"                 "gb_lat_lon"                </span>
-<span class="co">#&gt; [43] "gb_collected_by"            "gb_note"                   </span>
-<span class="co">#&gt; [45] "gb_sequence"                "gb_publication"            </span>
+<span class="co">#&gt; [27] "gb_date"                    "gb_division"               </span>
+<span class="co">#&gt; [29] "gb_definition"              "gb_organism"               </span>
+<span class="co">#&gt; [31] "gb_organelle"               "gb_taxonomy"               </span>
+<span class="co">#&gt; [33] "gb_strain"                  "gb_culture_collection"     </span>
+<span class="co">#&gt; [35] "gb_clone"                   "gb_isolate"                </span>
+<span class="co">#&gt; [37] "gb_isolation_source"        "gb_specimen_voucher"       </span>
+<span class="co">#&gt; [39] "gb_host"                    "gb_collection_date"        </span>
+<span class="co">#&gt; [41] "gb_environmental_sample"    "gb_country"                </span>
+<span class="co">#&gt; [43] "gb_lat_lon"                 "gb_collected_by"           </span>
+<span class="co">#&gt; [45] "gb_note"                    "gb_publication"            </span>
 <span class="co">#&gt; [47] "gb_authors"                 "gb_journal"                </span>
 <span class="co">#&gt; [49] "eukref_name"                "eukref_source"             </span>
 <span class="co">#&gt; [51] "eukref_env_material"        "eukref_env_biome"          </span>
@@ -170,7 +173,8 @@ In R CMD INSTALL</code></pre>
 <span class="co">#&gt; [71] "pr2_location_lon"           "pr2_sequence_origin"       </span>
 <span class="co">#&gt; [73] "metadata_remark"            "pr2_continent"             </span>
 <span class="co">#&gt; [75] "pr2_country_geocode"        "pr2_country_lat"           </span>
-<span class="co">#&gt; [77] "pr2_country_lon"            "silva_taxonomy"</span></code></pre></div>
+<span class="co">#&gt; [77] "pr2_country_lon"            "silva_taxonomy"            </span>
+<span class="co">#&gt; [79] "organelle_code"</span></code></pre></div>
 </div>
 <div id="working-with-the-database" class="section level1">
 <h1 class="hasAnchor">
@@ -190,7 +194,7 @@ In R CMD INSTALL</code></pre>
 <p>Load the libraries</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>    <span class="co"># For plots</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>    <span class="co"># For plots</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/Biostrings">Biostrings</a></span><span class="op">)</span> <span class="co"># To save fasta files</span></code></pre></div>
 </div>
 <div id="selecting-sequences-from-a-specific-taxon" class="section level2">
@@ -209,20 +213,20 @@ In R CMD INSTALL</code></pre>
                                               <span class="va">sequence_length</span>, <span class="va">sequence</span>, <span class="va">reference_sequence</span>  <span class="op">)</span>
   
   <span class="va">pr2_ostreo</span>
-<span class="co">#&gt; # A tibble: 327 x 10</span>
-<span class="co">#&gt;    genbank_accessi~ species pr2_sample_type gb_strain gb_clone pr2_latitude</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 AF525872         Ostreo~ environmental   &lt;NA&gt;      UEPACIp5         NA  </span>
-<span class="co">#&gt;  2 EU562149         Ostreo~ environmental   &lt;NA&gt;      IND2.6           NA  </span>
-<span class="co">#&gt;  3 AY425309         Ostreo~ environmental   &lt;NA&gt;      RA01041~         NA  </span>
-<span class="co">#&gt;  4 GQ426346         Ostreo~ culture         CB6       &lt;NA&gt;             NA  </span>
-<span class="co">#&gt;  5 KC583118         Ostreo~ environmental   &lt;NA&gt;      RS.12f.~         NA  </span>
-<span class="co">#&gt;  6 JN862906         Ostreo~ culture         BCC48000  &lt;NA&gt;             NA  </span>
-<span class="co">#&gt;  7 JQ692065         Ostreo~ environmental   &lt;NA&gt;      PUPF_60         -43.3</span>
-<span class="co">#&gt;  8 FR874749         Ostreo~ environmental   &lt;NA&gt;      1815F12          60.3</span>
-<span class="co">#&gt;  9 FJ431431         Ostreo~ environmental   &lt;NA&gt;      RA07100~         NA  </span>
-<span class="co">#&gt; 10 EU561670         Ostreo~ environmental   &lt;NA&gt;      IND1.11         -35.0</span>
-<span class="co">#&gt; # ... with 317 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
+<span class="co">#&gt; # A tibble: 290 x 10</span>
+<span class="co">#&gt;    genbank_accession species    pr2_sample_type gb_strain gb_clone  pr2_latitude</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 AF525872          Ostreococ~ environmental   &lt;NA&gt;      UEPACIp5          NA  </span>
+<span class="co">#&gt;  2 EU562149          Ostreococ~ environmental   &lt;NA&gt;      IND2.6            NA  </span>
+<span class="co">#&gt;  3 AY425309          Ostreococ~ environmental   &lt;NA&gt;      RA010412~         NA  </span>
+<span class="co">#&gt;  4 GQ426346          Ostreococ~ culture         CB6       &lt;NA&gt;              NA  </span>
+<span class="co">#&gt;  5 KC583118          Ostreococ~ environmental   &lt;NA&gt;      RS.12f.1~         NA  </span>
+<span class="co">#&gt;  6 JN862906          Ostreococ~ culture         BCC48000  &lt;NA&gt;              NA  </span>
+<span class="co">#&gt;  7 JQ692065          Ostreococ~ environmental   &lt;NA&gt;      PUPF_60          -43.3</span>
+<span class="co">#&gt;  8 FR874749          Ostreococ~ environmental   &lt;NA&gt;      1815F12           60.3</span>
+<span class="co">#&gt;  9 FJ431431          Ostreococ~ environmental   &lt;NA&gt;      RA071004~         NA  </span>
+<span class="co">#&gt; 10 EU561670          Ostreococ~ environmental   &lt;NA&gt;      IND1.11          -35.0</span>
+<span class="co">#&gt; # ... with 280 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   sequence_length &lt;int&gt;, sequence &lt;chr&gt;, reference_sequence &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="exporting-the-sequences-to-fasta" class="section level2">
@@ -245,7 +249,7 @@ In R CMD INSTALL</code></pre>
 
   <span class="co"># Displaying the Biostring set</span>
   <span class="va">seq_ostreo</span>
-<span class="co">#&gt; DNAStringSet object of length 327:</span>
+<span class="co">#&gt; DNAStringSet object of length 290:</span>
 <span class="co">#&gt;       width seq                                             names               </span>
 <span class="co">#&gt;   [1]  1766 ACCTGGTTGATCCTGCCAGTAG...AGGTGAACCTGCAGAAGGATCA AF525872|Ostreoco...</span>
 <span class="co">#&gt;   [2]   836 AAAGCTCGTAGTCGGATTTTGG...TCTGGGCCGCACGCGCGCTACA EU562149|Ostreoco...</span>
@@ -253,11 +257,11 @@ In R CMD INSTALL</code></pre>
 <span class="co">#&gt;   [4]  1652 AGCCATGCATGTCTAAGTATAA...TGGATTACCGTGGGAAATTCGT GQ426346|Ostreoco...</span>
 <span class="co">#&gt;   [5]  1764 CCTGGTTGATCCTGCCAGTAGT...TAGGTGAACCTGCAGAAGGATC KC583118|Ostreoco...</span>
 <span class="co">#&gt;   ...   ... ...</span>
-<span class="co">#&gt; [323]  1570 CAATTTGAATGAGATTCAAAAA...TCAAAAAAGACCAAGCCGGAAG NC_008289|Ostreoc...</span>
-<span class="co">#&gt; [324]  1609 TGCGAATGGCTCATTAAATCAG...CCATTGGATTACCGTGGGAAAT KT860897|Ostreoco...</span>
-<span class="co">#&gt; [325]   656 TTTAGTCGGATTTTGGCTGAGA...ATGGCCGTTCTTAATTGGGGGA KT860646|Ostreoco...</span>
-<span class="co">#&gt; [326]   672 GCTCGTAGTCGGACTTTGGCTG...GTTGGTGGAGTGATTTGTCTGG KT860808|Ostreoco...</span>
-<span class="co">#&gt; [327]   672 GCTCGTAGTCGGACTTTGGCTG...TAGTTGGTGGAGTGATTTGTCT KT860809|Ostreoco...</span>
+<span class="co">#&gt; [286]  1766 ACCTGGTTGATCCTGCCAGTAG...AGGTGAACCTGCGGAAGGATCA CR954212|Ostreoco...</span>
+<span class="co">#&gt; [287]  1609 TGCGAATGGCTCATTAAATCAG...CCATTGGATTACCGTGGGAAAT KT860897|Ostreoco...</span>
+<span class="co">#&gt; [288]   656 TTTAGTCGGATTTTGGCTGAGA...ATGGCCGTTCTTAATTGGGGGA KT860646|Ostreoco...</span>
+<span class="co">#&gt; [289]   672 GCTCGTAGTCGGACTTTGGCTG...GTTGGTGGAGTGATTTGTCTGG KT860808|Ostreoco...</span>
+<span class="co">#&gt; [290]   672 GCTCGTAGTCGGACTTTGGCTG...TAGTTGGTGGAGTGATTTGTCT KT860809|Ostreoco...</span>
     
   <span class="co"># Saving the sequences as a fasta file</span>
   <span class="fu">Biostrings</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html">writeXStringSet</a></span><span class="op">(</span><span class="va">seq_ostreo</span>, <span class="st">"examples/pr2_ostreo.fasta"</span>, width <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></code></pre></div>
@@ -309,18 +313,18 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 
   <span class="va">pr2_ostreo_reference</span> 
 <span class="co">#&gt; # A tibble: 32 x 10</span>
-<span class="co">#&gt;    genbank_accessi~ species pr2_sample_type gb_strain gb_clone pr2_latitude</span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 AF525872         Ostreo~ environmental   &lt;NA&gt;      UEPACIp5           NA</span>
-<span class="co">#&gt;  2 JN862906         Ostreo~ culture         BCC48000  &lt;NA&gt;               NA</span>
-<span class="co">#&gt;  3 AY425308         Ostreo~ culture         RCC 356   1                  NA</span>
-<span class="co">#&gt;  4 AF525852         Ostreo~ environmental   &lt;NA&gt;      UEPACDp1           NA</span>
-<span class="co">#&gt;  5 AF525858         Ostreo~ environmental   &lt;NA&gt;      UEPAC30~           NA</span>
-<span class="co">#&gt;  6 AF525857         Ostreo~ environmental   &lt;NA&gt;      UEPAC05~           NA</span>
-<span class="co">#&gt;  7 AF525861         Ostreo~ environmental   &lt;NA&gt;      UEPACGp3           NA</span>
-<span class="co">#&gt;  8 AF525848         Ostreo~ environmental   &lt;NA&gt;      UEPACAp1           NA</span>
-<span class="co">#&gt;  9 AF525859         Ostreo~ environmental   &lt;NA&gt;      UEPAC30~           NA</span>
-<span class="co">#&gt; 10 AF525855         Ostreo~ environmental   &lt;NA&gt;      UEPACXp1           NA</span>
+<span class="co">#&gt;    genbank_accession species     pr2_sample_type gb_strain gb_clone pr2_latitude</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 AF525872          Ostreococc~ environmental   &lt;NA&gt;      UEPACIp5           NA</span>
+<span class="co">#&gt;  2 JN862906          Ostreococc~ culture         BCC48000  &lt;NA&gt;               NA</span>
+<span class="co">#&gt;  3 AY425308          Ostreococc~ culture         RCC 356   1                  NA</span>
+<span class="co">#&gt;  4 AF525852          Ostreococc~ environmental   &lt;NA&gt;      UEPACDp1           NA</span>
+<span class="co">#&gt;  5 AF525858          Ostreococc~ environmental   &lt;NA&gt;      UEPAC30~           NA</span>
+<span class="co">#&gt;  6 AF525857          Ostreococc~ environmental   &lt;NA&gt;      UEPAC05~           NA</span>
+<span class="co">#&gt;  7 AF525861          Ostreococc~ environmental   &lt;NA&gt;      UEPACGp3           NA</span>
+<span class="co">#&gt;  8 AF525848          Ostreococc~ environmental   &lt;NA&gt;      UEPACAp1           NA</span>
+<span class="co">#&gt;  9 AF525859          Ostreococc~ environmental   &lt;NA&gt;      UEPAC30~           NA</span>
+<span class="co">#&gt; 10 AF525855          Ostreococc~ environmental   &lt;NA&gt;      UEPACXp1           NA</span>
 <span class="co">#&gt; # ... with 22 more rows, and 4 more variables: pr2_longitude &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   sequence_length &lt;int&gt;, sequence &lt;chr&gt;, reference_sequence &lt;int&gt;</span>
   

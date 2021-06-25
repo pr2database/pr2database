@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.14.0</span>
       </span>
     </div>
 
@@ -105,6 +105,9 @@
     <li>
       <a href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a>
     </li>
+    <li>
+      <a href="../articles/pr2_04_decipher.html">Train DECIPHER with PR2</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -130,20 +133,93 @@
       
     </div>
 
+    <div id="pr2database-4140" class="section level1">
+<h1 class="page-header" data-toc-text="4.14.0">
+<a href="#pr2database-4140" class="anchor"></a>pr2database 4.14.0</h1>
+<p>Released: 2021-06-25</p>
+<p><a href="https://github.com/pr2database/pr2database/releases/tag/v4.14.0">Detailed changes</a></p>
+<div id="a-single-ssu-database" class="section level3">
+<h3 class="hasAnchor">
+<a href="#a-single-ssu-database" class="anchor"></a>A single SSU database</h3>
+<p>From version 4.14.0, a single SSU database is provided which contains sequences for:</p>
+<ul>
+<li>18S rRNA from nuclear and nucleomorph</li>
+<li>16S rRNA from plastid, apicoplast, chromatophore, mitochondrion</li>
+<li>16S rRNA from a small selection of bacteria</li>
+</ul>
+<p>The rationale is that the database can now be used to detect bacterial sequences that are amplified with either 18S rRNA or “universal” primers. These sequences can be further assigned with Silva or GTDB.</p>
+<p>In order to allow correct assignation with software such as DECIPHER (IDTax) for organelle, the taxonomy is appended with 4 letters corresponding to the organelle</p>
+<table>
+<thead><tr class="header">
+<th>Organelle</th>
+<th>Taxonomy suffix</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>nucleus</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>nucleomorph</td>
+<td>:nucl</td>
+</tr>
+<tr class="odd">
+<td>plastid</td>
+<td>:plas</td>
+</tr>
+<tr class="even">
+<td>apicoplast</td>
+<td>:apic</td>
+</tr>
+<tr class="odd">
+<td>chromatophore</td>
+<td>:chrom</td>
+</tr>
+<tr class="even">
+<td>mitochondrion</td>
+<td>:mito</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="major-groups-for-which-taxonomy-has-been-updated" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-groups-for-which-taxonomy-has-been-updated" class="anchor"></a>Major groups for which taxonomy has been updated</h3>
+<ul>
+<li>Apicomplexa</li>
+<li>Labyrinthulids</li>
+<li>Radiolaria</li>
+<li>Foraminifera</li>
+<li>Radiolaria</li>
+</ul>
+</div>
+</div>
     <div id="pr2database-4130" class="section level1">
 <h1 class="page-header" data-toc-text="4.13.0">
 <a href="#pr2database-4130" class="anchor"></a>pr2database 4.13.0</h1>
 <ul>
 <li>Released: 2021-03-17</li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.13.0">Detailed changes</a></li>
+</ul>
+<div id="major-groups-for-which-taxonomy-has-been-updated-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-groups-for-which-taxonomy-has-been-updated-1" class="anchor"></a>Major groups for which taxonomy has been updated</h3>
+<ul>
 <li>Dinophyceae, Suessiales - Taxonomy updated (J. del Campo)</li>
 <li>Stramenopiles, Diatoms, Thalassiosirales - Taxonomy updated (L. Arsenieff)</li>
 <li>Stramenopiles, Pelagophyceae - Taxonomy updated (Ana Maria Cabello)</li>
 <li>Stramenopiles, Chrysophyceae - Taxonomy updated (D. Vaulot)</li>
+</ul>
+</div>
+<div id="other-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-changes" class="anchor"></a>Other changes</h3>
+<ul>
 <li>Adding sequences from the Roscoff Culture Collection (D. Vaulot)</li>
 <li>Adding sequences from Silva identical to existing sequences in PR2 based on hash sequence value.</li>
 <li>Adding Silva taxonomic annotation (D. Vaulot)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.13.0">Detailed changes</a></li>
 </ul>
+</div>
 </div>
     <div id="pr2database-4120" class="section level1">
 <h1 class="page-header" data-toc-text="4.12.0">
@@ -151,12 +227,24 @@
 <ul>
 <li>Released: 2019-08-08</li>
 <li>Geolocalisation of sequences (D. Vaulot)</li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.12.0">Detailed changes</a></li>
+</ul>
+<div id="major-groups-for-which-taxonomy-has-been-updated-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-groups-for-which-taxonomy-has-been-updated-2" class="anchor"></a>Major groups for which taxonomy has been updated</h3>
+<ul>
 <li>Apicomplexa - Taxonomy updated - 2619 new sequences, 5889+239 sequences updated, 89 sequences removed (J. del Campo)</li>
 <li>Chaetoceros - 196 new sequences added and taxonomy updated (C. Gaonkar)</li>
 <li>Stramenopiles - Taxonomy updated (R. Massana)</li>
-<li>16S plastid and cyanobacteria sequences added from PhytoRef database (J. Decelle/ D. Vaulot)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.12.0">Detailed changes</a></li>
 </ul>
+</div>
+<div id="other-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-changes-1" class="anchor"></a>Other changes</h3>
+<ul>
+<li>16S plastid and cyanobacteria sequences added from PhytoRef database (J. Decelle/ D. Vaulot)</li>
+</ul>
+</div>
 </div>
     <div id="pr2database-4111" class="section level1">
 <h1 class="page-header" data-toc-text="4.11.1">

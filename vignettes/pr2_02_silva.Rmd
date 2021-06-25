@@ -169,19 +169,6 @@ Silva level 3 corresponds roughly to PR2 level 2 (supergroup). But this is not t
   g1+ g2
 ```
 
-### PR2 division level
-
-
-```{r}
-  g1 <- pr2_treemap(pr2_silva, division, class) +
-    labs(title = "PR2 - Division")
-  g2 <- pr2_treemap(pr2_silva, rank_silva_4, rank_silva_5) +
-    labs(title = "Silva - level 4")
-  
-  g1 + g2
-```
-
-
 ## Some issues with Silva annotations
 
 ### Many annotations contain "uncultured"
