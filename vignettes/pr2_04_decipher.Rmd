@@ -35,7 +35,7 @@ IDTax requires first to train the model which can takes a bit of time depending 
 
 In this tutorial we explain how to train the model and assign a small metabarcoding dataset. The original code originates from [DECIPHER manual](https://www.bioconductor.org/packages/release/bioc/vignettes/DECIPHER/inst/doc/ClassifySequences.pdf)
 
-Here we perform the training on a very small set of 100 sequences.  Typically each training iteration for the full PR2 database will take about 7 hours on 2.3 GHz PC with 8 processors and 32 G of memory. The trained dataset is about 300 Mb.
+Here we perform the training on a very small set of 100 sequences.  Typically each training iteration for the full PR2 database will take about 7 hours on 2.3 GHz PC with 8 processors and 32 G of memory. In contrast on the ABIMS Roscoff server using 32G and 1 processor, one iteration took 20 min.  The trained dataset is about 300 Mb.  It is available as part of the latest [PR2 version](https://github.com/pr2database/pr2database/releases).
 
 ## Load the necessary libraries
 
