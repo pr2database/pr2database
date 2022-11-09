@@ -9,7 +9,7 @@ Description: PR2 database
 License: CC-BY 4.0
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     knitr,
     rmarkdown
