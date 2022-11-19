@@ -3,7 +3,7 @@ title: "Plotting sequence location"
 author: "Daniel Vaulot"
 output: rmarkdown::html_document
 vignette: >
-  %\VignetteIndexEntry{tutorial: plotting sequence location}
+  %\VignetteIndexEntry{tutorial: Plotting sequence location}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

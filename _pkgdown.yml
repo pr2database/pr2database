@@ -1,1 +1,44 @@
-destination: docs
+home:
+  title: An R package for the PR2 reference database
+  description: The PR2 database contains eukaryotic 18S rRNA sequences taxonomically annotated. 
+
+articles:
+- title: PR2 shiny application
+  navbar: ~
+  contents:
+  - vignette-shiny-presentation
+
+- title: Examples of use
+  navbar: ~
+  contents:
+  - pr2_01_stats
+  - pr2_02_silva
+  - pr2_03_geo_origin
+  - pr2_04_decipher
+
+navbar:
+  components:
+    home: ~
+    articles:
+     text: Articles
+     menu:
+     - text: "PR2 shiny application"
+     - text: "General presentation"
+       href: articles/vignette-shiny-presentation.html
+     - text: -------     
+     - text: "Examples of use"
+     - text: "PR2 statistics"
+       href: articles/pr2_01_stats.html
+     - text: "Comparing PR2 vs Silva annotations"
+       href: articles/pr2_02_silva.html
+     - text: "Plotting sequence location"
+       href: articles/pr2_03_geo_origin.html
+     - text: "Train DECIPHER with PR2"
+       href: articles/pr2_04_decipher.html
+
+template:
+  bootstrap: 5
+  theme: breeze-light
+
+code:
+  width: 80

@@ -3,7 +3,7 @@ title: "Get started"
 author: "Daniel Vaulot"
 output: rmarkdown::html_document
 vignette: >
-  %\VignetteIndexEntry{get started}
+  %\VignetteIndexEntry{Get started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

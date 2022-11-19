@@ -4,396 +4,397 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="pr2database">
 <title>Train DECIPHER with PR2 • pr2database</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Train DECIPHER with PR2">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Train DECIPHER with PR2">
 <meta property="og:description" content="pr2database">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">pr2database</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.14.0</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">pr2database</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.0</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../articles/pr2database.html">Get started</a>
 </li>
-<li>
-  <a href="../articles/pr2database.html">Get started</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <h6 class="dropdown-header" data-toc-skip>PR2 shiny application</h6>
+    <a class="dropdown-item" href="../articles/vignette-shiny-presentation.html">General presentation</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Examples of use</h6>
+    <a class="dropdown-item" href="../articles/pr2_01_stats.html">PR2 statistics</a>
+    <a class="dropdown-item" href="../articles/pr2_02_silva.html">Comparing PR2 vs Silva annotations</a>
+    <a class="dropdown-item" href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a>
+    <a class="dropdown-item" href="../articles/pr2_04_decipher.html">Train DECIPHER with PR2</a>
+  </div>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/pr2_01_stats.html">PR2 statistics</a>
-    </li>
-    <li>
-      <a href="../articles/pr2_02_silva.html">Comparing PR2 vs. Silva annotations</a>
-    </li>
-    <li>
-      <a href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a>
-    </li>
-    <li>
-      <a href="../articles/pr2_04_decipher.html">Train DECIPHER with PR2</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav"></ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><script src="pr2_04_decipher_files/header-attrs-2.8/header-attrs.js"></script><script src="pr2_04_decipher_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="pr2_04_decipher_files/jquery-3.5.1/jquery.min.js"></script><link href="pr2_04_decipher_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="pr2_04_decipher_files/datatables-binding-0.18/datatables.js"></script><link href="pr2_04_decipher_files/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="pr2_04_decipher_files/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="pr2_04_decipher_files/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="pr2_04_decipher_files/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="pr2_04_decipher_files/crosstalk-1.1.1/js/crosstalk.min.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Train DECIPHER with PR2</h1>
-                        <h4 class="author">Daniel Vaulot</h4>
+</nav><div class="container template-article">
+<script src="pr2_04_decipher_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="pr2_04_decipher_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="pr2_04_decipher_files/datatables-binding-0.20/datatables.js"></script><script src="pr2_04_decipher_files/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="pr2_04_decipher_files/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="pr2_04_decipher_files/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="pr2_04_decipher_files/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="pr2_04_decipher_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="pr2_04_decipher_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Train DECIPHER with PR2</h1>
+                        <h4 data-toc-skip class="author">Daniel
+Vaulot</h4>
             
       
       
-      <div class="hidden name"><code>pr2_04_decipher.Rmd</code></div>
-
+      <div class="d-none name"><code>pr2_04_decipher.Rmd</code></div>
     </div>
 
     
     
-<p>Currently there are two major functions under R to assign metabarcoding sequences: * AssignTax from the dada2 package (based on the RDP Naive Bayesian assigner) * IDTax from the DECIPHER package (<a href="https://doi.org/10.1186/s40168-018-0521-5">Murali, A., Bhargava, A., &amp; Wright, E. S. (2018). IDTAXA: A novel approach for accurate taxonomic classification of microbiome sequences. Microbiome, 6(1), 140.</a>)</p>
-<p>IDTax requires first to train the model which can takes a bit of time depending on the database size. However, after the model is trained assignement is quite fast.</p>
-<p>In this tutorial we explain how to train the model and assign a small metabarcoding dataset. The original code originates from <a href="https://www.bioconductor.org/packages/release/bioc/vignettes/DECIPHER/inst/doc/ClassifySequences.pdf">DECIPHER manual</a></p>
-<p>Here we perform the training on a very small set of 100 sequences. Typically each training iteration for the full PR2 database will take about 7 hours on 2.3 GHz PC with 8 processors and 32 G of memory. The trained dataset is about 300 Mb.</p>
-<div id="load-the-necessary-libraries" class="section level2">
-<h2 class="hasAnchor">
-<a href="#load-the-necessary-libraries" class="anchor"></a>Load the necessary libraries</h2>
+<p>Currently there are two major functions under R to assign
+metabarcoding sequences: * AssignTax from the dada2 package (based on
+the RDP Naive Bayesian assigner) * IDTax from the DECIPHER package (<a href="https://doi.org/10.1186/s40168-018-0521-5" class="external-link">Murali, A., Bhargava,
+A., &amp; Wright, E. S. (2018). IDTAXA: A novel approach for accurate
+taxonomic classification of microbiome sequences. Microbiome, 6(1),
+140.</a>)</p>
+<p>IDTax requires first to train the model which can takes a bit of time
+depending on the database size. However, after the model is trained
+assignement is quite fast.</p>
+<p>In this tutorial we explain how to train the model and assign a small
+metabarcoding dataset. The original code originates from <a href="https://www.bioconductor.org/packages/release/bioc/vignettes/DECIPHER/inst/doc/ClassifySequences.pdf" class="external-link">DECIPHER
+manual</a></p>
+<p>Here we perform the training on a very small set of 100 sequences.
+Typically each training iteration for the full PR2 database will take
+about 7 hours on 2.3 GHz PC with 8 processors and 32 G of memory. In
+contrast on the ABIMS Roscoff server using 32G and 1 processor, one
+iteration took 20 min. The trained dataset is about 300 Mb. It is
+available as part of the latest <a href="https://github.com/pr2database/pr2database/releases" class="external-link">PR2
+version</a>.</p>
+<div class="section level2">
+<h2 id="load-the-necessary-libraries">Load the necessary libraries<a class="anchor" aria-label="anchor" href="#load-the-necessary-libraries"></a>
+</h2>
 <ul>
-<li>See instructions on the <a href="https://www.bioconductor.org/packages/release/bioc/html/DECIPHER.html">Bioconductor page</a> to install DECIPHER</li>
+<li>See instructions on the <a href="https://www.bioconductor.org/packages/release/bioc/html/DECIPHER.html" class="external-link">Bioconductor
+page</a> to install DECIPHER</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DECIPHER</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leeper/rio">rio</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT">DT</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">DECIPHER</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leeper/rio" class="external-link">rio</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT" class="external-link">DT</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="define-parameters-and-files" class="section level2">
-<h2 class="hasAnchor">
-<a href="#define-parameters-and-files" class="anchor"></a>Define parameters and files</h2>
-<p>Please refer to <a href="https://www.bioconductor.org/packages/release/bioc/vignettes/DECIPHER/inst/doc/ClassifySequences.pdf">DECIPHER manual</a> for information about the different parameters.</p>
+<div class="section level2">
+<h2 id="define-parameters-and-files">Define parameters and files<a class="anchor" aria-label="anchor" href="#define-parameters-and-files"></a>
+</h2>
+<p>Please refer to <a href="https://www.bioconductor.org/packages/release/bioc/vignettes/DECIPHER/inst/doc/ClassifySequences.pdf" class="external-link">DECIPHER
+manual</a> for information about the different parameters.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">file_training</span> <span class="op">=</span> <span class="st">"examples/pr2_version_4.14.0_SSU_dada2.fasta.gz"</span>
-<span class="va">file_trained</span> <span class="op">=</span> <span class="st">"examples/pr2_version_4.14.0_SSU.trained.sample.rds"</span>
-<span class="va">file_problems</span> <span class="op">=</span> <span class="st">"examples/pr2_version_4.14.0_SSU.problems.sample.rds"</span>
-
-<span class="va">maxGroupSize</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="co"># max sequences per label (&gt;= 1)</span>
-<span class="va">allowGroupRemoval</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span>
-
-<span class="va">maxIterations</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="co"># must be &gt;= 1</span>
-  </code></pre></div>
+<code class="sourceCode R"><span><span class="va">file_training</span> <span class="op">=</span> <span class="st">"examples/pr2_version_4.14.0_SSU_dada2.fasta.gz"</span></span>
+<span><span class="va">file_trained</span> <span class="op">=</span> <span class="st">"examples/pr2_version_4.14.0_SSU.trained.sample.rds"</span></span>
+<span><span class="va">file_problems</span> <span class="op">=</span> <span class="st">"examples/pr2_version_4.14.0_SSU.problems.sample.rds"</span></span>
+<span></span>
+<span><span class="va">maxGroupSize</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="co"># max sequences per label (&gt;= 1)</span></span>
+<span><span class="va">allowGroupRemoval</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span></span>
+<span></span>
+<span><span class="va">maxIterations</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="co"># must be &gt;= 1</span></span>
+<span>  </span></code></pre></div>
 </div>
-<div id="train-model" class="section level2">
-<h2 class="hasAnchor">
-<a href="#train-model" class="anchor"></a>Train model</h2>
-<div id="iterations" class="section level3">
-<h3 class="hasAnchor">
-<a href="#iterations" class="anchor"></a>Iterations</h3>
+<div class="section level2">
+<h2 id="train-model">Train model<a class="anchor" aria-label="anchor" href="#train-model"></a>
+</h2>
+<div class="section level3">
+<h3 id="iterations">Iterations<a class="anchor" aria-label="anchor" href="#iterations"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Read data -------------------------------------------------------------</span>
-
-<span class="va">seqs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html">readDNAStringSet</a></span><span class="op">(</span><span class="va">file_training</span><span class="op">)</span>
-
-<span class="co"># Sample 1000 sequences  ---------------------------------------------------</span>
-<span class="va">seqs</span> <span class="op">=</span> <span class="va">seqs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">]</span>
-
-
-<span class="co"># Taxo groups -------------------------------------------------------------</span>
-
-<span class="co"># obtain the taxonomic assignments</span>
-<span class="va">groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span> <span class="co"># sequence names</span>
-
-<span class="co"># All taxos must start with "Root;"</span>
-<span class="va">groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"Root;"</span>,<span class="va">groups</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span><span class="op">&lt;-</span><span class="va">groups</span>
-
-<span class="va">groupCounts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">groups</span><span class="op">)</span>
-<span class="va">u_groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">groupCounts</span><span class="op">)</span> <span class="co"># unique groups</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Number of groups: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">u_groups</span><span class="op">)</span>, <span class="st">'\n'</span><span class="op">)</span> <span class="co"># number of group</span>
-<span class="co">#&gt; Number of groups:  735</span>
-
-<span class="va">taxid</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-
-<span class="co"># Pruning group size ---</span>
-
-<span class="va">remove</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">logical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">groupCounts</span> <span class="op">&gt;</span> <span class="va">maxGroupSize</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">groups</span><span class="op">==</span><span class="va">u_groups</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-  <span class="va">keep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">index</span><span class="op">)</span>, <span class="va">maxGroupSize</span><span class="op">)</span>
-  <span class="va">remove</span><span class="op">[</span><span class="va">index</span><span class="op">[</span><span class="op">-</span><span class="va">keep</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Number of sequences eliminated: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">remove</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span>
-<span class="co">#&gt; Number of sequences eliminated:  17</span>
-
-<span class="co"># Iteratively train classifier -----------------------------------------------</span>
-
-<span class="va">probSeqsPrev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">integer</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># suspected problem sequences from prior iteration</span>
-<span class="va">df.problems</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Number of iterations:"</span>, <span class="va">maxIterations</span>, <span class="st">"\n"</span>, sep<span class="op">=</span><span class="st">" "</span><span class="op">)</span>
-<span class="co">#&gt; Number of iterations: 3</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">maxIterations</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Training iteration: "</span>, <span class="va">i</span>, <span class="st">"\n"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span>
-  
-  <span class="co"># train the classifier</span>
-  <span class="va">trainingSet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DECIPHER/man/LearnTaxa.html">LearnTaxa</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">[</span><span class="op">!</span><span class="va">remove</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span><span class="op">[</span><span class="op">!</span><span class="va">remove</span><span class="op">]</span>,<span class="va">taxid</span><span class="op">)</span>
-  
-  <span class="co"># look for problem sequences</span>
-  <span class="va">probSeqs</span> <span class="op">&lt;-</span> <span class="va">trainingSet</span><span class="op">$</span><span class="va">problemSequences</span><span class="op">$</span><span class="va">Index</span>
-  
-  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Number of problem sequences: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span>, <span class="st">"\n"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span>
-
-
-  <span class="co"># Exit if no more problem sequences or same problems as previous or reach max Iter</span>
-  
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"No problem sequences remaining.\n"</span><span class="op">)</span>
-    <span class="kw">break</span>
-  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">probSeqsPrev</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">probSeqsPrev</span><span class="op">==</span><span class="va">probSeqs</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Iterations converged.\n"</span><span class="op">)</span>
-    <span class="kw">break</span>
-  <span class="op">}</span>
-  
-  <span class="kw">if</span> <span class="op">(</span><span class="va">i</span><span class="op">==</span><span class="va">maxIterations</span><span class="op">)</span>
-    <span class="kw">break</span>
-
-  
-  <span class="co"># remove any problem sequences</span>
-
-  <span class="va">probSeqsPrev</span> <span class="op">&lt;-</span> <span class="va">probSeqs</span>
-  
-  <span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="op">!</span><span class="va">remove</span><span class="op">)</span><span class="op">[</span><span class="va">probSeqs</span><span class="op">]</span>
-  <span class="va">remove</span><span class="op">[</span><span class="va">index</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># remove all problem sequences</span>
-  
-  <span class="va">df.problems</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">index</span>, <span class="va">trainingSet</span><span class="op">$</span><span class="va">problemSequences</span><span class="op">)</span>
-  
-  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">allowGroupRemoval</span><span class="op">)</span> <span class="op">{</span>
-    <span class="co"># replace any removed groups</span>
-    <span class="va">missing</span> <span class="op">&lt;-</span> <span class="op">!</span><span class="op">(</span><span class="va">u_groups</span> <span class="op">%in%</span> <span class="va">groups</span><span class="op">[</span><span class="op">!</span><span class="va">remove</span><span class="op">]</span><span class="op">)</span>
-    <span class="va">missing</span> <span class="op">&lt;-</span> <span class="va">u_groups</span><span class="op">[</span><span class="va">missing</span><span class="op">]</span>
-    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">missing</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-      <span class="va">index</span> <span class="op">&lt;-</span> <span class="va">index</span><span class="op">[</span><span class="va">groups</span><span class="op">[</span><span class="va">index</span><span class="op">]</span> <span class="op">%in%</span> <span class="va">missing</span><span class="op">]</span>
-      <span class="va">remove</span><span class="op">[</span><span class="va">index</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># don't remove</span>
-    <span class="op">}</span>
-  <span class="op">}</span>
-<span class="op">}</span>
-<span class="co">#&gt; Training iteration: 1</span>
-<span class="co">#&gt; ================================================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Time difference of 275.1 secs</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of problem sequences: 7</span>
-<span class="co">#&gt; Training iteration: 2</span>
-<span class="co">#&gt; ================================================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Time difference of 255.28 secs</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of problem sequences: 8</span>
-<span class="co">#&gt; Training iteration: 3</span>
-<span class="co">#&gt; ================================================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Time difference of 258.7 secs</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of problem sequences: 6</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Read data -------------------------------------------------------------</span></span>
+<span></span>
+<span><span class="va">seqs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html" class="external-link">readDNAStringSet</a></span><span class="op">(</span><span class="va">file_training</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Sample 1000 sequences  ---------------------------------------------------</span></span>
+<span><span class="va">seqs</span> <span class="op">=</span> <span class="va">seqs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Taxo groups -------------------------------------------------------------</span></span>
+<span></span>
+<span><span class="co"># obtain the taxonomic assignments</span></span>
+<span><span class="va">groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span> <span class="co"># sequence names</span></span>
+<span></span>
+<span><span class="co"># All taxos must start with "Root;"</span></span>
+<span><span class="va">groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html" class="external-link">str_c</a></span><span class="op">(</span><span class="st">"Root;"</span>,<span class="va">groups</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span><span class="op">&lt;-</span><span class="va">groups</span></span>
+<span></span>
+<span><span class="va">groupCounts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">groups</span><span class="op">)</span></span>
+<span><span class="va">u_groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">groupCounts</span><span class="op">)</span> <span class="co"># unique groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Number of groups: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">u_groups</span><span class="op">)</span>, <span class="st">'\n'</span><span class="op">)</span> <span class="co"># number of group</span></span>
+<span><span class="co">#&gt; Number of groups:  742</span></span>
+<span></span>
+<span><span class="va">taxid</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span></span>
+<span><span class="co"># Pruning group size ---</span></span>
+<span></span>
+<span><span class="va">remove</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">groupCounts</span> <span class="op">&gt;</span> <span class="va">maxGroupSize</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">groups</span><span class="op">==</span><span class="va">u_groups</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">keep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">index</span><span class="op">)</span>, <span class="va">maxGroupSize</span><span class="op">)</span></span>
+<span>  <span class="va">remove</span><span class="op">[</span><span class="va">index</span><span class="op">[</span><span class="op">-</span><span class="va">keep</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Number of sequences eliminated: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">remove</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Number of sequences eliminated:  38</span></span>
+<span></span>
+<span><span class="co"># Iteratively train classifier -----------------------------------------------</span></span>
+<span></span>
+<span><span class="va">probSeqsPrev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># suspected problem sequences from prior iteration</span></span>
+<span><span class="va">df.problems</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Number of iterations:"</span>, <span class="va">maxIterations</span>, <span class="st">"\n"</span>, sep<span class="op">=</span><span class="st">" "</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Number of iterations: 3</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">maxIterations</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Training iteration: "</span>, <span class="va">i</span>, <span class="st">"\n"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># train the classifier</span></span>
+<span>  <span class="va">trainingSet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DECIPHER/man/LearnTaxa.html" class="external-link">LearnTaxa</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">[</span><span class="op">!</span><span class="va">remove</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">seqs</span><span class="op">)</span><span class="op">[</span><span class="op">!</span><span class="va">remove</span><span class="op">]</span>,<span class="va">taxid</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># look for problem sequences</span></span>
+<span>  <span class="va">probSeqs</span> <span class="op">&lt;-</span> <span class="va">trainingSet</span><span class="op">$</span><span class="va">problemSequences</span><span class="op">$</span><span class="va">Index</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Number of problem sequences: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span>, <span class="st">"\n"</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span>  <span class="co"># Exit if no more problem sequences or same problems as previous or reach max Iter</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"No problem sequences remaining.\n"</span><span class="op">)</span></span>
+<span>    <span class="kw">break</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">probSeqsPrev</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">probSeqsPrev</span><span class="op">==</span><span class="va">probSeqs</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Iterations converged.\n"</span><span class="op">)</span></span>
+<span>    <span class="kw">break</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">i</span><span class="op">==</span><span class="va">maxIterations</span><span class="op">)</span></span>
+<span>    <span class="kw">break</span></span>
+<span></span>
+<span>  </span>
+<span>  <span class="co"># remove any problem sequences</span></span>
+<span></span>
+<span>  <span class="va">probSeqsPrev</span> <span class="op">&lt;-</span> <span class="va">probSeqs</span></span>
+<span>  </span>
+<span>  <span class="va">index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/which.html" class="external-link">which</a></span><span class="op">(</span><span class="op">!</span><span class="va">remove</span><span class="op">)</span><span class="op">[</span><span class="va">probSeqs</span><span class="op">]</span></span>
+<span>  <span class="va">remove</span><span class="op">[</span><span class="va">index</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># remove all problem sequences</span></span>
+<span>  </span>
+<span>  <span class="va">df.problems</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">index</span>, <span class="va">trainingSet</span><span class="op">$</span><span class="va">problemSequences</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="va">allowGroupRemoval</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># replace any removed groups</span></span>
+<span>    <span class="va">missing</span> <span class="op">&lt;-</span> <span class="op">!</span><span class="op">(</span><span class="va">u_groups</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="va">groups</span><span class="op">[</span><span class="op">!</span><span class="va">remove</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="va">missing</span> <span class="op">&lt;-</span> <span class="va">u_groups</span><span class="op">[</span><span class="va">missing</span><span class="op">]</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">missing</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">index</span> <span class="op">&lt;-</span> <span class="va">index</span><span class="op">[</span><span class="va">groups</span><span class="op">[</span><span class="va">index</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="va">missing</span><span class="op">]</span></span>
+<span>      <span class="va">remove</span><span class="op">[</span><span class="va">index</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># don't remove</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; Training iteration: 1</span></span>
+<span><span class="co">#&gt; ================================================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Time difference of 976.07 secs</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of problem sequences: 9</span></span>
+<span><span class="co">#&gt; Training iteration: 2</span></span>
+<span><span class="co">#&gt; ================================================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Time difference of 846.92 secs</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of problem sequences: 5</span></span>
+<span><span class="co">#&gt; Training iteration: 3</span></span>
+<span><span class="co">#&gt; ================================================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Time difference of 882.58 secs</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of problem sequences: 5</span></span></code></pre></div>
 </div>
-<div id="save-problematic-sequences" class="section level3">
-<h3 class="hasAnchor">
-<a href="#save-problematic-sequences" class="anchor"></a>Save problematic sequences</h3>
-<p>Problematic sequences are sequences that are not assigned to the group they should belong to during the training process. They are removed for the next iteration. They point out to incoherences in the reference database.</p>
+<div class="section level3">
+<h3 id="save-problematic-sequences">Save problematic sequences<a class="anchor" aria-label="anchor" href="#save-problematic-sequences"></a>
+</h3>
+<p>Problematic sequences are sequences that are not assigned to the
+group they should belong to during the training process. They are
+removed for the next iteration. They point out to incoherences in the
+reference database.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Total number of sequences eliminated: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">remove</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span> 
-<span class="co">#&gt; Total number of sequences eliminated:  21</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Number of remaining problem sequences: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span>
-<span class="co">#&gt; Number of remaining problem sequences:  6</span>
-
-<span class="va">df.problems</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html">reduce</a></span><span class="op">(</span><span class="va">df.problems</span>, <span class="va">bind_rows</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Index</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">df.problems</span>, <span class="va">file_problems</span><span class="op">)</span>
-
-
-<span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df.problems</span>, <span class="fl">20</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">800</span>, caption <span class="op">=</span> <span class="st">"First 20 problematic sequences."</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-db4982b8c6dad477a08a" style="width:800px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-db4982b8c6dad477a08a">{"x":{"filter":"none","caption":"<caption>First 20 problematic sequences.<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],[228,302,387,430,455,478,582,121,228,387,430,455,582,734,865],["Root;Eukaryota;Rhizaria;Foraminifera;Monothalamids;Monothalamids_Clade-BM;Bathysiphonidae;Micrometula;Micrometula_hyalostriata;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Dinophyceae_X;Dinophyceae_XX;Dinophyceae_XXX;Dinophyceae_XXX_sp.;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Suessiales;Symbiodiniaceae;Breviolum;Breviolum_sp.;","Root;Eukaryota;Opisthokonta;Fungi;Ascomycota;Saccharomycotina;Saccharomycetales;Candida;Candida_tropicalis;","Root;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota_X;Peronosporales;Pythium;Pythium_uncinulatum;","Root;Eukaryota;Stramenopiles;Pseudofungi;MAST-1;MAST-1A;MAST-1A_X;MAST-1A_XX;MAST-1A_XX_sp.;","Root;Eukaryota;Archaeplastida;Streptophyta;Zygnemophyceae;Zygnemophyceae_X;Zygnemophyceae_XX;Spirogyra;Spirogyra_pratensis;","Root;Eukaryota;Stramenopiles;Sagenista;MAST-8;MAST-8A;MAST-8A_X;MAST-8A_XX;MAST-8A_XX_sp.;","Root;Eukaryota;Rhizaria;Foraminifera;Monothalamids;Monothalamids_Clade-BM;Bathysiphonidae;Micrometula;Micrometula_hyalostriata;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Suessiales;Symbiodiniaceae;Breviolum;Breviolum_sp.;","Root;Eukaryota;Opisthokonta;Fungi;Ascomycota;Saccharomycotina;Saccharomycetales;Candida;Candida_tropicalis;","Root;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota_X;Peronosporales;Pythium;Pythium_uncinulatum;","Root;Eukaryota;Archaeplastida;Streptophyta;Zygnemophyceae;Zygnemophyceae_X;Zygnemophyceae_XX;Spirogyra;Spirogyra_pratensis;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Dinophyceae_X;Dinophyceae_XX;Dinophyceae_XXX;Dinophyceae_XXX_sp.;","Root;Eukaryota;Opisthokonta;Fungi;Ascomycota;Saccharomycotina;Saccharomycetales;Saccharomyces;Saccharomyces_cerevisiae;"],["Root;Eukaryota;Rhizaria;Foraminifera;Globothalamea;","Root;Eukaryota;Alveolata;Dinoflagellata;Syndiniales;","Root;Eukaryota;Alveolata;Apicomplexa;","Root;Eukaryota;Opisthokonta;Fungi;Ascomycota;Saccharomycotina;Saccharomycetales;Candida;Candida_sp.;","Root;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota_X;Peronosporales;Pythium;Pythium_buismaniae;","Root;Eukaryota;Stramenopiles;Opalozoa;","Root;Eukaryota;Archaeplastida;Streptophyta;Zygnemophyceae;Zygnemophyceae_X;Zygnemophyceae_XX;Spirogyra;Spirogyra_sp.;","Root;Eukaryota;Stramenopiles;Opalozoa;","Root;Eukaryota;Rhizaria;Foraminifera;Globothalamea;","Root;Eukaryota;Alveolata;Apicomplexa;","Root;Eukaryota;Opisthokonta;Fungi;Ascomycota;Saccharomycotina;Saccharomycetales;Candida;Candida_sp.;","Root;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota_X;Peronosporales;Pythium;Pythium_buismaniae;","Root;Eukaryota;Archaeplastida;Streptophyta;Zygnemophyceae;Zygnemophyceae_X;Zygnemophyceae_XX;Spirogyra;Spirogyra_sp.;","Root;Eukaryota;Alveolata;Dinoflagellata;Syndiniales;","Root;Eukaryota;Opisthokonta;Fungi;Ascomycota;Saccharomycotina;Saccharomycetales;Candida;"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>index<\/th>\n      <th>Expected<\/th>\n      <th>Predicted<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Total number of sequences eliminated: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">remove</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; Total number of sequences eliminated:  46</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Number of remaining problem sequences: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">probSeqs</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Number of remaining problem sequences:  5</span></span>
+<span></span>
+<span><span class="va">df.problems</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html" class="external-link">reduce</a></span><span class="op">(</span><span class="va">df.problems</span>, <span class="va">bind_rows</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Index</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">df.problems</span>, <span class="va">file_problems</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">datatable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df.problems</span>, <span class="fl">20</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">800</span>, caption <span class="op">=</span> <span class="st">"First 20 problematic sequences."</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-1c792532b1427778e2d9" style="width:800px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1c792532b1427778e2d9">{"x":{"filter":"none","vertical":false,"caption":"<caption>First 20 problematic sequences.<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],[127,361,439,487,549,641,738,804,847,104,517,528,641,847],["Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Dinophyceae_X;Dinophyceae_XX;Dinophyceae_XXX;Dinophyceae_XXX_sp.;","Root;Eukaryota;Archaeplastida;Streptophyta;Embryophyceae;Embryophyceae_X;Embryophyceae_XX;Embryophyceae_XXX;Embryophyceae_XXX_sp.;","Root;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta_X;Raphid-pennate;Raphid-pennate_X;Raphid-pennate_X_sp.;","Root;Eukaryota;Opisthokonta;Fungi;Basidiomycota;Ustilaginomycotina;Exobasidiomycetes;Malassezia;Malassezia_globosa;","Root;Eukaryota;Hacrobia;Haptophyta;Prymnesiophyceae;Isochrysidales;Isochrysidaceae;Isochrysis;Isochrysis_nuda;","Root;Eukaryota;Alveolata;Apicomplexa;Coccidiomorphea;Eimeriida;Sarcocystidae;Sarcocystis5;Sarcocystis5_cruzi;","Root;Eukaryota;Archaeplastida;Chlorophyta;Chlorophyceae;Chlamydomonadales;Coccomyxaceae;Coccomyxa;Coccomyxa_sp.;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Prorocentrales;Prorocentraceae;Prorocentrum;Prorocentrum_sp.;","Root;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;Gregarines_GRE6;Gregarines_GRE6_X;Gregarines_GRE6_XX;Gregarines_GRE6_XX_sp.;","Root;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta_X;Polar-centric-Mediophyceae;Polar-centric-Mediophyceae_X;Polar-centric-Mediophyceae_X_sp.;","Root;Eukaryota;Opisthokonta;Fungi;Basidiomycota;Ustilaginomycotina;Exobasidiomycetes;Malassezia;Malassezia_globosa;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Dinophyceae_X;Dinophyceae_XX;Dinophyceae_XXX;Dinophyceae_XXX_sp.;","Root;Eukaryota;Alveolata;Apicomplexa;Coccidiomorphea;Eimeriida;Sarcocystidae;Sarcocystis5;Sarcocystis5_cruzi;","Root;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;Gregarines_GRE6;Gregarines_GRE6_X;Gregarines_GRE6_XX;Gregarines_GRE6_XX_sp.;"],["Root;Eukaryota;Alveolata;Dinoflagellata;Syndiniales;","Root;Eukaryota;Archaeplastida;Streptophyta;Embryophyceae;Embryophyceae_X;Embryophyceae_XX;Glycine;","Root;Eukaryota;Stramenopiles;Sagenista;","Root;Eukaryota;Opisthokonta;Fungi;Basidiomycota;Ustilaginomycotina;Exobasidiomycetes;Exobasidiomycetes_X;","Root;Eukaryota;Hacrobia;Haptophyta;Prymnesiophyceae;Prymnesiales;","Root;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;","Root;Eukaryota;Archaeplastida;Chlorophyta;Trebouxiophyceae;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Peridiniales;","Root;Eukaryota;Alveolata;Chrompodellids;","Root;Eukaryota;Stramenopiles;Sagenista;","Root;Eukaryota;Opisthokonta;Fungi;Basidiomycota;Ustilaginomycotina;Exobasidiomycetes;Exobasidiomycetes_X;","Root;Eukaryota;Alveolata;Dinoflagellata;Dinophyceae;Peridiniales;","Root;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;","Root;Eukaryota;Alveolata;Chrompodellids;"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>index<\/th>\n      <th>Expected<\/th>\n      <th>Predicted<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="save-training-set" class="section level3">
-<h3 class="hasAnchor">
-<a href="#save-training-set" class="anchor"></a>Save training set</h3>
+<div class="section level3">
+<h3 id="save-training-set">Save training set<a class="anchor" aria-label="anchor" href="#save-training-set"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">trainingSet</span>,<span class="va">file_trained</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">trainingSet</span>,<span class="va">file_trained</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="assign-small-metabarcoding-data-set" class="section level2">
-<h2 class="hasAnchor">
-<a href="#assign-small-metabarcoding-data-set" class="anchor"></a>Assign small metabarcoding data set</h2>
-<div id="files" class="section level3">
-<h3 class="hasAnchor">
-<a href="#files" class="anchor"></a>Files</h3>
+<div class="section level2">
+<h2 id="assign-small-metabarcoding-data-set">Assign small metabarcoding data set<a class="anchor" aria-label="anchor" href="#assign-small-metabarcoding-data-set"></a>
+</h2>
+<div class="section level3">
+<h3 id="files">Files<a class="anchor" aria-label="anchor" href="#files"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">taxo_levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"kingdom"</span>, <span class="st">"supergroup"</span>, <span class="st">"division"</span>, <span class="st">"class"</span>, <span class="st">"order"</span>, <span class="st">"family"</span>, <span class="st">"genus"</span>, <span class="st">"species"</span><span class="op">)</span>
-
-<span class="va">file_to_assign</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.fasta"</span>
-<span class="va">file_to_assign_xlsx</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.xlsx"</span>
-<span class="va">file_assigned</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.decipher.4.14.0.rds"</span>
-<span class="va">file_assigned_xlsx</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.decipher.4.14.0.xlsx"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">taxo_levels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kingdom"</span>, <span class="st">"supergroup"</span>, <span class="st">"division"</span>, <span class="st">"class"</span>, <span class="st">"order"</span>, <span class="st">"family"</span>, <span class="st">"genus"</span>, <span class="st">"species"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">file_to_assign</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.fasta"</span></span>
+<span><span class="va">file_to_assign_xlsx</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.xlsx"</span></span>
+<span><span class="va">file_assigned</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.decipher.4.14.0.rds"</span></span>
+<span><span class="va">file_assigned_xlsx</span> <span class="op">=</span> <span class="st">"examples/Singapore ASV_sample.decipher.4.14.0.xlsx"</span></span></code></pre></div>
 </div>
-<div id="assign" class="section level3">
-<h3 class="hasAnchor">
-<a href="#assign" class="anchor"></a>Assign</h3>
+<div class="section level3">
+<h3 id="assign">Assign<a class="anchor" aria-label="anchor" href="#assign"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Read training set </span>
-  <span class="va">trainingSet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="va">file_trained</span><span class="op">)</span>
-
-<span class="co"># Read sequences to assign</span>
-  <span class="va">asv_to_assign</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="va">file_to_assign_xlsx</span><span class="op">)</span>
-  <span class="va">seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html">readDNAStringSet</a></span><span class="op">(</span><span class="va">file_to_assign</span><span class="op">)</span>
-
-<span class="co"># Get the taxonomy from the training set</span>
-
-  <span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DECIPHER/man/IdTaxa.html">IdTaxa</a></span><span class="op">(</span><span class="va">seq</span>,
-                <span class="va">trainingSet</span>,
-                type<span class="op">=</span><span class="st">"extended"</span>,
-                strand<span class="op">=</span><span class="st">"top"</span>,
-                threshold<span class="op">=</span><span class="fl">0</span><span class="op">)</span>
-<span class="co">#&gt; ================================================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Time difference of 2.2 secs</span>
-  
-  <span class="va">ids</span>
-<span class="co">#&gt;   A test set of class 'Taxa' with length 99</span>
-<span class="co">#&gt;      confidence name                 taxon</span>
-<span class="co">#&gt;  [1]         5% asv_0004             Root; Bacteria; Bacteria_X; Actinobacter...</span>
-<span class="co">#&gt;  [2]        24% asv_2263             Root; Eukaryota; Alveolata; Dinoflagella...</span>
-<span class="co">#&gt;  [3]        35% asv_0664             Root; Eukaryota; Alveolata; Dinoflagella...</span>
-<span class="co">#&gt;  [4]        62% asv_1095             Root; Bacteria; Bacteria_X; Proteobacter...</span>
-<span class="co">#&gt;  [5]        18% asv_0953             Root; Bacteria; Bacteria_X; Proteobacter...</span>
-<span class="co">#&gt;  ...        ... ...                  ...</span>
-<span class="co">#&gt; [95]        18% asv_2793             Root; Eukaryota; Stramenopiles; Pseudofu...</span>
-<span class="co">#&gt; [96]        11% asv_2348             Root; Bacteria; Bacteria_X; Proteobacter...</span>
-<span class="co">#&gt; [97]        13% asv_1507             Root; Eukaryota; Alveolata; Dinoflagella...</span>
-<span class="co">#&gt; [98]         3% asv_1151             Root; Eukaryota; Opisthokonta; Metazoa; ...</span>
-<span class="co">#&gt; [99]        14% asv_2741             Root; Bacteria; Bacteria_X; Proteobacter...</span>
-
-<span class="co"># Transform to a dataframe</span>
-<span class="co"># Note: ids are provided as a list so we need to transform to dataframe</span>
-
-  <span class="va">n_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span>
-  <span class="va">df_rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Go through all the elements of the list</span>
-
-<span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n_seq</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">seq_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">ids</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
-  <span class="va">taxonomy</span><span class="op">&lt;-</span> <span class="va">ids</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">taxon</span>
-  <span class="va">confidence</span> <span class="op">&lt;-</span> <span class="va">ids</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">confidence</span>
-  <span class="va">df_rows</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">seq_name</span>, <span class="va">taxonomy</span>, <span class="va">confidence</span>, taxo_level<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Root"</span>, <span class="va">taxo_levels</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html">reduce</a></span><span class="op">(</span><span class="va">df_rows</span>, <span class="va">bind_rows</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">taxo_level</span> <span class="op">!=</span><span class="st">"Root"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">taxo_level</span>, values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">taxonomy</span>, <span class="va">confidence</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Save to file</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">file_assigned</span><span class="op">)</span>
-
-<span class="co"># Merge with original ASV file</span>
-  <span class="va">asv_assigned</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">asv_to_assign</span>, <span class="va">df</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">sequence</span>, .after <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">last_col</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Save as xlsx file</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/rio/man/export.html">export</a></span><span class="op">(</span><span class="va">asv_assigned</span>, <span class="va">file_assigned_xlsx</span><span class="op">)</span>
-
-<span class="co"># Display first 20 ASVs</span>
-  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">asv_assigned</span>, <span class="fl">20</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">800</span>, caption <span class="op">=</span> <span class="st">"First 20 ASV reassigned."</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-8df71a532b74e895591b" style="width:800px;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8df71a532b74e895591b">{"x":{"filter":"none","caption":"<caption>First 20 ASV reassigned.<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["asv_0004","asv_2263","asv_0664","asv_1095","asv_0953","asv_2279","asv_0918","asv_0572","asv_2482","asv_2614","asv_1471","asv_2483","asv_2710","asv_2447","asv_1635","asv_0324","asv_1607","asv_2777","asv_1663","asv_3034"],["Bacteria","Eukaryota","Eukaryota","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Bacteria","Archaea","Eukaryota","Bacteria","Bacteria","Archaea","Eukaryota","Bacteria","Archaea","Bacteria","Eukaryota"],["Actinobacteria","Alveolata","Alveolata","Proteobacteria","Proteobacteria","Bacteroidetes","Alveolata","Proteobacteria","Proteobacteria","Bacteria","Euryarchaeota","Alveolata","Proteobacteria","Proteobacteria","Euryarchaeota","Alveolata","Gemmatimonadetes","Euryarchaeota","Bacteroidetes","Opisthokonta"],["Acidimicrobiia","Dinoflagellata","Dinoflagellata","Alphaproteobacteria","Gammaproteobacteria","Bacteroidia","Dinoflagellata","Gammaproteobacteria","Proteobacteria","Bacteria","Thermoplasmata","Ciliophora","Gammaproteobacteria","Alphaproteobacteria","Thermoplasmata","Ciliophora","BD2-11 terrestrial group","Thermoplasmata","Bacteroidia","Metazoa"],["Actinomarinales","Syndiniales","Dinophyceae","Rhodobacterales","Oceanospirillales","Bacteroidia","Syndiniales","Cellvibrionales","Proteobacteria","Bacteria","Marine Group II","Spirotrichea","Coxiellales","Puniceispirillales","Marine Group II","Spirotrichea","BD2-11 terrestrial group","Marine Group II","Bacteroidales","Annelida"],["Actinomarinaceae","Dino-Group-I","Gymnodiniales","Rhodobacteraceae","Nitrincolaceae","Bacteroidia","Dino-Group-I","Cellvibrionales","Proteobacteria","Bacteria","metagenome","Choreotrichida","Coxiellaceae","Puniceispirillales","Marine Group II","Strombidiida_C","BD2-11 terrestrial group","Marine Group II","Tannerellaceae","Annelida_X"],["Candidatus Actinomarina","Dino-Group-I-Clade-5","Kareniaceae","Rhodobacteraceae","Neptuniibacter","Bacteroidia","Dino-Group-I-Clade-4","Cellvibrionales","Proteobacteria","Bacteria","metagenome","Strobilidiidae_I","Coxiella","Puniceispirillales","Marine Group II","Strombidiida_C_X","BD2-11 terrestrial group","Marine Group II","Macellibacteroides","Annelida_XX"],["Candidatus Actinomarina","Dino-Group-I-Clade-5_X","Karlodinium","Rhodobacteraceae","Neptuniibacter","Bacteroidia","Dino-Group-I-Clade-4_X","Cellvibrionales","Proteobacteria","Bacteria","metagenome","Pelagostrobilidium","Coxiella","Puniceispirillales","Marine Group II","Strombidiida_C_XX","BD2-11 terrestrial group","Marine Group II","Macellibacteroides","Hydroides"],[null,"Dino-Group-I-Clade-5_X_sp.","Karlodinium_sp.",null,null,null,"Dino-Group-I-Clade-4_X_sp.",null,null,null,null,"Pelagostrobilidium_minutum",null,null,null,"Strombidiida_C_XX_sp.",null,null,null,"Hydroides_pseudouncinatus"],["asv_0004","asv_2263","asv_0664","asv_1095","asv_0953","asv_2279","asv_0918","asv_0572","asv_2482","asv_2614","asv_1471","asv_2483","asv_2710","asv_2447","asv_1635","asv_0324","asv_1607","asv_2777","asv_1663","asv_3034"],["Bacteria","Eukaryota","Eukaryota","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Bacteria","Archaea","Eukaryota","Bacteria","Bacteria","Archaea","Eukaryota","Bacteria","Archaea","Bacteria","Eukaryota"],["Bacteria_X","Alveolata","Alveolata","Bacteria_X","Bacteria_X","Bacteria_X","Alveolata","Bacteria_X","Bacteria_X","Bacteria_X","Archaea_X","Alveolata","Bacteria_X","Bacteria_X","Archaea_X","Alveolata","Bacteria_X","Archaea_X","Bacteria_X","Opisthokonta"],["Actinobacteria","Dinoflagellata","Dinoflagellata","Proteobacteria","Proteobacteria","Bacteroidetes","Dinoflagellata","Proteobacteria","Epsilonbacteraeota","Proteobacteria","Euryarchaeota","Ciliophora","Proteobacteria","Proteobacteria","Euryarchaeota","Ciliophora","Proteobacteria","Euryarchaeota","Bacteroidetes","Metazoa"],["Actinobacteria_X","Syndiniales","Dinophyceae","Alphaproteobacteria","Gammaproteobacteria","Bacteroidia","Syndiniales","Gammaproteobacteria","Campylobacteria","Alphaproteobacteria","Methanomicrobia","Spirotrichea","Gammaproteobacteria","Alphaproteobacteria","Methanomicrobia","Spirotrichea","Gammaproteobacteria","Methanomicrobia","Bacteroidia","Mollusca"],["Propionibacteriales","Dino-Group-I","Prorocentrales","Rhodobacterales","Enterobacteriales","Flavobacteriales","Dino-Group-I","Cellvibrionales","Campylobacterales","Rhodobacterales","Methanosarcinales","Strombidiida","Enterobacteriales","Rhizobiales","Methanosarcinales","Strombidiida_G","Cellvibrionales","Methanosarcinales","Flavobacteriales","Bivalvia"],["Propionibacteriaceae","Dino-Group-I-Clade-5","Prorocentraceae","Rhodobacteraceae","Enterobacteriaceae","Flavobacteriaceae","Dino-Group-I-Clade-4","Cellvibrionaceae","Helicobacteraceae","Rhodobacteraceae","Methanoperedenaceae","Strombidiidae_M","Enterobacteriaceae","Rhizobiaceae","Methanoperedenaceae","Strombidiida_G_X","Cellvibrionaceae","Methanoperedenaceae","Flavobacteriaceae","Heteroconchia"],["Cutibacterium","Dino-Group-I-Clade-5_X","Prorocentrum","Rhodobacteraceae_X","Enterobacter","Polaribacter","Dino-Group-I-Clade-4_X","Cellvibrionaceae_X","Helicobacter","Rhodobacteraceae_X","Methanoperedenaceae_X","Strombidium_M","Enterobacter","AllorhizobiumNeorhizobiumPararhizobiumRhizobium","Methanoperedenaceae_X","Strombidiida_G_XX","Cellvibrionaceae_X","Methanoperedenaceae_X","Polaribacter","Periglypta"],["Cutibacterium_sp.","Dino-Group-I-Clade-5_X_sp.","Prorocentrum_cordatum","Rhodobacteraceae_X_sp.","Enterobacter_sp.","Polaribacter_sp.","Dino-Group-I-Clade-4_X_sp.","Cellvibrionaceae_X_sp.","Helicobacter_sp.","Rhodobacteraceae_X_sp.","Methanoperedenaceae_X_sp.","Strombidium_M_sp.","Enterobacter_sp.","AllorhizobiumNeorhizobiumPararhizobiumRhizobium_sp.","Methanoperedenaceae_X_sp.","Strombidiida_G_XX_sp.","Cellvibrionaceae_X_sp.","Methanoperedenaceae_X_sp.","Polaribacter_sp.","Periglypta_puerpera"],[26.4571573661205,48.3801588737287,72.1247888967735,62.9648424465989,48.382897911681,31.0322325904705,64.0045888482343,56.566441357054,30.0024458584922,18.0089970517684,14.1151339314553,40.5665745325624,35.5979689634557,35.7724653707476,14.795260254152,85.2801020031989,35.2684858500694,14.3622115202254,25.187938069171,47.2838741445011],[24.8965633665031,47.3781956748523,72.1247888967735,62.9648424465989,48.382897911681,30.8235323818826,64.0045888482343,56.566441357054,30.0024458584922,17.7847133221034,14.1151339314553,40.0356056142473,35.0481591157907,35.7724653707476,14.795260254152,85.2801020031989,35.2684858500694,14.3622115202254,24.5766403048055,47.2838741445011],[16.7954900354735,46.5646934891322,72.1247888967735,62.9648424465989,48.1145474645031,24.4030704485752,64.0045888482343,54.5265665583981,9.05211619753056,16.622147582487,13.8110298654647,39.4400009814826,34.4615694805821,33.6548144402962,14.52657216349,85.2801020031989,33.8607878213396,14.0913198274594,22.5381791150594,47.2838741445011],[16.7954900354735,45.43254495726,66.2161831417549,62.9648424465989,48.1145474645031,24.4030704485752,64.0045888482343,54.0866223026812,9.05211619753056,11.1604172609287,13.8110298654647,39.4400009814826,34.1088655641366,25.9062977238482,14.52657216349,85.2801020031989,26.3712128583179,14.0913198274594,22.5381791150594,40.5864060776749],[5.09295095825319,42.5043215694632,35.9918125135933,62.9648424465989,18.6602269494067,14.3350447143012,64.0045888482343,45.1131408129084,9.05211619753056,6.52666517149657,13.8110298654647,22.5396904043528,15.2928984970226,18.4904728694735,14.52657216349,71.8585213285369,11.2216271106647,14.0913198274594,20.8041147717061,34.6746022499259],[5.09295095825319,24.4024351789054,35.9918125135933,62.9648424465989,18.6602269494067,14.3350447143012,64.0045888482343,45.1131408129084,9.05211619753056,6.52666517149657,13.8110298654647,8.8730846981742,15.2928984970226,18.4904728694735,14.52657216349,71.8585213285369,11.2216271106647,14.0913198274594,20.8041147717061,32.2373201176278],[5.09295095825319,24.4024351789054,35.9918125135933,62.9648424465989,18.6602269494067,12.6799377712303,64.0045888482343,45.1131408129084,9.05211619753056,6.52666517149657,13.8110298654647,8.8730846981742,15.2928984970226,18.4904728694735,14.52657216349,71.8585213285369,11.2216271106647,14.0913198274594,16.6240022092567,32.2373201176278],[5.09295095825319,24.4024351789054,35.9918125135933,62.9648424465989,18.6602269494067,12.6799377712303,64.0045888482343,45.1131408129084,9.05211619753056,6.52666517149657,13.8110298654647,8.8730846981742,15.2928984970226,18.4904728694735,14.52657216349,71.8585213285369,11.2216271106647,14.0913198274594,16.6240022092567,32.2373201176278],["GACCCCGCACAAGCGGCGGAGCATGCGGCTTAATTCGATGATACCCGTAGAACCTTACCTGGACTTGACATATAGGGTCTAGCTATAGAGATATAGTGTGCATTAGCGCCCTATACAGGTGGTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCCTGTCCTATGTTGCCAGCATTTAGTTGGGGACTCATAGGAGACTGCCGGTGATAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGCCCCTTATGTCCAGGGCTGCACGCATGCTACAATGGCAAGTACAACGAGTCGCAATACCGCGAGGTGGAGCAAATCTCTTAAAGCTTGTCTCAGTTCGGATAGGAGTCTGCAACTCGACTCCTTGAAGTTGGAGTCGCTAGTAATCGCAAATCAGCAAAGTTGCGGTGAATACGTTCTCGGGGTTT","AAGGGCACCACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGAAAACTTACCAGGTCCAGACATAGTAAGGATTGACAGACTGATAGCTCTTTCGAGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAGCCTGCTAAATAGGATCCCCAATCTTCGGATAGGTGGAGGCCTTCTTAGAGGGACGTCGCGTGTCTAACGCGAGGAAGTGTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTTCTGGGCTGCACGCGCGCTACACTGATGCGTTCAACGAGTTTTTTCCTGCTCCGGAAGGAGTGGGCAACCTTGTGAAAGCGCATCGTGATGGGGATAGATTATTGCAATTTTTAATCTTCAACGAGGAATTCCTAGTAAGCGCAAGTCATCAACTTGCACTGATTACGTCCCTGCCCTTT","AAGGGCACCACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGGAAACTTACCAGGTCCAGACATAGTAAGGATTGACAGATTGATAGCTCTTTCTTGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAACCTGCTAAATAGTTACACGTAACCCAGGTTACGTGGGCAACTTCTTAGAGGGACTTTGCGTGTCTAACGCAAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTTCTGGGCTGCACGCGCGCTACACTGATGCGTTCAACGAGTTCTCGACCTTGTCTGGCAAGATTGGGTAATCTTTTGAAAACGCATCGTGATGGGGATAGATTATTGCAATTATTAATCTTCAACGAGGAATTCCTAGTAAGCGCGAGTCATCAGCTCGTGCTGATTACGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGCAGAACCTTACCAACCCTTGACATTTGTCGCCACCTCCAGAGATGGAGGGTTCCCTTCGGGGACGGCAGGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTCGGTTAAGTCCGGCAACGAGCGCAACCCACATCCCTAGTTGCCAGCAGTTCGGCTGGGCACTCTATGGAAACTGCCCGTGATAAGCGGGAGGAAGGTGTGGATGACGTCAAGTCCTCATGGCCCTTACGGGTTGGGCTACACACGTGCTACAATGGTAGTGACAATGGGTTAATCCCAAAAAGCTATCTCAGTTCGGATTGTCGTCTGCAACTCGACGGCATGAAGTCGGAATCGCTAGTAATCGCGTAACAGCATGACGCGGTGAATACGTTCCCGGGCCTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGAAGAACCTTACCAACTCTTGACATCCAGAGAACTTTGTAGAGATACATTGGTGCCTTCGGGAACTCTGAGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTTGTGAAATGTTGGGTTAAGTCCCGTAACGAGCGCAACCCTTGTCCTTATTTGCCAGCACTTCGGGTGGGAACTCTAAGGAGACTGCCGGTGACAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGAGTTGGGCTACACACGTGCTACAATGGCCGGTACAGAGGGCCGCGAACCTGCGAGGGTAAGCTAATCTCAGAAAACCGGTCGTAGTCCGGATTGGAGTCTGCAACTCGACTCCATGAAGTCGGAATCGCTAGTAATCGCGAATCAGAATGTCGCGGTGAATACGTTCCCGGGCCTT","GGGTCCGCACAAGCGGTGGAGTATGTGGTTTAATTCGATGATAAGCGAGGAACCTTACCTGGATTCAATCTAACCTGACAGTCTTAGAGATAGGATTTTCTTCGGACAGGTTAGAAGGTGCTGCATGGTTGTCGTCAGCTCGTGCCGTGAGGTGTTGGGTTAAGTCCCGCAACGAGCGCAACCCTTACCTTTAGTTGCCAGCACGTCATGGTGGGAACTCTAGAGGAACTGCCTTCGTAAGGAGGAGGAAGGTGGGGATGACGTCAAATCATCATGGCCCTTACGTCCAGGGCTACACACGTACTACAATGGTCAGTACAAAGGGTTGCGACATAGCGATATGAAGCCAATCCCTAAAAGCTGATCTCAGTTCGGATCGGAGTCTGCAACTCGACTCCGTGAAGCTGGAATCGCTAGTAATCGCGCATCAGCAATGGCGCGGTGAATACGTTCCCGGACCTT","AAGGGCACCACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGGAAACTTACCAGGTCCAGACATAGATAGGATTGACAGACTGATAGCTCTTTCTTAATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAACCTGCTAAATAGTTTCCAGAACTTCGGTTCTCGGCTTACTTCTTAGAGGGACTTCGTGTGTTTAACACGAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTCCTGGGCTGCACGCGCGCTACACTGATGTGTCCAGTAAGCACCTAACCTAATCCGAAGGGACTGGGTAACCTTTGCAACGCACATCGTGATGGGGATAGATTATTGCAATTATTAGTCTTGAACGAGGAATTCCTAGTAAGCACAAGTCATCAGCTTGTGTTGATTACGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGATGCAACGCGAAGAACCTTACCAGGTCTTGACATCCTGAGAACTTAGCAGAGATGCTTTGGTGCCTTCGGGAACTCAGAGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGTAACGAGCGCAACCCTTGTCCTTAGTTGCCAGCGCGTAATGGCGGGAACTCTAAGGAGACTGCCGGTGACAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGACCTGGGCTACACACGTGCTACAATGGGAAGTACAAAGGGTTGCGAAGCGGCGACGTGGAGCCAATCCCATAAAACTTTTCGTAGTCCGGATTGAAGTCTGCAACTCGACTTCATGAAGTCGGAATCGCTAGTAATCGCAAATCAGAATGTTGCGGTGAATACGTTCCCGGGCCTT","GGACCCGCACAAGCGGTGGAGCATGTTGTTTAATTCGATGCAACGCGAAGAACCTTACCTAGGCTTGATCCTATTCGTATCTTTGGTAACTCAAAGAGTCAGTTCGGCTGGAATAGTGACAGGTGCTGCACGGCTGTCGTCAGCTCGTGTCGTGAGATGTTAGGTTAAGTCCTGCAACGAGCGCAACCCCCATCATTAGTTGCCATCAGTTCGGCTGGGAACTCTAATGAAACTGCCTGGGTTAACCAGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGCCTAGGGCTACAAACGTGCTACAATGGCGACTACAGTGAGAAGCGATACCGCGAGGTGGAGCAAATCTTTAAAAGTCGTCTCAGTTCGGATCGTAGTCTGCAACTCGACTACGTGAAGTTGGAATCGCTAGTAATCGTGAATCAGAATGTCACGGTGAATACGTTCCCGGGTCTT","GGATTCATACAAGCGGTGGAGCATGTGGTTTAATTCGATAATACGCGCAAAACCTTACCAACCCTTGACATGTATAAGTACTTTTTATTTTTATTCTAAAACTTATATACAGGTGTTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTAGGTTAAGTCCTTAAACGAGCGCAACCTTTATTCTTAGTTGATTAAGAATTTAATAGTAAATTCTTTACTTTAAGAAAACTGTCGGCGAAGAGTCGAAGGAAGGTGGAGATGAAGTCAAGTAATCATGGCCCTTATGGGTTGGGCTACACACGTGCTACAATGGTAATGACAATAAGAAGCGAAAGCGTGAGCTGGAGCAAATCTCTAAACATTATCTCAGTTCGGATTGTAGGCTGCAATTCGCCTACATGAAGTTGGAATCGCTAGTAATCGCGGATCAGCATGCCGCGGTGAACCTGTACCTGAATCTT","GGGAGCACTGCAACCGGAGGATTGTGCGGTTTAATTGGATTCAACGCCGGAAAACTCACCAGCATCGACGGACAAATGAAAGCCAACTTGACGAGTTTGCTGGATTGTTCGAGAGGTCGTGCATGGCCGCCGTCAGTTCGTACCGTAAGGCGTTCTGTTAAGTCAGATAACGAACGAGACCCTCATCCCTATTTGCCACTTCATCGCTTGCGATGGAACGGGACTATAGGGAGACCGCTGGCGCTAAGTCAGAGGAAGGTGAGGGCAACGGTAGGTCAGTATGCGCCGAATATGCTGGGCTACACGCGCAATACAAAGGATGGGACAATGAGCAGCTACACCGAGAGGTGATGCGATCCCGAAACCCATTCGTAGTTCGGATCGAGGGCTGTAACTCGCCCTCGTGAAGCTGGATTCGGTAGTAATCGCGTCTCAAAAAGGCGCGGTGAATATGCCCCTGCTCCTT","AAGGGCACCACCAGGCGTGGAGCTTGCGGCTCAATTTGACTCAACACGGGGAAACTTACCAGGTCCAGACATAGTAAGGATTGACAGATTGATAGCTCTTTCTTGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAGCCTGCTAACTAGTTTGCTCTAAATATTAGTGTAAACTTCTTAGAGGGACTTTGTAAGCAAATACAAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTCCGGGGCCGCACGCGTGCTACACTGACACTTACACCGAGTTTTTCCGGCCCCGAGAGGTGGCTGGTAATCAGTAATAGGTGTCGTGATGGGGATAGATCTTTGGAATTATTGATCTTGAACGAGGAATGCCTAGTAATCGTAGGTCATCAGCCTGCGATGATTACGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGATGCAACGCGAAAAACCTTACCTACTCTTGACATCCTTGGAATGCTATAGAAATATAGCAGTGCCTTCGGGAGCCAAGTGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGTAACGAGCGAAACCCCTATTCTTTGTTGCCAGCACGTAATGGTGGGGACTCTAAGAAGACTGCCGGTGTTAAATCGGAGGAAGGTGGGGACGATGTCAAGTCATCATGGCCCTTACGAGTAGGGCTACACACGTGCTACAATGGGCAGTACAGAGGGTTGCGAAGTCGCGAGGCTAAGCTAATCTCAGAAAGCTGCTCTCAGTCCGGATTGGAGTCTGCAACTCGACTCCATGAAGTCGGAATCGCTAGTAATCGCGAATCAGCATGTCGCGGTGAATACGTTCCCGGGCCTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGCAGAACCTTACCAGCTCTTGACATCTGGGTCGCGGGTTCCGGAGACGGAACTCTTCAGTTCGGCTGGACCCAAGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCCTACTCTTAGTTGCCATCAGGTTGGGCTGGGCACTCTAAGGGAACCGCCGGCGTCAAGCCGGAGGAAGGCGGGGATGACGTCAAGTCCTCATGGCCCTTATGGGCGGGGCTACACACGTGCTACAATGGCGCCTACAGTGGGCTGCGAGAGGGCGACCTCGAGCGAATCTCCAAAAGGCGTCCCAGTTCGGATTGCGCTCTGCAACTCGAGCGCATGAAGGTGGAATCGCTAGTAATCGCGGATCAGCATGCCGCGGTGAATACGTTCCCGGGCCTT","GGGAGCACTGCAACGGGAGGAGCGTGCGGTTTAATTGGATTCAACGCCGGAAAACTCACCAAGGCCGACTGTTAAATGAAGATCAGCGTAATGAGCTTATCGGATTATCAGAGAGGTGGTGCATGGCCGTCGTCAGTTCGTACTGTAAAGCGTTCTGTTAAGTCAGATAACGAACGAGACCCGCATCTCTATTTGCCACCCTCATGTCCGCATGAGGCGCACCATAGAGAGACCGCTGGTGTGAAACCAGAGGAAGGCGCGGGCAACGACAGGTCAGTATGCCCCGAATGTCTTGGGCTACACGCGCGCTACAAAGGACAGGACAATGGGAAGCCACGCCGAGAGGCGGCGCTACCCCGAAACCTGTTCATAGTTCGGATCGAGGGCTGTAACTCGCCCTCGTGAAGCTGGATTCCGTAGTAATCGTGTTTCAACATAGCACGGTGAATATGCCCCTGCTCCTT","AAGGGCACCACCAGGCGTGGAGCTTGCGGCTCAATTTGACTCAACACGGGAAAACTTACCAGGTCCAGACATAGTGAGGATTGACAGATTGATAGCTCTTTCTTGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAGCCTGCTAACTAGTCGCGGCGATCTCGATCGTCGTCGGCTTCTTAGAGGGACTTTGTGGCTTTAAACACAAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTCCTGGGCCGCACGCGTGCTACACTGACGCCTACAGCGAGTACTTCCCAGCCCCGAGAGGCGGCTGGTAATCAGCAATAGGCGTCGTGATGGGGATAGATCTTTGGAATTATGGATCTTGAACGAGGAATGCCTAGTAAGCGCAGGTCATTAGCCTGCGCTGATTAAGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGAAGAACCTTACCCAGGCTTGACATCCTATTGAAACCTCCTGGAAACAGGAGGCCTCCTTCGGGACTTTAGGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCTTGCCCTATGTTGCCAGCGAGTAATGTCGGGGACTCATGGGGGACTGCCGGTGATAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGCCTGGGGCTACACACGTGCTACAATGGCCAACACAAAGGGCTGCGAACCTGCGAAGGTGAGCCAATCCCAAAAAGTTGGTCTAAGTTCGGATTGCAGTCTGCAACTCGACTGCATGAAGTCGGAATCGCTAGTAATCGTAGATCAGCCATGCTACGGTGAATACGTTCCCGGGCCTT","GGGAGCACTGCAACGGGAGGAGCGTGCGGTTTAATTGGATTCAACGCCGGAAAACTCACCAAGGCCGACTGTTAGATGAAGATCAGCGTAACGAGCTTATCGGATTATCAGAGAGGTGGTGCATGGCCGTCGTCAGTTCGTACTGTAAAGCGTTCTGTTAAGTCAGATAACGAACGAGACCCGCATCCCTATTTGCCACCCTTTTCTCAGGAAGAGGCGCACCATAGGGAGACCGCTGGTGTGAAACCAGAGGAAGGCGCGGGCAACGACAGGTCAGTATGCCCCGAATGTCTTGGGCTACACGCGCGCTACAAAGGACGGGACAATGGGAAGCCAGGCCGAGAGGCCGAGCTAACCCGAAACCCGTTCATAGTTCGGATCGAGGGCTGTAACTCGCCCTCGTGAAGCTGGATTCCGTAGTAATCGTGTTTCAACATAGCACGGTGAATATGCCCCTGCTCCTT","GGGCCCGCACAAGCGGAGGAACATGTGGTTTAATTCGATGATACGCGAGGAACCTTACCCGGGTTTGAACGTAGGGAGACAGGGGTGGAAACATCCTTTTCAGCAATGACTGCCTACGAGGTGCTGCATGGTTGTCGTCAGCTCGTGCCGTGAGGTGTCGGCTTAAGTGCCATAACGAGCGCAACCCTTATTTCCAGTTACTAACAGGTGATGCTGAGGACTCTGGAGAGACTGCCAGCGTAAGCTGTGAGGAAGGTGGGGATGACGTCAAATCAGCACGGCCCTTACATCCGGGGCGACACACGTGTTACAATGGTAAGGACAAAGGGCAGCTACCGGGCGACCGGATGCGAATCTCTAAACCTTATCTCAGTTCGGATCGGAGTCTGCAACTCGACTCCGTGAAGCTGGATTCGCTAGTAATCGCGCATCAGCCATGGCGCGGTGAATACGTTCCCGGGCCTT","AAGGGCACCACCAGGAGTGGAGCCTGTGGCTTAATTTGACTCAACACGGGGAACCTCACCCGGCCCGGACACTGCAAGGATTGACAGATTGAGAGCTCTTTCTTGATTCGGTGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGCGATTTGTCTGGTTAATTCCGATAACGAACGAGACTCTAGCCTGCTAAATAGCTCGGGCATCCTCCTTGGCGAGTGCCCGTCAGCTTCTTAGAGGGACAAGTGGCGCTTAGCCACACGAGATTGAGCAATAACAGGTCTGTGATGCCCTTAGATGTTCGGGGCCGCACGCGCGCTACACTGAAAGAATCAGAGGGTTTAGATTCCTTACCCGAGAGGGTCGGGCAATCCGTAGAACCTCTTTCGTGCTAGGGATTGGGGCTTGTAATTCTTCCCCATGAACGAGGAATTCCTAGTAAGCGCGAGTCATCAGCTCGTGTTGATTACGTCCCTGCCCTTT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>otu_id<\/th>\n      <th>kingdom_dada2<\/th>\n      <th>supergroup_dada2<\/th>\n      <th>division_dada2<\/th>\n      <th>class_dada2<\/th>\n      <th>order_dada2<\/th>\n      <th>family_dada2<\/th>\n      <th>genus_dada2<\/th>\n      <th>species_dada2<\/th>\n      <th>seq_name<\/th>\n      <th>taxonomy_kingdom<\/th>\n      <th>taxonomy_supergroup<\/th>\n      <th>taxonomy_division<\/th>\n      <th>taxonomy_class<\/th>\n      <th>taxonomy_order<\/th>\n      <th>taxonomy_family<\/th>\n      <th>taxonomy_genus<\/th>\n      <th>taxonomy_species<\/th>\n      <th>confidence_kingdom<\/th>\n      <th>confidence_supergroup<\/th>\n      <th>confidence_division<\/th>\n      <th>confidence_class<\/th>\n      <th>confidence_order<\/th>\n      <th>confidence_family<\/th>\n      <th>confidence_genus<\/th>\n      <th>confidence_species<\/th>\n      <th>sequence<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[19,20,21,22,23,24,25,26]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Read training set </span></span>
+<span>  <span class="va">trainingSet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="va">file_trained</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read sequences to assign</span></span>
+<span>  <span class="va">asv_to_assign</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html" class="external-link">import</a></span><span class="op">(</span><span class="va">file_to_assign_xlsx</span><span class="op">)</span></span>
+<span>  <span class="va">seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Biostrings/man/XStringSet-io.html" class="external-link">readDNAStringSet</a></span><span class="op">(</span><span class="va">file_to_assign</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get the taxonomy from the training set</span></span>
+<span></span>
+<span>  <span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DECIPHER/man/IdTaxa.html" class="external-link">IdTaxa</a></span><span class="op">(</span><span class="va">seq</span>,</span>
+<span>                <span class="va">trainingSet</span>,</span>
+<span>                type<span class="op">=</span><span class="st">"extended"</span>,</span>
+<span>                strand<span class="op">=</span><span class="st">"top"</span>,</span>
+<span>                threshold<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ================================================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Time difference of 7.47 secs</span></span>
+<span>  </span>
+<span>  <span class="va">ids</span></span>
+<span><span class="co">#&gt;   A test set of class 'Taxa' with length 99</span></span>
+<span><span class="co">#&gt;      confidence name                 taxon</span></span>
+<span><span class="co">#&gt;  [1]         6% asv_0004             Root; Bacteria; Bacteria_X; Proteobacter...</span></span>
+<span><span class="co">#&gt;  [2]        50% asv_2263             Root; Eukaryota; Alveolata; Dinoflagella...</span></span>
+<span><span class="co">#&gt;  [3]        36% asv_0664             Root; Eukaryota; Alveolata; Dinoflagella...</span></span>
+<span><span class="co">#&gt;  [4]        26% asv_1095             Root; Bacteria; Bacteria_X; Proteobacter...</span></span>
+<span><span class="co">#&gt;  [5]        24% asv_0953             Root; Bacteria; Bacteria_X; Proteobacter...</span></span>
+<span><span class="co">#&gt;  ...        ... ...                  ...</span></span>
+<span><span class="co">#&gt; [95]        13% asv_2793             Root; Eukaryota; Stramenopiles; Pseudofu...</span></span>
+<span><span class="co">#&gt; [96]         3% asv_2348             Root; Bacteria; Bacteria_X; Proteobacter...</span></span>
+<span><span class="co">#&gt; [97]        56% asv_1507             Root; Eukaryota; Alveolata; Dinoflagella...</span></span>
+<span><span class="co">#&gt; [98]         2% asv_1151             Root; Eukaryota; Opisthokonta; Metazoa; ...</span></span>
+<span><span class="co">#&gt; [99]        13% asv_2741             Root; Bacteria; Bacteria_X; Proteobacter...</span></span>
+<span></span>
+<span><span class="co"># Transform to a dataframe</span></span>
+<span><span class="co"># Note: ids are provided as a list so we need to transform to dataframe</span></span>
+<span></span>
+<span>  <span class="va">n_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span></span>
+<span>  <span class="va">df_rows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Go through all the elements of the list</span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n_seq</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">seq_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ids</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">taxonomy</span><span class="op">&lt;-</span> <span class="va">ids</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">taxon</span></span>
+<span>  <span class="va">confidence</span> <span class="op">&lt;-</span> <span class="va">ids</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">confidence</span></span>
+<span>  <span class="va">df_rows</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">seq_name</span>, <span class="va">taxonomy</span>, <span class="va">confidence</span>, taxo_level<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Root"</span>, <span class="va">taxo_levels</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html" class="external-link">reduce</a></span><span class="op">(</span><span class="va">df_rows</span>, <span class="va">bind_rows</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">taxo_level</span> <span class="op">!=</span><span class="st">"Root"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">taxo_level</span>, values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">taxonomy</span>, <span class="va">confidence</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Save to file</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">file_assigned</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Merge with original ASV file</span></span>
+<span>  <span class="va">asv_assigned</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">asv_to_assign</span>, <span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html" class="external-link">relocate</a></span><span class="op">(</span><span class="va">sequence</span>, .after <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">last_col</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Save as xlsx file</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/rio/man/export.html" class="external-link">export</a></span><span class="op">(</span><span class="va">asv_assigned</span>, <span class="va">file_assigned_xlsx</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display first 20 ASVs</span></span>
+<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">datatable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">asv_assigned</span>, <span class="fl">20</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">800</span>, caption <span class="op">=</span> <span class="st">"First 20 ASV reassigned."</span><span class="op">)</span></span></code></pre></div>
+<div id="htmlwidget-20d06ff1653223229704" style="width:800px;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-20d06ff1653223229704">{"x":{"filter":"none","vertical":false,"caption":"<caption>First 20 ASV reassigned.<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["asv_0004","asv_2263","asv_0664","asv_1095","asv_0953","asv_2279","asv_0918","asv_0572","asv_2482","asv_2614","asv_1471","asv_2483","asv_2710","asv_2447","asv_1635","asv_0324","asv_1607","asv_2777","asv_1663","asv_3034"],["Bacteria","Eukaryota","Eukaryota","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Bacteria","Archaea","Eukaryota","Bacteria","Bacteria","Archaea","Eukaryota","Bacteria","Archaea","Bacteria","Eukaryota"],["Actinobacteria","Alveolata","Alveolata","Proteobacteria","Proteobacteria","Bacteroidetes","Alveolata","Proteobacteria","Proteobacteria","Bacteria","Euryarchaeota","Alveolata","Proteobacteria","Proteobacteria","Euryarchaeota","Alveolata","Gemmatimonadetes","Euryarchaeota","Bacteroidetes","Opisthokonta"],["Acidimicrobiia","Dinoflagellata","Dinoflagellata","Alphaproteobacteria","Gammaproteobacteria","Bacteroidia","Dinoflagellata","Gammaproteobacteria","Proteobacteria","Bacteria","Thermoplasmata","Ciliophora","Gammaproteobacteria","Alphaproteobacteria","Thermoplasmata","Ciliophora","BD2-11 terrestrial group","Thermoplasmata","Bacteroidia","Metazoa"],["Actinomarinales","Syndiniales","Dinophyceae","Rhodobacterales","Oceanospirillales","Bacteroidia","Syndiniales","Cellvibrionales","Proteobacteria","Bacteria","Marine Group II","Spirotrichea","Coxiellales","Puniceispirillales","Marine Group II","Spirotrichea","BD2-11 terrestrial group","Marine Group II","Bacteroidales","Annelida"],["Actinomarinaceae","Dino-Group-I","Gymnodiniales","Rhodobacteraceae","Nitrincolaceae","Bacteroidia","Dino-Group-I","Cellvibrionales","Proteobacteria","Bacteria","metagenome","Choreotrichida","Coxiellaceae","Puniceispirillales","Marine Group II","Strombidiida_C","BD2-11 terrestrial group","Marine Group II","Tannerellaceae","Annelida_X"],["Candidatus Actinomarina","Dino-Group-I-Clade-5","Kareniaceae","Rhodobacteraceae","Neptuniibacter","Bacteroidia","Dino-Group-I-Clade-4","Cellvibrionales","Proteobacteria","Bacteria","metagenome","Strobilidiidae_I","Coxiella","Puniceispirillales","Marine Group II","Strombidiida_C_X","BD2-11 terrestrial group","Marine Group II","Macellibacteroides","Annelida_XX"],["Candidatus Actinomarina","Dino-Group-I-Clade-5_X","Karlodinium","Rhodobacteraceae","Neptuniibacter","Bacteroidia","Dino-Group-I-Clade-4_X","Cellvibrionales","Proteobacteria","Bacteria","metagenome","Pelagostrobilidium","Coxiella","Puniceispirillales","Marine Group II","Strombidiida_C_XX","BD2-11 terrestrial group","Marine Group II","Macellibacteroides","Hydroides"],[null,"Dino-Group-I-Clade-5_X_sp.","Karlodinium_sp.",null,null,null,"Dino-Group-I-Clade-4_X_sp.",null,null,null,null,"Pelagostrobilidium_minutum",null,null,null,"Strombidiida_C_XX_sp.",null,null,null,"Hydroides_pseudouncinatus"],["asv_0004","asv_2263","asv_0664","asv_1095","asv_0953","asv_2279","asv_0918","asv_0572","asv_2482","asv_2614","asv_1471","asv_2483","asv_2710","asv_2447","asv_1635","asv_0324","asv_1607","asv_2777","asv_1663","asv_3034"],["Bacteria","Eukaryota","Eukaryota","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Bacteria","Bacteria","Eukaryota","Bacteria","Bacteria","Eukaryota","Eukaryota","Bacteria","Eukaryota","Bacteria","Eukaryota"],["Bacteria_X","Alveolata","Alveolata","Bacteria_X","Bacteria_X","Bacteria_X","Alveolata","Bacteria_X","Bacteria_X","Bacteria_X","Bacteria_X","Alveolata","Bacteria_X","Bacteria_X","Amoebozoa","Alveolata","Bacteria_X","Amoebozoa","Bacteria_X","Opisthokonta"],["Proteobacteria","Dinoflagellata","Dinoflagellata","Proteobacteria","Proteobacteria","Bacteroidetes","Dinoflagellata","Proteobacteria","Proteobacteria","Firmicutes","Bacteroidetes","Ciliophora","Proteobacteria","Proteobacteria","Conosa","Ciliophora","Proteobacteria","Conosa","Bacteroidetes","Metazoa"],["Deltaproteobacteria","Syndiniales","Dinophyceae","Alphaproteobacteria","Gammaproteobacteria","Bacteroidia","Syndiniales","Gammaproteobacteria","Gammaproteobacteria","Bacilli","Bacteroidia","Spirotrichea","Gammaproteobacteria","Alphaproteobacteria","Mycetozoa-Myxogastrea","Spirotrichea","Alphaproteobacteria","Mycetozoa-Myxogastrea","Bacteroidia","Mollusca"],["Desulfuromonadales","Dino-Group-I","Dinophyceae_X","Rhizobiales","Cellvibrionales","Flavobacteriales","Dino-Group-I","Cellvibrionales","Cellvibrionales","Bacillales","Flavobacteriales","Strombidiida","JTB23","Acetobacterales","Stemonitales-Physarales","Strombidiida","Rickettsiales","Stemonitales-Physarales","Flavobacteriales","Bivalvia"],["Sva1033","Dino-Group-I-Clade-5","Dinophyceae_XX","Pleomorphomonadaceae","Halieaceae","Crocinitomicaceae","Dino-Group-I-Clade-4","Halieaceae","Halieaceae","Bacillaceae","Crocinitomicaceae","Tontoniidae_A","JTB23_X","Acetobacteraceae","Stemonitales-Physarales_X","Strombidiidae_R","SM2D12","Stemonitales-Physarales_X","Crocinitomicaceae","Heteroconchia"],["Sva1033_X","Dino-Group-I-Clade-5_X","Dinophyceae_XXX","Pleomorphomonas","Halioglobus","Crocinitomicaceae_X","Dino-Group-I-Clade-4_X","Halioglobus","Halioglobus","Bacillus","Crocinitomicaceae_X","Laboea","JTB23_XX","Acidiphilium","Diachea","Strombidium_R","SM2D12_X","Diachea","Crocinitomicaceae_X","Panopea"],["Sva1033_X_sp.","Dino-Group-I-Clade-5_X_sp.","Dinophyceae_XXX_sp.","Pleomorphomonas_sp.","Halioglobus_sp.","Crocinitomicaceae_X_sp.","Dino-Group-I-Clade-4_X_sp.","Halioglobus_sp.","Halioglobus_sp.","Bacillus_sp.","Crocinitomicaceae_X_sp.","Laboea_strobila","JTB23_XX_sp.","Acidiphilium_sp.","Diachea_subsessilis","Strombidium_R_sp.","SM2D12_X_sp.","Diachea_subsessilis","Crocinitomicaceae_X_sp.","Panopea_generosa"],[26.4065853239827,57.7965908767928,71.0458172870256,34.6522598315802,53.4719532555874,32.3118424137155,51.7293590729696,52.940150641371,28.2377386708665,14.0580108282365,2.42224943218282,38.8592850883089,43.8679058552623,38.4257112317446,6.94465716307879,87.6347611610487,33.0163678388509,6.54710758701505,31.1538057678203,46.8325288118666],[26.4065853239827,56.0783467814339,70.5617742333973,34.6522598315802,53.4719532555874,32.3118424137155,51.7293590729696,52.940150641371,28.2377386708665,14.0580108282365,2.42224943218282,38.0333722084246,43.8679058552623,38.4257112317446,0.736048699137591,87.6347611610487,33.0163678388509,1.12499524707671,31.1538057678203,46.8325288118666],[9.97257680910309,55.699509307027,70.5617742333973,34.4338418951277,53.4719532555874,21.5255361478601,51.7293590729696,52.940150641371,24.5563021202102,5.38858308881325,0.996723135705926,37.7226583899673,43.8679058552623,38.4257112317446,0.736048699137591,87.6347611610487,33.0163678388509,1.12499524707671,30.1020259706461,46.8325288118666],[6.54287087974809,54.5650840011838,56.4575263516154,30.6288182284527,53.4719532555874,21.5255361478601,50.0889743782176,52.3456354060388,16.3736313855999,5.22334971781831,0.996723135705926,37.4542018523547,43.1194720523903,28.6462323833728,0.736048699137591,87.6347611610487,9.35793006975299,1.12499524707671,30.1020259706461,39.2078998281178],[6.37644063226127,52.6751823434467,38.2225767107933,28.4699734844906,24.0543932815742,21.5255361478601,49.7859591301359,23.7893928859476,12.0785097443949,3.44642400792989,0.996723135705926,22.9652280237886,27.7373036857743,18.1559408900392,0.736048699137591,87.6347611610487,6.7379394281711,1.12499524707671,30.1020259706461,39.2078998281178],[6.12586365949366,50.5270487141123,36.4850682586352,26.5944604019323,24.0543932815742,21.5255361478601,48.0157661390302,23.7893928859476,12.0785097443949,3.44642400792989,0.996723135705926,7.47803470569892,27.7373036857743,18.1559408900392,0.736048699137591,51.7153945191085,6.7379394281711,1.12499524707671,30.1020259706461,39.2078998281178],[6.12586365949366,50.5270487141123,36.4850682586352,26.5944604019323,24.0543932815742,21.5255361478601,40.8283023975667,23.7893928859476,12.0785097443949,3.44642400792989,0.996723135705926,7.47803470569892,27.7373036857743,18.1559408900392,0.663363315052907,51.7153945191085,6.7379394281711,1.12499524707671,30.1020259706461,20.7083891059054],[6.12586365949366,50.5270487141123,36.4850682586352,26.5944604019323,24.0543932815742,21.5255361478601,40.8283023975667,23.7893928859476,12.0785097443949,3.44642400792989,0.996723135705926,7.47803470569892,27.7373036857743,18.1559408900392,0.663363315052907,51.7153945191085,6.7379394281711,1.12499524707671,30.1020259706461,20.7083891059054],["GACCCCGCACAAGCGGCGGAGCATGCGGCTTAATTCGATGATACCCGTAGAACCTTACCTGGACTTGACATATAGGGTCTAGCTATAGAGATATAGTGTGCATTAGCGCCCTATACAGGTGGTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCCTGTCCTATGTTGCCAGCATTTAGTTGGGGACTCATAGGAGACTGCCGGTGATAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGCCCCTTATGTCCAGGGCTGCACGCATGCTACAATGGCAAGTACAACGAGTCGCAATACCGCGAGGTGGAGCAAATCTCTTAAAGCTTGTCTCAGTTCGGATAGGAGTCTGCAACTCGACTCCTTGAAGTTGGAGTCGCTAGTAATCGCAAATCAGCAAAGTTGCGGTGAATACGTTCTCGGGGTTT","AAGGGCACCACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGAAAACTTACCAGGTCCAGACATAGTAAGGATTGACAGACTGATAGCTCTTTCGAGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAGCCTGCTAAATAGGATCCCCAATCTTCGGATAGGTGGAGGCCTTCTTAGAGGGACGTCGCGTGTCTAACGCGAGGAAGTGTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTTCTGGGCTGCACGCGCGCTACACTGATGCGTTCAACGAGTTTTTTCCTGCTCCGGAAGGAGTGGGCAACCTTGTGAAAGCGCATCGTGATGGGGATAGATTATTGCAATTTTTAATCTTCAACGAGGAATTCCTAGTAAGCGCAAGTCATCAACTTGCACTGATTACGTCCCTGCCCTTT","AAGGGCACCACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGGAAACTTACCAGGTCCAGACATAGTAAGGATTGACAGATTGATAGCTCTTTCTTGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAACCTGCTAAATAGTTACACGTAACCCAGGTTACGTGGGCAACTTCTTAGAGGGACTTTGCGTGTCTAACGCAAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTTCTGGGCTGCACGCGCGCTACACTGATGCGTTCAACGAGTTCTCGACCTTGTCTGGCAAGATTGGGTAATCTTTTGAAAACGCATCGTGATGGGGATAGATTATTGCAATTATTAATCTTCAACGAGGAATTCCTAGTAAGCGCGAGTCATCAGCTCGTGCTGATTACGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGCAGAACCTTACCAACCCTTGACATTTGTCGCCACCTCCAGAGATGGAGGGTTCCCTTCGGGGACGGCAGGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTCGGTTAAGTCCGGCAACGAGCGCAACCCACATCCCTAGTTGCCAGCAGTTCGGCTGGGCACTCTATGGAAACTGCCCGTGATAAGCGGGAGGAAGGTGTGGATGACGTCAAGTCCTCATGGCCCTTACGGGTTGGGCTACACACGTGCTACAATGGTAGTGACAATGGGTTAATCCCAAAAAGCTATCTCAGTTCGGATTGTCGTCTGCAACTCGACGGCATGAAGTCGGAATCGCTAGTAATCGCGTAACAGCATGACGCGGTGAATACGTTCCCGGGCCTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGAAGAACCTTACCAACTCTTGACATCCAGAGAACTTTGTAGAGATACATTGGTGCCTTCGGGAACTCTGAGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTTGTGAAATGTTGGGTTAAGTCCCGTAACGAGCGCAACCCTTGTCCTTATTTGCCAGCACTTCGGGTGGGAACTCTAAGGAGACTGCCGGTGACAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGAGTTGGGCTACACACGTGCTACAATGGCCGGTACAGAGGGCCGCGAACCTGCGAGGGTAAGCTAATCTCAGAAAACCGGTCGTAGTCCGGATTGGAGTCTGCAACTCGACTCCATGAAGTCGGAATCGCTAGTAATCGCGAATCAGAATGTCGCGGTGAATACGTTCCCGGGCCTT","GGGTCCGCACAAGCGGTGGAGTATGTGGTTTAATTCGATGATAAGCGAGGAACCTTACCTGGATTCAATCTAACCTGACAGTCTTAGAGATAGGATTTTCTTCGGACAGGTTAGAAGGTGCTGCATGGTTGTCGTCAGCTCGTGCCGTGAGGTGTTGGGTTAAGTCCCGCAACGAGCGCAACCCTTACCTTTAGTTGCCAGCACGTCATGGTGGGAACTCTAGAGGAACTGCCTTCGTAAGGAGGAGGAAGGTGGGGATGACGTCAAATCATCATGGCCCTTACGTCCAGGGCTACACACGTACTACAATGGTCAGTACAAAGGGTTGCGACATAGCGATATGAAGCCAATCCCTAAAAGCTGATCTCAGTTCGGATCGGAGTCTGCAACTCGACTCCGTGAAGCTGGAATCGCTAGTAATCGCGCATCAGCAATGGCGCGGTGAATACGTTCCCGGACCTT","AAGGGCACCACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGGAAACTTACCAGGTCCAGACATAGATAGGATTGACAGACTGATAGCTCTTTCTTAATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAACCTGCTAAATAGTTTCCAGAACTTCGGTTCTCGGCTTACTTCTTAGAGGGACTTCGTGTGTTTAACACGAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTCCTGGGCTGCACGCGCGCTACACTGATGTGTCCAGTAAGCACCTAACCTAATCCGAAGGGACTGGGTAACCTTTGCAACGCACATCGTGATGGGGATAGATTATTGCAATTATTAGTCTTGAACGAGGAATTCCTAGTAAGCACAAGTCATCAGCTTGTGTTGATTACGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGATGCAACGCGAAGAACCTTACCAGGTCTTGACATCCTGAGAACTTAGCAGAGATGCTTTGGTGCCTTCGGGAACTCAGAGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGTAACGAGCGCAACCCTTGTCCTTAGTTGCCAGCGCGTAATGGCGGGAACTCTAAGGAGACTGCCGGTGACAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGACCTGGGCTACACACGTGCTACAATGGGAAGTACAAAGGGTTGCGAAGCGGCGACGTGGAGCCAATCCCATAAAACTTTTCGTAGTCCGGATTGAAGTCTGCAACTCGACTTCATGAAGTCGGAATCGCTAGTAATCGCAAATCAGAATGTTGCGGTGAATACGTTCCCGGGCCTT","GGACCCGCACAAGCGGTGGAGCATGTTGTTTAATTCGATGCAACGCGAAGAACCTTACCTAGGCTTGATCCTATTCGTATCTTTGGTAACTCAAAGAGTCAGTTCGGCTGGAATAGTGACAGGTGCTGCACGGCTGTCGTCAGCTCGTGTCGTGAGATGTTAGGTTAAGTCCTGCAACGAGCGCAACCCCCATCATTAGTTGCCATCAGTTCGGCTGGGAACTCTAATGAAACTGCCTGGGTTAACCAGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGCCTAGGGCTACAAACGTGCTACAATGGCGACTACAGTGAGAAGCGATACCGCGAGGTGGAGCAAATCTTTAAAAGTCGTCTCAGTTCGGATCGTAGTCTGCAACTCGACTACGTGAAGTTGGAATCGCTAGTAATCGTGAATCAGAATGTCACGGTGAATACGTTCCCGGGTCTT","GGATTCATACAAGCGGTGGAGCATGTGGTTTAATTCGATAATACGCGCAAAACCTTACCAACCCTTGACATGTATAAGTACTTTTTATTTTTATTCTAAAACTTATATACAGGTGTTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTAGGTTAAGTCCTTAAACGAGCGCAACCTTTATTCTTAGTTGATTAAGAATTTAATAGTAAATTCTTTACTTTAAGAAAACTGTCGGCGAAGAGTCGAAGGAAGGTGGAGATGAAGTCAAGTAATCATGGCCCTTATGGGTTGGGCTACACACGTGCTACAATGGTAATGACAATAAGAAGCGAAAGCGTGAGCTGGAGCAAATCTCTAAACATTATCTCAGTTCGGATTGTAGGCTGCAATTCGCCTACATGAAGTTGGAATCGCTAGTAATCGCGGATCAGCATGCCGCGGTGAACCTGTACCTGAATCTT","GGGAGCACTGCAACCGGAGGATTGTGCGGTTTAATTGGATTCAACGCCGGAAAACTCACCAGCATCGACGGACAAATGAAAGCCAACTTGACGAGTTTGCTGGATTGTTCGAGAGGTCGTGCATGGCCGCCGTCAGTTCGTACCGTAAGGCGTTCTGTTAAGTCAGATAACGAACGAGACCCTCATCCCTATTTGCCACTTCATCGCTTGCGATGGAACGGGACTATAGGGAGACCGCTGGCGCTAAGTCAGAGGAAGGTGAGGGCAACGGTAGGTCAGTATGCGCCGAATATGCTGGGCTACACGCGCAATACAAAGGATGGGACAATGAGCAGCTACACCGAGAGGTGATGCGATCCCGAAACCCATTCGTAGTTCGGATCGAGGGCTGTAACTCGCCCTCGTGAAGCTGGATTCGGTAGTAATCGCGTCTCAAAAAGGCGCGGTGAATATGCCCCTGCTCCTT","AAGGGCACCACCAGGCGTGGAGCTTGCGGCTCAATTTGACTCAACACGGGGAAACTTACCAGGTCCAGACATAGTAAGGATTGACAGATTGATAGCTCTTTCTTGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAGCCTGCTAACTAGTTTGCTCTAAATATTAGTGTAAACTTCTTAGAGGGACTTTGTAAGCAAATACAAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTCCGGGGCCGCACGCGTGCTACACTGACACTTACACCGAGTTTTTCCGGCCCCGAGAGGTGGCTGGTAATCAGTAATAGGTGTCGTGATGGGGATAGATCTTTGGAATTATTGATCTTGAACGAGGAATGCCTAGTAATCGTAGGTCATCAGCCTGCGATGATTACGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGATGCAACGCGAAAAACCTTACCTACTCTTGACATCCTTGGAATGCTATAGAAATATAGCAGTGCCTTCGGGAGCCAAGTGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGTAACGAGCGAAACCCCTATTCTTTGTTGCCAGCACGTAATGGTGGGGACTCTAAGAAGACTGCCGGTGTTAAATCGGAGGAAGGTGGGGACGATGTCAAGTCATCATGGCCCTTACGAGTAGGGCTACACACGTGCTACAATGGGCAGTACAGAGGGTTGCGAAGTCGCGAGGCTAAGCTAATCTCAGAAAGCTGCTCTCAGTCCGGATTGGAGTCTGCAACTCGACTCCATGAAGTCGGAATCGCTAGTAATCGCGAATCAGCATGTCGCGGTGAATACGTTCCCGGGCCTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGCAGAACCTTACCAGCTCTTGACATCTGGGTCGCGGGTTCCGGAGACGGAACTCTTCAGTTCGGCTGGACCCAAGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCCTACTCTTAGTTGCCATCAGGTTGGGCTGGGCACTCTAAGGGAACCGCCGGCGTCAAGCCGGAGGAAGGCGGGGATGACGTCAAGTCCTCATGGCCCTTATGGGCGGGGCTACACACGTGCTACAATGGCGCCTACAGTGGGCTGCGAGAGGGCGACCTCGAGCGAATCTCCAAAAGGCGTCCCAGTTCGGATTGCGCTCTGCAACTCGAGCGCATGAAGGTGGAATCGCTAGTAATCGCGGATCAGCATGCCGCGGTGAATACGTTCCCGGGCCTT","GGGAGCACTGCAACGGGAGGAGCGTGCGGTTTAATTGGATTCAACGCCGGAAAACTCACCAAGGCCGACTGTTAAATGAAGATCAGCGTAATGAGCTTATCGGATTATCAGAGAGGTGGTGCATGGCCGTCGTCAGTTCGTACTGTAAAGCGTTCTGTTAAGTCAGATAACGAACGAGACCCGCATCTCTATTTGCCACCCTCATGTCCGCATGAGGCGCACCATAGAGAGACCGCTGGTGTGAAACCAGAGGAAGGCGCGGGCAACGACAGGTCAGTATGCCCCGAATGTCTTGGGCTACACGCGCGCTACAAAGGACAGGACAATGGGAAGCCACGCCGAGAGGCGGCGCTACCCCGAAACCTGTTCATAGTTCGGATCGAGGGCTGTAACTCGCCCTCGTGAAGCTGGATTCCGTAGTAATCGTGTTTCAACATAGCACGGTGAATATGCCCCTGCTCCTT","AAGGGCACCACCAGGCGTGGAGCTTGCGGCTCAATTTGACTCAACACGGGAAAACTTACCAGGTCCAGACATAGTGAGGATTGACAGATTGATAGCTCTTTCTTGATTCTATGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGTTAACGAACGAGACCTTAGCCTGCTAACTAGTCGCGGCGATCTCGATCGTCGTCGGCTTCTTAGAGGGACTTTGTGGCTTTAAACACAAGGAAGTTTGAGGCAATAACAGGTCTGTGATGCCCTTAGATGTCCTGGGCCGCACGCGTGCTACACTGACGCCTACAGCGAGTACTTCCCAGCCCCGAGAGGCGGCTGGTAATCAGCAATAGGCGTCGTGATGGGGATAGATCTTTGGAATTATGGATCTTGAACGAGGAATGCCTAGTAAGCGCAGGTCATTAGCCTGCGCTGATTAAGTCCCTGCCCTTT","GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGAAGAACCTTACCCAGGCTTGACATCCTATTGAAACCTCCTGGAAACAGGAGGCCTCCTTCGGGACTTTAGGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGCAACGAGCGCAACCCTTGCCCTATGTTGCCAGCGAGTAATGTCGGGGACTCATGGGGGACTGCCGGTGATAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGCCTGGGGCTACACACGTGCTACAATGGCCAACACAAAGGGCTGCGAACCTGCGAAGGTGAGCCAATCCCAAAAAGTTGGTCTAAGTTCGGATTGCAGTCTGCAACTCGACTGCATGAAGTCGGAATCGCTAGTAATCGTAGATCAGCCATGCTACGGTGAATACGTTCCCGGGCCTT","GGGAGCACTGCAACGGGAGGAGCGTGCGGTTTAATTGGATTCAACGCCGGAAAACTCACCAAGGCCGACTGTTAGATGAAGATCAGCGTAACGAGCTTATCGGATTATCAGAGAGGTGGTGCATGGCCGTCGTCAGTTCGTACTGTAAAGCGTTCTGTTAAGTCAGATAACGAACGAGACCCGCATCCCTATTTGCCACCCTTTTCTCAGGAAGAGGCGCACCATAGGGAGACCGCTGGTGTGAAACCAGAGGAAGGCGCGGGCAACGACAGGTCAGTATGCCCCGAATGTCTTGGGCTACACGCGCGCTACAAAGGACGGGACAATGGGAAGCCAGGCCGAGAGGCCGAGCTAACCCGAAACCCGTTCATAGTTCGGATCGAGGGCTGTAACTCGCCCTCGTGAAGCTGGATTCCGTAGTAATCGTGTTTCAACATAGCACGGTGAATATGCCCCTGCTCCTT","GGGCCCGCACAAGCGGAGGAACATGTGGTTTAATTCGATGATACGCGAGGAACCTTACCCGGGTTTGAACGTAGGGAGACAGGGGTGGAAACATCCTTTTCAGCAATGACTGCCTACGAGGTGCTGCATGGTTGTCGTCAGCTCGTGCCGTGAGGTGTCGGCTTAAGTGCCATAACGAGCGCAACCCTTATTTCCAGTTACTAACAGGTGATGCTGAGGACTCTGGAGAGACTGCCAGCGTAAGCTGTGAGGAAGGTGGGGATGACGTCAAATCAGCACGGCCCTTACATCCGGGGCGACACACGTGTTACAATGGTAAGGACAAAGGGCAGCTACCGGGCGACCGGATGCGAATCTCTAAACCTTATCTCAGTTCGGATCGGAGTCTGCAACTCGACTCCGTGAAGCTGGATTCGCTAGTAATCGCGCATCAGCCATGGCGCGGTGAATACGTTCCCGGGCCTT","AAGGGCACCACCAGGAGTGGAGCCTGTGGCTTAATTTGACTCAACACGGGGAACCTCACCCGGCCCGGACACTGCAAGGATTGACAGATTGAGAGCTCTTTCTTGATTCGGTGGGTGGTGGTGCATGGCCGTTCTTAGTTGGTGGAGCGATTTGTCTGGTTAATTCCGATAACGAACGAGACTCTAGCCTGCTAAATAGCTCGGGCATCCTCCTTGGCGAGTGCCCGTCAGCTTCTTAGAGGGACAAGTGGCGCTTAGCCACACGAGATTGAGCAATAACAGGTCTGTGATGCCCTTAGATGTTCGGGGCCGCACGCGCGCTACACTGAAAGAATCAGAGGGTTTAGATTCCTTACCCGAGAGGGTCGGGCAATCCGTAGAACCTCTTTCGTGCTAGGGATTGGGGCTTGTAATTCTTCCCCATGAACGAGGAATTCCTAGTAAGCGCGAGTCATCAGCTCGTGTTGATTACGTCCCTGCCCTTT"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>otu_id<\/th>\n      <th>kingdom_dada2<\/th>\n      <th>supergroup_dada2<\/th>\n      <th>division_dada2<\/th>\n      <th>class_dada2<\/th>\n      <th>order_dada2<\/th>\n      <th>family_dada2<\/th>\n      <th>genus_dada2<\/th>\n      <th>species_dada2<\/th>\n      <th>seq_name<\/th>\n      <th>taxonomy_kingdom<\/th>\n      <th>taxonomy_supergroup<\/th>\n      <th>taxonomy_division<\/th>\n      <th>taxonomy_class<\/th>\n      <th>taxonomy_order<\/th>\n      <th>taxonomy_family<\/th>\n      <th>taxonomy_genus<\/th>\n      <th>taxonomy_species<\/th>\n      <th>confidence_kingdom<\/th>\n      <th>confidence_supergroup<\/th>\n      <th>confidence_division<\/th>\n      <th>confidence_class<\/th>\n      <th>confidence_order<\/th>\n      <th>confidence_family<\/th>\n      <th>confidence_genus<\/th>\n      <th>confidence_species<\/th>\n      <th>sequence<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[19,20,21,22,23,24,25,26]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Daniel Vaulot.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Daniel Vaulot.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.1.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>

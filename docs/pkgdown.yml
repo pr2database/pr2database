@@ -1,5 +1,5 @@
-pandoc: 2.11.2
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   pr2database: pr2database.html
@@ -7,5 +7,6 @@ articles:
   pr2_02_silva: pr2_02_silva.html
   pr2_03_geo_origin: pr2_03_geo_origin.html
   pr2_04_decipher: pr2_04_decipher.html
-last_built: 2021-06-25T09:29Z
+  vignette-shiny-presentation: vignette-shiny-presentation.html
+last_built: 2022-11-19T02:53Z
 
