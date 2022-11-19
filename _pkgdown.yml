@@ -38,6 +38,7 @@ navbar:
 
 template:
   bootstrap: 5
+  bootswatch: cosmo
   theme: breeze-light
 
 code:
