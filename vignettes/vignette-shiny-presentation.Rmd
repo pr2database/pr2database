@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 
 Note: _This application is not yet available (probably late December 2022)._
 
-Here is a short description of the different panles
+Here is a short description of the different panels
 
 #### Taxonomy
 
@@ -57,10 +57,21 @@ htmltools::img(src = "img/pr2-shiny-02.png",
 Listing of PR2 sequences for the selected taxa with the following information provided.
 
 You can filter on the left menu the sequences by:
-* Length
-* Type of samples
 
-The following information is provided
+* Length
+* Type of samples: corresponds to sample origin as detailed in the GenBank record or the original paper
+          
+  
+| Type  | Origin  | Sequence #  |
+|---|---|---|
+|culture   |  Well-defined culture |  38703 |
+|environmental   | e.g. oceanic water or soil  | 81808  |
+| isolate  |  Organism isolated for example by pipetting but not in culture | 26774  |
+| specimen   | e.g. from a plant species  | 22218  |
+|unknown   |  no information available  | 28098  |
+
+The following information is provided:
+
 * PR2 accession number
 * PR2 species assignement
 * Sequence length

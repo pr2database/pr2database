@@ -22,7 +22,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">pr2database</a>
 
@@ -89,7 +89,7 @@
 </h3>
 <p>Note: <em>This application is not yet available (probably late
 December 2022).</em></p>
-<p>Here is a short description of the different panles</p>
+<p>Here is a short description of the different panels</p>
 <div class="section level4">
 <h4 id="taxonomy">Taxonomy<a class="anchor" aria-label="anchor" href="#taxonomy"></a>
 </h4>
@@ -112,11 +112,59 @@ the screen
 </h4>
 <p>Listing of PR2 sequences for the selected taxa with the following
 information provided.</p>
-<p>You can filter on the left menu the sequences by: * Length * Type of
-samples</p>
-<p>The following information is provided * PR2 accession number * PR2
-species assignement * Sequence length * Sample type as annotated by PR2
-* Definition and Taxonomy provided by GenBank</p>
+<p>You can filter on the left menu the sequences by:</p>
+<ul>
+<li>Length</li>
+<li>Type of samples: corresponds to sample origin as detailed in the
+GenBank record or the original paper</li>
+</ul>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Type</th>
+<th>Origin</th>
+<th>Sequence #</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>culture</td>
+<td>Well-defined culture</td>
+<td>38703</td>
+</tr>
+<tr class="even">
+<td>environmental</td>
+<td>e.g. oceanic water or soil</td>
+<td>81808</td>
+</tr>
+<tr class="odd">
+<td>isolate</td>
+<td>Organism isolated for example by pipetting but not in culture</td>
+<td>26774</td>
+</tr>
+<tr class="even">
+<td>specimen</td>
+<td>e.g. from a plant species</td>
+<td>22218</td>
+</tr>
+<tr class="odd">
+<td>unknown</td>
+<td>no information available</td>
+<td>28098</td>
+</tr>
+</tbody>
+</table>
+<p>The following information is provided:</p>
+<ul>
+<li>PR2 accession number</li>
+<li>PR2 species assignement</li>
+<li>Sequence length</li>
+<li>Sample type as annotated by PR2</li>
+<li>Definition and Taxonomy provided by GenBank</li>
+</ul>
 <p><img src="img/pr2-shiny-03.png" style="position:relative; left:0px; top:0px; padding:10px;" width="1100px"><br><br></p>
 </div>
 <div class="section level4">
