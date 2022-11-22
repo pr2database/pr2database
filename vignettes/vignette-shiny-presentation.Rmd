@@ -37,9 +37,9 @@ Here is a short description of the different panels
 Listing of taxonomy used for PR2 with number of sequences for each species
 
 * First Select Taxa on the left Menu by navigating the menu
-* Once you have selected the taxonomy presse **VALIDATE TAXA** and you should see the table of taxons
+* Once you have selected the taxonomy press **VALIDATE TAXA** and you should see the table of taxons
 * To reset the taxonomy press **RESET TAXA** followed by **VALIDATE TAXA**.
-* You can save and reload your favorites taxa on the bottom left of the screen
+* You can save and reload your favorite taxa on the bottom left of the screen
 ```{r echo=FALSE, out.width="60%", fig.cap="Fig. 1: Selection menu."}
 
 htmltools::img(src = "img/pr2-shiny-01.png", 
@@ -108,9 +108,9 @@ htmltools::img(src = "img/pr2-shiny-04.png",
 <br />
 <br />
 
-#### Download all sequences
+#### Download full database
 
-This page should be used if you use PR2 to annotated metabarcodes as it contains links to the PR2 repository. 
+Download full database if you use PR2 to annotate metabarcodes. 
 
 Files are provided for:
 * dada2
