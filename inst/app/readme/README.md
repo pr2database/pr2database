@@ -3,14 +3,10 @@
 
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
-[![Database](https://img.shields.io/badge/database-v.%204.14.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-25%20June%202021-lightgrey.svg)
+[![Database](https://img.shields.io/badge/database-v.%204.14.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
+![Date](https://img.shields.io/badge/date-24%20Nov%202021-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
-
-[![Web
-interface](https://img.shields.io/badge/web-v.%202.0-blue.svg)](https://app.pr2-database.org/)
-![Date](https://img.shields.io/badge/date-24%20Nov%202022-lightgrey.svg)
 
 [![Twitter
 URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
@@ -34,12 +30,14 @@ workshops dedicated to specific taxonomic groups.
 
 ## Current version
 
-- Current version of database: 4.14.0 (Last update: 2021-06-21)
+- Version:
+  [![Database](https://img.shields.io/badge/database-v.%204.14.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
 
-- Current version of Web interface and R package: 2.0.0 (Last update:
-  2022-11-24)
+- Released:
+  ![Date](https://img.shields.io/badge/date-24%20Nov%202021-lightgrey.svg)
 
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5031733.svg)](https://doi.org/10.5281/zenodo.5031733)
+- DOI:
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5031733.svg)](https://doi.org/10.5281/zenodo.5031733)
 
 ## Accessing PR2
 
