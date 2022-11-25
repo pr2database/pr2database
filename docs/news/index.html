@@ -10,14 +10,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">pr2database</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/pr2database.html">Get started</a>
 </li>
@@ -51,27 +51,24 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Changelog</h1>
-      
+      <small>Source: <a href="NA/NA/NA/blob/HEAD/NEWS.html"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="4.14.1" id="pr2database-4141">pr2database 4.14.1<a class="anchor" aria-label="anchor" href="#pr2database-4141"></a></h2>
+<p>Released: 2022-11-24</p>
+<ul><li><a href="https://pr2database.github.io/pr2database/articles/vignette-shiny-presentation.html" class="external-link">New web interface</a></li>
+<li>No change in the database itself</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.14.0" id="pr2database-4140">pr2database 4.14.0<a class="anchor" aria-label="anchor" href="#pr2database-4140"></a></h2>
 <p>Released: 2021-06-25</p>
-<p><a href="https://github.com/pr2database/pr2database/releases/tag/v4.14.0" class="external-link">Detailed
-changes</a></p>
+<p><a href="https://github.com/pr2database/pr2database/releases/tag/v4.14.0" class="external-link">Detailed changes</a></p>
 <div class="section level4">
 <h4 id="a-single-ssu-database-4-14-0">A single SSU database<a class="anchor" aria-label="anchor" href="#a-single-ssu-database-4-14-0"></a></h4>
-<p>From version 4.14.0, a single SSU database is provided which contains
-sequences for: * 18S rRNA from nuclear and nucleomorph * 16S rRNA from
-plastid, apicoplast, chromatophore, mitochondrion * 16S rRNA from a
-small selection of bacteria</p>
-<p>The rationale is that the database can now be used to detect
-bacterial sequences that are amplified with either 18S rRNA or
-“universal” primers. These sequences can be further assigned with Silva
-or GTDB.</p>
-<p>In order to allow correct assignation with software such as DECIPHER
-(IDTax) for organelle, the taxonomy is appended with 4 letters
-corresponding to the organelle</p>
+<p>From version 4.14.0, a single SSU database is provided which contains sequences for: * 18S rRNA from nuclear and nucleomorph * 16S rRNA from plastid, apicoplast, chromatophore, mitochondrion * 16S rRNA from a small selection of bacteria</p>
+<p>The rationale is that the database can now be used to detect bacterial sequences that are amplified with either 18S rRNA or “universal” primers. These sequences can be further assigned with Silva or GTDB.</p>
+<p>In order to allow correct assignation with software such as DECIPHER (IDTax) for organelle, the taxonomy is appended with 4 letters corresponding to the organelle</p>
 <table class="table"><thead><tr class="header"><th>Organelle</th>
 <th>Taxonomy suffix</th>
 </tr></thead><tbody><tr class="odd"><td>nucleus</td>
@@ -99,23 +96,18 @@ corresponding to the organelle</p>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.13.0" id="pr2database-4130">pr2database 4.13.0<a class="anchor" aria-label="anchor" href="#pr2database-4130"></a></h2>
 <ul><li>Released: 2021-03-17</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.13.0" class="external-link">Detailed
-changes</a></li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.13.0" class="external-link">Detailed changes</a></li>
 </ul><div class="section level4">
 <h4 id="major-groups-for-which-taxonomy-has-been-updated-4-13-0">Major groups for which taxonomy has been updated<a class="anchor" aria-label="anchor" href="#major-groups-for-which-taxonomy-has-been-updated-4-13-0"></a></h4>
 <ul><li>Dinophyceae, Suessiales - Taxonomy updated (J. del Campo)</li>
-<li>Stramenopiles, Diatoms, Thalassiosirales - Taxonomy updated (L.
-Arsenieff)</li>
-<li>Stramenopiles, Pelagophyceae - Taxonomy updated (Ana Maria
-Cabello)</li>
+<li>Stramenopiles, Diatoms, Thalassiosirales - Taxonomy updated (L. Arsenieff)</li>
+<li>Stramenopiles, Pelagophyceae - Taxonomy updated (Ana Maria Cabello)</li>
 <li>Stramenopiles, Chrysophyceae - Taxonomy updated (D. Vaulot)</li>
 </ul></div>
 <div class="section level4">
 <h4 id="other-changes-4-13-0">Other changes<a class="anchor" aria-label="anchor" href="#other-changes-4-13-0"></a></h4>
-<ul><li>Adding sequences from the Roscoff Culture Collection (D.
-Vaulot)</li>
-<li>Adding sequences from Silva identical to existing sequences in PR2
-based on hash sequence value.</li>
+<ul><li>Adding sequences from the Roscoff Culture Collection (D. Vaulot)</li>
+<li>Adding sequences from Silva identical to existing sequences in PR2 based on hash sequence value.</li>
 <li>Adding Silva taxonomic annotation (D. Vaulot)</li>
 </ul></div>
 </div>
@@ -123,68 +115,50 @@ based on hash sequence value.</li>
 <h2 class="pkg-version" data-toc-text="4.12.0" id="pr2database-4120">pr2database 4.12.0<a class="anchor" aria-label="anchor" href="#pr2database-4120"></a></h2>
 <ul><li>Released: 2019-08-08</li>
 <li>Geolocalisation of sequences (D. Vaulot)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.12.0" class="external-link">Detailed
-changes</a></li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/v4.12.0" class="external-link">Detailed changes</a></li>
 </ul><div class="section level4">
 <h4 id="major-groups-for-which-taxonomy-has-been-updated-4-12-0">Major groups for which taxonomy has been updated<a class="anchor" aria-label="anchor" href="#major-groups-for-which-taxonomy-has-been-updated-4-12-0"></a></h4>
-<ul><li>Apicomplexa - Taxonomy updated - 2619 new sequences, 5889+239
-sequences updated, 89 sequences removed (J. del Campo)</li>
-<li>Chaetoceros - 196 new sequences added and taxonomy updated (C.
-Gaonkar)</li>
+<ul><li>Apicomplexa - Taxonomy updated - 2619 new sequences, 5889+239 sequences updated, 89 sequences removed (J. del Campo)</li>
+<li>Chaetoceros - 196 new sequences added and taxonomy updated (C. Gaonkar)</li>
 <li>Stramenopiles - Taxonomy updated (R. Massana)</li>
 </ul></div>
 <div class="section level4">
 <h4 id="other-changes-4-12-0">Other changes<a class="anchor" aria-label="anchor" href="#other-changes-4-12-0"></a></h4>
-<ul><li>16S plastid and cyanobacteria sequences added from PhytoRef database
-(J. Decelle/ D. Vaulot)</li>
+<ul><li>16S plastid and cyanobacteria sequences added from PhytoRef database (J. Decelle/ D. Vaulot)</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.11.1" id="pr2database-4111">pr2database 4.11.1<a class="anchor" aria-label="anchor" href="#pr2database-4111"></a></h2>
 <ul><li>Released: 2018-12-13</li>
 <li>Various bug fixes.</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.11.1" class="external-link">Detailed
-changes</a></li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.11.1" class="external-link">Detailed changes</a></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.11.0" id="pr2database-4110">pr2database 4.11.0<a class="anchor" aria-label="anchor" href="#pr2database-4110"></a></h2>
 <ul><li>Released: 2018-10-30</li>
-<li>Various bug fixes. Remove sequences shorter than 500 bp (D.
-Vaulot)</li>
-<li>Chlorophyta - Three new classes introducted (Chloropicophyceae,
-Picocystophyceae, Palmophyllophyceae) - 198 sequences updated and 104
-sequences added (A. Lopes dos Santos)</li>
-<li>Chlorophyta - Mamiellophyceae (<em>Micromonas</em>,
-<em>Ostreococcus</em>, <em>Mantoniella</em>) - 872 sequences updated and
-8 sequences added (D. Vaulot)</li>
-<li>Ciliophora - Except Spirotrichea - 4550 sequences updated, 2478
-sequences added, 652 sequences removed (Eukref - V. Boscaro)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.11.0" class="external-link">Detailed
-changes</a></li>
+<li>Various bug fixes. Remove sequences shorter than 500 bp (D. Vaulot)</li>
+<li>Chlorophyta - Three new classes introducted (Chloropicophyceae, Picocystophyceae, Palmophyllophyceae) - 198 sequences updated and 104 sequences added (A. Lopes dos Santos)</li>
+<li>Chlorophyta - Mamiellophyceae (<em>Micromonas</em>, <em>Ostreococcus</em>, <em>Mantoniella</em>) - 872 sequences updated and 8 sequences added (D. Vaulot)</li>
+<li>Ciliophora - Except Spirotrichea - 4550 sequences updated, 2478 sequences added, 652 sequences removed (Eukref - V. Boscaro)</li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.11.0" class="external-link">Detailed changes</a></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.10.0" id="pr2database-4100">pr2database 4.10.0<a class="anchor" aria-label="anchor" href="#pr2database-4100"></a></h2>
 <ul><li>Released: 2018-03-08</li>
-<li>Fixing artefactual sequences, removing chimeras and labelling
-reference sequences (D. Vaulot)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.10.0" class="external-link">Detailed
-changes</a></li>
+<li>Fixing artefactual sequences, removing chimeras and labelling reference sequences (D. Vaulot)</li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.10.0" class="external-link">Detailed changes</a></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.9.0" id="pr2database-490">pr2database 4.9.0<a class="anchor" aria-label="anchor" href="#pr2database-490"></a></h2>
 <ul><li>Released: 2018-02-20</li>
-<li>Dinophyceae - Incorporation of the DinoRef database (1564 sequences
-verified and updated, 213 added) (Solenn Mordret, Roberta Piredda, Diana
-Sarno)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.9.0" class="external-link">Detailed
-changes</a></li>
+<li>Dinophyceae - Incorporation of the DinoRef database (1564 sequences verified and updated, 213 added) (Solenn Mordret, Roberta Piredda, Diana Sarno)</li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.9.0" class="external-link">Detailed changes</a></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.8.0" id="pr2database-480">pr2database 4.8.0<a class="anchor" aria-label="anchor" href="#pr2database-480"></a></h2>
 <ul><li>Released: 2018-02-06</li>
 <li>Cercozoa, Perkinsea (30 sequences) (Martina Strittmatter)</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.8.0" class="external-link">Detailed
-changes</a></li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.8.0" class="external-link">Detailed changes</a></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.7.1" id="pr2database-471">pr2database 4.7.1<a class="anchor" aria-label="anchor" href="#pr2database-471"></a></h2>
@@ -192,14 +166,12 @@ changes</a></li>
 <li>Database transferred to GitHub</li>
 <li>Ciliates (Spirotrichea) (C. Bachy, Wei-Ting Chen)</li>
 <li>Database transferred to GitHub</li>
-<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.7.1" class="external-link">Detailed
-changes</a></li>
+<li><a href="https://github.com/pr2database/pr2database/releases/tag/4.7.1" class="external-link">Detailed changes</a></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.6" id="pr2database-46">pr2database 4.6<a class="anchor" aria-label="anchor" href="#pr2database-46"></a></h2>
 <ul><li>Released: 2017-08-23</li>
-<li>Bolidophyceae corrected according to Kuwata et al. 2017 (3 env
-clades) (D. Vaulot)</li>
+<li>Bolidophyceae corrected according to Kuwata et al. 2017 (3 env clades) (D. Vaulot)</li>
 <li>Pelagophyceae (D. Vaulot)</li>
 <li>Database on <a href="https://figshare.com/articles/dataset/PR2_rRNA_gene_database/3803709/15" class="external-link">Figshare</a>
 </li>
@@ -208,21 +180,17 @@ clades) (D. Vaulot)</li>
 <h2 class="pkg-version" data-toc-text="4.5" id="pr2database-45">pr2database 4.5<a class="anchor" aria-label="anchor" href="#pr2database-45"></a></h2>
 <ul><li>Released: 2016-12-17</li>
 <li>Correct inconsistencies in taxonomy (D. Vaulot)</li>
-<li>Break Chrysophyceae-Synurophyceae into Chrysophyceae
-vs. Synurophyceae according to Algaebase (D. Vaulot)</li>
-<li>Correct Haptophyta taxonomy to follow PR2 rules (_X, _XX etc…) (D.
-Vaulot)</li>
+<li>Break Chrysophyceae-Synurophyceae into Chrysophyceae vs. Synurophyceae according to Algaebase (D. Vaulot)</li>
+<li>Correct Haptophyta taxonomy to follow PR2 rules (_X, _XX etc…) (D. Vaulot)</li>
 <li>Change CW-Chlamydomonadales to Chlamydomonadales (D. Vaulot)</li>
-<li>Correct minor dinoflagellates taxonomy (Karlodinium) (D.
-Vaulot)</li>
+<li>Correct minor dinoflagellates taxonomy (Karlodinium) (D. Vaulot)</li>
 <li>Database on <a href="https://figshare.com/articles/dataset/PR2_rRNA_gene_database/3803709/10" class="external-link">Figshare</a>
 </li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="4.4" id="pr2database-44">pr2database 4.4<a class="anchor" aria-label="anchor" href="#pr2database-44"></a></h2>
 <ul><li>Released: 2016-11-10</li>
-<li>Bolidophyceae corrected according to Ichinomya et al. 2016 (D.
-Vaulot)</li>
+<li>Bolidophyceae corrected according to Ichinomya et al. 2016 (D. Vaulot)</li>
 <li>Sequences with N removed (D. Vaulot)</li>
 <li>Sequences not in GenBank removed (D. Vaulot)</li>
 <li>Database on <a href="https://figshare.com/articles/journal_contribution/PR2_rRNA_gene_database/3803709/6" class="external-link">Figshare</a>
@@ -276,8 +244,7 @@ Vaulot)</li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer></div>

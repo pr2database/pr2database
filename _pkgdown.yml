@@ -38,8 +38,8 @@ navbar:
 
 template:
   bootstrap: 5
-  bootswatch: cosmo
-  theme: breeze-light
+#  bootswatch: cosmo
+#  theme: breeze-light
 
 code:
   width: 80

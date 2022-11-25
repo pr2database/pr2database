@@ -26,14 +26,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">pr2database</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../articles/pr2database.html">Get started</a>
@@ -69,54 +69,49 @@
   </div>
 </nav><div class="container template-article">
 
+
+
+
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Plotting sequence location</h1>
                         <h4 data-toc-skip class="author">Daniel
 Vaulot</h4>
             
       
-      
+      <small class="dont-index">Source: <a href="NA/NA/NA/blob/HEAD/vignettes/pr2_03_geo_origin.Rmd"><code>vignettes/pr2_03_geo_origin.Rmd</code></a></small>
       <div class="d-none name"><code>pr2_03_geo_origin.Rmd</code></div>
     </div>
 
     
     
-<div class="section level1">
-<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h1>
-<p>Install from the GitHub web site using the devtools package</p>
+<div class="section level2">
+<h2 id="loading-the-database">Loading the database<a class="anchor" aria-label="anchor" href="#loading-the-database"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"pr2database/pr2database"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level1">
-<h1 id="loading-the-database">Loading the database<a class="anchor" aria-label="anchor" href="#loading-the-database"></a>
-</h1>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/pr2database" class="external-link">"pr2database"</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"pr2"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">pr2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pr2_database.html">pr2_database</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="load-the-libraries">Load the libraries<a class="anchor" aria-label="anchor" href="#load-the-libraries"></a>
-</h1>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="load-the-libraries">Load the libraries<a class="anchor" aria-label="anchor" href="#load-the-libraries"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>    <span class="co"># For plots</span></span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="plotting-number-of-sequences-per-country-and-ocean">Plotting number of sequences per country and ocean<a class="anchor" aria-label="anchor" href="#plotting-number-of-sequences-per-country-and-ocean"></a>
-</h1>
+<div class="section level2">
+<h2 id="plotting-number-of-sequences-per-country-and-ocean">Plotting number of sequences per country and ocean<a class="anchor" aria-label="anchor" href="#plotting-number-of-sequences-per-country-and-ocean"></a>
+</h2>
 <p>A very good tutorial by <a href="https://twitter.com/MargaretBrisbin" class="external-link">Margaret Mars Brisbin</a> on
 how to combine PR2 metadata with Python to locate sequences using all
 the metadata information (lat, long, country and fuzzy localization): <a href="https://maggimars.github.io/eukGeoBlast/eGB.html" class="external-link uri">https://maggimars.github.io/eukGeoBlast/eGB.html</a> and <a href="https://github.com/maggimars/eukGeoBlast" class="external-link uri">https://github.com/maggimars/eukGeoBlast</a>. This code has
 been used to incorporate more geo-localisation information into PR2
 version 4.12.0</p>
-<div class="section level2">
-<h2 id="number-of-sequences-per-country-of-origin">Number of sequences per country of origin<a class="anchor" aria-label="anchor" href="#number-of-sequences-per-country-of-origin"></a>
-</h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="number-of-sequences-per-country-of-origin">Number of sequences per country of origin<a class="anchor" aria-label="anchor" href="#number-of-sequences-per-country-of-origin"></a>
+</h3>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span>  <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">pr2_country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -128,10 +123,10 @@ version 4.12.0</p>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of PR2 sequences"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="pr2_03_geo_origin_files/figure-html/sequence_country-1.png" width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="number-of-sequences-per-ocean-of-origin">Number of sequences per ocean of origin<a class="anchor" aria-label="anchor" href="#number-of-sequences-per-ocean-of-origin"></a>
-</h2>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="number-of-sequences-per-ocean-of-origin">Number of sequences per ocean of origin<a class="anchor" aria-label="anchor" href="#number-of-sequences-per-ocean-of-origin"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span>  <span class="va">oceans</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">pr2_ocean</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -157,8 +152,7 @@ version 4.12.0</p>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

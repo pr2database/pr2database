@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
   cache = TRUE,
   warning = FALSE,
   message = FALSE,
+  eval = FALSE,
   prompt=FALSE,
   tidy=FALSE,
   comment = "#>" 
@@ -96,6 +97,7 @@ names(seqs)<-groups
 groupCounts <- table(groups)
 u_groups <- names(groupCounts) # unique groups
 cat("Number of groups: ", length(u_groups), '\n') # number of group
+#> Number of groups:  742
 
 taxid <- NULL
 
@@ -110,6 +112,7 @@ for (i in which(groupCounts > maxGroupSize)) {
 }
 
 cat("Number of sequences eliminated: ", sum(remove), "\n")
+#> Number of sequences eliminated:  38
 
 # Iteratively train classifier -----------------------------------------------
 
@@ -117,6 +120,7 @@ probSeqsPrev <- integer() # suspected problem sequences from prior iteration
 df.problems <- list()
 
 cat("Number of iterations:", maxIterations, "\n", sep=" ")
+#> Number of iterations: 3
 
 for (i in seq_len(maxIterations)) {
   
@@ -164,6 +168,25 @@ for (i in seq_len(maxIterations)) {
     }
   }
 }
+
+#> Training iteration: 1
+#> ================================================================================
+#> 
+#> Time difference of 976.07 secs
+#> 
+#> Number of problem sequences: 9
+#> Training iteration: 2
+#> ================================================================================
+#> 
+#> Time difference of 846.92 secs
+#> 
+#> Number of problem sequences: 5
+#> Training iteration: 3
+#> ================================================================================
+#> 
+#> Time difference of 882.58 secs
+#> 
+#> Number of problem sequences: 5
 
 ```
 
@@ -223,6 +246,28 @@ file_assigned_xlsx = "examples/Singapore ASV_sample.decipher.4.14.0.xlsx"
                 threshold=0)
   
   ids
+  
+#> ================================================================================
+#> 
+#> Time difference of 7.47 secs
+  
+  ids
+#>   A test set of class 'Taxa' with length 99
+#>      confidence name                 taxon
+#>  [1]         6% asv_0004             Root; Bacteria; Bacteria_X; Proteobacter...
+#>  [2]        50% asv_2263             Root; Eukaryota; Alveolata; Dinoflagella...
+#>  [3]        36% asv_0664             Root; Eukaryota; Alveolata; Dinoflagella...
+#>  [4]        26% asv_1095             Root; Bacteria; Bacteria_X; Proteobacter...
+#>  [5]        24% asv_0953             Root; Bacteria; Bacteria_X; Proteobacter...
+#>  ...        ... ...                  ...
+#> [95]        13% asv_2793             Root; Eukaryota; Stramenopiles; Pseudofu...
+#> [96]         3% asv_2348             Root; Bacteria; Bacteria_X; Proteobacter...
+#> [97]        56% asv_1507             Root; Eukaryota; Alveolata; Dinoflagella...
+#> [98]         2% asv_1151             Root; Eukaryota; Opisthokonta; Metazoa; ...
+#> [99]        13% asv_2741             Root; Bacteria; Bacteria_X; Proteobacter...
+
+# Transform to a dataframe
+# Note: ids are provided as a list so we need to transform to dataframe
 
 # Transform to a dataframe
 # Note: ids are provided as a list so we need to transform to dataframe

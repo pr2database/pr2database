@@ -42,13 +42,16 @@ knitr::opts_chunk$set(
 
 
   library("pr2database")
-  data(pr2)
+ 
   packageVersion("pr2database")
+  
+  pr2 <- pr2_database()
 
-  pr2_photo <- pr2 %>% filter((division %in% c("Chlorophyta", "Dinophyta", 
-                                               "Cryptophyta",
-                                               "Haptophyta", "Ochrophyta")) &
-                              !(class %in% c("Syndiniales", "Sarcomonadea")))
+  pr2_photo <- pr2 %>% 
+    filter((division %in% c("Chlorophyta", "Dinophyta", 
+                           "Cryptophyta",
+                           "Haptophyta", "Ochrophyta")) &
+          !(class %in% c("Syndiniales", "Sarcomonadea")))
   pr2_ref <- pr2 %>% filter(!is.na(reference_sequence))
 ```
 

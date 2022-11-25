@@ -11,7 +11,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  cache = FALSE,
+  cache = TRUE,
   warning = FALSE,
   message = FALSE,
   comment = "#>" 
@@ -23,6 +23,8 @@ knitr::opts_chunk$set(
 The PR2 database is provided as a R package called **pr2database**.  This page provides instruction to install and use the package.  
 
 # Installation
+
+## From GitHub
 
 Install from the GitHub web site using the devtools package
 
@@ -49,26 +51,52 @@ devtools::install_github("pr2database/pr2database")
 In R CMD INSTALL
 ```
 
-# Loading the database
+Note: You may have to install some packages required by pr2database if they are not installed on your machine
 
-The PR2 database is provided as a data frame (or a tibble). This is a join between the following tables:
+## From R-Universe
+
+Alternatively install from [R-universe](https://pr2database.r-universe.dev/ui#packages)
+
+No need in this case to install package `devetools`
+
+``` r
+# Enable repository from pr2database
+options(repos = c(
+  pr2database = 'https://pr2database.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'))
+
+# Download and install pr2database in R
+install.packages('pr2database')
+```
+
+# Launch shiny interface
+
+
+```{r, eval=FALSE, message=FALSE}
+pr2database::run_app()
+```
+
+# Analysing the database using R
+
+## Loading the database
+
+The PR2 database is provided as a function that returns data frame (or a tibble). This is a join between the following tables:
 * pr2_main
 * pr2_taxonomy
 * pr2_sequence
 * pr2_metadata
 
 ```{r}
+
 library("pr2database")
 
-data("pr2")
+pr2 <- pr2_database()
 
 # List of the different columns available - see the help of the package for information on each field
 
 colnames(pr2)
 
 ```
-
-# Working with the database
 
 
 ## Install and load the libraries
@@ -88,9 +116,9 @@ biocLite("Biostrings")         # To save fasta files
 Load the libraries
 
 ```{r, warning = FALSE}
-  library(dplyr)
-  library(ggplot2)    # For plots
-  library(Biostrings) # To save fasta files
+library(dplyr)
+library(ggplot2)    # For plots
+library(Biostrings) # To save fasta files
 ```
 
 
@@ -101,7 +129,8 @@ Let us select all the available sequences for the Mamiellophyceae _Ostreococcus_
 ```{r}
 
   # Filter only the sequences for which the column genus contains Ostreococcus
-  pr2_ostreo <- pr2 %>% dplyr::filter(genus == "Ostreococcus")
+pr2_ostreo <- pr2 %>% 
+  dplyr::filter(genus == "Ostreococcus")
 
   # Select only the columns of interest
   pr2_ostreo <- pr2_ostreo %>% dplyr::select( genbank_accession, species, 

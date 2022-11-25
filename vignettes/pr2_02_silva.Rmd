@@ -51,12 +51,11 @@ In this small tutorial we offer some hints on how to compare the annotations bet
   library(patchwork)
 
   library("pr2database")
-  data(pr2)
   packageVersion("pr2database")
 
 # Read the PR2 database
   
-  pr2 <- pr2 %>% 
+  pr2 <- pr2_database() %>% 
   # Only keep 18S (do not consider plastids)
     filter(gene == "18S_rRNA")
 

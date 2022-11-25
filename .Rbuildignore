@@ -1,9 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^doc$
-^Meta$
-^_pkgdown\.yml$
-^docs$
-^pkgdown$
-^sandbox$
-^script_pkgdown.R$
+^data-raw$
+dev_history.R
+^dev$
+$run_dev.*
+^LICENSE\.md$
+^README\.Rmd$
+^app\.R$
+^rsconnect$

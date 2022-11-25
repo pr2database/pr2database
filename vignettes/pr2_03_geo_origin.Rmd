@@ -26,15 +26,6 @@ knitr::opts_chunk$set(
 # - need to build source package to have the vignettes
 ```
 
-# Installation
-
-Install from the GitHub web site using the devtools package
-
-```{r, eval=FALSE, message=FALSE}
-install.packages("devtools")
-devtools::install_github("pr2database/pr2database")
-```
-
 
 # Loading the database
 
@@ -42,7 +33,7 @@ devtools::install_github("pr2database/pr2database")
 ```{r}
 library("pr2database")
 
-data("pr2")
+pr2 <- pr2_database()
 
 
 ```

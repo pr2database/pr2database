@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">pr2database</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.14.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
                         <h4 data-toc-skip class="author"></h4>
             
       
-      
+      <small class="dont-index">Source: <a href="NA/NA/NA/blob/HEAD/vignettes/pr2_01_stats.Rmd"><code>vignettes/pr2_01_stats.Rmd</code></a></small>
       <div class="d-none name"><code>pr2_01_stats.Rmd</code></div>
     </div>
 
@@ -95,21 +95,24 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/pr2database" class="external-link">"pr2database"</a></span><span class="op">)</span></span>
+<span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] '4.14.0'</span></span>
+<span><span class="co">#&gt; [1] '4.14.1'</span></span>
+<span>  </span>
+<span>  <span class="va">pr2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pr2_database.html">pr2_database</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="va">pr2_photo</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">(</span><span class="va">division</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Chlorophyta"</span>, <span class="st">"Dinophyta"</span>, </span>
-<span>                                               <span class="st">"Cryptophyta"</span>,</span>
-<span>                                               <span class="st">"Haptophyta"</span>, <span class="st">"Ochrophyta"</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span></span>
-<span>                              <span class="op">!</span><span class="op">(</span><span class="va">class</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Syndiniales"</span>, <span class="st">"Sarcomonadea"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">pr2_photo</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">(</span><span class="va">division</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Chlorophyta"</span>, <span class="st">"Dinophyta"</span>, </span>
+<span>                           <span class="st">"Cryptophyta"</span>,</span>
+<span>                           <span class="st">"Haptophyta"</span>, <span class="st">"Ochrophyta"</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>          <span class="op">!</span><span class="op">(</span><span class="va">class</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Syndiniales"</span>, <span class="st">"Sarcomonadea"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="va">pr2_ref</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">reference_sequence</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="pr2-fields">PR2 fields<a class="anchor" aria-label="anchor" href="#pr2-fields"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/row_colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">pr2</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "pr2_accession"              "kingdom"                   </span></span>
 <span><span class="co">#&gt;  [3] "supergroup"                 "division"                  </span></span>
 <span><span class="co">#&gt;  [5] "class"                      "order"                     </span></span>
@@ -157,7 +160,7 @@
 <div class="section level3">
 <h3 id="all-taxa">All taxa<a class="anchor" aria-label="anchor" href="#all-taxa"></a>
 </h3>
-<p>Total number of PR2 sequences : <strong>197602</strong></p>
+<p>Total number of PR2 sequences : <strong>197594</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -179,11 +182,11 @@
 <td align="right">8</td>
 <td align="right">27</td>
 <td align="right">107</td>
-<td align="right">400</td>
-<td align="right">989</td>
-<td align="right">2165</td>
-<td align="right">25068</td>
-<td align="right">48211</td>
+<td align="right">402</td>
+<td align="right">991</td>
+<td align="right">2167</td>
+<td align="right">25065</td>
+<td align="right">48206</td>
 </tr></tbody>
 </table>
 </div>
@@ -191,7 +194,7 @@
 <h3 id="photosynthetic-protists">Photosynthetic protists<a class="anchor" aria-label="anchor" href="#photosynthetic-protists"></a>
 </h3>
 <p>Number of photosynthetic protist sequences :
-<strong>18529</strong></p>
+<strong>18527</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_photo</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_all</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html" class="external-link">funs</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -212,11 +215,11 @@
 <td align="right">1</td>
 <td align="right">3</td>
 <td align="right">4</td>
-<td align="right">46</td>
-<td align="right">85</td>
-<td align="right">146</td>
-<td align="right">975</td>
-<td align="right">2891</td>
+<td align="right">47</td>
+<td align="right">86</td>
+<td align="right">147</td>
+<td align="right">974</td>
+<td align="right">2888</td>
 </tr></tbody>
 </table>
 </div>
@@ -225,7 +228,7 @@
 </h3>
 <p><em>Reference sequences are a subset of PR2 representative of
 taxonomic groups.</em></p>
-<p>Number of reference sequences : <strong>23551</strong></p>
+<p>Number of reference sequences : <strong>23549</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">pr2_taxa</span> <span class="op">&lt;-</span> <span class="va">pr2_ref</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">kingdom</span><span class="op">:</span><span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -247,11 +250,11 @@ taxonomic groups.</em></p>
 <td align="right">1</td>
 <td align="right">9</td>
 <td align="right">37</td>
-<td align="right">209</td>
-<td align="right">475</td>
-<td align="right">1170</td>
-<td align="right">8720</td>
-<td align="right">13358</td>
+<td align="right">210</td>
+<td align="right">476</td>
+<td align="right">1171</td>
+<td align="right">8717</td>
+<td align="right">13355</td>
 </tr></tbody>
 </table>
 </div>
