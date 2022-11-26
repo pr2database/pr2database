@@ -25,15 +25,13 @@
 #'
 #' @examples
 #'
-#' library(dplyr) # for pipe
-#'
 #' # Read the whole database
 #' my_pr2 <- pr2_database()
 #'
 #' # Select a specific genus
-#' pr2_ostreo <- pr2_database() %>%
-#'    dplyr::filter(genus == "Ostreococcus") %>%
-#'    dplyr::select(pr2_accession, species)
+#' pr2_ostreo <- pr2_database()
+#' pr2_ostreo <- dplyr::filter(pr2_ostreo , genus == "Ostreococcus")
+#' pr2_ostreo <-  dplyr::select(pr2_ostreo, pr2_accession, species)
 #' head(pr2_ostreo)
 
 pr2_database <- function(){
