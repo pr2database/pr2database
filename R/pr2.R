@@ -24,6 +24,9 @@
 #' @export
 #'
 #' @examples
+#'
+#' library(dplyr) # for pipe
+#'
 #' # Read the whole database
 #' my_pr2 <- pr2_database()
 #'

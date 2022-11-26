@@ -29,6 +29,9 @@ The metadata contains three types of fields
 Description of fields: \url{https://pr2-database.org/documentation/pr2-fields}
 }
 \examples{
+
+library(dplyr) # for pipe
+
 # Read the whole database
 my_pr2 <- pr2_database()
 
