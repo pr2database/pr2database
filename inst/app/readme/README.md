@@ -4,7 +4,7 @@
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
 [![Database](https://img.shields.io/badge/database-v.%204.14.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-24%20Nov%202021-lightgrey.svg)
+![Date](https://img.shields.io/badge/date-24%20Nov%202022-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
@@ -30,14 +30,11 @@ workshops dedicated to specific taxonomic groups.
 
 ## Current version
 
-- Version:
-  [![Database](https://img.shields.io/badge/database-v.%204.14.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
+- Version: [4.14.1](https://github.com/pr2database/pr2database/releases)
 
-- Released:
-  ![Date](https://img.shields.io/badge/date-24%20Nov%202021-lightgrey.svg)
+- Released: 2022-11-24
 
-- DOI:
-  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5031733.svg)](https://doi.org/10.5281/zenodo.5031733)
+- DOI: [10.5281/zenodo.5031733](https://doi.org/10.5281/zenodo.5031733)
 
 ## Accessing PR2
 
