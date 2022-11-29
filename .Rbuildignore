@@ -1,11 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^data-raw$
+^data-raw
 dev_history.R
-^dev$
+^dev
 $run_dev.*
 ^LICENSE\.md$
 ^README\.Rmd$
 ^app\.R$
 ^rsconnect$
-^docs$
+^docs
