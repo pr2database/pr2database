@@ -12,7 +12,7 @@ mod_table_taxonomy_ui <- function(id){
   ns <- NS(id)
 
   tagList(
-    includeMarkdown(app_sys("app/readme/taxonomy.md")),
+    includeMarkdown(app_sys("readme/taxonomy.md")),
     p(),
     htmlOutput(ns("taxo_selected")),
     p(),

@@ -33,7 +33,7 @@
 
 
     tabPanel("About",
-             column(8, includeMarkdown(app_sys("app/readme/README.md")))
+             column(8, includeMarkdown(app_sys("readme/README.md")))
              )
     # column(8, includeMarkdown('README.md')))
 

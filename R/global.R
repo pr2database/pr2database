@@ -31,7 +31,7 @@ inactivity <- "function idleTimer() {
 }
 idleTimer();"
 
-# Read global ----------------------------------------------------------
+# Messages ----------------------------------------------------------
 
 messages <- list()
 messages$no_data = tags$div(
@@ -49,11 +49,11 @@ messages$too_many_seqs = tags$div(
 
 # Read global ----------------------------------------------------------
 
-# message("Message - app_sys output: ", app_sys("app/data-qs/global.qs"))
+# message("Message - app_sys output: ", app_sys("data-qs/global.qs"))
 
 file_loaded  <- tryCatch(
   {
-    global <- qs::qread(app_sys("app/data-qs/global.qs"))
+    global <- qs::qread(app_sys("data-qs/global.qs"))
     TRUE              # Returns true if loaded
   },
   error=function(cond) {
@@ -65,7 +65,7 @@ file_loaded  <- tryCatch(
 ## Using the explicit way
 
 if(!file_loaded){
-  global <- qs::qread("inst/app/data-qs/global.qs")
+  global <- qs::qread("inst/data-qs/global.qs")
   print("Using full path")
 }
 
@@ -74,7 +74,7 @@ if(!file_loaded){
 
 file_loaded  <- tryCatch(
   {
-    pr2 <- qs::qread(app_sys("app/data-qs/pr2.qs"))
+    pr2 <- qs::qread(app_sys("data-qs/pr2.qs"))
     TRUE              # Returns true if loaded
   },
   error=function(cond) {
@@ -86,7 +86,7 @@ file_loaded  <- tryCatch(
 ## Using the explicit way
 
 if(!file_loaded){
-  pr2 <- qs::qread("inst/app/data-qs/pr2.qs")
+  pr2 <- qs::qread("inst/data-qs/pr2.qs")
   print("Using full path")
 }
 

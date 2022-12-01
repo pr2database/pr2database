@@ -39,22 +39,22 @@ app_ui <- function(request) {
 golem_add_external_resources <- function() {
   add_resource_path(
     "www",
-    app_sys("app/www")
+    app_sys("www")
   )
   add_resource_path(
     "readme",
-    app_sys("app/readme")
+    app_sys("readme")
   )
 
   add_resource_path(
     "data-qs",
-    app_sys("app/data-qs")
+    app_sys("data-qs")
   )
 
   tags$head(
     favicon(),
     bundle_resources(
-      path = app_sys("app/www"),
+      path = app_sys("www"),
       app_title = "PR2 database"
     ),
 

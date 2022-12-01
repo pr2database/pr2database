@@ -12,7 +12,7 @@ mod_table_sequences_ui <- function(id){
   ns <- NS(id)
 
   tagList(
-    includeMarkdown(app_sys("app/readme/sequences.md")),
+    includeMarkdown(app_sys("readme/sequences.md")),
     p(),
     htmlOutput(ns("taxo_selected")),
     p(),

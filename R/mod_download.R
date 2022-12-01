@@ -118,7 +118,7 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
           column(4, if(n_seq_valid()) downloadButton(ns('download_pr2_zip'), 'Download PR2 sequences (zip)', class = "btn-primary")),
         ),
         p(),
-        includeMarkdown(app_sys("app/readme/download.md")),
+        includeMarkdown(app_sys("readme/download.md")),
       )
     })
 
@@ -128,7 +128,7 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
     output$download_full_ui <- renderUI({
       tagList(
 
-        includeMarkdown(app_sys("app/readme/download_full.md")),
+        includeMarkdown(app_sys("readme/download_full.md")),
 
 
       )
