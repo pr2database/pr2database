@@ -90,7 +90,7 @@ messages$too_many_seqs = tags$div(
 #   print("Using full path")
 # }
 
-# Read from Gcloud bucket
+# Read from Gcloud bucket with pins
 
 global <- read_qs_from_url("https://storage.googleapis.com/pr2database-data/pr2database/data-qs/global.qs")
 
