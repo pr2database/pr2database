@@ -47,48 +47,54 @@ messages$too_many_seqs = tags$div(
 )
 
 
-# Read global ----------------------------------------------------------
+# # Read global ----------------------------------------------------------
+#
+# # message("Message - app_sys output: ", app_sys("data-qs/global.qs"))
+#
+# file_loaded  <- tryCatch(
+#   {
+#     global <- qs::qread(app_sys("data-qs/global.qs"))
+#     TRUE              # Returns true if loaded
+#   },
+#   error=function(cond) {
+#     message("Cannot use system.file")
+#     return(FALSE)
+#   }
+# )
+#
+# ## Using the explicit way
+#
+# if(!file_loaded){
+#   global <- qs::qread("inst/data-qs/global.qs")
+#   print("Using full path")
+# }
+#
+#
+# # Read pr2 ----------------------------------------------------------
+#
+# file_loaded  <- tryCatch(
+#   {
+#     pr2 <- qs::qread(app_sys("data-qs/pr2.qs"))
+#     TRUE              # Returns true if loaded
+#   },
+#   error=function(cond) {
+#     message("Cannot use system.file")
+#     return(FALSE)
+#   }
+# )
+#
+# ## Using the explicit way
+#
+# if(!file_loaded){
+#   pr2 <- qs::qread("inst/data-qs/pr2.qs")
+#   print("Using full path")
+# }
 
-# message("Message - app_sys output: ", app_sys("data-qs/global.qs"))
+# Read from Gcloud bucket
 
-file_loaded  <- tryCatch(
-  {
-    global <- qs::qread(app_sys("data-qs/global.qs"))
-    TRUE              # Returns true if loaded
-  },
-  error=function(cond) {
-    message("Cannot use system.file")
-    return(FALSE)
-  }
-)
+global <- read_qs_from_url("https://storage.googleapis.com/pr2database-data/pr2database/data-qs/global.qs")
 
-## Using the explicit way
-
-if(!file_loaded){
-  global <- qs::qread("inst/data-qs/global.qs")
-  print("Using full path")
-}
-
-
-# Read pr2 ----------------------------------------------------------
-
-file_loaded  <- tryCatch(
-  {
-    pr2 <- qs::qread(app_sys("data-qs/pr2.qs"))
-    TRUE              # Returns true if loaded
-  },
-  error=function(cond) {
-    message("Cannot use system.file")
-    return(FALSE)
-  }
-)
-
-## Using the explicit way
-
-if(!file_loaded){
-  pr2 <- qs::qread("inst/data-qs/pr2.qs")
-  print("Using full path")
-}
+pr2 <- read_qs_from_url("https://storage.googleapis.com/pr2database-data/pr2database/data-qs/pr2.qs")
 
 # Change factors to character ----------------------------------------------------
 
