@@ -43,7 +43,7 @@ match_sequence <- function(fasta.df, query){
   df <- bind_cols(fasta.df, scores) %>%
     arrange(desc(pid)) %>%
     mutate(pid = round(pid, 2)) %>%  # Only 2 decimals
-    select(pr2_accession, pid, kingdom:species, sequence)
+    select(pr2_accession, pid, domain:species, sequence)
 
   # print(df)
 
@@ -82,9 +82,13 @@ blaster_sequence <- function(fasta.df, query,
     db_slice <- db %>%
        filter(slice == one_slice)
 
-    df_slices[[one_slice]] <- blaster::blast(query, db_slice,
+    df_one_slice <- blaster::blast(query, db_slice,
                          minIdentity = minIdentity,
                          maxAccepts = maxAccepts)
+
+    # Necessary if one of the slice is null
+    if(nrow(df_one_slice) > 0) df_slices[[one_slice]] <-  df_one_slice
+    # print(df_one_slice)
   }
 
   df <- purrr::reduce(df_slices, bind_rows)
@@ -104,7 +108,8 @@ blaster_sequence <- function(fasta.df, query,
       inner_join(fasta.df) %>%
       select(pr2_accession, pid, mismatches, gaps,
              query_start, query_end, target_start, target_end,
-             kingdom:species, sequence)
+             pr2_sample_type,
+             domain:species, sequence)
   } else {
     df <- NULL
   }

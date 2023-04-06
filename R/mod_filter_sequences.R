@@ -73,7 +73,9 @@ mod_filter_sequences_server <- function(id, taxo_selected){
     sequences_filtered <- reactive({
       req(taxo_selected())
       pr2$main %>%
-        mutate(pr2_sample_type = tidyr::replace_na(pr2_sample_type, "unknown")) %>%
+        mutate(pr2_sample_type = tidyr::replace_na(pr2_sample_type, "unknown"),
+               genbank_url = glue::glue("<a href='https://www.ncbi.nlm.nih.gov/nuccore/{genbank_accession}'
+                                        target='_blank'>{pr2_accession}</a>.")) %>%
         filter(.data[[taxo_selected()$level]] %in% taxo_selected()$name,
                sequence_length >= input$sequence_length_min,
                pr2_sample_type %in% input$sample_type) %>%

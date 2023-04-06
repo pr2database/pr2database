@@ -15,3 +15,5 @@ $run_dev.*
 ^readme_tech
 ^tests
 ^vignettes
+^docs$
+^pkgdown$

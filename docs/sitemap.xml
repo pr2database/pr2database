@@ -13,6 +13,12 @@
     <loc>/articles/pr2_01_stats.html</loc>
   </url>
   <url>
+    <loc>/articles/pr2_02A_silva.html</loc>
+  </url>
+  <url>
+    <loc>/articles/pr2_02B_eukribo.html</loc>
+  </url>
+  <url>
     <loc>/articles/pr2_02_silva.html</loc>
   </url>
   <url>
@@ -20,6 +26,9 @@
   </url>
   <url>
     <loc>/articles/pr2_04_decipher.html</loc>
+  </url>
+  <url>
+    <loc>/articles/pr2_05_mixoplankton.html</loc>
   </url>
   <url>
     <loc>/articles/vignette-shiny-presentation.html</loc>
@@ -44,6 +53,9 @@
   </url>
   <url>
     <loc>/reference/pr2_database.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pr2_taxonomy.html</loc>
   </url>
   <url>
     <loc>/reference/run_app.html</loc>
@@ -124,12 +136,48 @@
     <loc>/versions/4.9/PR2_update_4.9.0_DinoRef.html</loc>
   </url>
   <url>
-    <loc>/versions/5.0/PR2-update-4.13.0-C-Taxonomy-9-ranks.html</loc>
+    <loc>/versions/5.0/index.html</loc>
   </url>
   <url>
-    <loc>/versions/5.0/PR2-update-4.13.0-E-Silva.html</loc>
+    <loc>/versions/5.0/PR2-5.0.0-table-sequences-updated.html</loc>
   </url>
   <url>
-    <loc>/versions/5.0/PR2-update-4.13.0-F-GenBank.html</loc>
+    <loc>/versions/5.0/PR2-update-5.0.0-A-Taxonomy-9-ranks-2020.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-A-Taxonomy-9-ranks-2023.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-B-Diatoms-2023.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-C-GenBank.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-C.2-GenBank-with-taxonomy.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-D-Ciliates.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-G-16S_plastids.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-H-PR2_traits-9-ranks.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-I-Chrysophyceae.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-J-Chytrids.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-K-EukRibo.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-M-Mitochondria.html</loc>
+  </url>
+  <url>
+    <loc>/versions/5.0/PR2-update-5.0.0-Z-Misc.html</loc>
   </url>
 </urlset>

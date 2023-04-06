@@ -37,16 +37,18 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
 
     n_seq_valid <- reactive({nrow(sequences_filtered()) <= n_seq_max})
 
-    output$taxo_selected <- renderText({stringr::str_c("Taxo level: ",
-                                                       tags$b(taxo_selected()$level),
-                                                       "- Taxon name: ",
-                                                       tags$b(str_c(taxo_selected()$name,
-                                                             collapse = ";")),
-                                                       " - Number of sequences:",
-                                                       tags$b(nrow(sequences_filtered())),
-                                                       tags$p(),
-                                                       tags$span(style="color:red", HTML(if_else(n_seq_valid(), "", str_c(tags$b("Too many sequence !"), " Must be below ", tags$b(n_seq_max))))),
-                                                       sep=" ")})
+    output$taxo_selected <- renderText({ str_c("Taxonomic level: <b>",
+                                         taxo_selected()$level,
+                                         " </b> - Taxon name: <b>",
+                                         str_c(taxo_selected()$name,
+                                               collapse = ";"),
+                                         " </b> - Number of sequences: <b>",
+                                         nrow(sequences_filtered()),
+                                         "</b><p><p>",
+                                         if_else(n_seq_valid(), "", str_c("<span style='color:red'> <b>Too many sequence !</b>",
+                                                                          " Must be below <b>", n_seq_max,
+                                                                          "</b> - Please download full database.</span>")))
+      })
 
 
 
@@ -83,7 +85,7 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
           select(-starts_with("taxo_"))
 
         taxonomy_export <- sequences_export %>%
-          count(kingdom, supergroup, division, class, order, family, genus, species)
+          count(domain, supergroup, division, subdivision, class, order, family, genus, species)
 
         # Export Xlsx file with 2 tables
         rio::export(list("taxonomy"=taxonomy_export, "sequences"=sequences_export),

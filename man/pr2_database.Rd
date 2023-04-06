@@ -18,26 +18,27 @@ This is a join between the following tables:
        \item{pr2_taxonomy}
        \item{pr2_sequence}
        \item{pr2_metadata}
+       \item{pr2_traits}
        \item{pr2_silva}
+       \item{euribo}
   }
-The metadata contains three types of fields
+The metadata contains different types of fields
 \itemize{
        \item{gb_ : originating from the GenBank entry}
        \item{eukref_ : annotated by the Eukref project}
        \item{pr2_ : annotated by pr2 such latitude and longitude}
+       \item{eukribo_: information from the EukRibo database}
   }
 Description of fields: \url{https://pr2-database.org/documentation/pr2-fields}
 }
 \examples{
 
-library(dplyr) # for pipe
-
 # Read the whole database
 my_pr2 <- pr2_database()
 
 # Select a specific genus
-pr2_ostreo <- pr2_database() \%>\%
-   dplyr::filter(genus == "Ostreococcus") \%>\%
-   dplyr::select(pr2_accession, species)
+pr2_ostreo <- pr2_database()
+pr2_ostreo <- dplyr::filter(pr2_ostreo , genus == "Ostreococcus")
+pr2_ostreo <-  dplyr::select(pr2_ostreo, pr2_accession, species)
 head(pr2_ostreo)
 }

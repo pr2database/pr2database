@@ -9,13 +9,16 @@
 #'        \item{pr2_taxonomy}
 #'        \item{pr2_sequence}
 #'        \item{pr2_metadata}
+#'        \item{pr2_traits}
 #'        \item{pr2_silva}
+#'        \item{euribo}
 #'   }
-#' The metadata contains three types of fields
+#' The metadata contains different types of fields
 #' \itemize{
 #'        \item{gb_ : originating from the GenBank entry}
 #'        \item{eukref_ : annotated by the Eukref project}
 #'        \item{pr2_ : annotated by pr2 such latitude and longitude}
+#'        \item{eukribo_: information from the EukRibo database}
 #'   }
 #' Description of fields: \url{https://pr2-database.org/documentation/pr2-fields}
 #'
@@ -37,3 +40,27 @@
 pr2_database <- function(){
   pr2$main
 }
+# ------------------------------------------------------------------------------
+
+#'@title PR2 database - Taxonomy.
+#'@description
+#'
+#' The PR2 database taxonomy is provided as a data frame with the number of sequences for each taxon
+#'
+#' @return A data frame
+#' @export
+#'
+#' @examples
+#'
+#' # Read the whole database taxonomy
+#' my_pr2_taxo <- pr2_taxonomy()
+#'
+#' # Select a specific genus
+#' my_pr2_taxo <- dplyr::filter( my_pr2_taxo , genus == "Ostreococcus")
+#' head(my_pr2_taxo)
+
+
+pr2_taxonomy<- function(){
+  pr2$taxonomy
+}
+

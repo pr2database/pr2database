@@ -7,7 +7,7 @@ options_picker_taxo <- shinyWidgets::pickerOptions(
   size = 5
 )
 
-options_picker_taxo_kingdom <- shinyWidgets::pickerOptions(
+options_picker_taxo_domain <- shinyWidgets::pickerOptions(
   actionsBox = TRUE,
   selectedTextFormat = "count > 3",
   liveSearch = TRUE,
@@ -87,17 +87,17 @@ taxo_level_number <- function(taxo_level) {
 # # NULL
 
 
-taxo_return <- function(kingdom, supergroup, division, class, order, family, genus, species) {
+taxo_return <- function(domain, supergroup, division, subdivision, class, order, family, genus, species) {
 
 
-  taxo_1 <- c(kingdom[1], supergroup[1], division[1], class[1], order[1], family[1], genus[1], species[1])
-  taxo_list <- list(kingdom = kingdom, supergroup = supergroup, division=division,
+  taxo_1 <- c(domain[1], supergroup[1], division[1], subdivision[1], class[1], order[1], family[1], genus[1], species[1])
+  taxo_list <- list(domain = domain, supergroup = supergroup, division=division, subdivision=subdivision,
                     class=class, order = order, family = family, genus = genus, species = species)
 
   # The levels for which nothing is selected return NULL and the length of the vector gives the first rank which is NULL
 
   if (length(taxo_1) == 0) {
-    return( c(level = "kingdom", list(name = unique(global$kingdom)), taxo_list))
+    return( c(level = "domain", list(name = unique(global$domain)), taxo_list))
   }
 
 

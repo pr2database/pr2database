@@ -47,6 +47,7 @@ mod_table_taxonomy_server <- function(id, taxonomy, taxo_selected){
       rownames = FALSE ,
       options = list(
         autoWidth = TRUE,
+        selection = 'none',
         scrollX=FALSE,
         pageLength = 50
         # columnDefs = list(list(width = '10px', targets = 9))

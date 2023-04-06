@@ -3,8 +3,8 @@
 
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
-[![Database](https://img.shields.io/badge/database-v.%204.14.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-24%20Nov%202022-lightgrey.svg)
+[![Database](https://img.shields.io/badge/database-v.%205.0.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
+![Date](https://img.shields.io/badge/date-6%20Apr%202023-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
@@ -18,7 +18,7 @@ in 2010 in the frame of the BioMarks project from work that had
 developed in the previous ten years in the Plankton Group of the Station
 Biologique of Roscoff. Its aim is to provide a reference database of
 carefully annotated 18S rRNA sequences using eight unique taxonomic
-fields (from kingdom to species). At present it contains about 205,000
+fields (from domain to species). At present it contains about 220,000
 sequences. A number of metadata fields are available for many sequences,
 including geo-localisation, whether it originates from a culture or a
 natural sample, host type etc… The annotation of PR2 is performed by
@@ -30,9 +30,9 @@ workshops dedicated to specific taxonomic groups.
 
 ## Current version
 
-- Version: [4.14.1](https://github.com/pr2database/pr2database/releases)
+- Version: [5.0.0](https://github.com/pr2database/pr2database/releases)
 
-- Released: 2022-11-24
+- Released: 2023-04-06
 
 - DOI: [10.5281/zenodo.5031733](https://doi.org/10.5281/zenodo.5031733)
 

@@ -21,9 +21,9 @@ mod_select_taxonomy_ui <- function(id){
     p("RESET + VALIDATE to cancel choices"),
     p(),
 
-    shinyWidgets::pickerInput(ns("kingdom"), "Kingdom",
-                              choices = unique(pr2$taxonomy$kingdom), selected = "Eukaryota",
-                              multiple = TRUE, options= options_picker_taxo_kingdom),
+    shinyWidgets::pickerInput(ns("domain"), "Domain",
+                              choices = unique(pr2$taxonomy$domain), selected = "Eukaryota",
+                              multiple = TRUE, options= options_picker_taxo_domain),
 
     # Use the purr map function to create the pickerInput
     purrr::map(global$taxo_levels[2:global$taxo_levels_number],
@@ -63,11 +63,11 @@ mod_select_taxonomy_server <- function(id){
     # Reactive Value to prevent update of pickers when uploading-------------
     update_taxo_auto <- reactiveVal(TRUE)
 
-    # Validate kingdom selection -----------------------------------------------
+    # Validate Domain selection -----------------------------------------------
 
     iv_taxonomy <- shinyvalidate::InputValidator$new()
 
-    iv_taxonomy$add_rule("kingdom", shinyvalidate::sv_required(message = "Choose at least one taxon"))
+    iv_taxonomy$add_rule("domain", shinyvalidate::sv_required(message = "Choose at least one taxon"))
 
     iv_taxonomy$enable()
 
@@ -79,7 +79,8 @@ mod_select_taxonomy_server <- function(id){
 
     taxo <- reactive({
       # Do not use req because if one member is NULL it will not be activated
-      taxo_return(input$kingdom, input$supergroup, input$division, input$class, input$order, input$family, input$genus, input$species)
+      taxo_return(input$domain, input$supergroup, input$division, input$subdivision,
+                  input$class, input$order, input$family, input$genus, input$species)
     })
 
 
@@ -177,8 +178,8 @@ mod_select_taxonomy_server <- function(id){
 
     observeEvent( input$reset_taxo, {
 
-      shinyWidgets::updatePickerInput(session = session,  inputId = "kingdom",
-                                      choices = unique(pr2$taxonomy$kingdom), selected = NULL, )
+      shinyWidgets::updatePickerInput(session = session,  inputId = "domain",
+                                      choices = unique(pr2$taxonomy$domain), selected = NULL, )
       purrr::map(global$taxo_levels[2:global$taxo_levels_number], ~ shinyWidgets::updatePickerInput(session = session,  inputId = .x,
                                                                                                     choices = character(0), selected = character(0)))
       update_taxo_auto(TRUE)

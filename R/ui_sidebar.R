@@ -9,7 +9,8 @@ sidebar <- function() {sidebarPanel(width = 3,
                     actionButton("button_help", "Help", class = "btn-info",
                                  onclick ="window.open('https://pr2database.github.io/pr2database/articles/vignette-shiny-presentation.html', '_blank')"),
                     actionButton("button_disconnect", "Disconnect", class = "btn-info"),
-                    h4("PR2 18S rRNA database v. 4.14.1"),
+                    h4(str_c("PR2 18S rRNA database v. ", global$version)),
+                    tags$b(str_c(format(nrow(pr2$main), big.mark=","), " sequences")),
                     style="text-align: center;"),
 
                  conditionalPanel(
