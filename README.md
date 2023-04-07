@@ -34,7 +34,7 @@ workshops dedicated to specific taxonomic groups.
 
 - Released: 2023-04-06
 
-- DOI: [10.5281/zenodo.5031733](https://doi.org/10.5281/zenodo.5031733)
+- DOI: [10.5281/zenodo.7805244](https://doi.org/10.5281/zenodo.7805244)
 
 ## Accessing PR2
 
