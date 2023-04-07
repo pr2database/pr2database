@@ -99,7 +99,7 @@ and use the package.</p>
 <p>Install from the GitHub web site using the devtools package</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="va">devtools</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"pr2database/pr2database"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"pr2database/pr2database"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>* installing *source* package 'pr2database' ...
 ** R
 ** data
@@ -119,11 +119,26 @@ In R CMD INSTALL</code></pre>
 <p>Note: You may have to install some packages required by pr2database
 if they are not installed on your machine</p>
 </div>
+<div class="section level3">
+<h3 id="from-r-universe">From R-Universe<a class="anchor" aria-label="anchor" href="#from-r-universe"></a>
+</h3>
+<p>Alternatively install from <a href="https://pr2database.r-universe.dev/pr2database" class="external-link">R-universe</a></p>
+<p>No need in this case to install package <code>devtools</code></p>
+<pre class="undefined"><code><span></span>
+<span></span>
+<span><span class="co"># Enable repository from pr2database</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  pr2database <span class="op">=</span> <span class="st">'https://pr2database.r-universe.dev'</span>,</span>
+<span>  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Download and install pr2database in R</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'pr2database'</span><span class="op">)</span></span></code></pre>
+</div>
 </div>
 <div class="section level2">
 <h2 id="launch-shiny-interface">Launch shiny interface<a class="anchor" aria-label="anchor" href="#launch-shiny-interface"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pr2database</span><span class="fu">::</span><span class="fu"><a href="../reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -143,7 +158,7 @@ if they are not installed on your machine</p>
 <li>pr2_silva</li>
 <li>eukribo</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/pr2database" class="external-link">"pr2database"</a></span><span class="op">)</span></span>
 <span></span>
@@ -200,7 +215,7 @@ if they are not installed on your machine</p>
 </h3>
 <p>The following examples makes use of the specifc R libraries</p>
 <p>Install the libraries</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span>      <span class="co"># For filtering the data</span></span>
 <span><span class="fu">install.package</span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>     <span class="co"># To plot data</span></span>
 <span><span class="fu">install.package</span><span class="op">(</span><span class="st">"maps"</span><span class="op">)</span>        <span class="co"># To plot maps</span></span>
@@ -208,7 +223,7 @@ if they are not installed on your machine</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"https://bioconductor.org/biocLite.R"</span><span class="op">)</span>  <span class="co"># This package is on Bioconductor</span></span>
 <span><span class="fu">biocLite</span><span class="op">(</span><span class="st">"Biostrings"</span><span class="op">)</span>         <span class="co"># To save fasta files</span></span></code></pre></div>
 <p>Load the libraries</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>    <span class="co"># For plots</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/Biostrings" class="external-link">Biostrings</a></span><span class="op">)</span> <span class="co"># To save fasta files</span></span></code></pre></div>
@@ -218,7 +233,7 @@ if they are not installed on your machine</p>
 </h3>
 <p>Let us select all the available sequences for the Mamiellophyceae
 <em>Ostreococcus</em></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span>  <span class="co"># Filter only the sequences for which the column genus contains Ostreococcus</span></span>
 <span><span class="va">pr2_ostreo</span> <span class="op">&lt;-</span> <span class="va">pr2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
@@ -256,7 +271,7 @@ if they are not installed on your machine</p>
 </h3>
 <p>We will save the <em>Ostreococcus</em> sequences to a FASTA file.
 This is easy done with the bioconductor package BioStrings.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span>  <span class="co"># Importing the sequence in a Biostring set </span></span>
 <span></span>
@@ -305,7 +320,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 <div class="section level3">
 <h3 id="doing-an-histogram-of-the-sequence-length">Doing an histogram of the sequence length<a class="anchor" aria-label="anchor" href="#doing-an-histogram-of-the-sequence-length"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">pr2_ostreo</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">sequence_length</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">xlim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">2000</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Sequence length"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Number of sequences"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -315,7 +330,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 <div class="section level3">
 <h3 id="drawing-a-map-of-sequence-locations">Drawing a map of sequence locations<a class="anchor" aria-label="anchor" href="#drawing-a-map-of-sequence-locations"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">maps</span><span class="op">)</span></span>
 <span>  <span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html" class="external-link">map_data</a></span><span class="op">(</span><span class="st">"world"</span><span class="op">)</span></span>
 <span></span>
@@ -333,7 +348,7 @@ TCATTAAATCAGCAATAGTTTCTTTGGTGGTGTTTACTACTCGGATAACCGT...</code></pre>
 of the major taxa in a group. Usually they are long sequences and can be
 used to build a reference alignment (compare the histogram of reference
 to that all PR2 sequences).</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="va">pr2_ostreo_reference</span> <span class="op">&lt;-</span> <span class="va">pr2_ostreo</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">reference_sequence</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -367,7 +382,7 @@ to that all PR2 sequences).</p>
 </h3>
 <p><a href="https://doi.org/10.5281/zenodo.6327890" class="external-link">EukRibo</a> is a
 high quality 18S reference database (Berney et al. 2022)</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="va">pr2_ostreo_eukribo</span> <span class="op">&lt;-</span> <span class="va">pr2_ostreo</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">eukribo_UniEuk_taxonomy_string</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>

@@ -45,6 +45,12 @@ Each version has a 3 number code: version_x.y.z, e.g. 5.0.0
 * **[pr2_version_x.y.z_chimera.xlsx](https://github.com/pr2database/pr2database/releases/download/v5.0.0/pr2_version_5.0.0_chimera.xlsx)** 
 
 
+#### Unassigned sequences 
+* These SSU GenBank sequences are not part yet of the PR2 database. However some of them have been automatically assigned with AssignTaxa and version 4.14 of PR2 (see columns at the end of the xlsx file).
+* These sequences can be useful to add more sequences to a phylogenetic tree for example or annotate a specific taxonomic group.
+* **[pr2_version_x.y.z_unassigned.xlsx](https://github.com/pr2database/pr2database/releases/download/v5.0.0/pr2_version_5.0.0_unassigned.xlsx)** 
+
+
 #### Previous releases
 
 * [Link to previous releases](https://github.com/pr2database/pr2database/releases)
