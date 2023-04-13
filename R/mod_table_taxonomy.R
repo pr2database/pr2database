@@ -39,7 +39,7 @@ mod_table_taxonomy_server <- function(id, taxonomy, taxo_selected){
       req(taxo_selected())
       taxonomy %>%
         filter(.data[[taxo_selected()$level]] %in% taxo_selected()$name) %>%
-        arrange(across(any_of(global$taxo_levels)))
+        arrange(across(any_of(pr2$taxo_levels)))
     })
 
     table <- reactive(

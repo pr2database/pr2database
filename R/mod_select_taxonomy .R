@@ -26,7 +26,7 @@ mod_select_taxonomy_ui <- function(id){
                               multiple = TRUE, options= options_picker_taxo_domain),
 
     # Use the purr map function to create the pickerInput
-    purrr::map(global$taxo_levels[2:global$taxo_levels_number],
+    purrr::map(pr2$taxo_levels[2:pr2$taxo_levels_number],
                ~  shinyWidgets::pickerInput(ns(.x), str_to_title(.x) ,
                                             choices = NULL, selected = NULL,
                                             multiple = TRUE, options= options_picker_taxo)),
@@ -115,7 +115,7 @@ mod_select_taxonomy_server <- function(id){
         # The next line prevents update of taxonomy selector when loading new values from yaml file
         req((taxo_level_number(taxo_level) >= taxo_level_number(taxo()$level)))
 
-        taxo_level_below = global$taxo_levels[taxo_level_number(taxo_level) + 1]
+        taxo_level_below = pr2$taxo_levels[taxo_level_number(taxo_level) + 1]
 
         # 2022-11-15 - Added to prevent initial resetting (cf Hadley p. 159)
         freezeReactiveValue(input, taxo_level_below)
@@ -133,7 +133,7 @@ mod_select_taxonomy_server <- function(id){
 
     # Update all Pickers using the map function ----------------
 
-    purrr::map(global$taxo_levels[1:global$taxo_levels_number-1], ~ update_taxo_picker(.x))
+    purrr::map(pr2$taxo_levels[1:pr2$taxo_levels_number-1], ~ update_taxo_picker(.x))
 
     # Save settings --------
 
@@ -157,9 +157,9 @@ mod_select_taxonomy_server <- function(id){
         # Prevent update when taxo is loaded
         update_taxo_auto(FALSE)
 
-        purrr::map(global$taxo_levels[1:global$taxo_levels_number], ~ freezeReactiveValue(input, .x))
+        purrr::map(pr2$taxo_levels[1:pr2$taxo_levels_number], ~ freezeReactiveValue(input, .x))
 
-        purrr::map(global$taxo_levels[1:global$taxo_levels_number], ~ shinyWidgets::updatePickerInput(session = session,
+        purrr::map(pr2$taxo_levels[1:pr2$taxo_levels_number], ~ shinyWidgets::updatePickerInput(session = session,
                                                                                                       inputId = .x,
                                                                                                       choices = taxo_new[[.x]],
                                                                                                       selected = taxo_new[[.x]]))
@@ -180,7 +180,7 @@ mod_select_taxonomy_server <- function(id){
 
       shinyWidgets::updatePickerInput(session = session,  inputId = "domain",
                                       choices = unique(pr2$taxonomy$domain), selected = NULL, )
-      purrr::map(global$taxo_levels[2:global$taxo_levels_number], ~ shinyWidgets::updatePickerInput(session = session,  inputId = .x,
+      purrr::map(pr2$taxo_levels[2:pr2$taxo_levels_number], ~ shinyWidgets::updatePickerInput(session = session,  inputId = .x,
                                                                                                     choices = character(0), selected = character(0)))
       update_taxo_auto(TRUE)
 

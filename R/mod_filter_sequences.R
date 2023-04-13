@@ -22,9 +22,9 @@ mod_filter_sequences_length_min_ui <- function(id) {
     sliderInput(
       ns("sequence_length_min"),
       label = "Minimum sequence length",
-      global$sequence_length_min,
-      value = global$sequence_length_min,
-      min = global$sequence_length_min,
+      pr2$sequence_length_min,
+      value = pr2$sequence_length_min,
+      min = pr2$sequence_length_min,
       max = 2000,
       step = 250,
       width = NULL
@@ -39,8 +39,8 @@ mod_filter_sequences_sample_type_ui <- function(id) {
 
     # h3("Select Sample types"),
 
-    shinyWidgets::pickerInput(ns("sample_type"), "Sample type", choices = c(global$sample_types, "unknown"),
-                              selected = c(global$sample_types, "unknown"), multiple = TRUE, options= options_picker),
+    shinyWidgets::pickerInput(ns("sample_type"), "Sample type", choices = c(pr2$sample_types, "unknown"),
+                              selected = c(pr2$sample_types, "unknown"), multiple = TRUE, options= options_picker),
 
   )
 }
@@ -51,7 +51,7 @@ data_organelle_ui <- function(id) {
 
     # h3("Select Organelle (NA for bacteria/archeae)"),
 
-    shinyWidgets::pickerInput(ns("organelle"), "Organelle (NA for bacteria/archea)", choices = global$organelles,
+    shinyWidgets::pickerInput(ns("organelle"), "Organelle (NA for bacteria/archea)", choices = pr2$organelles,
                               selected = "nucleus", multiple = TRUE, options= options_picker),
 
   )
@@ -79,7 +79,7 @@ mod_filter_sequences_server <- function(id, taxo_selected){
         filter(.data[[taxo_selected()$level]] %in% taxo_selected()$name,
                sequence_length >= input$sequence_length_min,
                pr2_sample_type %in% input$sample_type) %>%
-        arrange(across(any_of(global$taxo_levels)))
+        arrange(across(any_of(pr2$taxo_levels)))
     })
 
     return(sequences_filtered)

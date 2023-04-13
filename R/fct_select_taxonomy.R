@@ -31,7 +31,7 @@ options_picker_taxo_domain <- shinyWidgets::pickerOptions(
 #
 #
 taxo_level_number <- function(taxo_level) {
-  which(global$taxo_levels == taxo_level)
+  which(pr2$taxo_levels == taxo_level)
 }
 
 
@@ -97,11 +97,11 @@ taxo_return <- function(domain, supergroup, division, subdivision, class, order,
   # The levels for which nothing is selected return NULL and the length of the vector gives the first rank which is NULL
 
   if (length(taxo_1) == 0) {
-    return( c(level = "domain", list(name = unique(global$domain)), taxo_list))
+    return( c(level = "domain", list(name = unique(pr2$domains)), taxo_list))
   }
 
 
-  taxo_level <- global$taxo_levels[length(taxo_1)]
+  taxo_level <- pr2$taxo_levels[length(taxo_1)]
   message("Taxo level: ", taxo_level)
 
 
