@@ -139,6 +139,15 @@ pr2$organelles <- c(pr2$organelles, "NA") # Add not applicable for bacteria
 
 pr2$domains <- purrr::discard(sort(unique(pr2$taxonomy$domain)), ~ is.na(.x))
 
+pr2$taxonomy <- pr2$taxonomy %>%
+  mutate(species_url = case_when(!is.na(worms_id) ~ glue::glue("<a href='https://www.marinespecies.org/aphia.php?p=taxdetails&id={worms_id}'
+                                        target='_blank'>{species}</a>."),
+                                 TRUE ~  species))
+pr2$main <- pr2$main %>%
+  mutate(species_url = case_when(!is.na(worms_id) ~ glue::glue("<a href='https://www.marinespecies.org/aphia.php?p=taxdetails&id={worms_id}'
+                                        target='_blank'>{species}</a>."),
+                                 TRUE ~  species))
+
 
 # Done --------------------------------------------------------------------
 

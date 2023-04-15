@@ -33,13 +33,14 @@ mod_table_sequences_server <- function(id, sequences, taxo_selected){
     # ns <- session$ns
     ns <- NS(id)
 
-    cols_to_keep = c("genbank_url", "species", "sequence_length",
+    cols_to_keep = c("genbank_url", "species_url", "sequence_length",
                      "pr2_sample_type", "gb_definition", "gb_taxonomy")
 
     table <- reactive({
       req(sequences())
       DT::datatable(sequences() %>%
-                      select(any_of(cols_to_keep)) ,
+                      select(any_of(cols_to_keep)) %>%
+                      rename(species = species_url),
       rownames = FALSE ,
       escape = FALSE,
       selection = 'none',

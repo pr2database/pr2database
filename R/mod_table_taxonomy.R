@@ -39,12 +39,16 @@ mod_table_taxonomy_server <- function(id, taxonomy, taxo_selected){
       req(taxo_selected())
       taxonomy %>%
         filter(.data[[taxo_selected()$level]] %in% taxo_selected()$name) %>%
-        arrange(across(any_of(pr2$taxo_levels)))
+        arrange(across(any_of(pr2$taxo_levels))) %>%
+        mutate(species = species_url) %>%
+        select(-species_url) %>%
+        relocate(n_sequences, .after = "species")
     })
 
     table <- reactive(
       DT::datatable(taxonomy_filtered() ,
       rownames = FALSE ,
+      escape = FALSE,
       options = list(
         autoWidth = TRUE,
         selection = 'none',
