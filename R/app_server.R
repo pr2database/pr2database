@@ -15,8 +15,9 @@ app_server <- function(input, output, session) {
 
   observeEvent(input$button_disconnect, {session$close()})
 
-  # To track usage - does not work due to file permissions
-  # shinylogs::track_usage(storage_mode = shinylogs::store_sqlite(path = "logs/"))
+  # To track usage - needs to erase and reload the logs directory
+  dir.create(path = "logs", showWarnings = FALSE, recursive = FALSE, mode = "0775")
+  shinylogs::track_usage(storage_mode = shinylogs::store_sqlite(path = "logs/"))
 
 
   # Taxonomy selection on left menu

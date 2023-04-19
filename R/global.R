@@ -47,46 +47,6 @@ messages$too_many_seqs = tags$div(
 )
 
 
-# # Read global ----------------------------------------------------------
-#
-# # message("Message - app_sys output: ", app_sys("data-qs/global.qs"))
-#
-# ## Try Read from system file - for local
-#
-# file_loaded  <- tryCatch(
-#   {
-#     global <- qs::qread(app_sys("data-qs/global.qs"))
-#     print("Using System file")
-#     TRUE              # Returns true if loaded
-#   },
-#   error=function(cond) {
-#     message("Cannot use system.file")
-#     return(FALSE)
-#   }
-# )
-#
-# ## Try Read from full path _ for google server
-# if(!file_loaded){
-#   file_loaded  <- tryCatch(
-#     {
-#       global <- qs::qread("inst/data-qs/global.qs")
-#       print("Using full path")
-#       TRUE              # Returns true if loaded
-#     },
-#     error=function(cond) {
-#       message("Cannot use full path")
-#       return(FALSE)
-#     }
-#   )
-# }
-#
-# ## Read from Gcloud bucket with pins - for people who install the library
-#
-# if(!file_loaded){
-#   global <- read_qs_from_url("https://storage.googleapis.com/pr2database-data/pr2database/data-qs/global.qs")
-#   print("Using cloud bucket")
-# }
-
 #
 # # Read pr2 ----------------------------------------------------------
 #
