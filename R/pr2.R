@@ -38,7 +38,7 @@
 #' head(pr2_ostreo)
 
 pr2_database <- function(){
-  pr2$main
+  pr2$main %>% dplyr::filter(gene %in% c("16S_rRNA", "18S_rRNA")) # To remove other gene databases
 }
 # ------------------------------------------------------------------------------
 

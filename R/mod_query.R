@@ -50,9 +50,15 @@ mod_query_server <- function(id) {
       {input$button_match
         input$pct_id_min},
       {
-        req(!is.null(pr2_blast()))
-        pr2_blast()  %>%
-          dplyr::filter(pid >= input$pct_id_min)
+        if(!is.null(pr2_blast())){
+          blast_filtered <- pr2_blast()  %>%
+            dplyr::filter(pid >= input$pct_id_min)
+        }
+        else {
+          blast_filtered <- NULL
+        }
+
+        return(blast_filtered)
       })
 
 
@@ -125,7 +131,7 @@ mod_query_server <- function(id) {
 
     output$pr2_filtered <-   DT::renderDT(pr2_filtered() %>%
                                             # mutate(sequence = gsub("(.{80})","\\1\n",sequence)) %>%
-                                            select(-sequence) %>%
+                                            select(-any_of("sequence")) %>%
                                             relocate(species, .before = pid),
                                           rownames = FALSE,
                                           selection = 'single',
@@ -138,21 +144,27 @@ mod_query_server <- function(id) {
     )
 
     output$ui_query_results <- renderUI({
-      req(pr2_filtered())
-      tagList(
-        p(),
-        fluidRow(
-          column(3, h3("Matching PR2 sequences")),
-          column(4, style = "margin-top: 20px;",  # This to align the download box to the legend on the left
-                 downloadButton(ns('download_pr2_query_zip'), 'Download filtered results (zip)', class = "btn-primary"))
-        ),
-        p(),
-        DT::dataTableOutput(ns("pr2_filtered")),
-        # renderPrint({
-        #   cat("ASV selected: ",  pr2_selected())
-        # })
+      # req(pr2_filtered())  # Not necessary since pr2_filtered called
+      if(!is.null(pr2_filtered())){
+          tagList(
+              p(),
+              fluidRow(
+                column(3, h3("Matching PR2 sequences")),
+                column(4, style = "margin-top: 20px;",  # This to align the download box to the legend on the left
+                       downloadButton(ns('download_pr2_query_zip'), 'Download filtered results (zip)', class = "btn-primary"))
+              ),
+              p(),
+              DT::dataTableOutput(ns("pr2_filtered")),
+              # renderPrint({
+              #   cat("ASV selected: ",  pr2_selected())
+              # })
+          )
+      } else {
+          tagList(
+           h3("No Matching PR2 sequences")
+          )
+          }
 
-      )
     })
 
 

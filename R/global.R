@@ -89,10 +89,24 @@ if(!file_loaded){
 
 # Change factors to character ----------------------------------------------------
 
+pr2$main <-  dplyr::mutate(pr2$main,
+              # species_url = dplyr::case_when(!is.na(worms_id) ~ glue::glue("<a href='https://www.marinespecies.org/aphia.php?p=taxdetails&id={worms_id}'
+              #                                   target='_blank'>{species}</a>."),
+              #                                TRUE ~  species),
+              species_url = dplyr::case_when(!is.na(gbif_id) ~ glue::glue("<a href='https://www.gbif.org/species/{gbif_id}'
+                                                target='_blank'>{species}</a>"),
+                                             TRUE ~  species),
+              pr2_sample_type = tidyr::replace_na(pr2_sample_type, "unknown"),
+              accession_genbank_link = glue::glue("<a href='https://www.ncbi.nlm.nih.gov/nuccore/{genbank_accession}'
+                                      target='_blank'>{pr2_accession}</a>"),
+              reference_sequence = dplyr::if_else(is.na(reference_sequence), "", "Yes"))
+
 pr2$sequence_length_min <- min(pr2$main$sequence_length , na.rm = TRUE)
 pr2$sequence_length_max <- max(pr2$main$sequence_length , na.rm = TRUE)
 
 pr2$sample_types <- purrr::discard(sort(unique(pr2$main$pr2_sample_type)), ~ is.na(.x))
+
+pr2$genes <- purrr::discard(sort(unique(pr2$main$gene)), ~ is.na(.x))
 
 pr2$organelles <- purrr::discard(sort(unique(pr2$main$organelle)), ~ is.na(.x))
 pr2$organelles <- c(pr2$organelles, "NA") # Add not applicable for bacteria
@@ -100,16 +114,22 @@ pr2$organelles <- c(pr2$organelles, "NA") # Add not applicable for bacteria
 pr2$domains <- purrr::discard(sort(unique(pr2$taxonomy$domain)), ~ is.na(.x))
 
 pr2$taxonomy <- dplyr::mutate(pr2$taxonomy,
-                       species_url = dplyr::case_when(!is.na(worms_id) ~ glue::glue("<a href='https://www.marinespecies.org/aphia.php?p=taxdetails&id={worms_id}'
-                                                      target='_blank'>{species}</a>."),
-                                               TRUE ~  species))
-pr2$main <- dplyr::mutate(pr2$main,
-                   species_url = dplyr::case_when(!is.na(worms_id) ~ glue::glue("<a href='https://www.marinespecies.org/aphia.php?p=taxdetails&id={worms_id}'
-                                                  target='_blank'>{species}</a>."),
-                                           TRUE ~  species))
+                        # species_url = dplyr::case_when(!is.na(worms_id) ~ glue::glue("<a href='https://www.marinespecies.org/aphia.php?p=taxdetails&id={worms_id}'
+                        #                                target='_blank'>{species}</a>."),
+                        #                         TRUE ~  species),
+                        species_url = dplyr::case_when(!is.na(gbif_id) ~ glue::glue("<a href='https://www.gbif.org/species/{gbif_id}'
+                                                          target='_blank'>{species}</a>"),
+                                                       TRUE ~  species)) %>%
+                dplyr::select(-dplyr::contains("worms"), -dplyr::contains("gbif"))
+
+
+
+pr2$version = "5.1.0"
+
+pr2$version_rod = "1.2.0"
+
 
 
 # Done --------------------------------------------------------------------
-
 
 print("global.R done")

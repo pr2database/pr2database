@@ -1,6 +1,6 @@
 Package: pr2database
 Title: PR2 database with shiny web interface
-Version: 5.0.0
+Version: 5.1.0
 Authors@R: person('Daniel', 'Vaulot', email = 'vaulot@gmail.com', role = c('cre', 'aut'))
 Description: PR2 database
     See  https://pr2-database.org

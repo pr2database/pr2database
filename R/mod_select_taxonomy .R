@@ -20,7 +20,6 @@ mod_select_taxonomy_ui <- function(id){
     p("VALIDATE after changes to update screen."),
     p("RESET + VALIDATE to cancel choices"),
     p(),
-
     shinyWidgets::pickerInput(ns("domain"), "Domain",
                               choices = unique(pr2$taxonomy$domain), selected = "Eukaryota",
                               multiple = TRUE, options= options_picker_taxo_domain),

@@ -33,8 +33,8 @@ mod_table_sequences_server <- function(id, sequences, taxo_selected){
     # ns <- session$ns
     ns <- NS(id)
 
-    cols_to_keep = c("genbank_url", "species_url", "sequence_length",
-                     "pr2_sample_type", "gb_definition", "gb_taxonomy")
+    cols_to_keep = c("accession_genbank_link", "gene", "species_url", "gb_organism", "sequence_length",
+                     "pr2_sample_type", "reference_sequence")
 
     table <- reactive({
       req(sequences())

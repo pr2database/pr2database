@@ -1,8 +1,8 @@
 ### Taxonomy table
 
-[Information about database structure](https://pr2-database.org/documentation/pr2-structure/)
+<a href="https://pr2-database.org/documentation/pr2-structure/" target="_blank">Information about database structure</a>
 
-Species with valid [WoRMS database](https://www.marinespecies.org/index.php) entries display link to WoRMS.
+Species with valid <a href="https://www.gbif.org" target="_blank">GBIF database</a> entries display link to GBIF.
 
 ---
 

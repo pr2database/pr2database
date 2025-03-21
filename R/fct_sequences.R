@@ -45,8 +45,6 @@ match_sequence <- function(fasta.df, query){
     mutate(pid = round(pid, 2)) %>%  # Only 2 decimals
     select(pr2_accession, pid, domain:species, sequence)
 
-  # print(df)
-
   return(df)
 }
 
@@ -65,6 +63,7 @@ blaster_sequence <- function(fasta.df, query,
 
   n_seq = nrow(fasta.df)
   slice_size = 50000
+  # slice_size = 5000 # for testing
 
   db <- fasta.df %>%
     select(Id = pr2_accession,
@@ -76,6 +75,7 @@ blaster_sequence <- function(fasta.df, query,
   df_slices <- list()
 
   for (one_slice in 1:n_slices){
+  # for (one_slice in 1:1){ # for testing
 
     message("Slice #: ", one_slice)
 
@@ -88,22 +88,28 @@ blaster_sequence <- function(fasta.df, query,
 
     # Necessary if one of the slice is null
     if(nrow(df_one_slice) > 0) df_slices[[one_slice]] <-  df_one_slice
-    # print(df_one_slice)
   }
 
-  df <- purrr::reduce(df_slices, bind_rows)
 
-  # print(df)
+  if (length(df_slices)!= 0) {
+    df <- purrr::reduce(df_slices, bind_rows)
+    }
+  else {
+    df <- NULL
+    }
 
-  if(nrow(df) > 0) {
+  if(!is.null(df) && nrow(df) > 0) {
     df <- df %>%
-      select(pid = Identity, pr2_accession = TargetId,
-             mismatches = NumMismatches, gaps = NumGaps,
+      select(pid = Identity,
+             pr2_accession = TargetId,
+             mismatches = NumMismatches,
+             gaps = NumGaps,
              query_start = QueryMatchStart,
              query_end = QueryMatchEnd,
              target_start = TargetMatchStart,
              target_end = TargetMatchEnd) %>%
-      mutate(pid = 100*pid) %>%
+      mutate(pid = 100*pid,
+             pid = round(pid, 2)) %>%
       arrange(desc(pid)) %>%
       inner_join(fasta.df) %>%
       select(pr2_accession, pid, mismatches, gaps,
@@ -113,7 +119,6 @@ blaster_sequence <- function(fasta.df, query,
   } else {
     df <- NULL
   }
-  # print(df)
 
   return(df)
 }

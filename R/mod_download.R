@@ -45,7 +45,7 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
                                          " </b> - Number of sequences: <b>",
                                          nrow(sequences_filtered()),
                                          "</b><p><p>",
-                                         if_else(n_seq_valid(), "", str_c("<span style='color:red'> <b>Too many sequence !</b>",
+                                         dplyr::if_else(n_seq_valid(), "", str_c("<span style='color:red'> <b>Too many sequence !</b>",
                                                                           " Must be below <b>", n_seq_max,
                                                                           "</b> - Please download full database.</span>")))
       })
@@ -80,8 +80,8 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
          files = c(file_pr2, file_fasta)
 
         sequences_export <- sequences_filtered() %>%
-          mutate(species_old = species) %>%
-          relocate(species_old, .after = species) %>%
+          # mutate(species_old = species) %>%
+          # relocate(species_old, .after = species) %>%
           select(-starts_with("taxo_"))
 
         taxonomy_export <- sequences_export %>%

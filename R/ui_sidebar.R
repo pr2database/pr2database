@@ -10,6 +10,7 @@ sidebar <- function() {sidebarPanel(width = 3,
                                  onclick ="window.open('https://pr2database.github.io/pr2database/articles/vignette-shiny-presentation.html', '_blank')"),
                     actionButton("button_disconnect", "Disconnect", class = "btn-info"),
                     h4(str_c("PR2 18S rRNA database v. ", pr2$version)),
+                    h4(str_c("Ribosomal Operon database v. ", pr2$version_rod)),
                     tags$b(str_c(format(nrow(pr2$main), big.mark=","), " sequences")),
                     style="text-align: center;"),
 
@@ -18,9 +19,13 @@ sidebar <- function() {sidebarPanel(width = 3,
                        input.panel == "Taxonomy" ||
                        input.panel == "Sequences" ||
                        input.panel == "Download selected sequences"',
-
+                    mod_filter_sequences_gene_ui("filter_sequences"),
+                     mod_filter_sequences_reference_ui("filter_sequences"),
                      mod_filter_sequences_sample_type_ui("filter_sequences"),
                      mod_filter_sequences_length_min_ui("filter_sequences"),
+                     p(),
+                     mod_filter_species_HAB_ui("filter_sequences"),
+                     mod_filter_species_mixoplankton_ui("filter_sequences"),
                      mod_select_taxonomy_ui("select_taxonomy")
                     ),
 

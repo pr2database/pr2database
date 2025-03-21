@@ -3,13 +3,13 @@
 
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
-[![Database](https://img.shields.io/badge/database-v.%205.0.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-6%20Apr%202023-lightgrey.svg)
+[![Database](https://img.shields.io/badge/database-v.%205.1.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
+![Date](https://img.shields.io/badge/date-8%20Apr%202025-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
-[![Twitter
-URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=PR2%20database&url=https://github.com/vaulot/pr2_database&hashtags=PR2database)
+[Latest news on
+BlueSky](https://bsky.app/profile/pr2-database.bsky.social)
 
 ## SSU rRNA gene database
 
@@ -18,7 +18,7 @@ in 2010 in the frame of the BioMarks project from work that had
 developed in the previous ten years in the Plankton Group of the Station
 Biologique of Roscoff. Its aim is to provide a reference database of
 carefully annotated 18S rRNA sequences using eight unique taxonomic
-fields (from domain to species). At present it contains about 220,000
+fields (from domain to species). At present it contains about 240,000
 sequences. A number of metadata fields are available for many sequences,
 including geo-localisation, whether it originates from a culture or a
 natural sample, host type etc… The annotation of PR2 is performed by
@@ -28,13 +28,20 @@ recently decided to merge its effort with PR<sup>2</sup>. EukRef has
 built bioinformatics pipelines that have been used during three
 workshops dedicated to specific taxonomic groups.
 
+The web interface now includes links to the sequences of the Ribosomal
+Operon Database (ROD) published in Krabberød, A.K., Stokke, E., Thoen,
+E., Skrede, I. & Kauserud, H. 2025. [The Ribosomal Operon Database: A
+Full-Length rDNA Operon Database Derived From Genome
+Assemblies](https://onlinelibrary.wiley.com/doi/full/10.1111/1755-0998.14031).
+Molecular Ecology Resources. 25:e14031.
+
 ## Current version
 
-- Version: [5.0.0](https://github.com/pr2database/pr2database/releases)
+- Version: [5.1.0](https://github.com/pr2database/pr2database/releases)
 
-- Released: 2023-04-06
+- Released: 2025-04-XX
 
-- DOI: [10.5281/zenodo.7805244](https://doi.org/10.5281/zenodo.7805244)
+- DOI: [UPDATE](https://doi.org/10.5281/zenodo.7805244)
 
 ## Accessing PR2
 
@@ -50,10 +57,10 @@ workshops dedicated to specific taxonomic groups.
 
 ## Core Team
 
-- [Daniel VAULOT](mailto:vaulot@gmail.com), Asian School of the
-  Environment, Nanyang Technological University, SINGAPORE
-- [Javier del CAMPO](mailto:jdelcampo@rsmas.miami.edu), University of
-  Miami, USA
+- [Daniel VAULOT](mailto:vaulot@gmail.com), Station Biologique de
+  Roscoff, CNRS, France and University of Oslo, Norway
+- [Javier del CAMPO](mailto:jdelcampo@ibe.upf-csic.es), Institut de
+  Biologia Evolutiva, Barcelona, Spain
 
 ## Scientific committee and contributors
 
@@ -81,6 +88,14 @@ analysis against the PR<sup>2</sup> database.
 The [metaPR<sup>2</sup> metabarcode database](https://shiny.metapr2.org)
 is a compilation of metabarcode datasets processed by the dada2 R
 package and assigned against PR2.
+
+#### Ribosomal Operon Database (ROD)
+
+The [ROD database](https://github.com/krabberod/ROD) contains
+full-length eukaryotic ribosomal operons. The database is based on the
+genome assemblies from NCBI, and the operons are extracted from the
+assemblies. The database currently contains 69,480 operon variants from
+more than 11,935 genomes.
 
 ## Questions ?
 

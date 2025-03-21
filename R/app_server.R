@@ -15,13 +15,15 @@ app_server <- function(input, output, session) {
 
   observeEvent(input$button_disconnect, {session$close()})
 
-  # To track usage - needs to erase and reload the logs directory
-  dir.create(path = "logs", showWarnings = FALSE, recursive = FALSE, mode = "0775")
-  shinylogs::track_usage(storage_mode = shinylogs::store_sqlite(path = "logs/"))
-
+  # To track usage - needs to erase and reload the logs directory - DISABLED because takes too much space
+      # dir.create(path = "logs", showWarnings = FALSE, recursive = FALSE, mode = "0775")
+      # shinylogs::track_usage(storage_mode = shinylogs::store_sqlite(path = "logs/"))
 
   # Taxonomy selection on left menu
   taxo_selected <- mod_select_taxonomy_server("select_taxonomy")
+
+  # Taxonomy filtration on left menu - DOES NOT WORK
+  # taxo_filtered <- mod_filter_taxonomy_server("filter_taxonomy", taxo_selected)
 
 
   # Separate sequences filtration from display so can be used in different panels
