@@ -101,8 +101,15 @@ pr2$main <-  dplyr::mutate(pr2$main,
                                       target='_blank'>{pr2_accession}</a>"),
               reference_sequence = dplyr::if_else(is.na(reference_sequence), "", "Yes"))
 
-pr2$sequence_length_min <- min(pr2$main$sequence_length , na.rm = TRUE)
-pr2$sequence_length_max <- max(pr2$main$sequence_length , na.rm = TRUE)
+round_down_to_nearest_100 <- function(number) {
+  return(floor(number / 100) * 100)
+}
+
+pr2$sequence_length_min <- round_down_to_nearest_100(min(pr2$main$sequence_length , na.rm = TRUE))
+pr2$sequence_length_max <- round_down_to_nearest_100(max(pr2$main$sequence_length , na.rm = TRUE))
+pr2$sequence_length_min <- 0
+pr2$sequence_length_max <- 6000
+pr2$sequence_length_step <- 250
 
 pr2$sample_types <- purrr::discard(sort(unique(pr2$main$pr2_sample_type)), ~ is.na(.x))
 

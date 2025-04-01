@@ -25,8 +25,8 @@ mod_filter_sequences_length_min_ui <- function(id) {
       pr2$sequence_length_min,
       value = pr2$sequence_length_min,
       min = pr2$sequence_length_min,
-      max = 2500,
-      step = 250,
+      max = pr2$sequence_length_max,
+      step = pr2$sequence_length_step,
       width = NULL
     )
   )
