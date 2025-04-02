@@ -4,7 +4,7 @@
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
 [![Database](https://img.shields.io/badge/database-v.%205.1.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-04%20Apr%202025-lightgrey.svg)
+![Date](https://img.shields.io/badge/date-02%20Apr%202025-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
@@ -39,9 +39,10 @@ Molecular Ecology Resources. 25:e14031.
 
 - Version: [5.1.0](https://github.com/pr2database/pr2database/releases)
 
-- Released: 2025-04-04
+- Released: 2025-04-02
 
-- DOI: [UPDATE](https://doi.org/10.5281/zenodo.7805244)
+- DOI:
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4699840.svg)](https://doi.org/10.5281/zenodo.4699840)
 
 ## Accessing PR2
 
