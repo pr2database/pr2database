@@ -4,7 +4,7 @@
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
 [![Database](https://img.shields.io/badge/database-v.%205.1.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-8%20Apr%202025-lightgrey.svg)
+![Date](https://img.shields.io/badge/date-04%20Apr%202025-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
@@ -39,7 +39,7 @@ Molecular Ecology Resources. 25:e14031.
 
 - Version: [5.1.0](https://github.com/pr2database/pr2database/releases)
 
-- Released: 2025-04-XX
+- Released: 2025-04-04
 
 - DOI: [UPDATE](https://doi.org/10.5281/zenodo.7805244)
 
@@ -89,7 +89,7 @@ The [metaPR<sup>2</sup> metabarcode database](https://shiny.metapr2.org)
 is a compilation of metabarcode datasets processed by the dada2 R
 package and assigned against PR2.
 
-#### Ribosomal Operon Database (ROD)
+#### Ribosomal Operon Database (ROD) - version 1.2
 
 The [ROD database](https://github.com/krabberod/ROD) contains
 full-length eukaryotic ribosomal operons. The database is based on the

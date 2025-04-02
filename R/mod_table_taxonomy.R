@@ -34,7 +34,6 @@ mod_table_taxonomy_server <- function(id, taxonomy, taxo_selected){
     # ns <- session$ns
     ns <- NS(id)
 
-
     taxonomy_filtered <- reactive({
       req(taxo_selected())
       taxonomy %>%
@@ -47,6 +46,7 @@ mod_table_taxonomy_server <- function(id, taxonomy, taxo_selected){
 
     table <- reactive(
       DT::datatable(taxonomy_filtered() ,
+      filter = 'top',
       rownames = FALSE ,
       escape = FALSE,
       options = list(

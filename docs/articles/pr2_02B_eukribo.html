@@ -5,81 +5,71 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="pr2database">
 <title>PR2 - EukRibo annotations • pr2database</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="PR2 - EukRibo annotations">
-<meta property="og:description" content="pr2database">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="PR2 - EukRibo annotations">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">pr2database</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">5.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">5.1.0</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../articles/pr2database.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../articles/pr2database.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <h6 class="dropdown-header" data-toc-skip>PR2 shiny application</h6>
-    <a class="dropdown-item" href="../articles/vignette-shiny-presentation.html">General presentation</a>
-    <div class="dropdown-divider"></div>
-    <h6 class="dropdown-header" data-toc-skip>Examples of use</h6>
-    <a class="dropdown-item" href="../articles/pr2_01_stats.html">PR2 statistics</a>
-    <a class="dropdown-item" href="../articles/pr2_02A_silva.html">Comparing PR2 vs Silva annotations</a>
-    <a class="dropdown-item" href="../articles/pr2_02B_eukribo.html">Using EukRibo annotations</a>
-    <a class="dropdown-item" href="../articles/pr2_05_mixoplankton.html">Linking to Mixoplankton database</a>
-    <a class="dropdown-item" href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a>
-    <a class="dropdown-item" href="../articles/pr2_04_decipher.html">Train DECIPHER with PR2</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><h6 class="dropdown-header" data-toc-skip>PR2 shiny application</h6></li>
+    <li><a class="dropdown-item" href="../articles/vignette-shiny-presentation.html">General presentation</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Examples of use</h6></li>
+    <li><a class="dropdown-item" href="../articles/pr2_01_stats.html">PR2 statistics</a></li>
+    <li><a class="dropdown-item" href="../articles/pr2_02A_silva.html">Comparing PR2 vs Silva annotations</a></li>
+    <li><a class="dropdown-item" href="../articles/pr2_02B_eukribo.html">Using EukRibo annotations</a></li>
+    <li><a class="dropdown-item" href="../articles/pr2_05_mixoplankton.html">Linking to Mixoplankton database</a></li>
+    <li><a class="dropdown-item" href="../articles/pr2_03_geo_origin.html">Plotting sequence location</a></li>
+    <li><a class="dropdown-item" href="../articles/pr2_04_decipher.html">Train DECIPHER with PR2</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav"></ul>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+      </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
 
 
-<script src="pr2_02B_eukribo_files/htmlwidgets-1.6.1/htmlwidgets.js"></script><link href="pr2_02B_eukribo_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="pr2_02B_eukribo_files/datatables-binding-0.27/datatables.js"></script><link href="pr2_02B_eukribo_files/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="pr2_02B_eukribo_files/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="pr2_02B_eukribo_files/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="pr2_02B_eukribo_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="pr2_02B_eukribo_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><div class="row">
+<link href="pr2_02B_eukribo_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="pr2_02B_eukribo_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="pr2_02B_eukribo_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="pr2_02B_eukribo_files/datatables-binding-0.33/datatables.js"></script><link href="pr2_02B_eukribo_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="pr2_02B_eukribo_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="pr2_02B_eukribo_files/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="pr2_02B_eukribo_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="pr2_02B_eukribo_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>PR2 - EukRibo annotations</h1>
+
+      <h1>PR2 - EukRibo annotations</h1>
                         <h4 data-toc-skip class="author">Daniel
 Vaulot</h4>
             
@@ -130,7 +120,7 @@ Preprint. BiorXiv. <a href="https://doi.org/10.1101/2022.11.03.515105" class="ex
 <span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/pr2database" class="external-link">"pr2database"</a></span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"pr2database"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] '5.0.0'</span></span>
+<span><span class="co">#&gt; [1] '5.1.0'</span></span>
 <span></span>
 <span><span class="co"># Read the PR2 database</span></span>
 <span>  </span>
@@ -162,7 +152,7 @@ some processing to match PR2 taxonomy structure.</p>
 <span>             sep <span class="op">=</span> <span class="st">"[|]"</span>, remove <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
 <span>  </span></code></pre></div>
 <p>Total number of PR2 sequences with EukRibo annotation :
-<strong>48145</strong></p>
+<strong>48120</strong></p>
 </div>
 <div class="section level2">
 <h2 id="eukribo-mostly-contains-long-sequences">EukRibo mostly contains long sequences<a class="anchor" aria-label="anchor" href="#eukribo-mostly-contains-long-sequences"></a>
@@ -233,8 +223,8 @@ complete V9 region.</p>
 <span><span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">datatable</a></span><span class="op">(</span><span class="va">table</span>, </span>
 <span>             caption<span class="op">=</span><span class="st">"Micromonas containing the full V9 region."</span>, </span>
 <span>             rownames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a4c3b8adcf2cdcdf7cbc" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a4c3b8adcf2cdcdf7cbc">{"x":{"filter":"none","vertical":false,"caption":"<caption>Micromonas containing the full V9 region.<\/caption>","data":[["AY954996.1.1726_U","AY955003.1.1727_U","AY954999.1.1726_U","HM191693.1.1777_U","AY954995.1.1726_U","AY955000.1.1728_U","DQ025753.1.1777_U","AY955001.1.1727_U","AY954998.1.1727_U","FN562452.1.1760_U","AF525866.1.1777_U","AY954994.1.1727_U","AY425316.1.1733_U"],["Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas"],["Micromonas_bravo_B2","Micromonas_pusilla","Micromonas_polaris","Micromonas_commoda_A1","Micromonas_bravo_B2","Micromonas_polaris","Micromonas_polaris","Micromonas_commoda_A1","Micromonas_commoda_A1","Micromonas_bravo_B2","Micromonas_clade_B4","Micromonas_pusilla","Micromonas_bravo_B2"],[1726,1727,1726,1777,1726,1728,1777,1727,1727,1760,1777,1727,1733]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>pr2_accession<\/th>\n      <th>genus<\/th>\n      <th>species<\/th>\n      <th>sequence_length<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":3}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"caption":"<caption>Micromonas containing the full V9 region.<\/caption>","data":[["AY954996.1.1726_U","AY955003.1.1727_U","AY954999.1.1726_U","HM191693.1.1777_U","AY954995.1.1726_U","AY955000.1.1728_U","DQ025753.1.1777_U","AY955001.1.1727_U","AY954998.1.1727_U","FN562452.1.1760_U","AF525866.1.1777_U","AY954994.1.1727_U","AY425316.1.1733_U"],["Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas","Micromonas"],["Micromonas_bravo_B2","Micromonas_pusilla","Micromonas_polaris","Micromonas_commoda_A1","Micromonas_bravo_B2","Micromonas_polaris","Micromonas_polaris","Micromonas_commoda_A1","Micromonas_commoda_A1","Micromonas_bravo_B2","Micromonas_clade_B4","Micromonas_pusilla","Micromonas_bravo_B2"],[1726,1727,1726,1777,1726,1728,1777,1727,1727,1760,1777,1727,1733]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>pr2_accession<\/th>\n      <th>genus<\/th>\n      <th>species<\/th>\n      <th>sequence_length<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":3},{"name":"pr2_accession","targets":0},{"name":"genus","targets":1},{"name":"species","targets":2},{"name":"sequence_length","targets":3}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="structure-of-eukribo-annotations">Structure of EukRibo annotations<a class="anchor" aria-label="anchor" href="#structure-of-eukribo-annotations"></a>
@@ -324,28 +314,26 @@ this is not true for all taxa.</p>
 <p><img src="pr2_02B_eukribo_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Daniel Vaulot.</p>
+  <p>Developed by Daniel Vaulot.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

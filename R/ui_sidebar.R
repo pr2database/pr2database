@@ -15,17 +15,20 @@ sidebar <- function() {sidebarPanel(width = 3,
                     style="text-align: center;"),
 
                  conditionalPanel(
-                    condition = '
+                     condition = '
                        input.panel == "Taxonomy" ||
                        input.panel == "Sequences" ||
                        input.panel == "Download selected sequences"',
-                    mod_filter_sequences_gene_ui("filter_sequences"),
+                     mod_filter_sequences_gene_ui("filter_sequences"),
                      mod_filter_sequences_reference_ui("filter_sequences"),
                      mod_filter_sequences_sample_type_ui("filter_sequences"),
                      mod_filter_sequences_length_min_ui("filter_sequences"),
                      p(),
-                     mod_filter_species_HAB_ui("filter_sequences"),
-                     mod_filter_species_mixoplankton_ui("filter_sequences"),
+                     mod_filter_sequences_HAB_ui("filter_sequences"),
+                     mod_filter_sequences_mixoplankton_ui("filter_sequences"),
+                     h3("Select Taxa"),
+                     # mod_filter_species_HAB_ui("select_taxonomy"),
+                     # mod_filter_species_mixoplankton_ui("select_taxonomy"),
                      mod_select_taxonomy_ui("select_taxonomy")
                     ),
 

@@ -1,14 +1,13 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: '3.2'
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  pr2database: pr2database.html
   pr2_01_stats: pr2_01_stats.html
   pr2_02A_silva: pr2_02A_silva.html
   pr2_02B_eukribo: pr2_02B_eukribo.html
   pr2_03_geo_origin: pr2_03_geo_origin.html
   pr2_04_decipher: pr2_04_decipher.html
   pr2_05_mixoplankton: pr2_05_mixoplankton.html
+  pr2database: pr2database.html
   vignette-shiny-presentation: vignette-shiny-presentation.html
-last_built: 2023-04-06T07:33Z
-
+last_built: 2025-03-21T17:26Z

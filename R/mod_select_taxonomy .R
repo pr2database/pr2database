@@ -12,8 +12,6 @@ mod_select_taxonomy_ui <- function(id){
   ns <- NS(id)
 
   tagList(
-    h3("Select Taxa"),
-
     div(actionButton(ns("validate_taxo"), "Validate Taxa", class = "btn-primary"), style="display:inline-block"),
     div(actionButton(ns("reset_taxo"), "Reset Taxa", class = "btn-primary"), style="display:inline-block"),
     p(),
@@ -45,13 +43,35 @@ mod_select_taxonomy_ui <- function(id){
 
 }
 
+# Selection of species for HAB and mixoplankton
+# DOES NOT WORK
+#  The problem is that all taxa are selected down the taxonomy even the non-HAB or non-mixo
+#  It will be necessary to create a function that filters the taxonomy
+
+# mod_filter_species_HAB_ui <- function(id) {
+#   ns <- NS(id)
+#   tagList(
+#
+#     checkboxInput(ns("HAB_species_only"), label = "Only Harmful algal blooms (HAB) species", value = FALSE),
+#
+#   )
+# }
+#
+# mod_filter_species_mixoplankton_ui <- function(id) {
+#   ns <- NS(id)
+#   tagList(
+#
+#     checkboxInput(ns("mixoplankton_species_only"), label = "Only mixoplankton species", value = FALSE),
+#
+#   )
+# }
+
 #' Server Functions
 #'
 #' @noRd
 #'
 
 # Taxonomy is now selected for the full dataset and not only for the selected samples
-
 
 mod_select_taxonomy_server <- function(id){
   moduleServer( id, function(input, output, session){
@@ -84,9 +104,31 @@ mod_select_taxonomy_server <- function(id){
 
 
     taxo_final <- eventReactive(c(input$validate_taxo), {
-      c(taxo())
-      # ignoreNULL is necessary so that the plots are created at initial time
-    }, ignoreNULL = FALSE, ignoreInit = TRUE)
+                  taxo()
+                },
+                ignoreNULL = FALSE, # ignoreNULL is necessary so that the plots are created at initial time
+                ignoreInit = TRUE)
+
+    # Selection of species for HAB and mixoplankton
+    # DOES NOT WORK
+    #  The problem is that all taxa are selected down the taxonomy even the non-HAB or non-mixo
+    #  It will be necessary to create a function that filters the taxonomy
+
+    # taxon_list <- eventReactive(c(input$HAB_species_only, input$mixoplankton_species_only), {
+    #   taxon_list <- pr2$taxonomy
+    #
+    #   if(input$HAB_species_only) {
+    #     taxon_list <- taxon_list %>%
+    #       filter(!is.na(HAB_species))
+    #   }
+    #
+    #   if(input$mixoplankton_species_only) {
+    #     taxon_list <- taxon_list %>%
+    #       filter(!is.na(mixoplankton))
+    #   }
+    # },
+    # ignoreNULL = FALSE, # ignoreNULL is necessary so that the plots are created at initial time
+    # ignoreInit = TRUE)
 
     # Next line is for debugging
     # output$taxo_list <- renderPrint(taxo())
@@ -119,7 +161,20 @@ mod_select_taxonomy_server <- function(id){
         # 2022-11-15 - Added to prevent initial resetting (cf Hadley p. 159)
         freezeReactiveValue(input, taxo_level_below)
 
-        taxon_list <-    pr2$taxonomy %>%
+        taxon_list <- pr2$taxonomy
+
+        # if(input$HAB_species_only) {
+        #   taxon_list <- taxon_list %>%
+        #     filter(!is.na(HAB_species))
+        # }
+        #
+        # if(input$mixoplankton_species_only) {
+        #   taxon_list <- taxon_list %>%
+        #     filter(!is.na(mixoplankton))
+        # }
+        # print(taxon_list)
+
+        taxon_list <- taxon_list %>%
           filter(.data[[taxo_level]] %in% input[[taxo_level]]) %>%
           pull(.data[[taxo_level_below]]) %>%
           unique()
@@ -187,6 +242,7 @@ mod_select_taxonomy_server <- function(id){
 
 
     # Use taxo and not taxo(), ie return the function and not its value...
+
     return(taxo_final)
 
   })

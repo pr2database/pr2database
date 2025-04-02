@@ -126,7 +126,7 @@ pr2$taxonomy <- dplyr::mutate(pr2$taxonomy,
                         #                         TRUE ~  species),
                         species_url = dplyr::case_when(!is.na(gbif_id) ~ glue::glue("<a href='https://www.gbif.org/species/{gbif_id}'
                                                           target='_blank'>{species}</a>"),
-                                                       TRUE ~  species)) %>%
+                                                       TRUE ~  species)) |>
                 dplyr::select(-dplyr::contains("worms"), -dplyr::contains("gbif"))
 
 

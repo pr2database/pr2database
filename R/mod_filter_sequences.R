@@ -66,20 +66,20 @@ mod_filter_sequences_reference_ui <- function(id) {
   )
 }
 
-mod_filter_species_HAB_ui <- function(id) {
+mod_filter_sequences_HAB_ui <- function(id) {
   ns <- NS(id)
   tagList(
 
-    checkboxInput(ns("HAB_species_only"), label = "Only sequences from Harmful algal blooms (HAB) species", value = FALSE),
+    checkboxInput(ns("HAB_sequences_only"), label = "Only sequences from Harmful algal blooms (HAB) species", value = FALSE),
 
   )
 }
 
-mod_filter_species_mixoplankton_ui <- function(id) {
+mod_filter_sequences_mixoplankton_ui <- function(id) {
   ns <- NS(id)
   tagList(
 
-    checkboxInput(ns("mixoplankton_species_only"), label = "Only sequences from Mixoplankton species", value = FALSE),
+    checkboxInput(ns("mixoplankton_sequences_only"), label = "Only sequences from Mixoplankton species", value = FALSE),
 
   )
 }
@@ -122,11 +122,11 @@ mod_filter_sequences_server <- function(id, taxo_selected){
         sequences <- sequences %>%
           filter(reference_sequence == "Yes")
       }
-      if(input$HAB_species_only) {
+      if(input$HAB_sequences_only) {
         sequences <- sequences %>%
           filter(!is.na(HAB_species))
       }
-      if(input$mixoplankton_species_only) {
+      if(input$mixoplankton_sequences_only) {
         sequences <- sequences %>%
           filter(!is.na(mixoplankton))
       }

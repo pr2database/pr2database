@@ -42,6 +42,7 @@ mod_table_sequences_server <- function(id, sequences, taxo_selected){
                       select(any_of(cols_to_keep)) %>%
                       rename(species = species_url),
       rownames = FALSE ,
+      filter = 'top',
       escape = FALSE,
       selection = 'none',
       options = list(
