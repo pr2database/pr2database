@@ -7,7 +7,7 @@ Description: PR2 database
 License: MIT + file LICENSE
 Imports: 
     Biostrings,
-    blaster (>= 1.0.4),
+    blaster (>= 1.0.7),
     config (>= 0.3.1),
     dplyr,
     DT,
@@ -42,5 +42,4 @@ Config/testthat/edition: 3
 Language: en-US
 Depends: 
     R (>= 2.10)
-Remotes: 
-    manutamminen/blaster
+
