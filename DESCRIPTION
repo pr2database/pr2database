@@ -12,7 +12,6 @@ Imports:
     config (>= 0.3.1),
     devtools,
     DT,
-    dvutils,
     forcats,
     ggplot2,
     glue,
