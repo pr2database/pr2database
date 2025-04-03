@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daniel Vaulot">
+<meta name="dcterms.date" content="2023-02-20">
+
+<title>PR2 version 5.0.0   Adding New GenBank sequences</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="PR2-update-5.0.0-C-GenBank_files/libs/clipboard/clipboard.min.js"></script>
+<script src="PR2-update-5.0.0-C-GenBank_files/libs/quarto-html/quarto.js"></script>
+<script src="PR2-update-5.0.0-C-GenBank_files/libs/quarto-html/popper.min.js"></script>
+<script src="PR2-update-5.0.0-C-GenBank_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="PR2-update-5.0.0-C-GenBank_files/libs/quarto-html/anchor.min.js"></script>
+<link href="PR2-update-5.0.0-C-GenBank_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="PR2-update-5.0.0-C-GenBank_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="PR2-update-5.0.0-C-GenBank_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="PR2-update-5.0.0-C-GenBank_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="PR2-update-5.0.0-C-GenBank_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instructions-to-add-new-genbank-sequences" id="toc-instructions-to-add-new-genbank-sequences" class="nav-link active" data-scroll-target="#instructions-to-add-new-genbank-sequences">Instructions to add new Genbank sequences</a></li>
+  <li><a href="#init" id="toc-init" class="nav-link" data-scroll-target="#init">Init</a></li>
+  <li><a href="#read-pr2_main" id="toc-read-pr2_main" class="nav-link" data-scroll-target="#read-pr2_main">Read pr2_main</a></li>
+  <li><a href="#set-up-the-files" id="toc-set-up-the-files" class="nav-link" data-scroll-target="#set-up-the-files">Set up the files</a></li>
+  <li><a href="#part-i---get-sequence-list-from-genbank-and-save-as-rds-file" id="toc-part-i---get-sequence-list-from-genbank-and-save-as-rds-file" class="nav-link" data-scroll-target="#part-i---get-sequence-list-from-genbank-and-save-as-rds-file">Part I - Get sequence list from GenBank and save as rds file</a>
+  <ul class="collapse">
+  <li><a href="#genbank-search" id="toc-genbank-search" class="nav-link" data-scroll-target="#genbank-search">Genbank search</a></li>
+  <li><a href="#filter-new-sequences-and-save-file" id="toc-filter-new-sequences-and-save-file" class="nav-link" data-scroll-target="#filter-new-sequences-and-save-file">Filter new sequences and save file</a></li>
+  </ul></li>
+  <li><a href="#part-ii---run-the-script-on-roscoff-server-or-on-colab" id="toc-part-ii---run-the-script-on-roscoff-server-or-on-colab" class="nav-link" data-scroll-target="#part-ii---run-the-script-on-roscoff-server-or-on-colab">Part II - Run the script on Roscoff server (or on Colab)</a></li>
+  <li><a href="#part-iii---read-file-with-all-genbank-info-and-save-to-excel-file-for-import" id="toc-part-iii---read-file-with-all-genbank-info-and-save-to-excel-file-for-import" class="nav-link" data-scroll-target="#part-iii---read-file-with-all-genbank-info-and-save-to-excel-file-for-import">Part III - Read file with all Genbank info and save to Excel file for import</a>
+  <ul class="collapse">
+  <li><a href="#two-cases" id="toc-two-cases" class="nav-link" data-scroll-target="#two-cases">Two cases</a>
+  <ul class="collapse">
+  <li><a href="#case-1---read-the-metadata-files-and-features-files-and-join-by-genbank-accession" id="toc-case-1---read-the-metadata-files-and-features-files-and-join-by-genbank-accession" class="nav-link" data-scroll-target="#case-1---read-the-metadata-files-and-features-files-and-join-by-genbank-accession">Case 1 - Read the metadata files and features files and join by genbank accession</a></li>
+  <li><a href="#case-2---read-the-metadata-files-from-excel-if-some-editing-is-done" id="toc-case-2---read-the-metadata-files-from-excel-if-some-editing-is-done" class="nav-link" data-scroll-target="#case-2---read-the-metadata-files-from-excel-if-some-editing-is-done">Case 2 - Read the metadata files from Excel if some editing is done</a></li>
+  </ul></li>
+  <li><a href="#merge-file-with-start-and-end-information-if-available-or-use-the-gene-information" id="toc-merge-file-with-start-and-end-information-if-available-or-use-the-gene-information" class="nav-link" data-scroll-target="#merge-file-with-start-and-end-information-if-available-or-use-the-gene-information">Merge file with start and end information if available or use the gene information</a></li>
+  <li><a href="#export-file-and-modify-if-necessary---optional" id="toc-export-file-and-modify-if-necessary---optional" class="nav-link" data-scroll-target="#export-file-and-modify-if-necessary---optional">Export file and modify if necessary - Optional</a></li>
+  <li><a href="#add-fields" id="toc-add-fields" class="nav-link" data-scroll-target="#add-fields">Add fields</a>
+  <ul class="collapse">
+  <li><a href="#check-duplicate-entries" id="toc-check-duplicate-entries" class="nav-link" data-scroll-target="#check-duplicate-entries">Check duplicate entries</a></li>
+  </ul></li>
+  <li><a href="#get-some-statistics" id="toc-get-some-statistics" class="nav-link" data-scroll-target="#get-some-statistics">Get some statistics</a>
+  <ul class="collapse">
+  <li><a href="#final-files-for-uploading" id="toc-final-files-for-uploading" class="nav-link" data-scroll-target="#final-files-for-uploading">Final files for uploading</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#save-everything-to-an-excel-file" id="toc-save-everything-to-an-excel-file" class="nav-link" data-scroll-target="#save-everything-to-an-excel-file">Save everything to an Excel file</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PR2 version 5.0.0 <br> Adding New GenBank sequences</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Daniel Vaulot </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 20, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="instructions-to-add-new-genbank-sequences" class="level1">
+<h1>Instructions to add new Genbank sequences</h1>
+<ul>
+<li>Do a query using genbank_search query</li>
+<li>Filter for sequences not present in PR2</li>
+<li>Save as an rds file</li>
+<li>Move rds to Roscoff server and run script called script_genbank_xml.R using sbatch_genbank.sh
+<ul>
+<li>Get the metadata and sequences</li>
+<li>Get the features</li>
+</ul></li>
+<li>Move metadata and features result file to local directory</li>
+<li>Run rest of script to filter the data and save as an Excel file</li>
+<li>If find features files then only get the rRNA part</li>
+</ul>
+</section>
+<section id="init" class="level1">
+<h1>Init</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"R"</span>,<span class="st">'PR2_init.R'</span>), <span class="at">echo=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="read-pr2_main" class="level1">
+<h1>Read pr2_main</h1>
+<p>Only need to get pr2_main$gb_accession to find entries already in the database</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pr2_db <span class="ot">&lt;-</span> <span class="fu">db_info</span>(<span class="st">"pr2_google"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pr2_db_con <span class="ot">&lt;-</span> <span class="fu">db_connect</span>(pr2_db)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pr2_main <span class="ot">&lt;-</span> <span class="fu">tbl</span>(pr2_db_con, <span class="st">"pr2_main"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>() </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">db_disconnect</span>(pr2_db_con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="set-up-the-files" class="level1">
+<h1>Set up the files</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pr2.env<span class="sc">$</span>editor <span class="ot">&lt;-</span> <span class="st">"D. Vaulot"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>full_path <span class="ot">&lt;-</span> <span class="cf">function</span>(file_name){here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"5.0"</span>, <span class="st">"C - New GenBank sequences"</span>, file_name)}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create the directory for taxonomy output</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">full_path</span>(<span class="st">""</span>), <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-i---get-sequence-list-from-genbank-and-save-as-rds-file" class="level1">
+<h1>Part I - Get sequence list from GenBank and save as rds file</h1>
+<p>Skip this part if you have already the accession number list</p>
+<section id="genbank-search" class="level2">
+<h2 class="anchored" data-anchor-id="genbank-search">Genbank search</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pr2_query <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>query_exclude <span class="ot">=</span> <span class="st">"NOT homo[TITL] NOT Streptophyta[ORGN] NOT Fungi[ORGN] NOT Metazoa[ORGN] NOT Bacteria[ORGN] NOT mitochondrion[TITL] NOT genom[TITL]"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>query_include <span class="ot">=</span> <span class="st">"(18S ribosomal RNA[TITL] OR small subunit ribosomal RNA[TITL] OR 18S rRNA[TITL])"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>query_date <span class="ot">=</span> <span class="st">"AND 2021/03/23:2023/02/19[Publication Date]"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>pr2_query[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">genbank_search</span>(<span class="at">query =</span> <span class="fu">str_c</span>(query_include, query_exclude, query_date, <span class="at">sep=</span><span class="st">" "</span>), <span class="at">seq_max =</span> <span class="dv">40000</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># pr2_query[[2]] &lt;- genbank_search(query = "small subunit ribosomal RNA gene[TITL] AND Cafeteria[ORGN]", seq_max = 10000)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># pr2_query[[3]] &lt;- genbank_search(query = "MN315609[ACCN]", seq_max = 10000)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># pr2_query[[4]] &lt;- genbank_search(query = "MN315621[ACCN]", seq_max = 10000)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>pr2_query_all <span class="ot">&lt;-</span> <span class="fu">reduce</span>(pr2_query, bind_rows)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># export(pr2_query_all, full_path("pr2_genbank_new_2021.xlsx"), </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#            zoom = 90, firstRow = TRUE, firstCol = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="filter-new-sequences-and-save-file" class="level2">
+<h2 class="anchored" data-anchor-id="filter-new-sequences-and-save-file">Filter new sequences and save file</h2>
+<ul>
+<li>Move this file to Roscoff server for very long lists or run on Colab</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pr2_genbank_new <span class="ot">&lt;-</span> pr2_query_all <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(genbank_accession <span class="sc">%in%</span> pr2_main<span class="sc">$</span>genbank_accession)) </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>accessions <span class="ot">&lt;-</span> pr2_genbank_new <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(genbank_accession)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(accessions, <span class="fu">full_path</span>(<span class="st">"accessions_new.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="part-ii---run-the-script-on-roscoff-server-or-on-colab" class="level1">
+<h1>Part II - Run the script on Roscoff server (or on Colab)</h1>
+<p>Use <code>script_genbank_rentrez_xml.R</code> (in /shared/projects/dipo/vaulot/pr2/genbank)</p>
+<p>The script needs to be edited for the directory location</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /shared/projects/dipo/vaulot/pr2/genbank</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> sbatch_genbank.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-iii---read-file-with-all-genbank-info-and-save-to-excel-file-for-import" class="level1">
+<h1>Part III - Read file with all Genbank info and save to Excel file for import</h1>
+<section id="two-cases" class="level2">
+<h2 class="anchored" data-anchor-id="two-cases">Two cases</h2>
+<section id="case-1---read-the-metadata-files-and-features-files-and-join-by-genbank-accession" class="level3">
+<h3 class="anchored" data-anchor-id="case-1---read-the-metadata-files-and-features-files-and-join-by-genbank-accession">Case 1 - Read the metadata files and features files and join by genbank accession</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pr2_new_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>)  {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  pr2_new_list[[i]] <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="fu">full_path</span>(<span class="fu">str_c</span>(<span class="st">"pr2_gb_metadata_2023-02-20_"</span>,i, <span class="st">".txt"</span>)), <span class="at">guess_max =</span> <span class="dv">20000</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>pr2_new <span class="ot">&lt;-</span> <span class="fu">reduce</span>(pr2_new_list, bind_rows) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="case-2---read-the-metadata-files-from-excel-if-some-editing-is-done" class="level3">
+<h3 class="anchored" data-anchor-id="case-2---read-the-metadata-files-from-excel-if-some-editing-is-done">Case 2 - Read the metadata files from Excel if some editing is done</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pr2_new <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">full_path</span>(<span class="st">"Excavata_EukRef_PR2.xlsx"</span>), <span class="at">sheet =</span> <span class="st">"genbank new"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gb_date =</span> <span class="fu">str_to_upper</span>(<span class="fu">format</span>(gb_date, <span class="st">"%d-%b-%Y"</span>))) <span class="co"># This line is due to fact that Excel converts date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="merge-file-with-start-and-end-information-if-available-or-use-the-gene-information" class="level2">
+<h2 class="anchored" data-anchor-id="merge-file-with-start-and-end-information-if-available-or-use-the-gene-information">Merge file with start and end information if available or use the gene information</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>file_start_end <span class="ot">&lt;-</span> <span class="fu">full_path</span>(<span class="st">"PR2 new sequences.xlsx"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(file_start_end)){</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  pr2_start_end <span class="ot">&lt;-</span> <span class="fu">import</span>(file_start_end) </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  pr2_new <span class="ot">&lt;-</span>  pr2_new <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="fu">select</span>(pr2_start_end,genbank_accession, start, end) )</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>   pr2_new <span class="ot">&lt;-</span>  pr2_new <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">start =</span> <span class="fu">case_when</span>(<span class="sc">!</span><span class="fu">str_detect</span>(gb_feature_location, <span class="st">"complement"</span>) <span class="sc">~</span> <span class="fu">str_extract</span>(gb_feature_location, <span class="st">"[0-9]+"</span>),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">str_extract</span>(gb_feature_location, <span class="st">"[0-9]+[)]$"</span>)),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">end =</span> <span class="fu">case_when</span>(<span class="sc">!</span><span class="fu">str_detect</span>(gb_feature_location, <span class="st">"complement"</span>) <span class="sc">~</span> <span class="fu">str_extract</span>(gb_feature_location, <span class="st">"[0-9]+[)]?$"</span>),  <span class="co"># Authorise parenthesis for join case</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">str_extract</span>(gb_feature_location, <span class="st">"[0-9]+"</span>)),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">start =</span> <span class="fu">str_replace</span>(start,<span class="st">"[)]"</span>, <span class="st">""</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">end =</span> <span class="fu">str_replace</span>(end,<span class="st">"[)]"</span>, <span class="st">""</span>), </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">start =</span> <span class="fu">as.numeric</span>(start),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">end =</span> <span class="fu">as.numeric</span>(end)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep a copy in case something does not work down</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>pr2_new_original <span class="ot">&lt;-</span> pr2_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="export-file-and-modify-if-necessary---optional" class="level2">
+<h2 class="anchored" data-anchor-id="export-file-and-modify-if-necessary---optional">Export file and modify if necessary - Optional</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">export</span>(pr2_new, <span class="fu">full_path</span>(<span class="st">"pr2_gb_metadata_2023-02-20.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Copy to new sheet “genbank_edited” and reimport</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pr2_new &lt;- import(pr2full_path("pr2_gb_metadata_2021-06-15.xlsx"), sheet="genbank_edited")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-fields" class="level2">
+<h2 class="anchored" data-anchor-id="add-fields">Add fields</h2>
+<ul>
+<li>Note this will need to be modified with the new XML format</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a> pr2_new <span class="ot">&lt;-</span> pr2_new_original <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(genbank_accession <span class="sc">%in%</span> pr2_main<span class="sc">$</span>genbank_accession),                            <span class="co"># remove existing entries</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">is.na</span>(gb_feature_name) <span class="sc">|</span> <span class="sc">!</span><span class="fu">str_detect</span>(gb_feature_name, <span class="st">"23S|5S|large"</span>),      <span class="co"># remove non 16S ro 18S </span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(gb_sequence),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span>                                                     <span class="co"># remove entries without sequence (some PRJ sequences are found)</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(genbank_accession, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>                                  <span class="co"># remove duokucate genbank_accession</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">start=</span><span class="fu">case_when</span>(<span class="fu">is.na</span>(start) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                         <span class="cn">TRUE</span> <span class="sc">~</span> start),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">end=</span><span class="fu">case_when</span>(<span class="fu">is.na</span>(end) <span class="sc">~</span> sequence_length,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                       <span class="cn">TRUE</span> <span class="sc">~</span> end),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">label =</span> <span class="st">"U"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">pr2_accession =</span> <span class="fu">str_c</span>(genbank_accession,<span class="st">"."</span>,start,<span class="st">"."</span>, end,<span class="st">"_"</span>,label),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">added_version =</span> pr2.env<span class="sc">$</span>version, </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">edited_by =</span> pr2.env<span class="sc">$</span>editor,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">reference_sequence =</span> <span class="cn">NA</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">gene =</span> <span class="fu">case_when</span>( <span class="fu">str_detect</span>(gb_definition, <span class="st">"nucleomorph"</span>) <span class="sc">~</span> <span class="st">"18S_rRNA"</span>, </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">str_detect</span>(gb_definition, <span class="st">"chloroplast|mitochondria"</span>) <span class="sc">~</span> <span class="st">"16S_rRNA"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">str_detect</span>(gb_taxonomy, <span class="st">"Bacteria|Archaea"</span>) <span class="sc">~</span> <span class="st">"16S_rRNA"</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"18S_rRNA"</span>),</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">organelle =</span> <span class="fu">case_when</span>(<span class="fu">str_detect</span>(gb_definition, <span class="st">"nucleomorph"</span>) <span class="sc">~</span> <span class="st">"nucleomorph"</span>, </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">str_detect</span>(gb_definition, <span class="st">"chloroplast"</span>) <span class="sc">~</span> <span class="st">"plastid"</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">str_detect</span>(gb_definition, <span class="st">"mitochondr"</span>) <span class="sc">~</span> <span class="st">"mitochondrion"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">str_detect</span>(gb_taxonomy, <span class="st">"Bacteria|Archaea"</span>) <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"nucleus"</span>),</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">gb_sequence =</span> <span class="fu">replace_na</span>(gb_sequence, <span class="st">""</span>),                                             <span class="co"># To remove NULL</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">sequence =</span> <span class="fu">case_when</span>( start <span class="sc">&lt;</span> end <span class="sc">~</span> <span class="fu">str_sub</span>(gb_sequence, start, end),</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">seq_reverse_complement</span>(<span class="fu">str_sub</span>(gb_sequence, end, start))),</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">sequence_length =</span> <span class="fu">str_length</span>(sequence),</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>         <span class="at">sequence_length =</span> <span class="fu">ifelse</span>(sequence_length <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA_integer_</span>, sequence_length),</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>         <span class="at">ambiguities =</span> <span class="fu">str_count</span>(sequence, <span class="at">pattern=</span>pr2.env<span class="sc">$</span>ambig_regex),</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Next time remove from here because it is now in the script to run on the server</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>         <span class="at">pr2_sample_type =</span> <span class="fu">case_when</span>(<span class="fu">str_detect</span>(gb_definition, <span class="st">"uncultured|Uncultured"</span>) <span class="sc">~</span> <span class="st">"environmental"</span>,</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">str_detect</span>(gb_isolation_source, <span class="st">"(?i)water|sediment|ice|plankton|blood|fecal|soil|lake|river|gulf"</span>) <span class="sc">~</span> <span class="st">"environmental"</span>,</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">str_detect</span>(gb_organism, <span class="st">"metagenom"</span>) <span class="sc">~</span> <span class="st">"environmental"</span>,</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>                                     gb_division <span class="sc">==</span> <span class="st">"ENV"</span> <span class="sc">~</span> <span class="st">"environmental"</span>,</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>                                     <span class="sc">!</span><span class="fu">is.na</span>(gb_specimen_voucher)<span class="sc">~</span> <span class="st">"isolate"</span>,</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>                                     <span class="cn">TRUE</span> <span class="sc">~</span> pr2_sample_type),</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">removed_version =</span> <span class="fu">case_when</span>((sequence_length <span class="sc">&lt;</span> pr2.env<span class="sc">$</span>sequence_length_min)<span class="sc">|</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>                                     (sequence_length <span class="sc">&gt;</span> pr2.env<span class="sc">$</span>sequence_length_max)<span class="sc">|</span>  </span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>                                     (ambiguities <span class="sc">&gt;</span> pr2.env<span class="sc">$</span>ambiguities_max)<span class="sc">|</span> </span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">str_detect</span>(sequence, pr2.env<span class="sc">$</span>sequence_N_repeat) <span class="sc">~</span> pr2.env<span class="sc">$</span>version),</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>         <span class="at">edited_remark =</span> <span class="fu">case_when</span>((sequence_length <span class="sc">&lt;</span> pr2.env<span class="sc">$</span>sequence_length_min) <span class="sc">~</span> <span class="st">"sequence too short"</span>,</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>                                   (ambiguities <span class="sc">&gt;</span> pr2.env<span class="sc">$</span>ambiguities_max) <span class="sc">~</span> <span class="st">"too many ambiguities"</span>,</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">str_detect</span>(sequence, pr2.env<span class="sc">$</span>sequence_N_repeat) <span class="sc">~</span> <span class="st">"2 consecutive N"</span>)</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a> pr2_new<span class="sc">$</span>sequence_hash <span class="ot">=</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(pr2_new<span class="sc">$</span>sequence,digest<span class="sc">::</span>sha1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="check-duplicate-entries" class="level3">
+<h3 class="anchored" data-anchor-id="check-duplicate-entries">Check duplicate entries</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a> pr2_new <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(genbank_accession) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 2
+# … with 2 variables: genbank_accession &lt;chr&gt;, n &lt;int&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="get-some-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="get-some-statistics">Get some statistics</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(pr2_new, <span class="fu">aes</span>(<span class="at">x=</span>sequence_length)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">3000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PR2-update-5.0.0-C-GenBank_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="final-files-for-uploading" class="level3">
+<h3 class="anchored" data-anchor-id="final-files-for-uploading">Final files for uploading</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sprintf</span>(<span class="st">" Final number of sequences added:  %d"</span>, <span class="fu">nrow</span>(pr2_new))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] " Final number of sequences added:  35884"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sprintf</span>(<span class="st">" Final number of valid sequences added:  %d"</span>, <span class="fu">nrow</span>(<span class="fu">filter</span>(pr2_new, <span class="sc">!</span><span class="fu">is.na</span>(removed_version))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] " Final number of valid sequences added:  17504"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">colnames</span>(pr2_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "genbank_accession"       "gb_definition"          
+ [3] "gb_division"             "gb_project_id"          
+ [5] "gb_sequence"             "gb_organism"            
+ [7] "gb_taxonomy"             "gb_date"                
+ [9] "gb_keyword"              "gb_specimen_voucher"    
+[11] "gb_strain"               "gb_isolate"             
+[13] "gb_clone"                "gb_collected_by"        
+[15] "gb_culture_collection"   "gb_isolation_source"    
+[17] "gb_host"                 "gb_environmental_sample"
+[19] "gb_collection_date"      "gb_note"                
+[21] "gb_organelle"            "gb_lat_lon"             
+[23] "gb_country"              "gb_authors"             
+[25] "gb_publication"          "gb_journal"             
+[27] "pr2_longitude"           "pr2_latitude"           
+[29] "sequence_length"         "pr2_sample_type"        
+[31] "gb_feature_location"     "gb_feature_name"        
+[33] "start"                   "end"                    
+[35] "label"                   "pr2_accession"          
+[37] "added_version"           "edited_by"              
+[39] "reference_sequence"      "gene"                   
+[41] "organelle"               "sequence"               
+[43] "ambiguities"             "removed_version"        
+[45] "edited_remark"           "sequence_hash"          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a> pr2_update_new <span class="ot">&lt;-</span> pr2_new</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  pr2_main_new <span class="ot">&lt;-</span> pr2_update_new <span class="sc">%&gt;%</span>  </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span> (pr2_accession, genbank_accession, start,end, label, organelle, gene, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>            added_version, edited_by, removed_version, edited_remark)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>(pr2_main_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35884</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>  pr2_sequences_new <span class="ot">&lt;-</span> pr2_update_new <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(pr2_accession, sequence, sequence_length, ambiguities, sequence_hash)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>(pr2_sequences_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35884</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>  pr2_metadata_new <span class="ot">&lt;-</span> pr2_update_new <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(genbank_accession, <span class="fu">starts_with</span>(<span class="st">"gb_"</span>),<span class="fu">starts_with</span>(<span class="st">"pr2_"</span>), <span class="fu">starts_with</span>(<span class="st">"eukref_"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>( <span class="sc">-</span>pr2_accession) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>(pr2_metadata_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 35884</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="save-everything-to-an-excel-file" class="level1">
+<h1>Save everything to an Excel file</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a> file_pr2_import <span class="ot">&lt;-</span>  <span class="fu">full_path</span>(<span class="st">"pr2_genbank_import_final.xlsx"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a> onglets <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"pr2_main_new"</span> <span class="ot">=</span> pr2_main_new, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"pr2_sequence_new"</span> <span class="ot">=</span> pr2_sequences_new,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"pr2_metadata_new"</span> <span class="ot">=</span> pr2_metadata_new)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a> rio<span class="sc">::</span><span class="fu">export</span>(onglets, file_pr2_import, <span class="at">zoom =</span> <span class="dv">90</span>, <span class="at">firstRow =</span> <span class="cn">TRUE</span>, <span class="at">firstCol =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

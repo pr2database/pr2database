@@ -1,0 +1,32 @@
+---
+title: "PR2 version 5.0.0 <br>  Index of script tiles"
+author: "Daniel Vaulot"
+date: '`r format(Sys.time(), "%d %m %Y")`'
+---
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(dplyr)
+library(stringr)
+
+files <- list.files(path = ".", pattern = "*.html")
+
+files <- str_c("<a href='", files, "'>", files,"</a>" )  %>%  
+  tibble::tibble(file_name = .) %>% 
+  filter(!str_detect(file_name, "index"))
+
+DT::datatable(files, escape = FALSE, 
+              rownames = FALSE,
+              colnames = "Script files",
+              filter = 'none',
+              options = list(pageLength = 20)
+              )
+
+```
+
+
