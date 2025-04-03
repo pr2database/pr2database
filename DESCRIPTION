@@ -6,29 +6,39 @@ Description: PR2 database
     See  https://pr2-database.org
 License: MIT + file LICENSE
 Imports: 
+    attachment,
+    bench,
     Biostrings,
     blaster (>= 1.0.7),
     config (>= 0.3.1),
-    dplyr,
+    devtools,
     DT,
+    dvutils,
     forcats,
     ggplot2,
     glue,
     golem (>= 0.3.5),
+    here,
+    httpuv,
+    knitr,
     markdown,
     pins,
     pkgload,
+    pr2database,
+    pryr,
     purrr,
     qs,
+    quarto,
+    reactlog,
     rio,
-    shiny (>= 1.7.2),
+    rstudioapi,
     shinycssloaders,
+    shinydashboard,
+    shinydashboardPlus,
     shinydisconnect,
-    shinylogs,
     shinyvalidate,
     shinyWidgets,
-    stringr,
-    tidyr,
+    usethis,
     yaml
 Encoding: UTF-8
 LazyData: true
@@ -36,10 +46,23 @@ RoxygenNote: 7.2.3
 URL: https://github.com/pr2database
 BugReports: https://github.com/pr2database/issues
 Suggests: 
+    DECIPHER,
+    htmltools,
+    maps,
+    patchwork,
+    rmarkdown,
+    rworldmap,
     spelling,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    treemapify
 Config/testthat/edition: 3
 Language: en-US
 Depends: 
-    R (>= 2.10)
-
+    R (>= 2.10),
+    dplyr,
+    pkgdown,
+    shiny (>= 1.7.2),
+    stringr,
+    tibble,
+    tidyr,
+    validate
