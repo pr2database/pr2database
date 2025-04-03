@@ -55,7 +55,7 @@ Suggests:
 Config/testthat/edition: 3
 Language: en-US
 Depends: 
-    R (>= 4.40),
+    R (>= 4.4.0),
     dplyr,
     pkgdown,
     shiny (>= 1.7.2),
