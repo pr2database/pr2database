@@ -56,7 +56,7 @@ messages$too_many_seqs = tags$div(
 file_loaded  <- tryCatch(
   {
     pr2 <- qs::qread(app_sys("data-qs/pr2.qs"))
-    print("Using System file")
+    message("Using System file")
     TRUE              # Returns true if loaded
   },
   error=function(cond) {
@@ -70,7 +70,7 @@ if(!file_loaded){
   file_loaded  <- tryCatch(
     {
       pr2 <- qs::qread("inst/data-qs/pr2.qs")
-      print("Using full path")
+      message("Using full path")
       TRUE              # Returns true if loaded
     },
     error=function(cond) {
@@ -84,7 +84,7 @@ if(!file_loaded){
 
 if(!file_loaded){
   pr2 <- read_qs_from_url("https://storage.googleapis.com/pr2database-data/pr2database/data-qs/pr2.qs")
-  print("Using cloud bucket")
+  message("Using cloud bucket")
 }
 
 # Change factors to character ----------------------------------------------------
