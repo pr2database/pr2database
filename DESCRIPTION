@@ -9,6 +9,7 @@ Imports:
     Biostrings,
     blaster (>= 1.0.7),
     config (>= 0.3.1),
+    dplyr,
     DT,
     forcats,
     ggplot2,
@@ -20,10 +21,14 @@ Imports:
     purrr,
     qs,
     rio,
+    shiny (>= 1.7.2),
     shinycssloaders,
     shinydisconnect,
+    shinylogs,
     shinyvalidate,
     shinyWidgets,
+    stringr,
+    tidyr,
     yaml
 Encoding: UTF-8
 LazyData: true
@@ -31,15 +36,10 @@ RoxygenNote: 7.2.3
 URL: https://github.com/pr2database
 BugReports: https://github.com/pr2database/issues
 Suggests: 
-    spelling
+    spelling,
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Language: en-US
 Depends: 
-    R (>= 4.4.0),
-    dplyr,
-    pkgdown,
-    shiny (>= 1.7.2),
-    stringr,
-    tibble,
-    tidyr,
-    validate
+    R (>= 4.4.0)
+
