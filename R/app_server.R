@@ -17,7 +17,8 @@ app_server <- function(input, output, session) {
 
   # To track usage - needs to erase and reload the logs directory - MODIFIED because takes too much space
   # dir.create(path = "logs", showWarnings = FALSE, recursive = FALSE, mode = "0775")
-  shinylogs::track_usage(storage_mode = shinylogs::store_sqlite(path = "logs/", what = c("session", "error")))
+  shinylogs::track_usage(storage_mode = shinylogs::store_sqlite(path = "logs/"),
+                         what = c("session", "error"))
 
   # Taxonomy selection on left menu
   taxo_selected <- mod_select_taxonomy_server("select_taxonomy")
