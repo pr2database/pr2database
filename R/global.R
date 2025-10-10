@@ -131,9 +131,11 @@ pr2$taxonomy <- dplyr::mutate(pr2$taxonomy,
 
 
 
-pr2$version = "5.1.0"
+pr2$version = "5.1.1"
 
 pr2$version_rod = "1.2.0"
+
+pr2$version_ekoi = "1.0"
 
 
 

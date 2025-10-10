@@ -41,7 +41,7 @@ mod_table_taxonomy_server <- function(id, taxonomy, taxo_selected){
         arrange(across(any_of(pr2$taxo_levels))) %>%
         mutate(species = species_url) %>%
         select(-species_url) %>%
-        relocate(any_of(c("n_sequences_SSU", "n_sequences_operon")), .after = "species")
+        relocate(any_of(c("n_sequences_SSU", "n_sequences_operon", "n_sequences_coi")), .after = "species")
     })
 
     table <- reactive(

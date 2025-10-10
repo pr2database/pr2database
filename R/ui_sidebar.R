@@ -11,6 +11,7 @@ sidebar <- function() {sidebarPanel(width = 3,
                     actionButton("button_disconnect", "Disconnect", class = "btn-info"),
                     h4(str_c("PR2 18S rRNA database v. ", pr2$version)),
                     h4(str_c("Ribosomal Operon database v. ", pr2$version_rod)),
+                    h4(str_c("eKOI database v. ", pr2$version_ekoi)),
                     tags$b(str_c(format(nrow(pr2$main), big.mark=","), " sequences")),
                     style="text-align: center;"),
 

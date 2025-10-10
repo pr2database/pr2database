@@ -1,5 +1,5 @@
-pandoc: '3.2'
-pkgdown: 2.1.1
+pandoc: 3.6.3
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   pr2_01_stats: pr2_01_stats.html
@@ -10,4 +10,4 @@ articles:
   pr2_05_mixoplankton: pr2_05_mixoplankton.html
   pr2database: pr2database.html
   vignette-shiny-presentation: vignette-shiny-presentation.html
-last_built: 2025-03-21T17:26Z
+last_built: 2025-10-10T09:33Z

@@ -3,8 +3,8 @@
 
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
-[![Database](https://img.shields.io/badge/database-v.%205.1.0-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-02%20Apr%202025-lightgrey.svg)
+[![Database](https://img.shields.io/badge/database-v.%205.1.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
+![Date](https://img.shields.io/badge/date-10%20Oct%202025-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
@@ -37,9 +37,9 @@ Molecular Ecology Resources. 25:e14031.
 
 ## Current version
 
-- Version: [5.1.0](https://github.com/pr2database/pr2database/releases)
+- Version: [5.1.1](https://github.com/pr2database/pr2database/releases)
 
-- Released: 2025-04-02
+- Released: 2025-10-10
 
 - DOI:
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15129782.svg)](https://doi.org/10.5281/zenodo.15129782)
@@ -97,6 +97,15 @@ full-length eukaryotic ribosomal operons. The database is based on the
 genome assemblies from NCBI, and the operons are extracted from the
 assemblies. The database currently contains 69,480 operon variants from
 more than 11,935 genomes.
+
+#### Eukaryotic mitochondrial cytochrome oxidase (coi) Database (eKOI) - version 1.0
+
+The [eKOI database](https://doi.org/10.1093/database/baaf057) is a
+curated COI gene database designed to enhance the taxonomic annotation
+for protists that can be used for COI-based metabarcoding. eKOI
+integrates data from GenBank and mitochondrial genomes, followed by
+extensive manual curation to eliminate redundancies and contaminants,
+recovering 15 947 sequences within 80 eukaryotic phyla.
 
 ## Questions ?
 
