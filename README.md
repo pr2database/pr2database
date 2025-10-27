@@ -42,7 +42,7 @@ Molecular Ecology Resources. 25:e14031.
 - Released: 2025-10-27
 
 - DOI:
-  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17458343.svg)](https://zenodo.org/records/17458343)
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17458343.svg)](https://doi.org/10.5281/zenodo.17458343)
 
 ## Accessing PR2
 
