@@ -51,6 +51,24 @@ Molecular Ecology Resources. 25:e14031.
   release](https://github.com/pr2database/pr2database/releases)
 - [R package](https://pr2database.github.io/pr2database/index.html)
 
+## Installing PR2 as a R package
+
+- Requires R version 4.4
+- You may have to install some packages required by pr2database if they
+  are not installed on your machine
+
+<!-- -->
+
+    if (!require("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+
+    BiocManager::install("Biostrings")
+
+    install.packages("devtools")
+    devtools::install_github("pr2database/pr2database")
+
+    pr2database::run_app()
+
 ## About PR2
 
 - [Documentation](https://pr2-database.org/#documentation)
