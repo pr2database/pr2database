@@ -1,4 +1,4 @@
-n_seq_max = 50000
+n_seq_max = 100000
 
 
 
@@ -18,7 +18,7 @@ mod_download_UI <- function(id) {
     hr(),
     HTML("Press <b>Validate Taxa</b> to update taxonomy before downloading"),
     p(),
-    HTML("Maximum number of sequences for download: <b>50,000</b>.If you need more, download the full database."),
+    HTML(glue::glue("Maximum number of sequences for download: <b>{formatC(n_seq_max, format='f', big.mark=',', digits=0)}</b>.If you need more, download the full database.")),
     p(),
     uiOutput(ns('download_ui'))
   )
@@ -62,8 +62,10 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
       output$download_pr2_zip <- downloadHandler(
 
       # filename = function() {str_c(file_head(), ".zip")},
-      filename = function() {str_c("pr2_",
-                                   str_replace(str_c(taxo_selected()$name, collapse = "-"), ":", "_"),
+
+
+      filename = function() { filename_taxo <-  str_sub(str_replace(str_c(taxo_selected()$name, collapse = "-"), ":", "_"), 1, 30) # To avoid names that are too long
+                              str_c("pr2_", filename_taxo,
                                    "_", Sys.Date(), ".zip")},
 
 
@@ -72,7 +74,9 @@ mod_download_server <- function(id, sequences_filtered, taxo_selected) {
 
         setwd(tempdir()) # This is needed to avoid problems with file path (on windows tempdir() returns the path as windows path)
 
-        file_pr2 <- str_c("pr2_", str_c(taxo_selected()$name, collapse = "-"), "_", Sys.Date(), ".xlsx")
+        filename_taxo <-  str_sub(str_replace(str_c(taxo_selected()$name, collapse = "-"), ":", "_"), 1, 30) # To avoid names that are too long
+
+        file_pr2 <- str_c("pr2_", filename_taxo, "_", Sys.Date(), ".xlsx")
         file_pr2 <- gsub(":", "_", file_pr2) # For some mysterious reason str_replace does not work with ":"
         file_fasta <- str_replace(file_pr2, "xlsx", "fasta")
 
