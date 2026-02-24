@@ -3,8 +3,8 @@
 
 # Protist Ribosomal Reference database (PR<sup>2</sup>)
 
-[![Database](https://img.shields.io/badge/database-v.%205.1.1-blue.svg)](https://github.com/pr2database/pr2database/releases)
-![Date](https://img.shields.io/badge/date-26%20Oct%202025-lightgrey.svg)
+[![Database](https://img.shields.io/badge/database-v.%205.1.2-blue.svg)](https://github.com/pr2database/pr2database/releases)
+![Date](https://img.shields.io/badge/date-22%20Feb%202026-lightgrey.svg)
 ![Github
 Downloads(total)](https://img.shields.io/github/downloads/pr2database/pr2database/total.svg)
 
@@ -33,23 +33,84 @@ Operon Database (ROD) published in Krabberød, A.K., Stokke, E., Thoen,
 E., Skrede, I. & Kauserud, H. 2025. [The Ribosomal Operon Database: A
 Full-Length rDNA Operon Database Derived From Genome
 Assemblies](https://onlinelibrary.wiley.com/doi/full/10.1111/1755-0998.14031).
-Molecular Ecology Resources. 25:e14031.
+Molecular Ecology Resources. 25:e14031) and to the [eKOI
+database](https://doi.org/10.1093/database/baaf057) which is a curated
+COI gene database .
 
 ## Current version
 
-- Version: [5.1.1](https://github.com/pr2database/pr2database/releases)
+- Version: [5.1.2](https://github.com/pr2database/pr2database/releases)
 
-- Released: 2025-10-27
+- Released: 2026-02-22
 
 - DOI:
   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17458343.svg)](https://doi.org/10.5281/zenodo.17458343)
 
 ## Accessing PR2
 
-- [Web interface](https://app.pr2-database.org)
-- [Flat files - latest
-  release](https://github.com/pr2database/pr2database/releases)
-- [R package](https://pr2database.github.io/pr2database/index.html)
+### On the web
+
+1.  [Flat files - latest
+    release](https://github.com/pr2database/pr2database/releases)
+2.  [Web interface](https://app.pr2-database.org)
+
+### On your computer
+
+1.  Run as [docker
+    container](https://hub.docker.com/repository/docker/vaulot/pr2-database/general).
+    \<= **This is the best way**
+2.  [R package](https://github.com/pr2database/pr2database)
+
+##### 1 - Docker container (Easier)
+
+Available from [Docker
+repository](https://hub.docker.com/repository/docker/vaulot/pr2-database)
+
+- Install docker on your computer: <https://docs.docker.com/desktop/>
+
+- At shell prompt (can be Linux, Mac or Windows
+  [Powershell](https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.5)).
+  Note that a Powershell window can be opened from [RStudio
+  Terminal](https://support.posit.co/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal-in-the-RStudio-IDE)
+  or [VSCode
+  Terminal](https://code.visualstudio.com/docs/terminal/basics).
+
+``` bash
+# Download container
+docker pull vaulot/pr2-database:latest
+
+# Launch container
+docker run --rm -p 8080:8080 vaulot/pr2-database
+```
+
+- In your browser: <http://localhost:8080/>
+- To exit type CTRL-C in the shell prompt
+
+##### 2 - Installing and running PR2 as a R package (Hard way)
+
+- Requires R version 4.4.
+- You may have to install some packages required by pr2database if they
+  are not installed on your machine.
+
+<!-- -->
+
+    # Installing necessary packages
+
+    install.packages("devtools")
+    install.packages("remotes")
+
+    if (!require("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+
+    remotes::install_version("blaster", version = "1.0.7")
+
+    BiocManager::install("Biostrings")
+
+    install.packages("devtools")
+    devtools::install_github("pr2database/pr2database")
+
+    # Run the shiny application
+    pr2database::run_app()
 
 ## About PR2
 

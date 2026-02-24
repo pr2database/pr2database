@@ -21,6 +21,8 @@ This is a join between the following tables:
        \item{pr2_traits}
        \item{pr2_silva}
        \item{euribo}
+       \item{taxonomy_gbif}
+       \item{taxonomy_worms}
   }
 The metadata contains different types of fields
 \itemize{

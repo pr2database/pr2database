@@ -1,0 +1,56 @@
+*.html
+
+# R proj files
+*.Rproj
+.RData
+.Rhistory
+.Rproj.user
+.vscode
+
+# git
+.git
+.gitignore
+.gitattributes
+
+# Rmd files
+
+# directories
+archives
+data-archives
+data-raw
+data-rda
+data-qs-private
+data-qs-version-2.0
+data-qs-4.0
+data-qs-abims-version-3.0
+data-qs-ge2
+data-qs-nansen
+data-qs-pacbio
+data-qs-pelago
+data-qs-private
+data-qs-private-version-2.0
+
+
+dev
+docs
+logs
+man
+sandbox
+tests
+vignettes
+
+# Readme files
+readme_Shiny.md
+readme_docker.md
+README.Rmd
+
+# Pkdown
+_pkgdown.yml
+
+# R files
+install_packages.R
+
+# Shell files
+readme_docker.sh
+install_packages.sh
+docker.sh

@@ -1,6 +1,6 @@
 Package: pr2database
 Title: PR2 database with shiny web interface
-Version: 5.1.1
+Version: 5.1.2
 Authors@R: person('Daniel', 'Vaulot', email = 'vaulot@gmail.com', role = c('cre', 'aut'))
 Description: PR2 database
     See  https://pr2-database.org
@@ -19,7 +19,7 @@ Imports:
     pins,
     pkgload,
     purrr,
-    qs,
+    qs2,
     rio,
     shiny (>= 1.7.2),
     shinycssloaders,
@@ -32,7 +32,7 @@ Imports:
     yaml
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 URL: https://github.com/pr2database
 BugReports: https://github.com/pr2database/issues
 Suggests: 
@@ -42,4 +42,3 @@ Config/testthat/edition: 3
 Language: en-US
 Depends: 
     R (>= 4.4.0)
-

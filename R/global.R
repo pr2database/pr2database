@@ -55,7 +55,7 @@ messages$too_many_seqs = tags$div(
 
 file_loaded  <- tryCatch(
   {
-    pr2 <- qs::qread(app_sys("data-qs/pr2.qs"))
+    pr2 <- qs2::qs_read(app_sys("data-qs/pr2.qs2"))
     message("Using System file")
     TRUE              # Returns true if loaded
   },
@@ -69,7 +69,7 @@ file_loaded  <- tryCatch(
 if(!file_loaded){
   file_loaded  <- tryCatch(
     {
-      pr2 <- qs::qread("inst/data-qs/pr2.qs")
+      pr2 <- qs2::qs_read("inst/data-qs/pr2.qs2")
       message("Using full path")
       TRUE              # Returns true if loaded
     },
@@ -83,7 +83,9 @@ if(!file_loaded){
 ## Read from Gcloud bucket with pins - for people who install the library
 
 if(!file_loaded){
-  pr2 <- read_qs_from_url("https://storage.googleapis.com/pr2database-data/pr2database/data-qs/pr2.qs")
+  pr2 <- read_qs_from_url(
+    "https://storage.googleapis.com/pr2database-data/pr2database/data-qs/pr2.qs2"
+  )
   message("Using cloud bucket")
 }
 
@@ -131,7 +133,7 @@ pr2$taxonomy <- dplyr::mutate(pr2$taxonomy,
 
 
 
-pr2$version = "5.1.1"
+pr2$version = "5.1.2"
 
 pr2$version_rod = "1.2.0"
 

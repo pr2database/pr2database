@@ -2,7 +2,7 @@
 read_qs_from_url <- function(url) {
   board <- pins::board_url(c(url = url))
   qs_file <- pins::pin_download(board, "url")
-  qs_object <- qs::qread(qs_file)
+  qs_object <- qs2::qs_read(qs_file)
 }
 
 # Examples:
